@@ -623,8 +623,8 @@
   .smock-chat{padding:16px 14px 22px}
   .smock-chat .sm-day{text-align:center;margin:0 0 15px;font-size:11.5px;font-weight:600;color:#8a8f9c}
   /* 톡톡 시안 (채팅 속 수신 메시지 이미지) — 두 카드 높이 통일 + 하단 페이드 */
-  .tc-shot-wrap{position:relative;width:100%;aspect-ratio:680/1240;overflow:hidden;border-radius:16px;box-shadow:0 2px 10px rgba(20,24,40,.08);border:1px solid #e6e8ee;-webkit-mask-image:linear-gradient(to bottom,#000 76%,rgba(0,0,0,.25) 92%,transparent 100%);mask-image:linear-gradient(to bottom,#000 76%,rgba(0,0,0,.25) 92%,transparent 100%)}
-  .tc-shot{width:100%;height:auto;display:block}
+  .tc-shot-wrap{position:relative;width:100%;overflow:hidden;border-radius:16px;box-shadow:0 2px 10px rgba(20,24,40,.08);border:1px solid #e6e8ee}
+  .tc-shot{width:100%;height:auto;display:block;margin-top:-20.28%}
   /* 폰이 뜬 뒤 채팅 메시지가 아래에서 올라오며 도착하는 연출 */
   @keyframes msgRise{from{opacity:0;transform:translateY(20px) scale(.985)}to{opacity:1;transform:none}}
   .smock .smock-chat{opacity:0}
@@ -754,10 +754,7 @@
             <!-- 브랜드 소재 슬롯 (URL ?b= 로 치환) -->
       <div class="smock reveal d1" aria-hidden="true">
        <div class="smock-screen">
-        <div class="smock-status"><span>오후 2:30</span><span class="ss-batt"></span></div>
-        <div class="smock-nav"><span class="sm-back">‹</span><span class="sm-brand" data-brand-nav>신세계까사</span><span class="sm-talk">네이버 스마트 톡톡</span></div>
         <div class="smock-chat">
-         <p class="sm-day">오늘</p>
          <div class="tc-shot-wrap"><img class="tc-shot" data-creative src="creatives/casamia.jpg" alt="네이버 스마트 톡톡 시안"></div>
         </div>
        </div>
