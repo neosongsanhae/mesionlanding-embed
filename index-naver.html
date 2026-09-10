@@ -381,6 +381,43 @@
   .cta-card.feat{border:1.5px solid var(--blue);background:var(--tint)}
   .cta-card.feat .k{color:var(--blue)}
 
+  /* 회사 소개 푸터 밴드 */
+  .cofoot{background:var(--paper2);border-top:1px solid var(--line);padding:66px 0 60px}
+  .cofoot .cf-eyebrow{display:block;font-size:12.5px;font-weight:800;letter-spacing:.02em;color:var(--blue);margin-bottom:12px}
+  .cofoot .cf-eyebrow b{color:var(--blue)}
+  .cofoot h2{font-size:clamp(1.4rem,3.2vw,2rem);font-weight:800;letter-spacing:-.03em;line-height:1.28;color:var(--ink);margin-bottom:30px;text-wrap:balance}
+  .cf-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+  .cf-card+.cf-grid,.cf-card+.cf-card{margin-top:16px}
+  .cf-label{display:block;font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--muted);text-transform:uppercase}
+  .cf-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:20px}
+  .cf-top .cf-note{font-size:13px;font-weight:600;color:var(--ink2)}
+  .cf-top .cf-note b{color:var(--blue);font-weight:800}
+  .cf-invest{display:flex;flex-wrap:wrap;align-items:center;gap:14px 30px}
+  .cf-invest .iv{font-size:15px;font-weight:800;letter-spacing:-.01em;color:#9aa0ad;white-space:nowrap}
+  .cf-invest .iv.d2{display:inline-flex;align-items:center;gap:8px;color:var(--ink)}
+  .nv-badge{width:22px;height:22px;flex:none;border-radius:6px}
+  .cf-grid{display:grid;grid-template-columns:1.55fr 1fr;gap:16px}
+  .cf-partners .cf-pt{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:22px}
+  .cf-partners .pt{display:flex;flex-direction:column;align-items:center;text-align:center;gap:9px}
+  .cf-partners .pt-badge{width:62px;height:62px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-weight:800;font-size:14px;letter-spacing:-.02em}
+  .cf-partners .pt b{font-size:14px;font-weight:800;color:var(--ink)}
+  .cf-partners .pt span{font-size:11.5px;line-height:1.4;color:var(--muted)}
+  .pt-badge.naver{color:#03C75A}.pt-badge.meta{color:#0866FF}.pt-badge.google{color:#4285F4}.pt-badge.aws{color:#232F3E;font-size:12px}.pt-badge.kakao{background:#FEE500;color:#3C1E1E}
+  .cf-org{background:#161a2b;border-color:#161a2b;color:#fff;display:flex;flex-direction:column;padding:26px 28px}
+  .cf-org .cf-label{color:#8ea0ff}
+  .cf-org .org-row{display:flex;justify-content:space-between;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+  .cf-org .org-row:first-of-type{margin-top:8px}
+  .cf-org .org-row .rk{font-size:15px;color:#c3c8da;font-weight:600}
+  .cf-org .org-row .rv{font-size:38px;font-weight:800;letter-spacing:-.03em;line-height:1}
+  .cf-org .org-row .rv i{font-size:15px;font-weight:700;font-style:normal;margin-left:4px;color:#c3c8da}
+  .cf-org .org-foot{margin-top:auto;padding-top:22px;font-size:14.5px;color:#e7eaf3}
+  .cf-org .org-foot b{font-weight:800}
+  @media (max-width:760px){
+    .cf-grid{grid-template-columns:1fr}
+    .cf-partners .cf-pt{grid-template-columns:repeat(3,1fr);gap:20px 10px}
+    .cf-invest{gap:12px 22px}
+    .cf-invest .iv{font-size:13.5px}
+  }
   footer{padding:48px 0;font-size:12.5px;color:var(--muted);line-height:1.9;border-top:1px solid var(--line)}
   /* 리드 바텀시트 */
   .sheet-wrap{position:fixed;inset:0;z-index:200;display:none}
@@ -526,8 +563,17 @@
   .pstep.win .pn{background:var(--tint);color:var(--blue)}
   .pstep.drop{color:#b23b3b}
   .pstep.drop .pn{background:#fbe9e9;color:#c0392b}
-  .pdrop{margin-top:18px;font-size:13.5px;font-weight:700;color:#c0392b}
-  .pwin{margin-top:18px;font-size:13.5px;font-weight:700;color:var(--blue)}
+  .pcard .pconc{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px}
+  .pcard.win .pconc{border-top-color:#cfe8db}
+  .pcard:not(.win) .pconc{border-top-color:#f2dede}
+  .pconc .pcl{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+  .pconc .pcv{font-size:16.5px;font-weight:800;letter-spacing:-.02em}
+  .pcard.win .pconc .pcv{color:var(--blue)}
+  .pcard:not(.win) .pconc .pcv{color:#c0392b}
+  /* 세로 펼침 애니메이션: 네이버는 금방 끝, 카카오는 오래 펼쳐짐 */
+  .psteps .pstep,.pcard .pconc{opacity:0;transform:translateY(12px)}
+  .path-grid.in .pstep,.path-grid.in .pconc{opacity:1;transform:none;transition:opacity .45s ease,transform .45s ease;transition-delay:var(--d,0s)}
+  @media(prefers-reduced-motion:reduce){.psteps .pstep,.pcard .pconc{opacity:1;transform:none}.path-grid.in .pstep,.path-grid.in .pconc{transition:none}}
   .path-note{margin-top:34px;max-width:760px;font-size:16px;line-height:1.72;color:var(--ink2);font-weight:500}
   .path-note b{color:var(--blue);font-weight:700}
 
@@ -717,21 +763,20 @@
       <div class="pcard win">
         <div class="pc-h"><span class="pc-ic"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#03C75A"/></svg></span>네이버 스마트 톡톡으로 보내면</div>
         <div class="psteps">
-          <div class="pstep win"><span class="pn">1</span>알림을 클릭합니다</div>
-          <div class="pstep win"><span class="pn">2</span>이미 로그인된 네이버 안에서 열립니다</div>
-          <div class="pstep win"><span class="pn">3</span>클릭 즉시 결제로 이어집니다</div>
+          <div class="pstep win" style="--d:.05s"><span class="pn">1</span>알림을 클릭합니다</div>
+          <div class="pstep win" style="--d:.35s"><span class="pn">2</span>이미 로그인된 네이버에서 바로 열립니다</div>
         </div>
-        <p class="pwin">구매까지 두 단계, 로그인 없이 바로 결제</p>
+        <div class="pconc" style="--d:.7s"><span class="pcl">두 단계 만에</span><span class="pcv">구매 가능성 높음</span></div>
       </div>
       <div class="pcard">
         <div class="pc-h"><span class="pc-ic"><svg width="15" height="15" viewBox="0 0 36 36"><path d="M18 6.5c-7.5 0-13.5 4.8-13.5 10.7 0 3.8 2.5 7.1 6.3 9l-1.6 5.7c-.1.5.4.9.9.6l6.7-4.4c.4.1.8.1 1.2.1 7.5 0 13.5-4.8 13.5-10.8S25.5 6.5 18 6.5z" fill="#3C1E1E"/></svg></span>카카오톡으로 보내면</div>
         <div class="psteps">
-          <div class="pstep"><span class="pn">1</span>알림을 클릭합니다</div>
-          <div class="pstep"><span class="pn">2</span>카카오톡 인앱 브라우저가 열립니다<span class="px">네이버에 로그인되지 않은 상태</span></div>
-          <div class="pstep"><span class="pn">3</span>네이버 로그인을 다시 합니다</div>
-          <div class="pstep drop"><span class="pn">4</span>장바구니·결제로 가기 전에 이탈합니다</div>
+          <div class="pstep" style="--d:.05s"><span class="pn">1</span>알림을 클릭합니다</div>
+          <div class="pstep" style="--d:.7s"><span class="pn">2</span>카카오톡 인앱 브라우저가 열립니다<span class="px">네이버에 로그인되지 않은 상태</span></div>
+          <div class="pstep" style="--d:1.35s"><span class="pn">3</span>네이버 로그인을 다시 합니다</div>
+          <div class="pstep drop" style="--d:2s"><span class="pn">4</span>네이버 스마트스토어 페이지로 다시 진입합니다</div>
         </div>
-        <p class="pdrop">구매까지 네 단계, 로그인 장벽에서 이탈</p>
+        <div class="pconc" style="--d:2.6s"><span class="pcl">네 단계를 거치며</span><span class="pcv">이탈 가능성 높음</span></div>
       </div>
     </div>
   </div>
@@ -743,7 +788,7 @@
     <div class="send-grid">
       <div>
         <h2 class="one reveal rl">4,300만 명이 사용하는<br><span class="em">네이버 스마트 톡톡</span>으로 고객과 만나보세요.</h2>
-        <p class="sub1 reveal d1">문자도 카카오톡도 못 보내던 회원도 네이버 스마트 톡톡은 받습니다.<br>만날 수 있는 고객이 늘어난 만큼 매출도 함께 늘어납니다.<br><small class="chn">카카오톡은 기존 CRM 툴도 보냅니다. 메시온은 여기에 네이버라는 새 축을 더합니다.</small></p>
+        <p class="sub1 reveal d1">문자도 카카오톡도 못 보내던 회원도 네이버 스마트 톡톡은 받습니다.<br>만날 수 있는 고객이 늘어난 만큼 매출도 함께 늘어납니다.</p>
       </div>
       <div class="phone reveal rr d1" id="phone">
         <div class="noti"><div class="nb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></div><div class="t"><b>가을 신상이 먼저 도착했어요</b>단골님께 하루 먼저 보여드려요.</div><span class="tag">시즌 프로모션</span></div>
@@ -763,8 +808,8 @@
     <div class="eng-flow reveal d1">
       <div class="estep">
         <span class="enum">1</span>
-        <div class="et">우리 데이터로 대상 선별</div>
-        <p class="ep">구매·장바구니·재구매 주기로 지금 살 회원만.</p>
+        <div class="et">자사 회원 데이터</div>
+        <p class="ep">마케팅 수신동의한 회원 모두에게 보내요.<br>(온라인+오프라인)</p>
       </div>
       <span class="earrow">→</span>
       <div class="estep">
@@ -806,13 +851,13 @@
           <tr>
             <th class="th-feat"></th>
             <th class="th-mez">네이버 스마트 톡톡 · 메시온</th>
-            <th class="th-kk">카카오톡</th>
+            <th class="th-kk">카카오톡 브랜드메시지</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td class="feat">메시지가 닿는 대상</td>
-            <td class="mez">알림받기 동의한 <b>자사몰 회원 전체</b><br>(카카오톡 미추가 회원까지)</td>
+            <td class="mez">마케팅 수신동의가 되어 있는 <b>회원 전체</b><br>(온라인+오프라인)</td>
             <td class="kk">채널 친구를 추가한 회원만</td>
           </tr>
           <tr>
@@ -826,13 +871,13 @@
             <td class="kk">링크 이동 후 로그인·결제</td>
           </tr>
           <tr>
-            <td class="feat">정보성 발송 단가</td>
-            <td class="mez"><b>4원</b> (프로모션)</td>
-            <td class="kk">5.5원~</td>
+            <td class="feat">광고성 발송 단가</td>
+            <td class="mez"><b>5원</b> · 프로모션 단가</td>
+            <td class="kk">15원~</td>
           </tr>
           <tr>
             <td class="feat">함께 운영</td>
-            <td class="mez">카카오톡·알림톡도 <b>메시온에서 함께</b> 발송</td>
+            <td class="mez">카카오톡·브랜드메시지도 <b>메시온에서 함께</b> 발송</td>
             <td class="kk">카카오톡 단독</td>
           </tr>
         </tbody>
@@ -844,8 +889,8 @@
         <thead><tr><th colspan="2">카카오톡 채널을 추가하지 않은 회원에게, 광고성 메시지 1건</th></tr></thead>
         <tbody>
           <tr><th>문자 (장문 LMS)</th><td class="num">약 25~30원*</td></tr>
-          <tr><th>카카오 브랜드메시지 · 비친구</th><td class="num">약 25원*</td></tr>
-          <tr class="hl"><th>네이버 스마트 톡톡 · 메시온</th><td class="num">4~5원</td></tr>
+          <tr><th>카카오 브랜드메시지 · 비친구</th><td class="num">약 15원~*</td></tr>
+          <tr class="hl"><th>네이버 스마트 톡톡 · 메시온</th><td class="num">5원</td></tr>
         </tbody>
       </table>
     </div>
@@ -950,6 +995,50 @@
     </div>
   </div>
 </div>
+
+<section class="cofoot">
+  <div class="wrap">
+    <span class="cf-eyebrow">회사 소개 · COMPANY</span>
+    <h2>네이버가 투자한 유일한 이커머스 AI 전문 기업</h2>
+
+    <div class="cf-card">
+      <div class="cf-top">
+        <span class="cf-label">주주 · Shareholders</span>
+        <span class="cf-note">네이버 <b>D2SF</b> 포함 9개 기관 투자</span>
+      </div>
+      <div class="cf-invest">
+        <span class="iv d2"><svg class="nv-badge" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="7" fill="#03C75A"/><path d="M23.4 12v8.1L16.9 12H12v16h4.6v-8.1L23.1 28H28V12z" fill="#fff"/></svg>네이버 D2SF</span>
+        <span class="iv">CJ ENM</span>
+        <span class="iv">KOLON</span>
+        <span class="iv">본엔젤스</span>
+        <span class="iv">SJ인베스트먼트파트너스</span>
+        <span class="iv">TS인베스트먼트</span>
+        <span class="iv">MAGNA</span>
+        <span class="iv">대경인베스트먼트</span>
+        <span class="iv">퓨처플레이</span>
+      </div>
+    </div>
+
+    <div class="cf-grid">
+      <div class="cf-card cf-partners">
+        <span class="cf-label">글로벌 파트너 · Global Partners</span>
+        <div class="cf-pt">
+          <div class="pt"><div class="pt-badge naver">NAVER</div><b>네이버</b><span>스마트 톡톡<br>공식 대행사</span></div>
+          <div class="pt"><div class="pt-badge meta">Meta</div><b>META</b><span>Ad-Tech<br>광고기술</span></div>
+          <div class="pt"><div class="pt-badge google">Google</div><b>GOOGLE</b><span>광고 채널<br>파트너</span></div>
+          <div class="pt"><div class="pt-badge aws">aws</div><b>AWS</b><span>SaaS 기술<br>파트너</span></div>
+          <div class="pt"><div class="pt-badge kakao">kakao</div><b>카카오</b><span>카카오모먼트<br>공식 대행사</span></div>
+        </div>
+      </div>
+      <div class="cf-card cf-org">
+        <span class="cf-label">조직 · Organization</span>
+        <div class="org-row"><span class="rk">임직원</span><span class="rv">40<i>명</i></span></div>
+        <div class="org-row"><span class="rk">AI 개발 인력</span><span class="rv">20<i>명</i></span></div>
+        <div class="org-foot"><b>CTO 산하 AI 연구소</b> 운영</div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">(주)유니드컴즈 · 대표자 양재필, 전형신<br>주소 서울특별시 마포구 양화로 81, L1층 L105호(서교동, 패스트파이브 합정점)<br>문의 <a href="mailto:public@uneedcomms.com" style="color:inherit">public@uneedcomms.com</a><br><br>Copyrights © 2022 UNEEDCOMMS All Rights Reserved.</div>
