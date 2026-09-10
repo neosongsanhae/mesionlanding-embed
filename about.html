@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CRM 가이드 · 메시온</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+  :root{
+    --ink:#111827; --ink2:#374151; --muted:#6b7280; --line:#EAECF2;
+    --blue:#3470f0; --blue-d:#2b5cd9; --tint:#e3ebfd; --paper:#fff; --paper2:#f7f8fb;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    color:var(--ink);background:var(--paper);line-height:1.7;word-break:keep-all;overflow-wrap:break-word;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+
+  /* 상단바 */
+  .top{position:sticky;top:0;z-index:20;height:60px;display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;background:rgba(255,255,255,.8);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+  .brand{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:19px;letter-spacing:-.03em;color:var(--ink);text-decoration:none}
+  .brand .dot{width:22px;height:22px;border-radius:7px;background:linear-gradient(135deg,var(--blue),var(--blue-d))}
+  .top .r{display:flex;align-items:center;gap:16px;font-size:14px;font-weight:600}
+  .top .r a{color:var(--ink2);text-decoration:none}
+  .top .r a:hover{color:var(--blue)}
+  .top .r .home{display:inline-flex;align-items:center}
+  .top .r a.cta{background:var(--blue);color:#fff;padding:8px 15px;border-radius:9px}
+  .top .r a.cta:hover{color:#fff;background:var(--blue-d)}
+
+  /* 레이아웃 */
+  .shell{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:250px minmax(0,1fr) 200px;gap:40px;padding:0 24px}
+  @media(max-width:1000px){.shell{grid-template-columns:220px minmax(0,1fr);}.toc{display:none}}
+  @media(max-width:720px){.shell{grid-template-columns:1fr}.side{display:none}}
+
+  /* 사이드바 */
+  .side{position:sticky;top:60px;align-self:start;height:calc(100vh - 60px);overflow-y:auto;padding:30px 8px 40px}
+  .side .grp{margin-bottom:26px}
+  .side .grp-t{font-size:12px;font-weight:800;letter-spacing:.02em;color:var(--muted);text-transform:uppercase;margin:0 10px 10px}
+  .side a{display:block;padding:7px 12px;font-size:14px;font-weight:500;color:var(--ink2);text-decoration:none;border-radius:8px}
+  .side a:hover{background:var(--paper2);color:var(--ink)}
+  .side a.on{color:var(--blue-d);font-weight:700;background:var(--tint)}
+
+  /* 본문 */
+  .doc{padding:38px 0 100px;min-width:0}
+  .crumb{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:14px}
+  .crumb b{color:var(--ink2)}
+  .doc h1{font-size:34px;font-weight:800;letter-spacing:-.03em;margin:.2em 0 .35em;line-height:1.25}
+  .doc h2{font-size:23px;font-weight:800;letter-spacing:-.02em;margin:2.4em 0 .5em;padding-top:14px;scroll-margin-top:76px}
+  .doc h3{font-size:17px;font-weight:700;margin:1.6em 0 .4em;scroll-margin-top:76px}
+  .doc p{margin:.7em 0;color:var(--ink2)}
+  .doc .lead{font-size:18px;color:var(--muted);font-weight:500}
+  .doc strong{color:var(--ink);font-weight:700}
+  .doc code{background:var(--paper2);border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:.88em;font-family:"SF Mono",ui-monospace,Menlo,monospace;color:var(--blue-d)}
+  .doc ul{padding-left:20px;margin:.6em 0;color:var(--ink2)}
+  .doc li{margin:.35em 0}
+  .doc hr{border:none;border-top:1px solid var(--line);margin:2.6em 0}
+
+  .call{border:1px solid var(--line);background:var(--paper2);border-radius:12px;padding:16px 18px;margin:1.4em 0;font-size:14.5px;color:var(--ink2)}
+  .call b{color:var(--blue-d)}
+  .call.warn{border-color:#ecd9b0;background:#fdf8ef}
+  .call.warn b{color:#b9791a}
+
+  /* 용어 사전 */
+  .dl{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:1.2em 0}
+  .dl .row{display:grid;grid-template-columns:170px 1fr;gap:18px;padding:16px 20px;border-bottom:1px solid var(--line)}
+  .dl .row:last-child{border-bottom:none}
+  .dl .row:nth-child(odd){background:var(--paper2)}
+  .dl dt{font-weight:800;color:var(--ink);font-size:14.5px}
+  .dl dd{margin:0;color:var(--ink2);font-size:14px}
+  @media(max-width:560px){.dl .row{grid-template-columns:1fr;gap:4px}}
+
+  /* 비교 미니표 */
+  .mini{width:100%;border-collapse:collapse;font-size:14px;margin:1.2em 0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .mini th,.mini td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .mini thead th{background:var(--paper2);font-size:13px;font-weight:800;color:var(--muted)}
+  .mini thead .m{color:var(--blue-d)}
+  .mini td.m{background:#eef3fe;font-weight:600;color:var(--ink)}
+  .mini tr:last-child td{border-bottom:none}
+
+  /* 우측 TOC */
+  .toc{position:sticky;top:60px;align-self:start;padding:38px 0;font-size:13px}
+  .toc .t{font-weight:800;color:var(--muted);text-transform:uppercase;font-size:11px;letter-spacing:.03em;margin-bottom:12px}
+  .toc a{display:block;color:var(--muted);text-decoration:none;padding:5px 0;line-height:1.4}
+  .toc a:hover{color:var(--ink2)}
+  .toc a.on{color:var(--blue-d);font-weight:700}
+
+  .next{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
+  .next a{flex:1;min-width:200px;border:1px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none;transition:border-color .15s,box-shadow .15s}
+  .next a:hover{border-color:var(--blue);box-shadow:0 6px 14px -6px rgba(52,112,240,.3)}
+  .next .k{font-size:12px;color:var(--muted);font-weight:700}
+  .next .v{font-size:15px;font-weight:700;color:var(--ink);margin-top:3px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html"><span class="dot"></span>메시온</a>
+  <div class="r">
+    <a class="home" href="index.html" aria-label="홈으로"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/></svg></a>
+    <a class="cta" href="index.html#cta">무료 리포트</a>
+  </div>
+</header>
+
+<div class="shell">
+  <!-- 좌측 사이드바 -->
+  <aside class="side">
+    <div class="grp">
+      <div class="grp-t">시작하기</div>
+      <a href="#crm">CRM이란?</a>
+      <a href="#why-crm">왜 CRM이 매출인가</a>
+    </div>
+    <div class="grp">
+      <div class="grp-t">기존 CRM의 한계</div>
+      <a href="#blindspot">닿지 않는 고객, 사각지대</a>
+      <a href="#wall">채널 친구라는 벽</a>
+    </div>
+    <div class="grp">
+      <div class="grp-t">왜 메시온인가</div>
+      <a href="#mesion">메시온은 무엇인가</a>
+      <a href="#why-mesion">왜 메시온이어야 하는가</a>
+      <a href="#addon">대체가 아니라 순증</a>
+    </div>
+    <div class="grp">
+      <div class="grp-t">용어 사전</div>
+      <a href="#glossary">한눈에 보는 용어</a>
+    </div>
+  </aside>
+
+  <!-- 본문 -->
+  <main class="doc">
+    <div class="crumb">가이드 &nbsp;/&nbsp; <b>CRM, 그리고 메시온</b></div>
+    <h1 id="crm">CRM이란?</h1>
+    <p class="lead">CRM은 이미 우리 브랜드를 아는 고객에게, 다시 사도록 메시지를 보내 매출을 만드는 일입니다.</p>
+
+    <p>CRM(Customer Relationship Management)은 흔히 '고객 관계 관리'라고 번역됩니다. 하지만 이커머스에서 CRM의 실체는 단순합니다. <strong>한 번 사거나 방문한 고객에게, 살 때가 되었을 때 다시 안내해 재구매를 만드는 것</strong>입니다. 새 고객을 광고로 데려오는 일(퍼포먼스 마케팅)과 달리, CRM은 <strong>이미 확보한 고객</strong>에게서 추가 매출을 뽑아냅니다.</p>
+
+    <div class="call"><b>핵심.</b> 신규 획득은 광고비를 계속 태워야 하지만, CRM은 이미 우리 고객이 된 사람에게 보내는 일이라 추가 광고비 없이 매출이 나옵니다.</div>
+
+    <h2 id="why-crm">왜 CRM이 매출인가</h2>
+    <p>고객이 다시 안 오는 이유는 우리 브랜드가 싫어서가 아니라, 대부분 <strong>잊어버려서</strong>입니다. 쿠폰이 있는 줄 몰라서, 재입고를 놓쳐서, 살 때가 됐는데 떠오르지 않아서 이탈합니다. 적절한 순간에 한 번의 알림이, 잠들어 있던 매출을 깨웁니다.</p>
+    <ul>
+      <li><strong>쿠폰·적립금 만료</strong> — 이미 준 혜택이 사라지기 전에 안내</li>
+      <li><strong>재입고·재구매 주기</strong> — 다 떨어질 때쯤 리마인드</li>
+      <li><strong>시즌·프로모션</strong> — 살 이유가 생기는 순간의 넛지</li>
+    </ul>
+
+    <hr>
+
+    <h1 id="blindspot">기존 CRM의 한계</h1>
+    <p class="lead">문제는, 지금 CRM이 우리 고객의 절반에게는 메시지를 보내지 못한다는 점입니다.</p>
+
+    <h2 id="wall">채널 친구라는 벽</h2>
+    <p>국내 이커머스 CRM은 대부분 <strong>카카오 알림톡·친구톡</strong>에 기대어 있습니다. 그런데 알림톡·친구톡은 <strong>채널을 친구 추가한 사람에게만</strong> 갈 수 있습니다. 우리 회원이라도, 알림받기를 눌렀더라도, 채널을 추가하지 않았다면 메시지가 가지 않습니다.</p>
+
+    <p>한 번이라도 방문하거나 구매한 우리 고객을 전부 세어 보면, 알림톡으로 만날 수 있는 건 <strong>대체로 그중 40% 안팎</strong>입니다. 나머지 60%는 분명한 우리 고객인데도, 지금은 어떤 메시지로도 만나지 못합니다.</p>
+
+    <table class="mini">
+      <thead><tr><th>구분</th><th>보낼 수 있는 대상</th></tr></thead>
+      <tbody>
+        <tr><td>알림톡·친구톡</td><td>채널을 친구 추가한 고객만</td></tr>
+        <tr><td class="m">진짜 기존 고객</td><td class="m">방문·구매한 우리 고객 전체</td></tr>
+      </tbody>
+    </table>
+
+    <div class="call warn"><b>사각지대.</b> "우리 CRM은 잘 돌아간다"고 느껴도, 그건 채널 친구 안에서의 이야기입니다. 벽 바깥의 절반은 애초에 집계조차 되지 않습니다.</div>
+
+    <hr>
+
+    <h1 id="mesion">메시온은 무엇인가</h1>
+    <p class="lead">메시온은 알림톡이 닿지 못하던 우리 고객에게, 네이버 앱으로 메시지를 보내는 CRM입니다.</p>
+
+    <p>메시온은 자사몰의 마케팅 수신동의 회원 데이터를 <strong>네이버 스마트 톡톡</strong>으로 발송합니다. 채널 친구 여부와 상관없이 <code>4,300만</code> 네이버 앱 사용자 환경에서 알림이 뜨고, 누르면 로그인 없이 바로 구매로 이어집니다. 카카오 알림톡도 메시온 한곳에서 함께 보낼 수 있습니다.</p>
+
+    <h2 id="why-mesion">왜 메시온이어야 하는가</h2>
+    <p>지금 쓰는 CRM으로도 쿠폰 만료 안내는 보낼 수 있습니다. 하지만 그 메시지는 여전히 <strong>채널 친구 40%에게만</strong> 갑니다. 메시온은 같은 안내를 <strong>나머지 60%, 알림톡이 놓친 우리 고객에게도</strong> 전달합니다. 도구를 하나 더 배우는 게 아니라, 만날 수 있는 고객 자체가 넓어지는 것입니다.</p>
+
+    <h2 id="addon">대체가 아니라 순증</h2>
+    <p>메시온은 카카오를 대체하지 않습니다. 쓰던 알림톡은 그대로 두고, 그 위에 <strong>알림톡이 놓친 고객이라는 새 층</strong>을 얹습니다. 그래서 기존 매출과 겹치지 않는, 순수하게 더해지는 매출이 됩니다.</p>
+    <div class="call"><b>한 줄 요약.</b> 바뀌는 건 없고, 그동안 만나지 못하던 우리 고객에게서 매출만 더 나옵니다.</div>
+
+    <hr>
+
+    <h1 id="glossary">용어 사전</h1>
+    <p class="lead">이 가이드와 랜딩에서 쓰는 말들을 한눈에.</p>
+    <div class="dl">
+      <div class="row"><dt>CRM</dt><dd>이미 확보한 고객에게 메시지를 보내 재구매를 만드는 마케팅. 신규 획득(광고)과 구분됩니다.</dd></div>
+      <div class="row"><dt>알림톡 / 친구톡</dt><dd>카카오 기반 메시지. 채널을 친구 추가한 고객에게만 발송됩니다.</dd></div>
+      <div class="row"><dt>네이버 스마트 톡톡</dt><dd>네이버 앱으로 발송되는 메시지. 채널 친구가 아니어도 도달하며, 클릭 시 로그인 없이 구매로 연결됩니다.</dd></div>
+      <div class="row"><dt>정보성 메시지</dt><dd>쿠폰 만료·적립금 소멸·재입고 같은 안내. 규정에 맞게 전체 고객에게 보낼 수 있습니다.</dd></div>
+      <div class="row"><dt>광고성 메시지</dt><dd>프로모션·할인 홍보. 수신동의한 고객에게만 발송되며 수신 거부 경로가 함께 담깁니다.</dd></div>
+      <div class="row"><dt>도달률</dt><dd>보낸 메시지가 실제로 노출된 비율. 네이버 스마트 톡톡은 발송 대비 약 97%.</dd></div>
+      <div class="row"><dt>순증 매출</dt><dd>기존 채널 매출과 겹치지 않고, 새로 더해지는 매출. 카니발라이제이션의 반대.</dd></div>
+    </div>
+
+    <div class="next">
+      <a href="index.html#calc"><div class="k">계산기</div><div class="v">우리 브랜드가 놓치는 매출 →</div></a>
+      <a href="index.html#cta"><div class="k">무료 리포트</div><div class="v">실데이터로 분석받기 →</div></a>
+    </div>
+  </main>
+
+  <!-- 우측 TOC -->
+  <nav class="toc" id="toc">
+    <div class="t">On this page</div>
+    <a href="#crm">CRM이란?</a>
+    <a href="#blindspot">기존 CRM의 한계</a>
+    <a href="#mesion">메시온은 무엇인가</a>
+    <a href="#glossary">용어 사전</a>
+  </nav>
+</div>
+
+<script>
+  // 스크롤 스파이 (사이드바 + TOC 활성화)
+  var links=[].slice.call(document.querySelectorAll('.side a[href^="#"], .toc a[href^="#"]'));
+  var ids=links.map(function(a){return a.getAttribute('href').slice(1);});
+  var uniq=ids.filter(function(v,i){return ids.indexOf(v)===i;});
+  var targets=uniq.map(function(id){return document.getElementById(id);}).filter(Boolean);
+  function onScroll(){
+    var y=window.scrollY+90, cur=targets[0]?targets[0].id:null;
+    targets.forEach(function(t){ if(t.offsetTop<=y) cur=t.id; });
+    links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href')==='#'+cur); });
+  }
+  document.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+</script>
+</body>
+</html>
