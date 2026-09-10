@@ -186,7 +186,7 @@
   .nlogo svg{width:56%;height:56%;display:block}
 
   /* ── 아하 전환: 검은 배경 ── */
-  .aha{background:#15171c;text-align:center;border-top:1px solid var(--line);padding:168px 0 190px}
+  .aha{background:#15171c;text-align:center;border-top:1px solid var(--line);padding:120px 0 130px}
   .aha .wrap{display:flex;flex-direction:column;align-items:center}
   .aha-h{font-size:clamp(1.7rem,5.2vw,2.9rem);font-weight:800;letter-spacing:-.035em;line-height:1.34;color:#fff;max-width:none}
   .aha-h .nlogo{width:.82em;height:.82em;vertical-align:-.04em;margin:0 .16em}
@@ -194,7 +194,7 @@
   /* ── 실사형 폰 목업: 상단 네이버 스마트 톡톡 알림 도착 ── */
   .aphone{margin-top:58px;position:relative;width:300px;max-width:76vw}
   .aphone::after{content:"";position:absolute;left:50%;bottom:-34px;width:72%;height:56px;transform:translateX(-50%);background:radial-gradient(ellipse at center,rgba(0,0,0,.6),transparent 70%);filter:blur(7px);z-index:-1}
-  .aphone-frame{position:relative;width:100%;aspect-ratio:300/620;background:linear-gradient(152deg,#42454d,#161719 44%);border-radius:47px;padding:11px;box-shadow:inset 0 2px 0 1px rgba(255,255,255,.07),inset 0 0 0 1px rgba(0,0,0,.5),0 36px 74px -26px rgba(0,0,0,.9)}
+  .aphone-frame{position:relative;width:100%;aspect-ratio:300/330;background:linear-gradient(152deg,#42454d,#161719 44%);border-radius:47px;padding:11px;box-shadow:inset 0 2px 0 1px rgba(255,255,255,.07),inset 0 0 0 1px rgba(0,0,0,.5),0 36px 74px -26px rgba(0,0,0,.9)}
   .aphone-screen{position:relative;width:100%;height:100%;border-radius:37px;overflow:hidden;background:linear-gradient(163deg,#182747 0%,#243459 32%,#3b2f5e 70%,#4c3054 100%)}
   .aphone-island{position:absolute;top:13px;left:50%;transform:translateX(-50%);width:88px;height:26px;background:#000;border-radius:16px;z-index:7}
   .aphone-status{position:absolute;top:15px;left:0;right:0;display:flex;justify-content:space-between;align-items:center;padding:0 25px;font-size:13px;font-weight:700;color:#fff;z-index:6}
@@ -331,7 +331,7 @@
   /* ── 증명 ── */
   .cred{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
   .cred .mq{overflow:hidden;margin-top:40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-  .cred .tk{display:flex;gap:52px;width:max-content;animation:slide 24s linear infinite}
+  .cred .tk{display:flex;gap:52px;width:max-content;animation:slide 48s linear infinite}
   @keyframes slide{to{transform:translateX(-50%)}}
   .cred .lg{display:inline-flex;align-items:center}
   .cred .lgimg{height:30px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .25s,opacity .25s}
@@ -397,7 +397,7 @@
   .cf-top .cf-note{font-size:13px;font-weight:600;color:var(--ink2)}
   .cf-top .cf-note b{color:var(--blue);font-weight:800}
   .cf-invest{margin-top:2px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
-  .iv-track{display:flex;width:max-content;align-items:center;animation:ivslide 64s linear infinite}
+  .iv-track{display:flex;width:max-content;align-items:center;animation:ivslide 48s linear infinite}
   .cf-card:hover .iv-track{animation-play-state:paused}
   @keyframes ivslide{to{transform:translateX(-50%)}}
   @media(prefers-reduced-motion:reduce){.iv-track{animation:none}}
@@ -733,7 +733,7 @@
           <div class="aphone-noti">
             <div class="an-ic"><svg viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></div>
             <div class="an-body">
-              <div class="an-top"><span class="an-app">네이버 톡톡</span><span class="an-time">지금</span></div>
+              <div class="an-top"><span class="an-app">네이버 스마트 톡톡</span><span class="an-time">지금</span></div>
               <div class="an-title">단골님, 가을 신상 둘러보세요</div>
               <div class="an-msg">(광고) 지금 톡톡에서 단골 혜택가로<br>먼저 만나보세요 🍂</div>
             </div>
@@ -812,8 +812,8 @@
 <!-- 원리·기대효과: 자사몰 데이터로 네이버 매출 만들기 -->
 <section class="engine">
   <div class="wrap">
-    <h2 class="one reveal">네이버 톡톡 마케팅,<br><span class="em">자사몰 회원까지 넓힙니다.</span></h2>
-    <p class="eng-lead reveal d1">우리 자사몰에 쌓인 회원 중 <b>마케팅 수신동의한 분들이 그대로 네이버 톡톡 발송 대상</b>이 됩니다.<br>네이버 톡톡을 이미 쓰고 계셨더라도, 닿을 수 있는 회원이 크게 늘어납니다.</p>
+    <h2 class="one reveal">네이버 스마트 톡톡 마케팅,<br><span class="em">자사몰 회원까지 넓힙니다.</span></h2>
+    <p class="eng-lead reveal d1">우리 자사몰에 쌓인 회원 중 <b>마케팅 수신동의한 분들이 그대로 네이버 스마트 톡톡 발송 대상</b>이 됩니다.<br>네이버 스마트 톡톡을 이미 쓰고 계셨더라도, 닿을 수 있는 회원이 크게 늘어납니다.</p>
     <div class="eng-flow reveal d1">
       <div class="ecol">
         <div class="estep">
@@ -823,19 +823,19 @@
         </div>
         <div class="eout">
           <b>발송 모수가 커집니다</b>
-          <span>우리 회원이 통째로 네이버 톡톡 대상으로.</span>
+          <span>우리 회원이 통째로 네이버 스마트 톡톡 대상으로.</span>
         </div>
       </div>
       <span class="earrow">→</span>
       <div class="ecol">
         <div class="estep">
           <span class="enum">2</span>
-          <div class="et">네이버 톡톡으로 발송</div>
+          <div class="et">네이버 스마트 톡톡으로 발송</div>
           <p class="ep">네이버 스마트스토어 고객에,<br>우리 회원까지 더해 보냅니다.</p>
         </div>
         <div class="eout">
           <b>이미 쓰던 브랜드도</b>
-          <span>네이버 톡톡을 쓰고 있었어도 닿는 회원이 늘어요.</span>
+          <span>네이버 스마트 톡톡을 쓰고 있었어도 닿는 회원이 늘어요.</span>
         </div>
       </div>
       <span class="earrow">→</span>
