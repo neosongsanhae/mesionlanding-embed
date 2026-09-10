@@ -521,22 +521,46 @@
   .path-note{margin-top:34px;max-width:760px;font-size:16px;line-height:1.72;color:var(--ink2);font-weight:500}
   .path-note b{color:var(--blue);font-weight:700}
 
-  /* ── 브랜드 맞춤 톡톡 시안 (기업별 교체 영역) ── */
+  /* ── 톡톡 발송 시안 (범용 예시) ── */
   .bsample{background:var(--paper2);text-align:center;padding:120px 0;border-top:1px solid var(--line)}
   .bsample .one{margin:0 auto}
   .bsample .sub1{margin-left:auto;margin-right:auto}
-  .bsample-row{margin-top:52px;display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
-  .smock{margin:0;width:230px;max-width:70vw}
-  .smock-frame{background:linear-gradient(152deg,#42454d,#161719 44%);border-radius:38px;padding:9px;box-shadow:inset 0 1px 0 1px rgba(255,255,255,.06),0 26px 52px -22px rgba(0,0,0,.5)}
-  .smock-screen{position:relative;aspect-ratio:230/470;border-radius:30px;overflow:hidden;background:#fff;display:grid;place-items:center}
-  .smock-screen img{width:100%;height:100%;object-fit:cover;display:block}
-  .smock-ph{font-size:13.5px;font-weight:600;color:var(--muted);border:1.5px dashed #c7ccd8;border-radius:10px;padding:9px 15px;background:#fff}
-  .smock-cap{margin-top:13px;font-size:13px;font-weight:600;color:var(--muted)}
-  /* 시안(소재 메시지)이 위에서 툭 떨어지듯 등장 — 위 섹션 알림 연출과 결 맞춤 */
-  .smock-screen>*{opacity:0;transform:translateY(-46px);transition:opacity .66s var(--ease),transform .66s var(--ease);transition-delay:.28s}
-  .smock.in .smock-screen>*{opacity:1;transform:none}
-  @media(prefers-reduced-motion:reduce){.smock-screen>*{opacity:1;transform:none;transition:none}}
-  @media(max-width:560px){.bsample{padding:74px 0}.bsample-row{gap:13px}.smock{width:150px}.smock-frame{border-radius:28px;padding:7px}.smock-screen{border-radius:22px}}
+  .bsample-row{margin-top:52px;display:flex;gap:30px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+  /* 톡톡 알림 카드 */
+  .tcard{width:330px;max-width:88vw;background:#fff;border-radius:20px;overflow:hidden;text-align:left;box-shadow:0 30px 60px -28px rgba(20,24,40,.4),0 2px 0 0 rgba(20,24,40,.03);border:1px solid var(--line)}
+  .tc-head{display:flex;align-items:center;gap:9px;padding:14px 16px 12px}
+  .tc-head .tc-ad{font-size:12.5px;font-weight:600;color:var(--muted)}
+  .tc-head .tc-brand{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
+  .tc-head .tc-ci{width:26px;height:26px;border-radius:8px;flex:none;display:grid;place-items:center;font-size:13px;font-weight:800;color:#fff}
+  .tc-hero{position:relative;aspect-ratio:330/300;overflow:hidden}
+  .tc-hero img{width:100%;height:100%;object-fit:cover;display:block}
+  .tc-hero.ph-casa{background:linear-gradient(158deg,#e8e0d4 0%,#cdbfa9 40%,#6f5f4c 100%)}
+  .tc-hero.ph-happy{background:linear-gradient(158deg,#f3ded0 0%,#e7c6ba 55%,#b98d7f 100%)}
+  .tc-hero .tc-live{position:absolute;top:16px;left:50%;transform:translateX(-50%);background:#fff;color:#17181c;font-size:12.5px;font-weight:800;padding:5px 13px;border-radius:20px;box-shadow:0 3px 10px rgba(0,0,0,.2)}
+  .tc-hero .tc-htxt{position:absolute;top:52px;left:0;right:0;text-align:center;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.4)}
+  .tc-hero .tc-htxt b{display:block;font-size:30px;font-weight:900;letter-spacing:-.02em;line-height:1.1}
+  .tc-hero .tc-htxt b em{font-style:normal;color:#ffd6a0}
+  .tc-hero .tc-htxt span{display:inline-block;margin-top:9px;font-size:12.5px;font-weight:700;background:rgba(0,0,0,.32);padding:3px 11px;border-radius:6px}
+  .tc-hero .tc-hbar{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:center;padding:9px 15px;font-size:12.5px;font-weight:700;color:#fff;background:linear-gradient(0deg,rgba(60,48,36,.92),transparent)}
+  .tc-ph-photo{position:absolute;inset:0;display:grid;place-items:center;color:rgba(255,255,255,.9);font-size:12.5px;font-weight:700;letter-spacing:.02em}
+  .tc-b{padding:16px 17px 17px}
+  .tc-title{font-size:16px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.4}
+  .tc-tags{display:flex;gap:7px;margin-top:11px;flex-wrap:wrap}
+  .tc-tags span{font-size:12.5px;font-weight:700;color:#fff;background:#f0524a;padding:5px 11px;border-radius:8px}
+  .tc-copy{margin-top:13px;font-size:13px;font-weight:500;color:var(--ink2);line-height:1.62;white-space:pre-line}
+  .tc-list{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+  .tc-list li{font-size:12.5px;font-weight:600;color:var(--ink2);line-height:1.45}
+  .tc-hr{margin:15px 0;border:0;border-top:1px solid var(--line)}
+  .tc-live2{font-size:14px;font-weight:800;color:var(--ink)}
+  .tc-cta{margin-top:16px;width:100%;text-align:center;font-size:14.5px;font-weight:800;color:var(--blue-d);background:#eef2fe;border:0;border-radius:12px;padding:15px 12px;letter-spacing:-.01em}
+  .tc-foot{margin:14px 0 0;font-size:11px;font-weight:500;color:#a2a7b2;line-height:1.5;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+  .tc-foot .tc-time{flex:none}
+  /* 시안 카드가 위에서 툭 떨어지듯 등장 — 위 섹션 알림 연출과 결 맞춤 */
+  .bsample-cta{margin-top:48px;display:flex;justify-content:center}
+  .bsample-cta .btn{font-size:16px;padding:18px 34px;border-radius:14px}
+  @media(prefers-reduced-motion:reduce){.tcard{transition:none}}
+  @media(max-width:720px){.bsample-row{gap:20px}.tcard{width:300px}}
+  @media(max-width:560px){.bsample{padding:74px 0}.bsample-cta .btn{width:100%}}
 </style>
 </head>
 <body>
@@ -622,12 +646,57 @@
 <!-- BRAND_SAMPLE:START  ▸ 기업별 페이지에서 브랜드명·시안 3개 교체 영역 -->
 <section class="bsample">
   <div class="wrap">
-    <h2 class="one reveal"><span data-brand-slot>브랜드명</span>에서는<br><span class="em">이렇게 보낼 수 있어요.</span></h2>
+    <h2 class="one reveal"><span data-brand-slot>우리 브랜드</span>에서는<br><span class="em">이렇게 보낼 수 있어요.</span></h2>
     <p class="sub1 reveal d1">네이버 톡톡으로 바로 보낼 수 있는<br>네이버 쇼핑라이브 홍보 메시지를 준비했어요.</p>
     <div class="bsample-row">
-      <figure class="smock reveal d1"><div class="smock-frame"><div class="smock-screen" data-slot="1"><span class="smock-ph">시안 1</span></div></div><figcaption class="smock-cap">시안 1</figcaption></figure>
-      <figure class="smock reveal d2"><div class="smock-frame"><div class="smock-screen" data-slot="2"><span class="smock-ph">시안 2</span></div></div><figcaption class="smock-cap">시안 2</figcaption></figure>
-      <figure class="smock reveal d3"><div class="smock-frame"><div class="smock-screen" data-slot="3"><span class="smock-ph">시안 3</span></div></div><figcaption class="smock-cap">시안 3</figcaption></figure>
+      <!-- 시안 1 : 신세계까사 CASAMIA -->
+      <article class="tcard reveal d1" data-slot="1">
+        <header class="tc-head"><span class="tc-ci" style="background:#2b2b2b">까</span><span class="tc-ad">광고</span><span class="tc-brand">신세계까사 CASAMIA</span></header>
+        <div class="tc-hero ph-casa" data-slot-img="1">
+          <span class="tc-live">▶ LIVE</span>
+          <div class="tc-htxt"><b>쇼핑라이브 <em>단독 특가</em></b><span>[쇼핑라이브 전용]</span></div>
+          <div class="tc-hbar"><span>시청 중 구매 시 추가 적립</span><span>»</span></div>
+        </div>
+        <div class="tc-b">
+          <p class="tc-title">★잠시 후 8시★ 까사미아 소파·침대 라이브가 시작됩니다🔔</p>
+          <div class="tc-tags"><span>라이브특가</span><span>가을홈</span></div>
+          <p class="tc-copy">환절기, 집에 머무는 시간이 부쩍 늘지 않으셨나요?
+거실 분위기 바꾸고 싶은 지금 딱,
+
+까사미아가 고른 소파·침대 라이브에서
+올가을 우리 집 인테리어를 완성해 보세요!</p>
+          <ul class="tc-list">
+            <li>📌 인기 소파·리클라이너 라이브 단독 구성가</li>
+            <li>📌 매트리스·프레임 침실 패키지 특가</li>
+            <li>📌 수납장·테이블 등 홈 가구 함께 특가</li>
+            <li>📌 라이브 시청 중 구매 시 추가 적립 + N포인트</li>
+          </ul>
+          <hr class="tc-hr">
+          <p class="tc-live2">🕗 오늘 밤 8시 LIVE ON</p>
+          <p class="tc-copy">🚨라이브 구성가는 방송이 끝나면 사라져요🚨
+부피가 큰 가구라 주문 후 배송까지 시간이 걸립니다
+
+올가을 거실 바꾸실 계획이라면, 지금 바로 입장하세요💨</p>
+          <button class="tc-cta" type="button" tabindex="-1">인기 가구 특가 보러가기</button>
+          <p class="tc-foot"><span>수신거부 : 톡톡 더보기 &gt; 혜택 알림받기 관리 &gt; 알림받기 취소<br>상품 가격 및 혜택 정보는 변경될 수 있습니다.</span><span class="tc-time">오후 12:46</span></p>
+        </div>
+      </article>
+      <!-- 시안 2 : 해피프린스 -->
+      <article class="tcard reveal d2" data-slot="2">
+        <header class="tc-head"><span class="tc-ci" style="background:#f5d94a;color:#3a3a3a">HP</span><span class="tc-ad">광고</span><span class="tc-brand">해피프린스</span></header>
+        <div class="tc-hero ph-happy" data-slot-img="2"><span class="tc-ph-photo">아이 코디 이미지</span></div>
+        <div class="tc-b">
+          <p class="tc-title">👶우리 아이 명절룩, 가을 신상 떴어요</p>
+          <p class="tc-copy">[도톰 니트 · 플로럴 조끼 신상 입고]
+명절 사진 예쁘게 남겨줄 코디, 지금 준비하세요✨
+인기 사이즈는 금방 품절돼요!!</p>
+          <button class="tc-cta" type="button" tabindex="-1">🛍️ 가을 신상 보러가기</button>
+          <p class="tc-foot"><span>수신거부 : 톡톡 더보기 &gt; 혜택 알림받기 관리 &gt; 알림받기 취소<br>상품 가격 및 혜택 정보는 변경될 수 있습니다.</span><span class="tc-time">오후 2:30</span></p>
+        </div>
+      </article>
+    </div>
+    <div class="bsample-cta reveal d2">
+      <button class="btn" type="button" onclick="openLead('sample')">우리 브랜드에서 톡톡 어떻게 발송하는지 직접 받아보기</button>
     </div>
   </div>
 </section>
@@ -810,21 +879,6 @@
   </div>
 </section>
 
-<!-- CTA (흰 배경, 최하단) -->
-<section class="ctasec" id="cta">
-  <div class="wrap">
-    <h2 class="one reveal">실제 브랜드 데이터를<br>무료로 분석해드려요.</h2>
-    <div class="cta-solo reveal d1">
-      <div class="cta-card feat">
-        <div class="k">엔터프라이즈</div>
-        <h3>실데이터 리포트 받기</h3>
-        <p>우리 브랜드 거래 데이터로 카카오톡이 놓친 자사몰 회원까지 더해, 새로 닿을 수 있는 매출을 계산해 하루 안에 리포트로 보내드립니다. 비용도 조건도 없습니다.</p>
-        <button class="btn full" onclick="openLead('ent')">무료 리포트 받기</button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="wrap">
@@ -857,15 +911,19 @@
   <div class="sheet" role="dialog" aria-modal="true">
     <button class="sheet-x" onclick="closeLead()" aria-label="닫기">✕</button>
     <div class="sheet-body" id="sheetForm">
-      <h3 id="shTitle">무료 리포트 받기</h3>
-      <p class="shsub" id="shSub">연락처만 남겨주시면 하루 안에 보내드립니다.</p>
+      <h3 id="shTitle">우리 브랜드 톡톡 시안 받아보기</h3>
+      <p class="shsub" id="shSub">신청하시면 우리 브랜드 기준 네이버 톡톡 시안을 만들어, <b>네이버 앱으로 오는 스마트 톡톡</b>으로 직접 받아보실 수 있어요.</p>
       <div class="shsum" id="shSum"></div>
-      <label class="shl">브랜드 이름</label>
+      <label class="shl">기업명</label>
       <input class="shi" id="shBrand" placeholder="예) 메시온" autocomplete="organization">
-      <label class="shl">이메일 또는 전화번호</label>
-      <input class="shi" id="shContact" placeholder="hello@brand.com / 010-0000-0000" autocomplete="email">
-      <p class="sherr" id="shErr">연락처를 입력해주세요.</p>
-      <button class="btn full" id="shGo" onclick="submitLead()">신청하기</button>
+      <label class="shl">담당자명</label>
+      <input class="shi" id="shName" placeholder="예) 홍길동" autocomplete="name">
+      <label class="shl">전화번호</label>
+      <input class="shi" id="shPhone" placeholder="010-0000-0000" inputmode="tel" autocomplete="tel">
+      <label class="shl">이메일</label>
+      <input class="shi" id="shEmail" placeholder="hello@brand.com" inputmode="email" autocomplete="email">
+      <p class="sherr" id="shErr">기업명·담당자명·전화번호·이메일을 모두 입력해주세요.</p>
+      <button class="btn full" id="shGo" onclick="submitLead()">시안 받아보기</button>
     </div>
     <div class="sheet-body sheet-done" id="sheetDone" style="display:none">
       <div class="okc">✓</div>
@@ -914,17 +972,10 @@ function openLead(kind){
   var w=document.getElementById('sheetWrap');
   document.getElementById('sheetForm').style.display='';
   document.getElementById('sheetDone').style.display='none';
-  if(kind==='ent'){
-    document.getElementById('shTitle').textContent='실데이터 리포트 받기';
-    document.getElementById('shSub').textContent='연락처만 남겨주시면 우리 브랜드 기준 리포트를 하루 안에 보내드립니다.';
-    document.getElementById('shSum').classList.remove('on');
-    document.getElementById('doneSub').textContent='영업일 기준 하루 안에 리포트를 보내드리겠습니다.';
-  }else{
-    document.getElementById('shTitle').textContent='무료로 도입하기';
-    document.getElementById('shSub').textContent='연락처를 남겨주시면 연동부터 첫 발송까지 도와드립니다.';
-    document.getElementById('shSum').classList.remove('on');
-    document.getElementById('doneSub').textContent='바로 연락드려 도입을 도와드리겠습니다.';
-  }
+  document.getElementById('shSum').classList.remove('on');
+  document.getElementById('shTitle').textContent='우리 브랜드 톡톡 시안 받아보기';
+  document.getElementById('shSub').innerHTML='신청하시면 우리 브랜드 기준 네이버 톡톡 시안을 만들어, <b>네이버 앱으로 오는 스마트 톡톡</b>으로 직접 받아보실 수 있어요.';
+  document.getElementById('doneSub').textContent='입력하신 연락처로 네이버 톡톡 시안을 보내드리겠습니다. 네이버 앱 알림을 확인해주세요.';
   w.classList.add('on'); requestAnimationFrame(function(){w.classList.add('in');});
   document.documentElement.style.overflow='hidden';
 }
@@ -935,11 +986,14 @@ function closeLead(){
   document.documentElement.style.overflow='';
 }
 function submitLead(){
-  var v=document.getElementById('shContact').value.trim();
+  var brand=document.getElementById('shBrand').value.trim();
+  var name=document.getElementById('shName').value.trim();
+  var phone=document.getElementById('shPhone').value.trim();
+  var email=document.getElementById('shEmail').value.trim();
   var err=document.getElementById('shErr');
-  if(!v){err.classList.add('on');return;}
+  if(!brand||!name||!phone||!email){err.classList.add('on');return;}
   err.classList.remove('on');
-  /* TODO: 백엔드 연결 (브랜드명·연락처·계산기 입력값 전송) */
+  /* TODO: 백엔드 연결 (기업명·담당자명·전화번호·이메일 전송) */
   document.getElementById('sheetForm').style.display='none';
   document.getElementById('sheetDone').style.display='';
 }
