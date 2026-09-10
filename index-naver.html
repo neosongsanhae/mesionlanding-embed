@@ -53,7 +53,7 @@
 
   section{padding:150px 0}
   @media(max-width:560px){section{padding:88px 0}}
-  .one{font-size:clamp(1.8rem,5.4vw,3rem);font-weight:700;letter-spacing:-.04em;line-height:1.26;max-width:20ch}
+  .one{font-size:clamp(1.8rem,5.4vw,3rem);font-weight:700;letter-spacing:-.04em;line-height:1.26;max-width:20ch}@media(max-width:560px){.one{font-size:clamp(1.35rem,6.4vw,1.8rem)}}
   .one .em{color:var(--blue)}
   .one .kick{display:block;font-size:.55em;font-weight:700;color:var(--blue);margin-bottom:10px;letter-spacing:-.01em}
   .sub1 .chn{display:block;margin-top:12px;font-size:.82em;color:var(--muted)}
@@ -263,7 +263,7 @@
 
   /* ── 카카오 vs 네이버 비교 표 ── */
   .cmpsec{background:var(--paper2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .cmpwrap{margin:28px 0 0;overflow-x:auto;border-radius:18px;border:1px solid #cdd4e2;background:#fff;box-shadow:0 26px 50px -16px rgba(17,24,39,.24),0 8px 18px -8px rgba(17,24,39,.14)}
+  .cmpwrap{margin:28px 0 0;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:auto;scrollbar-color:#7f8aa3 #eef0f5;border-radius:18px;border:1px solid #cdd4e2;background:#fff;box-shadow:0 26px 50px -16px rgba(17,24,39,.24),0 8px 18px -8px rgba(17,24,39,.14)}.cmpwrap::-webkit-scrollbar{height:10px;-webkit-appearance:none;appearance:none}.cmpwrap::-webkit-scrollbar-track{background:#eef0f5;border-radius:0 0 18px 18px}.cmpwrap::-webkit-scrollbar-thumb{background:#7f8aa3;border-radius:20px;border:2px solid #eef0f5}.cmpwrap::-webkit-scrollbar-thumb:active{background:#5b647b}
   .cmptable{width:100%;border-collapse:collapse;font-size:15.5px;min-width:600px}
   .cmptable th,.cmptable td{padding:20px 24px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--line);line-height:1.5}
   .cmptable tr:last-child th,.cmptable tr:last-child td{border-bottom:none}
@@ -901,7 +901,7 @@
         <thead><tr><th colspan="2">카카오톡 채널을 추가하지 않은 회원에게, 광고성 메시지 1건</th></tr></thead>
         <tbody>
           <tr><th>문자 (장문 LMS)</th><td class="num">약 25~30원*</td></tr>
-          <tr><th>카카오 브랜드메시지 · 비친구</th><td class="num">약 15원~*</td></tr>
+          <tr><th>카카오 브랜드메시지 · 비친구</th><td class="num">약 30원~*</td></tr>
           <tr class="hl"><th>네이버 스마트 톡톡 · 메시온</th><td class="num">5원</td></tr>
         </tbody>
       </table>
