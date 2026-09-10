@@ -525,9 +525,22 @@
   .bsample{background:var(--paper2);text-align:center;padding:120px 0;border-top:1px solid var(--line)}
   .bsample .one{margin:0 auto}
   .bsample .sub1{margin-left:auto;margin-right:auto}
-  .bsample-row{margin-top:52px;display:flex;gap:30px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
-  /* 톡톡 알림 카드 */
-  .tcard{width:330px;max-width:88vw;background:#fff;border-radius:20px;overflow:hidden;text-align:left;box-shadow:0 30px 60px -28px rgba(20,24,40,.4),0 2px 0 0 rgba(20,24,40,.03);border:1px solid var(--line)}
+  .bsample-row{margin-top:52px;display:flex;gap:34px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
+  /* 휴대폰 목업 (네이버 톡톡 채팅 화면 안에 시안) */
+  .smock{position:relative;width:372px;max-width:92vw;background:linear-gradient(152deg,#3f424a,#141517 46%);border-radius:46px;padding:12px;box-shadow:inset 0 2px 0 1px rgba(255,255,255,.06),inset 0 0 0 1px rgba(0,0,0,.5),0 34px 70px -30px rgba(20,24,40,.45)}
+  .smock-screen{position:relative;border-radius:36px;overflow:hidden;background:#e9edf1}
+  .smock-status{display:flex;justify-content:space-between;align-items:center;padding:13px 24px 6px;font-size:13px;font-weight:700;color:#17181c;background:#fff;font-variant-numeric:tabular-nums}
+  .smock-status .ss-batt{width:23px;height:12px;border:1.4px solid #17181c;border-radius:3px;position:relative}
+  .smock-status .ss-batt::before{content:"";position:absolute;left:1.5px;top:1.5px;bottom:1.5px;width:68%;background:#17181c;border-radius:1px}
+  .smock-status .ss-batt::after{content:"";position:absolute;right:-3px;top:3.5px;width:2px;height:5px;background:#17181c;border-radius:0 1px 1px 0}
+  .smock-nav{display:flex;align-items:center;gap:9px;padding:4px 16px 12px;background:#fff;border-bottom:1px solid #eceef2}
+  .smock-nav .sm-back{font-size:24px;line-height:1;color:#3b3f47;font-weight:300;margin-top:-3px}
+  .smock-nav .sm-brand{font-size:15px;font-weight:800;color:#17181c;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .smock-nav .sm-talk{margin-left:auto;flex:none;font-size:11px;font-weight:800;color:var(--npay);background:rgba(3,199,90,.12);padding:4px 9px;border-radius:7px}
+  .smock-chat{padding:16px 14px 22px}
+  .smock-chat .sm-day{text-align:center;margin:0 0 15px;font-size:11.5px;font-weight:600;color:#8a8f9c}
+  /* 톡톡 알림 카드 (채팅 속 수신 메시지) */
+  .tcard{width:100%;background:#fff;border-radius:18px;overflow:hidden;text-align:left;box-shadow:0 2px 10px rgba(20,24,40,.08);border:1px solid #e6e8ee}
   .tc-head{display:flex;align-items:center;gap:9px;padding:14px 16px 12px}
   .tc-head .tc-ad{font-size:12.5px;font-weight:600;color:var(--muted)}
   .tc-head .tc-brand{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.01em}
@@ -558,8 +571,8 @@
   /* 시안 카드가 위에서 툭 떨어지듯 등장 — 위 섹션 알림 연출과 결 맞춤 */
   .bsample-cta{margin-top:48px;display:flex;justify-content:center}
   .bsample-cta .btn{font-size:16px;padding:18px 34px;border-radius:14px}
-  @media(prefers-reduced-motion:reduce){.tcard{transition:none}}
-  @media(max-width:720px){.bsample-row{gap:20px}.tcard{width:300px}}
+  @media(prefers-reduced-motion:reduce){.smock,.tcard{transition:none}}
+  @media(max-width:720px){.bsample-row{gap:24px}}
   @media(max-width:560px){.bsample{padding:74px 0}.bsample-cta .btn{width:100%}}
 </style>
 </head>
@@ -650,7 +663,13 @@
     <p class="sub1 reveal d1">네이버 톡톡으로 바로 보낼 수 있는<br>네이버 쇼핑라이브 홍보 메시지를 준비했어요.</p>
     <div class="bsample-row">
       <!-- 시안 1 : 신세계까사 CASAMIA -->
-      <article class="tcard reveal d1" data-slot="1">
+      <div class="smock reveal d1" aria-hidden="true">
+       <div class="smock-screen">
+        <div class="smock-status"><span>오후 12:46</span><span class="ss-batt"></span></div>
+        <div class="smock-nav"><span class="sm-back">‹</span><span class="sm-brand">신세계까사 CASAMIA</span><span class="sm-talk">네이버 톡톡</span></div>
+        <div class="smock-chat">
+         <p class="sm-day">오늘</p>
+      <article class="tcard" data-slot="1">
         <header class="tc-head"><span class="tc-ci" style="background:#2b2b2b">까</span><span class="tc-ad">광고</span><span class="tc-brand">신세계까사 CASAMIA</span></header>
         <div class="tc-hero ph-casa" data-slot-img="1">
           <span class="tc-live">▶ LIVE</span>
@@ -681,8 +700,17 @@
           <p class="tc-foot"><span>수신거부 : 톡톡 더보기 &gt; 혜택 알림받기 관리 &gt; 알림받기 취소<br>상품 가격 및 혜택 정보는 변경될 수 있습니다.</span><span class="tc-time">오후 12:46</span></p>
         </div>
       </article>
+        </div>
+       </div>
+      </div>
       <!-- 시안 2 : 해피프린스 -->
-      <article class="tcard reveal d2" data-slot="2">
+      <div class="smock reveal d2" aria-hidden="true">
+       <div class="smock-screen">
+        <div class="smock-status"><span>오후 2:30</span><span class="ss-batt"></span></div>
+        <div class="smock-nav"><span class="sm-back">‹</span><span class="sm-brand">해피프린스</span><span class="sm-talk">네이버 톡톡</span></div>
+        <div class="smock-chat">
+         <p class="sm-day">오늘</p>
+      <article class="tcard" data-slot="2">
         <header class="tc-head"><span class="tc-ci" style="background:#f5d94a;color:#3a3a3a">HP</span><span class="tc-ad">광고</span><span class="tc-brand">해피프린스</span></header>
         <div class="tc-hero ph-happy" data-slot-img="2"><span class="tc-ph-photo">아이 코디 이미지</span></div>
         <div class="tc-b">
@@ -694,9 +722,12 @@
           <p class="tc-foot"><span>수신거부 : 톡톡 더보기 &gt; 혜택 알림받기 관리 &gt; 알림받기 취소<br>상품 가격 및 혜택 정보는 변경될 수 있습니다.</span><span class="tc-time">오후 2:30</span></p>
         </div>
       </article>
+        </div>
+       </div>
+      </div>
     </div>
     <div class="bsample-cta reveal d2">
-      <button class="btn" type="button" onclick="openLead('sample')">우리 브랜드에서 톡톡 어떻게 발송하는지 직접 받아보기</button>
+      <button class="btn" type="button" onclick="openLead('sample')">우리 브랜드 시안 받아보기</button>
     </div>
   </div>
 </section>
