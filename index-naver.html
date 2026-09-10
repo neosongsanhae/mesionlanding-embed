@@ -559,24 +559,34 @@
   .pcard.win .pc-h{color:var(--blue)}
   .pc-ic{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--paper2);flex:none}
   .pcard.win .pc-ic{background:#e7f7ee}
-  .psteps{margin-top:22px;display:flex;flex-direction:column;gap:11px}
-  .pstep{display:flex;align-items:center;gap:12px;font-size:14.5px;font-weight:600;color:var(--ink2);flex-wrap:wrap}
-  .pstep .pn{flex:none;width:25px;height:25px;border-radius:50%;background:var(--paper2);color:var(--muted);font-size:12.5px;font-weight:700;display:grid;place-items:center}
-  .pstep .px{width:100%;margin-left:37px;font-size:12.5px;color:var(--muted);font-weight:600}
-  .pstep.win .pn{background:var(--tint);color:var(--blue)}
+  /* 세로 타임라인: 노드 + 노드를 잇는 선 */
+  .psteps{margin-top:24px;display:flex;flex-direction:column;align-items:flex-start}
+  .pstep{display:grid;grid-template-columns:28px 1fr;column-gap:13px;align-items:start;width:100%;font-size:14.5px;font-weight:600;color:var(--ink2)}
+  .pstep .pn{grid-row:1;width:28px;height:28px;border-radius:50%;background:var(--paper2);color:var(--muted);font-size:13px;font-weight:800;display:grid;place-items:center;z-index:1}
+  .pstep .ptx{padding-top:4px;line-height:1.45}
+  .pstep .px{display:block;margin-top:4px;font-size:12.5px;color:var(--muted);font-weight:600}
+  .pstep.win .pn{background:var(--blue);color:#fff}
   .pstep.drop{color:#b23b3b}
-  .pstep.drop .pn{background:#fbe9e9;color:#c0392b}
-  .pcard .pconc{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);display:flex;align-items:center;gap:10px}
-  .pcard.win .pconc{border-top-color:#cfe8db}
-  .pcard:not(.win) .pconc{border-top-color:#f2dede}
-  .pconc .pcl{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.02em}
-  .pconc .pcv{font-size:16.5px;font-weight:800;letter-spacing:-.02em}
+  .pstep.drop .pn{background:#c0392b;color:#fff}
+  /* 노드를 잇는 세로선 (그려지듯 아래로 자람) */
+  .pconn{width:2px;height:30px;margin-left:13px;border-radius:2px;transform:scaleY(0);transform-origin:top;background:var(--line)}
+  .pcard.win .pconn{background:linear-gradient(#4f86f3,#a9c6fb)}
+  .pcard:not(.win) .pconn{background:linear-gradient(#c9cdd6,#dfe2ea)}
+  .pcard:not(.win) .pconn.drop{background:linear-gradient(#d98a8a,#e9b7b7)}
+  .pcard .pconc{margin-top:16px;display:grid;grid-template-columns:28px 1fr;column-gap:13px;align-items:center}
+  .pconc .pcdot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:15px;font-weight:800}
+  .pcard.win .pconc .pcdot{background:var(--blue)}
+  .pcard:not(.win) .pconc .pcdot{background:#c0392b}
+  .pconc .pctxt{display:flex;flex-direction:column;gap:1px}
+  .pconc .pcl{font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.02em}
+  .pconc .pcv{font-size:17px;font-weight:800;letter-spacing:-.02em}
   .pcard.win .pconc .pcv{color:var(--blue)}
   .pcard:not(.win) .pconc .pcv{color:#c0392b}
-  /* 세로 펼침 애니메이션: 네이버는 금방 끝, 카카오는 오래 펼쳐짐 */
-  .psteps .pstep,.pcard .pconc{opacity:0;transform:translateY(12px)}
-  .path-grid.in .pstep,.path-grid.in .pconc{opacity:1;transform:none;transition:opacity .45s ease,transform .45s ease;transition-delay:var(--d,0s)}
-  @media(prefers-reduced-motion:reduce){.psteps .pstep,.pcard .pconc{opacity:1;transform:none}.path-grid.in .pstep,.path-grid.in .pconc{transition:none}}
+  /* 하나씩 펼쳐짐: 네이버는 금방 끝, 카카오는 오래 이어짐 */
+  .psteps .pstep,.pcard .pconc{opacity:0;transform:translateY(10px)}
+  .path-grid.in .pstep,.path-grid.in .pconc{opacity:1;transform:none;transition:opacity .4s ease,transform .4s ease;transition-delay:var(--d,0s)}
+  .path-grid.in .pconn{transform:scaleY(1);transition:transform .32s ease;transition-delay:var(--d,0s)}
+  @media(prefers-reduced-motion:reduce){.psteps .pstep,.pcard .pconc{opacity:1;transform:none}.pconn{transform:scaleY(1)}.path-grid.in .pstep,.path-grid.in .pconc,.path-grid.in .pconn{transition:none}}
   .path-note{margin-top:34px;max-width:760px;font-size:16px;line-height:1.72;color:var(--ink2);font-weight:500}
   .path-note b{color:var(--blue);font-weight:700}
 
@@ -766,20 +776,24 @@
       <div class="pcard win">
         <div class="pc-h"><span class="pc-ic"><svg width="14" height="14" viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#03C75A"/></svg></span>네이버 스마트 톡톡으로 보내면</div>
         <div class="psteps">
-          <div class="pstep win" style="--d:.05s"><span class="pn">1</span>알림을 클릭합니다</div>
-          <div class="pstep win" style="--d:.35s"><span class="pn">2</span>이미 로그인된 네이버에서 바로 열립니다</div>
+          <div class="pstep win" style="--d:.05s"><span class="pn">1</span><span class="ptx">알림을 클릭합니다</span></div>
+          <div class="pconn" style="--d:.3s"></div>
+          <div class="pstep win" style="--d:.55s"><span class="pn">2</span><span class="ptx">이미 로그인된 네이버에서 바로 열립니다</span></div>
         </div>
-        <div class="pconc" style="--d:.7s"><span class="pcl">두 단계 만에</span><span class="pcv">구매 가능성 높음</span></div>
+        <div class="pconc" style="--d:.9s"><span class="pcdot">✓</span><span class="pctxt"><span class="pcl">두 단계 만에</span><span class="pcv">구매 가능성 높음</span></span></div>
       </div>
       <div class="pcard">
         <div class="pc-h"><span class="pc-ic"><svg width="15" height="15" viewBox="0 0 36 36"><path d="M18 6.5c-7.5 0-13.5 4.8-13.5 10.7 0 3.8 2.5 7.1 6.3 9l-1.6 5.7c-.1.5.4.9.9.6l6.7-4.4c.4.1.8.1 1.2.1 7.5 0 13.5-4.8 13.5-10.8S25.5 6.5 18 6.5z" fill="#3C1E1E"/></svg></span>카카오톡으로 보내면</div>
         <div class="psteps">
-          <div class="pstep" style="--d:.05s"><span class="pn">1</span>알림을 클릭합니다</div>
-          <div class="pstep" style="--d:.7s"><span class="pn">2</span>카카오톡 인앱 브라우저가 열립니다<span class="px">네이버에 로그인되지 않은 상태</span></div>
-          <div class="pstep" style="--d:1.35s"><span class="pn">3</span>네이버 로그인을 다시 합니다</div>
-          <div class="pstep drop" style="--d:2s"><span class="pn">4</span>네이버 스마트스토어 페이지로 다시 진입합니다</div>
+          <div class="pstep" style="--d:.05s"><span class="pn">1</span><span class="ptx">알림을 클릭합니다</span></div>
+          <div class="pconn" style="--d:.35s"></div>
+          <div class="pstep" style="--d:.65s"><span class="pn">2</span><span class="ptx">카카오톡 인앱 브라우저가 열립니다<span class="px">네이버에 로그인되지 않은 상태</span></span></div>
+          <div class="pconn" style="--d:.95s"></div>
+          <div class="pstep" style="--d:1.25s"><span class="pn">3</span><span class="ptx">네이버 로그인을 다시 합니다</span></div>
+          <div class="pconn drop" style="--d:1.55s"></div>
+          <div class="pstep drop" style="--d:1.85s"><span class="pn">4</span><span class="ptx">네이버 스마트스토어 페이지로 다시 진입합니다</span></div>
         </div>
-        <div class="pconc" style="--d:2.6s"><span class="pcl">네 단계를 거치며</span><span class="pcv">이탈 가능성 높음</span></div>
+        <div class="pconc" style="--d:2.25s"><span class="pcdot">!</span><span class="pctxt"><span class="pcl">네 단계를 거치며</span><span class="pcv">이탈 가능성 높음</span></span></div>
       </div>
     </div>
   </div>
