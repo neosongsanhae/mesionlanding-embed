@@ -362,7 +362,7 @@
   .faqs .qa.open .qi::after{background:var(--blue);transform:rotate(90deg);opacity:0}
   .faqs .a{overflow:hidden;max-height:0;opacity:0;transition:max-height .45s var(--ease),opacity .35s var(--ease)}
   .faqs .qa.open .a{opacity:1}
-  .faqs .a p{padding:0 22px 20px;font-size:14.5px;color:var(--ink2);line-height:1.7;max-width:60ch}
+  .faqs .a p{padding:0 22px 20px;font-size:14.5px;color:var(--ink2);line-height:1.7;word-break:keep-all;overflow-wrap:break-word}
 
   /* ── 선언 ── */
   .final{background:var(--ink);color:#fff;padding:120px 0}
@@ -542,14 +542,15 @@
   .eng-lead{margin-top:18px;max-width:62ch;font-size:clamp(1rem,2.2vw,1.18rem);line-height:1.72;color:var(--ink2);font-weight:500}
   .eng-lead b{color:var(--ink);font-weight:700}
   .eng-flow{margin-top:40px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:14px}
-  .estep{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 22px;box-shadow:0 8px 18px -12px rgba(17,24,39,.16)}
+  .ecol{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 22px;box-shadow:0 8px 18px -12px rgba(17,24,39,.16);display:flex;flex-direction:column;height:100%}
+  .estep{background:none;border:0;border-radius:0;padding:0;box-shadow:none}
   .estep .enum{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-size:17px;font-weight:800}
   .estep .et{margin-top:16px;font-size:17px;font-weight:800;color:var(--ink);letter-spacing:-.02em;line-height:1.3}
   .estep .ep{margin-top:8px;font-size:13.5px;line-height:1.5;color:var(--muted);font-weight:500}
   .earrow{display:flex;align-items:center;justify-content:center;width:20px;color:#c3c7d0;font-size:20px;font-weight:800}
   .earrow--ghost{visibility:hidden}
   .eng-out{margin-top:14px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:14px}
-  .eout{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 18px -12px rgba(17,24,39,.16)}
+  .eout{background:none;border:0;border-radius:0;box-shadow:none;margin-top:auto;padding-top:20px;border-top:1px solid var(--line)}
   .eout b{display:block;font-size:16.5px;font-weight:800;color:var(--npay);letter-spacing:-.02em}
   .eout span{display:block;margin-top:7px;font-size:13px;line-height:1.5;color:var(--ink2);font-weight:500}
   @media(max-width:760px){
@@ -820,42 +821,43 @@
     <h2 class="one reveal">네이버 톡톡 마케팅,<br><span class="em">자사몰 회원까지 넓힙니다.</span></h2>
     <p class="eng-lead reveal d1">우리 자사몰에 쌓인 회원 중 <b>마케팅 수신동의한 분들이 그대로 네이버 톡톡 발송 대상</b>이 됩니다.<br>네이버 톡톡을 이미 쓰고 계셨더라도, 닿을 수 있는 회원이 크게 늘어납니다.</p>
     <div class="eng-flow reveal d1">
-      <div class="estep">
-        <span class="enum">1</span>
-        <div class="et">자사몰 수신동의 회원</div>
-        <p class="ep">마케팅 수신동의한 회원 전체가<br>발송 모수가 됩니다. (온라인+오프라인)</p>
+      <div class="ecol">
+        <div class="estep">
+          <span class="enum">1</span>
+          <div class="et">전체 수신동의 회원</div>
+          <p class="ep">마케팅 수신동의한 회원 전체가<br>발송 모수가 됩니다.<br>(온라인+오프라인)</p>
+        </div>
+        <div class="eout">
+          <b>발송 모수가 커집니다</b>
+          <span>우리 회원이 통째로 네이버 톡톡 대상으로.</span>
+        </div>
       </div>
       <span class="earrow">→</span>
-      <div class="estep">
-        <span class="enum">2</span>
-        <div class="et">네이버 톡톡으로 발송</div>
-        <p class="ep">네이버 스마트스토어 고객에,<br>우리 회원까지 더해 보냅니다.</p>
+      <div class="ecol">
+        <div class="estep">
+          <span class="enum">2</span>
+          <div class="et">네이버 톡톡으로 발송</div>
+          <p class="ep">네이버 스마트스토어 고객에,<br>우리 회원까지 더해 보냅니다.</p>
+        </div>
+        <div class="eout">
+          <b>이미 쓰던 브랜드도</b>
+          <span>네이버 톡톡을 쓰고 있었어도 닿는 회원이 늘어요.</span>
+        </div>
       </div>
       <span class="earrow">→</span>
-      <div class="estep">
-        <span class="enum">3</span>
-        <div class="et">로그인된 네이버에서 결제</div>
-        <p class="ep">로그인 그대로, 더 큰 모수의 고객이<br>바로 클릭하고 구매할 수 있게</p>
+      <div class="ecol">
+        <div class="estep">
+          <span class="enum">3</span>
+          <div class="et">로그인된 네이버에서 결제</div>
+          <p class="ep">로그인 그대로, 더 큰 모수의 고객이<br>바로 클릭하고 구매할 수 있게</p>
+        </div>
+        <div class="eout">
+          <b>더 큰 모수 = 더 큰 매출</b>
+          <span>자사몰 회원 모두, 네이버 회원이니까.</span>
+        </div>
       </div>
     </div>
-    <div class="eng-out reveal d1">
-      <div class="eout">
-        <b>발송 모수가 커집니다</b>
-        <span>우리 회원이 통째로 네이버 톡톡 대상으로.</span>
-      </div>
-      <span class="earrow earrow--ghost" aria-hidden="true"></span>
-      <div class="eout">
-        <b>이미 쓰던 브랜드도</b>
-        <span>네이버 톡톡을 쓰고 있었어도 닿는 회원이 늘어요.</span>
-      </div>
-      <span class="earrow earrow--ghost" aria-hidden="true"></span>
-      <div class="eout">
-        <b>더 큰 모수 = 더 큰 매출</b>
-        <span>자사몰 회원 모두, 네이버 회원이니까.</span>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
 <!-- 카카오 vs 네이버 비교 표 -->
 <section class="cmpsec">
@@ -949,7 +951,7 @@
       <div class="qa"><button class="q" type="button">우리 쇼핑몰에서도 쓸 수 있나요?<span class="qi"></span></button>
         <div class="a"><p>카페24나 메이크샵 기반 호스팅이라면 간편하게 바로 연동됩니다. 호스팅사 앱스토어에서 메시온 앱을 설치하고 발급된 연동 코드를 입력하면 쇼핑몰 데이터가 자동으로 연결됩니다. 다른 호스팅사도 순차적으로 지원을 넓혀가고 있습니다.</p></div></div>
       <div class="qa"><button class="q" type="button">도입에 얼마나 걸리나요?<span class="qi"></span></button>
-        <div class="a"><p>별도 개발 과정이 없습니다. 앱 설치, 연동 코드 입력 두 단계면 연동이 끝나고, 그날 바로 첫 메시지 발송까지 진행할 수 있습니다.</p></div></div>
+        <div class="a"><p>별도 개발 과정이 없습니다. 당일 연동 후 바로 발송까지 해보실 수 있습니다.</p></div></div>
       <div class="qa"><button class="q" type="button">비용은 어떻게 되나요?<span class="qi"></span></button>
         <div class="a"><p>크레딧을 충전해 발송한 만큼만 차감됩니다. 건당 정보성 5원, 광고성 10원이고, 지금은 프로모션으로 각각 4원과 5원에 보낼 수 있습니다. 예산이 소진되면 종료됩니다.</p></div></div>
       <div class="qa"><button class="q" type="button">대량 발송도 안정적인가요?<span class="qi"></span></button>
