@@ -587,6 +587,9 @@
   .pcard.win .prail{background:#6f9cf4}
   .pcard:not(.win) .prail{background:#cfd3dc}
   .pcard:not(.win) .prail.drop{background:#d98a8a}
+  .pcard .psteps .pstep:last-child .prail::after{content:"";position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid #cfd3dc}
+  .pcard.win .psteps .pstep:last-child .prail::after{border-top-color:#6f9cf4}
+  .pcard:not(.win) .psteps .pstep:last-child .prail::after{border-top-color:#d98a8a}
   .pcard .pconc{margin-top:0;display:grid;grid-template-columns:28px 1fr;column-gap:13px;align-items:center}
   .pconc .pcdot{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:15px;font-weight:800;position:relative;z-index:1}
   .pcard.win .pconc .pcdot{background:var(--blue)}
