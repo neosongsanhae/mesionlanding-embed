@@ -763,6 +763,21 @@
   .dil-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.66}
   @media(max-width:640px){.dil-grid{grid-template-columns:1fr}}
   .sendnote{margin-top:14px;color:var(--muted);font-size:13px;line-height:1.6}
+  /* 매체별 비교 */
+  .chwrap{overflow-x:auto;border:1px solid var(--line);border-radius:16px;margin-top:44px;background:#fff}
+  .chtable{width:100%;min-width:640px;border-collapse:separate;border-spacing:0;font-size:14.5px}
+  .chtable th,.chtable td{padding:16px 20px;text-align:left;border-bottom:1px solid var(--line)}
+  .chtable tr:last-child th,.chtable tr:last-child td{border-bottom:0}
+  .chtable thead th{font-size:12.5px;font-weight:700;color:var(--muted);background:var(--paper2)}
+  .chtable tbody th{font-weight:700;color:var(--ink);white-space:nowrap}
+  .chtable tbody td{color:var(--ink2)}
+  .chtable td.lim{color:var(--red-d)}
+  .chtable tr.win th,.chtable tr.win td{background:var(--tint)}
+  .chtable tr.win th{color:var(--blue-d)}
+  .chtable tr.win td{color:var(--ink)}
+  .chtable tr.win td b{color:var(--blue-d)}
+  .chwin{margin-top:24px;text-align:center;color:var(--muted);font-size:15.5px;line-height:1.72;max-width:620px;margin-left:auto;margin-right:auto}
+  .chwin b{color:var(--blue-d);font-weight:700}
 </style>
 
 <header class="hero khero">
@@ -855,8 +870,8 @@
   <div class="wrap">
     <div class="send-grid">
       <div>
-        <h2 class="one reveal rl">정공법은,<br><span class="em">동의받은 고객에게 정식으로.</span></h2>
-        <p class="sub1 reveal d1">규제를 피하는 게 아니라 정면으로 지키면 오히려 자유로워집니다. <b>마케팅 수신동의</b>를 받은 고객에게는 쿠폰·혜택을 담은 <b>광고성 메시지</b>를 합법적으로 보낼 수 있습니다. 4,300만 명이 쓰는 네이버 스마트 톡톡으로요.</p>
+        <h2 class="one reveal rl">해법은,<br><span class="em">네이버 스마트 톡톡입니다.</span></h2>
+        <p class="sub1 reveal d1"><b>마케팅 수신동의</b>를 받은 고객에게는 쿠폰·혜택을 담은 <b>광고성 메시지</b>를 합법적으로 보낼 수 있습니다. 4,300만 명이 매일 여는 네이버 앱, 그 알림창으로 직접 닿는 채널이 바로 네이버 스마트 톡톡입니다.</p>
         <p class="sendnote reveal d1">모든 광고성 메시지에는 (광고) 표기와 수신거부 방법이 함께 담겨, 개정 규정 안에서 발송됩니다.</p>
       </div>
       <div class="phone reveal rr d1" id="phone">
@@ -873,56 +888,43 @@
 
 <section class="cmpsec">
   <div class="wrap">
-    <h2 class="one reveal">동의받은 고객에게,<br><span class="em">더 싸게 더 자유롭게.</span></h2>
-    <div class="cmpwrap reveal d1">
-      <table class="cmptable">
+    <h2 class="one reveal">매체를 나란히 두면,<br><span class="em">답은 톡톡으로 좁혀집니다.</span></h2>
+    <p class="ksec-lead reveal d1">10월 이후 수신동의 회원에게 쿠폰·혜택을 보낼 수 있는 광고성 채널을 같은 기준으로 비교했습니다.</p>
+    <div class="chwrap reveal d1">
+      <table class="chtable" aria-label="광고성 발송 매체별 비교">
         <thead>
-          <tr>
-            <th class="th-feat"></th>
-            <th class="th-mez">네이버 스마트 톡톡 · 메시온</th>
-            <th class="th-kk">카카오 (알림톡·브랜드메시지)</th>
-          </tr>
+          <tr><th>채널</th><th>도달 대상</th><th>건당 비용</th><th>한계</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td class="feat">쿠폰·혜택 안내 발송</td>
-            <td class="mez"><b>수신동의 회원에게 광고성으로 가능</b></td>
-            <td class="kk">알림톡 정보성 발송은 10월부터 불가</td>
+            <th>문자 (LMS)</th>
+            <td>번호 보유 고객</td>
+            <td>약 25~30원</td>
+            <td class="lim">비용 부담·스팸 인식</td>
           </tr>
           <tr>
-            <td class="feat">메시지가 닿는 대상</td>
-            <td class="mez">마케팅 수신동의 <b>회원 전체</b><br>(온라인+오프라인)</td>
-            <td class="kk">채널 친구를 추가한 회원 위주</td>
+            <th>카카오 친구톡</th>
+            <td>채널 친구 추가 회원</td>
+            <td>15원</td>
+            <td class="lim">도달 모수 60~80% 감소</td>
           </tr>
           <tr>
-            <td class="feat">노출 위치</td>
-            <td class="mez">네이버 앱 푸시 · 알림창 · PC</td>
-            <td class="kk">카카오톡 채팅 목록</td>
+            <th>카카오 브랜드메시지</th>
+            <td>비친구까지</td>
+            <td>약 35원</td>
+            <td class="lim">비용 약 5배·인박스 피로</td>
           </tr>
-          <tr>
-            <td class="feat">광고성 발송 단가</td>
-            <td class="mez"><b>5원</b> · 프로모션 단가</td>
-            <td class="kk">15~35원</td>
-          </tr>
-          <tr>
-            <td class="feat">함께 운영</td>
-            <td class="mez">카카오톡·알림톡도 <b>메시온에서 함께</b></td>
-            <td class="kk">카카오 단독</td>
+          <tr class="win">
+            <th>네이버 스마트 톡톡</th>
+            <td>수신동의 회원 전체</td>
+            <td><b>5원</b></td>
+            <td>네이버 앱 알림으로 직접 도달</td>
           </tr>
         </tbody>
       </table>
     </div>
+    <p class="chwin reveal d1"><b>네이버 스마트 톡톡</b>은 수신동의 회원 전체에게, 가장 낮은 단가로, 4,300만 명이 매일 여는 네이버 앱 알림으로 닿습니다. 기존 카카오톡·알림톡도 메시온에서 함께 운영합니다.</p>
     <p class="cmpnote reveal d1"><span class="cmpplus" aria-hidden="true">+</span><span class="cmptxt">모든 광고성 메시지에는 <b>(광고) 표기와 수신거부 방법</b>이 함께 담겨, 개정 규정 안에서 발송됩니다.</span></p>
-    <div class="cmpwrap reveal d2" style="margin-top:22px">
-      <table class="ptable" aria-label="수신동의 회원에게 광고성 메시지 1건 발송 단가">
-        <thead><tr><th colspan="2">수신동의 회원에게 광고성 메시지 1건</th></tr></thead>
-        <tbody>
-          <tr><th>문자 (장문 LMS)</th><td class="num">약 25~30원*</td></tr>
-          <tr><th>카카오 브랜드메시지</th><td class="num">약 30원~*</td></tr>
-          <tr class="hl"><th>네이버 스마트 톡톡 · 메시온</th><td class="num">5원</td></tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </section>
 
