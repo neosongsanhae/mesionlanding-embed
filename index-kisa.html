@@ -778,6 +778,24 @@
   .chtable tr.win td b{color:var(--blue-d)}
   .chwin{margin-top:24px;text-align:center;color:var(--muted);font-size:15.5px;line-height:1.72;max-width:620px;margin-left:auto;margin-right:auto}
   .chwin b{color:var(--blue-d);font-weight:700}
+  /* 브릿지: 네이버 앱 잠금화면 알림 */
+  .bridgesec{background:var(--paper)}
+  .bridge-wrap{display:grid;gap:48px;align-items:center}
+  @media(min-width:820px){.bridge-wrap{grid-template-columns:1.05fr .95fr}}
+  .bridge-copy .ks-h,.bridge-copy .ksec-lead{text-align:left;margin-left:0;margin-right:0}
+  .bridge-copy .ksec-lead{margin-top:20px;max-width:460px}
+  .bl{color:var(--blue-d)}
+  .lockphone{justify-self:center}
+  .lp-frame{width:264px;max-width:76vw;border-radius:42px;padding:11px;background:#0e1016;box-shadow:0 34px 74px rgba(18,22,38,.30)}
+  .lp-screen{position:relative;border-radius:32px;overflow:hidden;aspect-ratio:9/18.5;background:radial-gradient(125% 78% at 50% 0%,#2b3559 0%,#141826 58%,#0a0c12 100%);padding:30px 15px}
+  .lp-time{color:#fff;text-align:center;font-size:54px;font-weight:600;letter-spacing:-.02em;margin-top:22px;line-height:1;font-variant-numeric:tabular-nums}
+  .lp-date{color:rgba(255,255,255,.72);text-align:center;font-size:14px;margin-top:10px}
+  .lp-noti{margin-top:44px;display:flex;gap:11px;align-items:flex-start;background:rgba(255,255,255,.15);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border:1px solid rgba(255,255,255,.12);border-radius:17px;padding:12px 13px}
+  .lp-ic{flex:none;width:34px;height:34px;border-radius:9px;background:var(--npay);display:flex;align-items:center;justify-content:center}
+  .lp-txt{min-width:0;color:#fff}
+  .lp-app{font-size:11px;color:rgba(255,255,255,.7);margin-bottom:4px}
+  .lp-txt b{display:block;font-size:13.5px;font-weight:700;line-height:1.35}
+  .lp-txt p{font-size:12.5px;color:rgba(255,255,255,.82);margin-top:3px;line-height:1.42}
 </style>
 
 <header class="hero khero">
@@ -861,6 +879,27 @@
         <span class="dil-k">카카오 브랜드 메시지</span>
         <div class="dil-big">비용 <span class="rd">약 5배</span></div>
         <p>비친구까지 닿지만 건당 평균 35원으로 부담이 급등하고, 한 인박스에 쌓여 피로도와 차단으로 이어집니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ksec bridgesec">
+  <div class="wrap bridge-wrap">
+    <div class="bridge-copy">
+      <h2 class="ks-h reveal">4,300만 명이 매일 여는 네이버 앱,<br><span class="bl">그 알림으로 보내면 어떨까요?</span></h2>
+      <p class="ksec-lead reveal d1">고객이 하루에도 몇 번씩 확인하는 앱입니다. 잠금화면 위로 뜨는 알림 한 줄이, 막힌 쿠폰 안내를 대신할 수 있습니다.</p>
+    </div>
+    <div class="lockphone reveal rr d1">
+      <div class="lp-frame">
+        <div class="lp-screen">
+          <div class="lp-time">9:41</div>
+          <div class="lp-date">11월 29일 금요일</div>
+          <div class="lp-noti">
+            <span class="lp-ic"><svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>
+            <div class="lp-txt"><div class="lp-app">네이버 · 지금</div><b>(광고) 담아둔 쿠폰, 오늘까지예요</b><p>장바구니 속 15% 쿠폰이 자정에 만료돼요.</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
