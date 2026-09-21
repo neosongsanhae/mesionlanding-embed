@@ -764,15 +764,16 @@
   @media(max-width:640px){.pen-grid{grid-template-columns:1fr}}
   .tl{margin-top:30px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px 30px 28px}
   .tl-h{font-weight:700;font-size:16.5px;text-align:center;color:var(--ink)}
-  .tl-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
-  .tl-item{text-align:center}
-  .tl-dot{display:block;width:12px;height:12px;border-radius:50%;background:#d7dae2;margin:0 auto}
+  .tl-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px;position:relative}
+  .tl-row::before{content:"";position:absolute;top:5px;left:12.5%;right:12.5%;height:2px;background:linear-gradient(90deg,var(--red) 0%,#d7dae2 52%);z-index:0}
+  .tl-item{text-align:center;position:relative;z-index:1}
+  .tl-dot{display:block;width:12px;height:12px;border-radius:50%;background:#d7dae2;margin:0 auto;box-shadow:0 0 0 4px #fff}
   .tl-item b{display:block;font-size:18px;font-weight:800;margin-top:14px;color:var(--ink)}
   .tl-item>span:last-child{display:block;color:var(--muted);font-size:12.5px;margin-top:4px}
   .tl-item.warn .tl-dot{background:var(--red)}
   .tl-item.warn b{color:var(--red)}
   .tl-note{margin-top:22px;text-align:center;color:var(--muted);font-size:14px}
-  @media(max-width:560px){.tl-row{grid-template-columns:1fr 1fr;gap:20px 12px}}
+  @media(max-width:560px){.tl-row{grid-template-columns:1fr 1fr;gap:20px 12px}.tl-row::before{display:none}}
   .disc{margin-top:24px;text-align:center;color:var(--muted);font-size:12px;opacity:.85}
   /* dilemma */
   .dilsec{background:var(--paper)}
