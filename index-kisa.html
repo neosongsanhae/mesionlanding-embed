@@ -351,26 +351,32 @@
   @media(min-width:680px){.stats3{grid-template-columns:repeat(2,1fr)}}
   .st{border-top:2px solid var(--ink);padding-top:18px}
   /* 벤치마크 콜아웃 */
-  /* ROAS 실사례 카드 (계산기 뒤 반등 구간) */
-  .roas-wrap{margin:44px auto 0;max-width:720px;padding-top:40px;border-top:1px solid var(--line)}
-  .roas-h{text-align:center;font-weight:800;font-size:clamp(20px,3.4vw,26px);letter-spacing:-.03em;line-height:1.32;color:var(--ink)}
+  /* ROAS 실사례 별도 섹션 */
+  .roassec{background:var(--paper2);padding:clamp(64px,9vw,104px) 0;border-top:1px solid var(--line)}
+  .roas-wrap{max-width:760px;margin:0 auto}
+  .roas-h{text-align:center;font-weight:800;font-size:clamp(21px,3.6vw,28px);letter-spacing:-.03em;line-height:1.34;color:var(--ink)}
   .roas-h b{color:var(--blue)}
-  .roas-sub{text-align:center;margin:12px auto 0;max-width:520px;font-size:15px;color:var(--muted);line-height:1.7}
-  .roas-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
+  .roas-sub{text-align:center;margin:14px auto 0;max-width:520px;font-size:15px;color:var(--muted);line-height:1.7}
+  .roas-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:38px}
   @media(min-width:620px){.roas-grid{grid-template-columns:1fr 1fr}}
-  .roas-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 28px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(23,43,77,.35)}
+  .roas-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;padding:32px 30px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(23,43,77,.35)}
   .roas-card.feat{background:linear-gradient(160deg,var(--blue),var(--blue-d));border-color:transparent;color:#fff;box-shadow:0 26px 54px -26px rgba(52,112,240,.6)}
-  .roas-cat{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--blue-d);background:var(--tint);border-radius:999px;padding:6px 13px;letter-spacing:-.01em}
+  .roas-cat{display:inline-flex;align-items:center;font-size:13px;font-weight:700;color:var(--blue-d);background:var(--tint);border-radius:999px;padding:6px 13px;letter-spacing:-.01em}
   .roas-card.feat .roas-cat{color:#fff;background:rgba(255,255,255,.18)}
-  .roas-big{margin-top:22px;font-weight:800;letter-spacing:-.05em;line-height:.92;color:var(--blue);font-variant-numeric:tabular-nums;font-size:clamp(3.4rem,11vw,4.6rem)}
+  .roas-big{margin-top:24px;font-weight:800;letter-spacing:-.04em;line-height:.92;color:var(--blue);font-variant-numeric:tabular-nums;font-size:clamp(3.6rem,11vw,4.8rem)}
   .roas-card.feat .roas-big{color:#fff}
-  .roas-big span{font-size:.42em;font-weight:800;margin-left:3px;letter-spacing:-.02em;vertical-align:baseline}
-  .roas-lab{margin-top:4px;font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--ink2)}
-  .roas-card.feat .roas-lab{color:rgba(255,255,255,.92)}
-  .roas-meta{margin-top:16px;padding-top:15px;border-top:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);line-height:1.5}
-  .roas-card.feat .roas-meta{border-top-color:rgba(255,255,255,.22);color:rgba(255,255,255,.85)}
-  .roas-note{margin:18px auto 0;max-width:640px;text-align:center;font-size:11.5px;color:var(--muted);opacity:.9;line-height:1.55}
-  @media(max-width:560px){.roas-card{padding:26px 22px}}
+  .roas-big span{font-size:.42em;font-weight:700;margin-left:3px;letter-spacing:-.01em;vertical-align:baseline}
+  .roas-lab{margin-top:6px;font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
+  .roas-card.feat .roas-lab{color:rgba(255,255,255,.82)}
+  .roas-fields{margin-top:20px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:11px}
+  .roas-card.feat .roas-fields{border-top-color:rgba(255,255,255,.22)}
+  .roas-field{display:flex;align-items:baseline;justify-content:space-between;gap:14px}
+  .roas-fk{font-size:13px;font-weight:600;color:var(--muted);flex:none}
+  .roas-card.feat .roas-fk{color:rgba(255,255,255,.78)}
+  .roas-fv{font-size:14.5px;font-weight:700;color:var(--ink);text-align:right;letter-spacing:-.01em}
+  .roas-card.feat .roas-fv{color:#fff}
+  .roas-note{margin:26px auto 0;max-width:640px;text-align:center;font-size:11.5px;color:var(--muted);opacity:.9;line-height:1.55}
+  @media(max-width:560px){.roas-card{padding:28px 24px}}
   .st .n{font-size:clamp(2rem,6.5vw,3.1rem);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
   .st .l{margin-top:10px;font-size:14px;color:var(--muted);font-weight:600}
   .crednote{margin-top:28px;font-size:14.5px;color:var(--ink2);font-weight:600}
@@ -974,25 +980,6 @@
       <span class="calc-assume" id="kcAssume" hidden></span>
     </div>
     <p class="calc-bridge2">성수기 직전에 막히는 건 채널 하나입니다. <b>동의받은 회원 전체에게 합법적으로 닿는 길</b> 하나만 열어두면, 이 매출은 지킬 수 있습니다.</p>
-    <div class="roas-wrap">
-      <p class="roas-h">막지 않고 <b>제대로 닿으면</b>, 이렇게 돌아옵니다</p>
-      <p class="roas-sub">전 회원에게 합법적으로 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
-      <div class="roas-grid">
-        <div class="roas-card">
-          <span class="roas-cat">언더웨어 브랜드 A사</span>
-          <div class="roas-big">500<span>%</span></div>
-          <div class="roas-lab">최고 ROAS</div>
-          <div class="roas-meta">회차당 약 180만 건 전체발송</div>
-        </div>
-        <div class="roas-card feat">
-          <span class="roas-cat">더마 코스메틱 브랜드 B사</span>
-          <div class="roas-big">1,000<span>%</span></div>
-          <div class="roas-lab">최고 ROAS</div>
-          <div class="roas-meta">회차당 약 90만 건 전체발송</div>
-        </div>
-      </div>
-      <p class="roas-note">메시온으로 실제 발송하는 브랜드의 최고 성과 기준이며, 발송 시점·상품·시즌에 따라 달라질 수 있습니다.</p>
-    </div>
   </div>
 </section>
 
@@ -1044,6 +1031,40 @@
         <div class="noti"><div class="nb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></div><div class="t"><b>(광고) 블랙프라이데이, 오늘 시작</b>최대 60%. 품절 전에 먼저 담아보세요.</div><span class="tag">블랙프라이데이</span></div>
         <div class="noti"><div class="nb kk"><svg width="20" height="20" viewBox="0 0 36 36" fill="none"><path d="M18 6.5c-7.5 0-13.5 4.8-13.5 10.7 0 3.8 2.5 7.1 6.3 9l-1.6 5.7c-.1.5.4.9.9.6l6.7-4.4c.4.1.8.1 1.2.1 7.5 0 13.5-4.8 13.5-10.8S25.5 6.5 18 6.5z" fill="#3C1E1E"/></svg></div><div class="t"><b>같은 캠페인, 카카오톡으로도</b>기존 채널도 메시온에서 함께 보냅니다.</div><span class="tag kkt">카카오톡</span></div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="roassec">
+  <div class="wrap">
+    <div class="roas-wrap">
+      <p class="roas-h">막지 않고 <b>제대로 닿으면</b>, 이렇게 돌아옵니다</p>
+      <p class="roas-sub">동의받은 전 회원에게 합법적으로 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
+      <div class="roas-grid">
+        <div class="roas-card">
+          <span class="roas-cat">언더웨어 브랜드 A사</span>
+          <div class="roas-big">500<span>%</span></div>
+          <div class="roas-lab">최고 ROAS</div>
+          <div class="roas-fields">
+            <div class="roas-field"><span class="roas-fk">업종</span><span class="roas-fv">언더웨어</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 모수</span><span class="roas-fv">회차당 약 180만 건</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 범위</span><span class="roas-fv">전 회원 전체발송</span></div>
+          </div>
+        </div>
+        <div class="roas-card feat">
+          <span class="roas-cat">더마 코스메틱 브랜드 B사</span>
+          <div class="roas-big">1,000<span>%</span></div>
+          <div class="roas-lab">최고 ROAS</div>
+          <div class="roas-fields">
+            <div class="roas-field"><span class="roas-fk">업종</span><span class="roas-fv">더마 코스메틱</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 모수</span><span class="roas-fv">회차당 약 90만 건</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 범위</span><span class="roas-fv">전 회원 전체발송</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="roas-note">메시온으로 실제 발송하는 브랜드의 최고 성과 기준이며, 발송 시점·상품·시즌에 따라 달라질 수 있습니다.</p>
     </div>
   </div>
 </section>
