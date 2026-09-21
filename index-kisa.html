@@ -351,23 +351,26 @@
   @media(min-width:680px){.stats3{grid-template-columns:repeat(2,1fr)}}
   .st{border-top:2px solid var(--ink);padding-top:18px}
   /* 벤치마크 콜아웃 */
-  .bench{margin-top:30px;background:var(--tint);border:1px solid #dce7fb;border-radius:16px;padding:28px 30px;text-align:center}
-  .bench-h{font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-.02em}
-  .bench-row{display:flex;justify-content:center;gap:34px;flex-wrap:wrap;margin:20px 0 4px}
-  .bench-i{display:flex;flex-direction:column;gap:5px}
-  .bench-i b{font-size:32px;font-weight:800;color:var(--blue-d);line-height:1;font-variant-numeric:tabular-nums}
-  .bench-i span{font-size:13px;color:var(--muted);font-weight:600}
-  .bench-p{max-width:580px;margin:14px auto 0;font-size:14.5px;color:var(--ink2);line-height:1.72}
-  .bench-src{margin-top:14px;font-size:11.5px;color:var(--muted);opacity:.9}
-  .bench-src a{color:inherit}
-  .bench-cases{margin-top:22px;padding-top:22px;border-top:1px solid #dce7fb;display:grid;gap:10px}
-  .bcase{background:#fff;border:1px solid #dce7fb;border-radius:12px;padding:16px 18px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;text-align:left}
-  .bcase .bc-l{font-size:13.5px;color:var(--ink2);line-height:1.5}
-  .bcase .bc-l b{color:var(--ink);font-weight:700}
-  .bcase .bc-r{font-size:24px;font-weight:800;color:var(--blue-d);white-space:nowrap;font-variant-numeric:tabular-nums;flex-shrink:0}
-  .bcase .bc-r i{font-style:normal;font-size:12.5px;font-weight:700;color:var(--muted);margin-right:5px}
-  .bench-note{margin-top:12px;font-size:11.5px;color:var(--muted);opacity:.9;line-height:1.55}
-  @media(max-width:560px){.bench{padding:22px 18px}.bench-row{gap:24px}.bench-i b{font-size:28px}.bcase{padding:14px 15px}.bcase .bc-r{font-size:21px}}
+  /* ROAS 실사례 카드 (계산기 뒤 반등 구간) */
+  .roas-wrap{margin:44px auto 0;max-width:720px;padding-top:40px;border-top:1px solid var(--line)}
+  .roas-h{text-align:center;font-weight:800;font-size:clamp(20px,3.4vw,26px);letter-spacing:-.03em;line-height:1.32;color:var(--ink)}
+  .roas-h b{color:var(--blue)}
+  .roas-sub{text-align:center;margin:12px auto 0;max-width:520px;font-size:15px;color:var(--muted);line-height:1.7}
+  .roas-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:30px}
+  @media(min-width:620px){.roas-grid{grid-template-columns:1fr 1fr}}
+  .roas-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:20px;padding:30px 28px;overflow:hidden;box-shadow:0 20px 44px -30px rgba(23,43,77,.35)}
+  .roas-card.feat{background:linear-gradient(160deg,var(--blue),var(--blue-d));border-color:transparent;color:#fff;box-shadow:0 26px 54px -26px rgba(52,112,240,.6)}
+  .roas-cat{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:var(--blue-d);background:var(--tint);border-radius:999px;padding:6px 13px;letter-spacing:-.01em}
+  .roas-card.feat .roas-cat{color:#fff;background:rgba(255,255,255,.18)}
+  .roas-big{margin-top:22px;font-weight:800;letter-spacing:-.05em;line-height:.92;color:var(--blue);font-variant-numeric:tabular-nums;font-size:clamp(3.4rem,11vw,4.6rem)}
+  .roas-card.feat .roas-big{color:#fff}
+  .roas-big span{font-size:.42em;font-weight:800;margin-left:3px;letter-spacing:-.02em;vertical-align:baseline}
+  .roas-lab{margin-top:4px;font-size:14px;font-weight:800;letter-spacing:.02em;color:var(--ink2)}
+  .roas-card.feat .roas-lab{color:rgba(255,255,255,.92)}
+  .roas-meta{margin-top:16px;padding-top:15px;border-top:1px solid var(--line);font-size:13px;font-weight:600;color:var(--muted);line-height:1.5}
+  .roas-card.feat .roas-meta{border-top-color:rgba(255,255,255,.22);color:rgba(255,255,255,.85)}
+  .roas-note{margin:18px auto 0;max-width:640px;text-align:center;font-size:11.5px;color:var(--muted);opacity:.9;line-height:1.55}
+  @media(max-width:560px){.roas-card{padding:26px 22px}}
   .st .n{font-size:clamp(2rem,6.5vw,3.1rem);font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
   .st .l{margin-top:10px;font-size:14px;color:var(--muted);font-weight:600}
   .crednote{margin-top:28px;font-size:14.5px;color:var(--ink2);font-weight:600}
@@ -829,6 +832,9 @@
   .calc-result .cr-hint{font-size:13px;font-weight:600;color:var(--muted)}
   .calc-result[data-locked="1"] strong{color:#d9b0b2}
   .calc-result[data-locked="0"] .cr-hint{display:none}
+  .calc-chart{width:100%;max-width:520px;margin:8px auto 2px}
+  .calc-chart svg{width:100%;height:auto;display:block;overflow:visible}
+  .calc-assume{font-size:11.5px;color:var(--red-d);opacity:.82;font-weight:600;line-height:1.55}
   .calc-bridge2{margin:22px auto 0;max-width:600px;text-align:center;font-size:15px;font-weight:600;color:var(--ink2);line-height:1.7}
   .calc-bridge2 b{color:var(--ink)}
 </style>
@@ -887,7 +893,7 @@
       </div>
     </div>
     <div class="market">
-      <p class="market-h">처분은 이미 늘고 있습니다.</p>
+      <p class="market-h">리스크는 이미 늘고 있습니다.</p>
       <div class="market-row">
         <div class="market-i"><b>155%<i>↑</i></b><span>카카오톡 브랜드 메시지 스팸신고<br>올해 1~7월 9만 4,947건, 전년 하반기 대비</span></div>
         <div class="market-i"><b>11<i>배</i></b><span>관련 과태료 처분 건수<br>지난해 2건 → 올해 22건</span></div>
@@ -960,11 +966,32 @@
       <p class="calc-foot2">채널 미추가 비중과 성수기 구매 기여율은 브랜드마다 달라, 업계 벤치마크의 보수적 추정값을 씁니다. 실제 규모는 회원 구성과 발송 전략에 따라 달라집니다.</p>
     </div>
     <div class="calc-result" id="kcResult" data-locked="1">
-      <span class="cr-lab">이번 성수기에 놓칠 수 있는 매출</span>
+      <span class="cr-lab">10월~2월 성수기에 놓칠 수 있는 매출</span>
       <strong id="kcLoss">?</strong>
       <span class="cr-hint">업종과 월 매출 규모를 선택하면 금액이 나타납니다</span>
+      <div class="calc-chart" id="kcChart" hidden></div>
+      <span class="calc-assume" id="kcAssume" hidden></span>
     </div>
     <p class="calc-bridge2">성수기 직전에 막히는 건 채널 하나입니다. <b>동의받은 회원 전체에게 합법적으로 닿는 길</b> 하나만 열어두면, 이 매출은 지킬 수 있습니다.</p>
+    <div class="roas-wrap">
+      <p class="roas-h">막지 않고 <b>제대로 닿으면</b>, 이렇게 돌아옵니다</p>
+      <p class="roas-sub">전 회원에게 합법적으로 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
+      <div class="roas-grid">
+        <div class="roas-card">
+          <span class="roas-cat">언더웨어 브랜드 A사</span>
+          <div class="roas-big">500<span>%</span></div>
+          <div class="roas-lab">최고 ROAS</div>
+          <div class="roas-meta">회차당 약 180만 건 전체발송</div>
+        </div>
+        <div class="roas-card feat">
+          <span class="roas-cat">더마 코스메틱 브랜드 B사</span>
+          <div class="roas-big">1,000<span>%</span></div>
+          <div class="roas-lab">최고 ROAS</div>
+          <div class="roas-meta">회차당 약 90만 건 전체발송</div>
+        </div>
+      </div>
+      <p class="roas-note">메시온으로 실제 발송하는 브랜드의 최고 성과 기준이며, 발송 시점·상품·시즌에 따라 달라질 수 있습니다.</p>
+    </div>
   </div>
 </section>
 
@@ -1073,20 +1100,6 @@
       <div class="st"><div class="n" data-to="4300" data-suf="만">0</div><div class="l">네이버 앱 하루 이용자</div></div>
     </div>
     <p class="crednote">회원 200만 규모 브랜드를 포함해, 70여 개 브랜드가 메시온으로 발송하고 있습니다.</p>
-    <div class="bench">
-      <p class="bench-h">동의받은 회원에게 보내면, 매출로 돌아옵니다.</p>
-      <div class="bench-row">
-        <div class="bench-i"><b>4.8%</b><span>클릭률(CTR)</span></div>
-        <div class="bench-i"><b>6.1%</b><span>구매 전환율(CVR)</span></div>
-      </div>
-      <p class="bench-p">동의받은 회원에게 보내는 CRM 메시지는 열어보고 사는 채널입니다. 커머스 50여 개사 실데이터를 집계한 업계 벤치마크에서도 카카오 알림톡 기준 이 수준으로 나타납니다.</p>
-      <p class="bench-src">출처: <a href="https://blog.blux.ai/crm-channel-benchmarks-2026" target="_blank" rel="noopener">블럭스 「2026 CRM 채널 벤치마크」</a> · 커머스 브랜드 50여 개사 실데이터 (2026.07)</p>
-      <div class="bench-cases">
-        <div class="bcase"><span class="bc-l">언더웨어 브랜드 A사 · 회차당 약 <b>180만 건</b> 전체발송</span><span class="bc-r"><i>최고</i>ROAS 500%</span></div>
-        <div class="bcase"><span class="bc-l">더마 코스메틱 브랜드 B사 · 회차당 약 <b>90만 건</b> 전체발송</span><span class="bc-r"><i>최고</i>ROAS 1,000%</span></div>
-      </div>
-      <p class="bench-note">메시온으로 실제 발송하는 브랜드의 최고 성과 기준이며, 발송 시점·상품·시즌에 따라 달라질 수 있습니다.</p>
-    </div>
   </div>
 </section>
 
@@ -1195,39 +1208,78 @@
 
 
 <script>
-/* 손실 계산기: 친구톡 미도달 30~40% 회원 → 성수기에 놓치는 매출 (근거: 업계 벤치마크 보수 추정값) */
+/* 손실 계산기: 닿지 못하는 회원 → 10~2월 성수기 5개월 월별 손실을 선으로 (근거: 미도달 비중·쿠폰 매출 기여율 보수 추정값) */
 (function(){
+  /* share=닿지 못하는 회원 비중, ret=성수기 쿠폰·혜택 발송이 만드는 매출 기여율 */
   var COEF={
-    fashion:{share:.38,ret:.06},beauty:{share:.40,ret:.07},food:{share:.34,ret:.09},
-    health:{share:.33,ret:.08},pet:{share:.37,ret:.09},baby:{share:.39,ret:.08},
-    living:{share:.34,ret:.06},digital:{share:.31,ret:.05},sports:{share:.36,ret:.07},hobby:{share:.37,ret:.07}
+    fashion:{share:.36,ret:.12},beauty:{share:.38,ret:.13},food:{share:.33,ret:.10},
+    health:{share:.34,ret:.12},pet:{share:.36,ret:.12},baby:{share:.37,ret:.12},
+    living:{share:.34,ret:.10},digital:{share:.32,ret:.09},sports:{share:.35,ret:.11},hobby:{share:.36,ret:.11}
   };
-  var REV_MID=[7000000,55000000,550000000,1500000000], PEAK=3;
+  var REV_MID=[7000000,55000000,550000000,1500000000];       /* 월 매출 중앙값 */
+  var MONTHS=['10월','11월','12월','1월','2월'];
+  var SEASON=[1.00,1.45,1.30,0.90,1.15];                     /* 성수기 지수: 블프·연말·설 */
   var st={cat:null,rev:null};
-  function won(n){
-    if(n>=100000000){var u=n/100000000;return (u>=10?Math.round(u):u.toFixed(1))+"억 원";}
-    return Math.round(n/10000).toLocaleString()+"만 원";
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function wonShort(n){
+    if(n>=100000000){var u=n/100000000;return (u>=10?Math.round(u):(Math.round(u*10)/10))+'억';}
+    return Math.round(n/10000).toLocaleString()+'만';
   }
-  var resEl=document.getElementById('kcResult'), lossEl=document.getElementById('kcLoss');
-  if(!resEl||!lossEl) return;
+  var resEl=document.getElementById('kcResult'), lossEl=document.getElementById('kcLoss'),
+      chartEl=document.getElementById('kcChart'), assumeEl=document.getElementById('kcAssume');
+  if(!resEl||!lossEl||!chartEl) return;
   var raf=null, key='';
+
   function countUp(target){
     cancelAnimationFrame(raf);
-    var from=Math.floor(target*0.4), DUR=1500, t0=performance.now();
+    if(reduce){lossEl.textContent=wonShort(target)+' 원';return;}
+    var from=Math.floor(target*0.35), DUR=1400, t0=performance.now();
     (function step(t){
       var p=Math.min((t-t0)/DUR,1), e=1-Math.pow(1-p,3);
-      lossEl.textContent=won(Math.round(from+(target-from)*e));
+      lossEl.textContent=wonShort(Math.round(from+(target-from)*e))+' 원';
       if(p<1) raf=requestAnimationFrame(step);
-    })(t0);
+    })(performance.now());
   }
+
+  function drawChart(vals){
+    var W=520,H=210,padX=16,padT=42,padB=30;
+    var plotW=W-padX*2, plotH=H-padT-padB, base=padT+plotH;
+    var maxV=Math.max.apply(null,vals)||1, peak=vals.indexOf(maxV);
+    var pts=vals.map(function(v,i){return {x:padX+plotW*(i/(vals.length-1)), y:padT+plotH*(1-v/maxV)};});
+    var d='M'+pts.map(function(p){return p.x.toFixed(1)+' '+p.y.toFixed(1);}).join(' L');
+    var area='M'+padX+' '+base+' L'+pts.map(function(p){return p.x.toFixed(1)+' '+p.y.toFixed(1);}).join(' L')+' L'+(padX+plotW)+' '+base+' Z';
+    var dots='',labels='',months='';
+    pts.forEach(function(p,i){
+      var big=(i===peak);
+      dots+='<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+(big?5:3.5)+'" style="fill:#fff;stroke:var(--red);stroke-width:'+(big?3:2)+'"/>';
+      labels+='<text x="'+p.x.toFixed(1)+'" y="'+(p.y-12).toFixed(1)+'" text-anchor="middle" font-size="12.5" font-weight="'+(big?800:700)+'" style="fill:var(--red-d)">'+wonShort(vals[i])+'</text>';
+      months+='<text x="'+p.x.toFixed(1)+'" y="'+(base+20)+'" text-anchor="middle" font-size="12" font-weight="600" style="fill:var(--muted)">'+MONTHS[i]+'</text>';
+    });
+    chartEl.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="10월부터 2월까지 월별 놓치는 매출 추이">'+
+      '<defs><linearGradient id="calcFill" x1="0" y1="0" x2="0" y2="1">'+
+      '<stop offset="0" style="stop-color:var(--red);stop-opacity:.16"/>'+
+      '<stop offset="1" style="stop-color:var(--red);stop-opacity:0"/></linearGradient></defs>'+
+      '<path d="'+area+'" fill="url(#calcFill)"/>'+
+      '<path d="'+d+'" class="cc-line" fill="none" style="stroke:var(--red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>'+
+      dots+labels+months+'</svg>';
+    var line=chartEl.querySelector('.cc-line');
+    if(line&&!reduce){var len=line.getTotalLength();line.style.strokeDasharray=len;line.style.strokeDashoffset=len;
+      requestAnimationFrame(function(){requestAnimationFrame(function(){line.style.transition='stroke-dashoffset 1s var(--ease)';line.style.strokeDashoffset=0;});});}
+  }
+
   function calc(){
     if(st.cat && st.rev!==null){
-      resEl.dataset.locked="0";
-      var c=COEF[st.cat], target=REV_MID[st.rev]*PEAK*c.ret*c.share, k=st.cat+'|'+st.rev;
-      if(k!==key){key=k;countUp(target);}
+      var c=COEF[st.cat], R=REV_MID[st.rev];
+      var vals=SEASON.map(function(s){return R*s*c.ret*c.share;});
+      var total=vals.reduce(function(a,b){return a+b;},0), k=st.cat+'|'+st.rev;
+      resEl.dataset.locked='0'; chartEl.hidden=false; assumeEl.hidden=false;
+      assumeEl.textContent='가정 · 닿지 못하는 회원 '+Math.round(c.share*100)+'% · 성수기 쿠폰·혜택 매출 기여율 '+Math.round(c.ret*100)+'% · 10~2월 5개월 누적';
+      if(k!==key){key=k; countUp(total); drawChart(vals);}
     }else{
       cancelAnimationFrame(raf); key='';
-      resEl.dataset.locked="1"; lossEl.textContent='?';
+      resEl.dataset.locked='1'; lossEl.textContent='?';
+      chartEl.hidden=true; assumeEl.hidden=true; chartEl.innerHTML='';
     }
   }
   document.querySelectorAll('#kcChips .calc-chip').forEach(function(b){b.addEventListener('click',function(){
