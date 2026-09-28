@@ -816,6 +816,14 @@
   .market-i span{font-size:12.5px;color:var(--muted);line-height:1.55}
   .market-src{margin-top:16px;text-align:center;font-size:11.5px;color:var(--muted);opacity:.9}
   .market-src a{color:inherit}
+  .news{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .news-i{display:flex;flex-direction:column;gap:8px;background:#fff;border:1px solid var(--red-t2);border-radius:12px;padding:16px 18px;text-decoration:none;color:var(--ink);transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+  .news-i:hover{transform:translateY(-2px);box-shadow:0 12px 24px -14px rgba(192,50,58,.35)}
+  .news-i:focus-visible{outline:2px solid var(--red);outline-offset:2px}
+  .news-m{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;color:var(--muted)}
+  .news-m em{font-style:normal;color:var(--red-d)}
+  .news-t{font-size:15px;font-weight:700;line-height:1.45;letter-spacing:-.02em}
+  @media(max-width:640px){.news{grid-template-columns:1fr;gap:10px}}
   @media(max-width:640px){.market{padding:22px 18px}.market-row{grid-template-columns:1fr;gap:10px}.market-i{flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;gap:14px}.market-i b{font-size:26px;flex-shrink:0;min-width:96px}}
   /* 손실 계산기 */
   .calcsec{background:var(--paper2)}
@@ -901,12 +909,22 @@
     </div>
     <div class="market">
       <p class="market-h">리스크는 이미 늘고 있습니다.</p>
+      <div class="news">
+        <a class="news-i" href="https://n.news.naver.com/mnews/article/023/0003999647?sid=105" target="_blank" rel="noopener">
+          <span class="news-m">조선일보 · 2026.09.21<em>기사 보기 ↗</em></span>
+          <span class="news-t">“카카오 ‘브랜드 메시지’ 스팸 신고 13만건...광고주 24곳에 과태료 처분”</span>
+        </a>
+        <a class="news-i" href="https://www.edaily.co.kr/News/Read?mediaCodeNo=257&amp;newsId=01453046645582088" target="_blank" rel="noopener">
+          <span class="news-m">이데일리 · 2026.09.20<em>기사 보기 ↗</em></span>
+          <span class="news-t">“카톡 ‘브랜드메시지’ 스팸 신고 9.5만건…과태료 11배↑”</span>
+        </a>
+      </div>
       <div class="market-row">
         <div class="market-i"><b>155%<i>↑</i></b><span>카카오톡 브랜드 메시지 스팸신고<br>올해 1~7월 9만 4,947건, 전년 하반기 대비</span></div>
         <div class="market-i"><b>11<i>배</i></b><span>관련 과태료 처분 건수<br>지난해 2건 → 올해 22건</span></div>
         <div class="market-i"><b>81.8%</b><span>처분 사유가 '매체별 수신동의 미이행'<br>과태료는 플랫폼이 아닌 광고주에게 부과</span></div>
       </div>
-      <p class="market-src">출처: <a href="https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01453046645582088" target="_blank" rel="noopener">이데일리 「카톡 '브랜드메시지' 스팸 신고 9.5만건…과태료 11배↑」</a> (2026.09.20)</p>
+      <p class="market-src">출처: KISA·방송미디어통신사무소 자료(이주희 의원실 제공), 조선일보·이데일리 보도</p>
     </div>
     <div class="tl">
       <p class="tl-h">하필, 한 해 매출이 몰리는 시즌 직전입니다.</p>
