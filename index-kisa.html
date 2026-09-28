@@ -966,9 +966,22 @@
   section.regsec .ba-card.before{background:var(--paper2);border-color:transparent}
 
   /* 소재: 파란 스마트톡톡 바부터 노출, 60% 지점에서 자르고 페이드 */
-  .aphone-card{-webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);border-radius:16px 16px 0 0}
+  .aphone-card{-webkit-mask-image:linear-gradient(to bottom,#000 75%,transparent 100%);mask-image:linear-gradient(to bottom,#000 75%,transparent 100%);border-radius:16px 16px 0 0}
   .aphone-card.crop img{margin-top:calc(var(--off,0) * -1%)}
   .aphone-screen{padding-bottom:22px}
+
+  /* 성수기 타임라인: 선을 굵게 + 밝은 빛이 흐르는 애니메이션 */
+  .seasec .tl-row::before{height:5px;top:4px;border-radius:99px;background:linear-gradient(90deg,var(--red),#ff7a2f 50%,#ffb347);background-size:100% 100%;animation:none!important;overflow:hidden}
+  .seasec .tl-row::after{content:"";position:absolute;top:2px;left:12.5%;width:12%;height:9px;border-radius:99px;background:radial-gradient(ellipse at center,rgba(255,255,255,.95),rgba(255,236,200,.6) 40%,transparent 72%);filter:blur(1px);z-index:0;opacity:0;pointer-events:none}
+  .seasec .tl.in .tl-row::after{animation:tlShine 2.4s cubic-bezier(.45,0,.3,1) 1.4s infinite}
+  @keyframes tlShine{0%{left:10%;opacity:0}12%{opacity:1}85%{opacity:1}100%{left:78%;opacity:0}}
+  .seasec .tl.in .tl-item .tl-dot{animation:tlPulse 2.4s ease-out 1.4s infinite}
+  .seasec .tl.in .tl-item:nth-child(2) .tl-dot{animation-delay:1.9s}
+  .seasec .tl.in .tl-item:nth-child(3) .tl-dot{animation-delay:2.4s}
+  .seasec .tl.in .tl-item:nth-child(4) .tl-dot{animation-delay:2.9s}
+  @keyframes tlPulse{0%{box-shadow:0 0 0 4px #fff,0 0 0 4px rgba(255,122,47,.45)}60%,100%{box-shadow:0 0 0 4px #fff,0 0 0 13px rgba(255,122,47,0)}}
+  @media(max-width:560px){.seasec .tl-row::after{display:none}}
+  @media(prefers-reduced-motion:reduce){.seasec .tl.in .tl-row::after,.seasec .tl.in .tl-item .tl-dot{animation:none}}
 </style>
 
 <header class="hero khero">
@@ -1073,7 +1086,7 @@
     <div class="dil-grid">
       <div class="dil-card">
         <span class="dil-k">카카오 브랜드메시지 · 친구 대상</span>
-        <div class="dil-big">닿는 고객 <span class="rd">최대 30%</span></div>
+        <div class="dil-big">구매 고객 중 <span class="rd">30%에 불과</span></div>
         <p>채널 친구에게만 닿습니다. 최근 6개월 구매 고객 중 채널 친구는 5~30%뿐입니다. (건당 20원)</p>
       </div>
       <div class="dil-card">
@@ -1225,10 +1238,10 @@
           <tr><th class="ch-k" scope="col">비교 항목</th><th class="ch-win" scope="col"><span class="ch-badge">추천</span>네이버 스마트 톡톡</th><th scope="col">카카오 브랜드메시지<small>친구 대상</small></th><th scope="col">카카오 브랜드메시지<small>비친구 대상</small></th><th scope="col">문자 (LMS)</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">도달 대상</th><td class="ch-win"><b>수신동의 회원 전체</b></td><td class="lim">채널 친구만</td><td>비친구까지<small>친구 5만 명 이상 브랜드</small></td><td>번호 보유 고객</td></tr>
+          <tr><th scope="row">도달 대상</th><td class="ch-win"><b>수신동의 회원 전체</b></td><td class="lim">채널 친구만</td><td>비친구까지</td><td>번호 보유 고객</td></tr>
           <tr><th scope="row">건당 비용</th><td class="ch-win"><b class="ch-big">5원</b></td><td class="lim">20원</td><td class="lim">약 35원</td><td class="lim">약 25~30원</td></tr>
           <tr><th scope="row">받는 곳</th><td class="ch-win"><b>네이버 앱 알림</b></td><td>카카오톡 채팅</td><td>카카오톡 채팅</td><td>문자함</td></tr>
-          <tr><th scope="row">한계</th><td class="ch-win"><b>비용·도달 모두 확보</b></td><td class="lim">닿는 고객 최대 30%</td><td class="lim">비용 약 7배 · 인박스 피로</td><td class="lim">비용 부담 · 스팸 인식</td></tr>
+          <tr><th scope="row">한계</th><td class="ch-win"><b>비용·도달 모두 확보</b></td><td class="lim">구매 고객 중 30%에 불과</td><td class="lim">비용 약 7배 · 인박스 피로</td><td class="lim">비용 부담 · 스팸 인식</td></tr>
         </tbody>
       </table>
     </div>
@@ -1236,9 +1249,9 @@
     <p class="chwin"><b>수신동의 회원 전체에게 건당 5원으로 닿는 채널은 네이버 스마트 톡톡뿐입니다.</b><br>기존 카카오톡·알림톡도 메시온에서 함께 운영합니다.</p>
     <div class="cmpnote"><span class="cmpplus" aria-hidden="true">+</span><div class="cmptxt"><p class="cmp-h">과징금이 시행되는 10월부터,<br class="pc"> <b>네이버 스마트 톡톡의 장점은 더 커집니다.</b></p>
       <ul class="cmp-pts">
-        <li>쿠폰 안내까지 광고로 몰리면서, 카카오톡 인박스는 더 붐빕니다.</li>
+        <li>쿠폰 안내까지 광고로 몰리면서, 카카오톡 광고 메시지는 더 포화됩니다.</li>
         <li>늘어나는 스팸 신고와 과태료는 모두 광고주의 몫입니다.</li>
-        <li>네이버 스마트 톡톡은 같은 수신동의 회원에게 카카오 브랜드메시지의 1/4~1/7 비용으로 닿습니다.</li>
+        <li>네이버 스마트 톡톡은 같은 수신동의 회원에게 카카오 브랜드메시지 비용의 14~25%로 닿습니다.</li>
       </ul></div></div>
   </div>
 </section>
@@ -1259,7 +1272,7 @@
   <div class="wrap">
     <h2 class="one">10월이 오기 전에,<br><span class="em">고객을 만날 채널을 준비해두세요.</span></h2>
     <div class="fbody">
-      <p>지금 쓰는 CRM과 쿠폰 운영은 그대로 두세요.<br>성수기 전에 <b>동의받은 고객 전체에게 합법적으로 닿는 길</b> 하나만 더하면 됩니다.</p>
+      <p>지금 쓰는 CRM과 쿠폰 운영은 그대로 두세요.<br>성수기 전에, <b>고객 모수 전체를 만나는 매체</b>를 더해보세요.</p>
       <button class="btn" onclick="openLead('consult')" style="margin-top:8px">10월 대응 방법 상담받기</button>
     </div>
   </div>
@@ -1602,7 +1615,7 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
 </script>
 <script>(function(){var r=document.querySelector('.reach');if(!r)return;if(!('IntersectionObserver' in window)){r.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('in');o.disconnect()}},{threshold:.4});o.observe(r)})();</script>
 <script>(function(){var t=document.querySelector('.seasec .tl');if(!t)return;if(!('IntersectionObserver' in window)){t.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){t.classList.add('in');o.disconnect()}},{threshold:.5});o.observe(t)})();</script>
-<script>(function(){var img=document.querySelector('.aphone-card img');if(!img)return;var card=img.parentNode,CUT=.6;
+<script>(function(){var img=document.querySelector('.aphone-card img');if(!img)return;var card=img.parentNode,CUT=.8;
 function fit(){var nw=img.naturalWidth,nh=img.naturalHeight;if(!nw)return;var yb=0;
  try{var c=document.createElement('canvas');c.width=nw;c.height=Math.min(nh,600);var x=c.getContext('2d');x.drawImage(img,0,0);var d=x.getImageData(Math.floor(nw/2),0,1,c.height).data;
   for(var y=0;y<c.height;y++){var r=d[y*4],b=d[y*4+2];if(b>200&&r<60){yb=y;break;}}}catch(e){yb=0}
