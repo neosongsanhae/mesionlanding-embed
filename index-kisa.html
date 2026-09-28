@@ -745,6 +745,23 @@
   .cmp-pts{margin:12px 0 0;padding:0;list-style:none;display:grid;gap:7px}
   .cmp-pts li{position:relative;padding-left:16px;font-size:14.5px;font-weight:500;color:var(--ink2);line-height:1.6}
   .cmp-pts li::before{content:"";position:absolute;left:2px;top:.66em;width:6px;height:6px;border-radius:50%;background:var(--blue)}
+
+  /* 3차: ROAS 모수 논거 */
+  .reach{margin:34px auto 0;max-width:620px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 28px 20px;display:flex;flex-direction:column;gap:14px}
+  .reach-t{font-size:15px;font-weight:800;color:var(--ink);letter-spacing:-.02em}
+  .reach-row{display:grid;grid-template-columns:9.5em 1fr 6.2em;align-items:center;gap:14px}
+  .reach-k{font-size:13.5px;font-weight:600;color:var(--muted)}
+  .reach-bar{height:14px;border-radius:99px;background:var(--paper2);overflow:hidden}
+  .reach-bar i{display:block;height:100%;width:var(--w);border-radius:99px;background:#c9ccd3;transform-origin:left;transition:transform 1.1s var(--ease)}
+  .reach-v{font-size:14.5px;font-weight:700;color:var(--ink);text-align:right;font-variant-numeric:tabular-nums}
+  .reach-row.win .reach-k{color:var(--blue-d);font-weight:800}
+  .reach-row.win .reach-bar i{background:var(--blue)}
+  .reach-row.win .reach-v{color:var(--blue);font-weight:800;font-size:16px}
+  .reach:not(.in) .reach-bar i{transform:scaleX(0)}
+  .reach-n{font-size:11.5px;color:var(--muted);margin-top:2px}
+  .roas-mid{text-align:center;margin:34px auto 0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.6;text-wrap:balance}
+  @media(max-width:560px){.reach{padding:22px 18px 18px}.reach-row{grid-template-columns:1fr auto;gap:6px 10px}.reach-bar{grid-column:1/-1;grid-row:2}}
+  @media(prefers-reduced-motion:reduce){.reach-bar i{transition:none}.reach:not(.in) .reach-bar i{transform:none}}
 </style>
 </head>
 <body>
@@ -984,7 +1001,7 @@
 <section class="ksec dilsec">
   <div class="wrap">
     <h2 class="ks-h">쿠폰 안내, 이제는 광고로 보내야 합니다.<br><span class="rd">그런데 카카오로는 비싸거나 좁습니다.</span></h2>
-    <p class="ksec-lead">안내를 멈추면 쿠폰은 쓰이지 않은 채 사라지고, 성수기 재구매도 줄어듭니다.<br class="pc"> 남은 길은 광고 발송인데, 카카오 채널로는 <b>비용과 도달 중 하나를 포기</b>해야 합니다.</p>
+    <p class="ksec-lead">10월부터 광고로 보낼 수 있는 대상은 수신동의 회원으로 줄어듭니다.<br class="pc"> 그런데 카카오 채널로는 이 모수마저 <b>더 좁아지거나, 비용이 몇 배로 뜁니다.</b></p>
     <div class="dil-grid">
       <div class="dil-card">
         <span class="dil-k">카카오 친구톡</span>
@@ -1091,8 +1108,16 @@
 <section class="roassec">
   <div class="wrap">
     <div class="roas-wrap">
-      <p class="roas-h">모수를 키워 <b>네이버 스마트 톡톡</b>으로 발송하면, 매출로 돌아옵니다</p>
-      <p class="roas-sub">동의받은 전 회원에게 합법적으로 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
+      <p class="roas-h">수신동의 회원 전체에게 보내니,<br><b>ROAS가 이만큼 나옵니다</b></p>
+      <p class="roas-sub">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
+      <div class="reach">
+        <p class="reach-t">같은 100만 원으로 닿는 고객 수</p>
+        <div class="reach-row win"><span class="reach-k">네이버 스마트 톡톡</span><span class="reach-bar"><i style="--w:100%"></i></span><span class="reach-v">20만 명</span></div>
+        <div class="reach-row"><span class="reach-k">카카오 친구톡</span><span class="reach-bar"><i style="--w:33.3%"></i></span><span class="reach-v">약 6.7만 명</span></div>
+        <div class="reach-row"><span class="reach-k">카카오 브랜드메시지</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
+        <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 친구톡 15원 · 브랜드메시지 약 35원)</p>
+      </div>
+      <p class="roas-mid">모수가 커진 만큼 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
       <div class="roas-grid">
         <div class="roas-card">
           <span class="roas-cat">언더웨어 브랜드 A사</span>
@@ -1165,7 +1190,7 @@
   <div class="wrap">
     <h2 class="one">10월이 오기 전에,<br><span class="em">고객을 만날 채널을 준비해두세요.</span></h2>
     <div class="fbody">
-      <p>지금 쓰는 CRM과 쿠폰 운영은 그대로 두세요.<br>성수기 전에 <b>동의받은 고객에게 합법적으로 닿는 길</b> 하나만 더하면 됩니다.</p>
+      <p>지금 쓰는 CRM과 쿠폰 운영은 그대로 두세요.<br>성수기 전에 <b>동의받은 고객 전체에게 합법적으로 닿는 길</b> 하나만 더하면 됩니다.</p>
       <button class="btn" onclick="openLead('consult')" style="margin-top:8px">10월 대응 방법 상담받기</button>
     </div>
   </div>
@@ -1506,5 +1531,6 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
   if(document.readyState!=="loading") init(); else document.addEventListener("DOMContentLoaded",init);
 })();
 </script>
+<script>(function(){var r=document.querySelector('.reach');if(!r)return;if(!('IntersectionObserver' in window)){r.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('in');o.disconnect()}},{threshold:.4});o.observe(r)})();</script>
 </body>
 </html>
