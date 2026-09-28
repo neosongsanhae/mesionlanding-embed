@@ -951,6 +951,19 @@
   section.cred{background:var(--paper)}
   section.faq{background:var(--paper2)}
   section.cofoot{background:var(--paper)}
+
+  /* 목업: 네이버 버전 smock 비율(372px, 높이는 소재에 맞춤)로 소재 전체 노출 */
+  .aphone{width:372px;max-width:92vw}
+  .aphone-frame{aspect-ratio:auto;padding:12px;border-radius:46px;-webkit-mask-image:none;mask-image:none}
+  .aphone-screen{height:auto;border-radius:36px;padding:52px 14px 30px}
+  .aphone-card{position:relative;top:auto;left:auto;right:auto;border-radius:16px}
+  .aphone-foot{bottom:11px}
+
+  /* 섹션 안 요소가 섹션 배경에 묻히지 않게 */
+  section.cmpsec .chwrap{background:#fff;border-color:#dfe2e8;box-shadow:0 22px 44px -30px rgba(23,43,77,.4)}
+  section.cmpsec .chtable thead th:not(.ch-win),section.cmpsec .chtable tbody th{background:#e8eaef;color:var(--ink2)}
+  section.calcsec .calc-card{background:var(--paper2);border-color:transparent}
+  section.regsec .ba-card.before{background:var(--paper2);border-color:transparent}
 </style>
 
 <header class="hero khero">
@@ -1114,7 +1127,7 @@
 
 <section class="aha">
   <div class="wrap">
-    <h2 class="aha-h">막힌 그 안내,<br><span class="nlogo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>네이버 앱으로 보낸다면 어떨까요?</h2>
+    <h2 class="aha-h">모든 마케팅 수신 동의 고객님께,<br><span class="nlogo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>네이버 앱으로 알림을 보낸다면 어떨까요?</h2>
     <div class="aphone reveal d1" aria-hidden="true">
       <div class="aphone-frame">
         <div class="aphone-screen">
