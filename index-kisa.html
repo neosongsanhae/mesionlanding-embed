@@ -964,6 +964,11 @@
   section.cmpsec .chtable thead th:not(.ch-win),section.cmpsec .chtable tbody th{background:#e8eaef;color:var(--ink2)}
   section.calcsec .calc-card{background:var(--paper2);border-color:transparent}
   section.regsec .ba-card.before{background:var(--paper2);border-color:transparent}
+
+  /* 소재: 파란 스마트톡톡 바부터 노출, 60% 지점에서 자르고 페이드 */
+  .aphone-card{-webkit-mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);mask-image:linear-gradient(to bottom,#000 62%,transparent 100%);border-radius:16px 16px 0 0}
+  .aphone-card.crop img{margin-top:calc(var(--off,0) * -1%)}
+  .aphone-screen{padding-bottom:22px}
 </style>
 
 <header class="hero khero">
@@ -1597,5 +1602,11 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
 </script>
 <script>(function(){var r=document.querySelector('.reach');if(!r)return;if(!('IntersectionObserver' in window)){r.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('in');o.disconnect()}},{threshold:.4});o.observe(r)})();</script>
 <script>(function(){var t=document.querySelector('.seasec .tl');if(!t)return;if(!('IntersectionObserver' in window)){t.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){t.classList.add('in');o.disconnect()}},{threshold:.5});o.observe(t)})();</script>
+<script>(function(){var img=document.querySelector('.aphone-card img');if(!img)return;var card=img.parentNode,CUT=.6;
+function fit(){var nw=img.naturalWidth,nh=img.naturalHeight;if(!nw)return;var yb=0;
+ try{var c=document.createElement('canvas');c.width=nw;c.height=Math.min(nh,600);var x=c.getContext('2d');x.drawImage(img,0,0);var d=x.getImageData(Math.floor(nw/2),0,1,c.height).data;
+  for(var y=0;y<c.height;y++){var r=d[y*4],b=d[y*4+2];if(b>200&&r<60){yb=y;break;}}}catch(e){yb=0}
+ card.style.setProperty('--off',(yb/nw*100).toFixed(3));card.style.aspectRatio=nw+' / '+Math.max(1,CUT*nh-yb);card.classList.add('crop');}
+img.addEventListener('load',fit);if(img.complete)fit();})();</script>
 </body>
 </html>
