@@ -712,12 +712,12 @@
   .calc-flabel2{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
   .calc-fv{font-size:15px;font-weight:800;color:var(--red);font-variant-numeric:tabular-nums}
   .calc-fv.unset{color:#b9bdc6;font-weight:600;font-size:13.5px}
-  .calc-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;margin:6px 0 0;cursor:pointer;background:linear-gradient(to right,var(--red) 0,var(--red) var(--p,0%),var(--line) var(--p,0%),var(--line) 100%)}
-  .calc-range::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--red);box-shadow:0 2px 8px rgba(229,72,77,.35);cursor:pointer}
-  .calc-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:6px solid var(--red);cursor:pointer}
-  .calc-range.unset::-webkit-slider-thumb{border-color:#c9ccd3;box-shadow:0 2px 6px rgba(0,0,0,.12)}
-  .calc-range.unset::-moz-range-thumb{border-color:#c9ccd3}
-  .calc-range:focus-visible{outline:2px solid var(--red);outline-offset:6px}
+  input.calc-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;margin:6px 0 0;cursor:pointer;background:linear-gradient(to right,var(--red) 0,var(--red) var(--p,0%),var(--line) var(--p,0%),var(--line) 100%)}
+  input.calc-range::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:6px solid var(--red);box-shadow:0 2px 8px rgba(229,72,77,.35);cursor:pointer}
+  input.calc-range::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:6px solid var(--red);cursor:pointer}
+  input.calc-range.unset::-webkit-slider-thumb{border-color:#c9ccd3;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+  input.calc-range.unset::-moz-range-thumb{border-color:#c9ccd3}
+  input.calc-range:focus-visible{outline:2px solid var(--red);outline-offset:6px}
   .calc-gscale{display:flex;justify-content:space-between;margin:8px 0 16px;font-size:11.5px;font-weight:700;color:#b4b8c2}
   .sub1.sub1-x{max-width:30em;color:var(--ink2);font-size:clamp(1.06rem,2.3vw,1.28rem);font-weight:500;line-height:1.7}
   .sub1-x .s-lead{display:block;margin-bottom:10px;font-size:1.22em;font-weight:800;color:var(--ink);letter-spacing:-.03em}
@@ -984,7 +984,7 @@
 <section class="ksec dilsec">
   <div class="wrap">
     <h2 class="ks-h">쿠폰 안내, 이제는 광고로 보내야 합니다.<br><span class="rd">그런데 카카오로는 비싸거나 좁습니다.</span></h2>
-    <p class="ksec-lead">안내를 멈추면 쿠폰은 쓰이지 않은 채 사라지고, 성수기 재구매도 함께 줄어듭니다.<br class="pc"> 남은 길은 수신동의 회원에게 광고로 보내는 것. 그런데 카카오 채널로는 <b>비용과 도달 중 하나를 포기</b>해야 합니다.</p>
+    <p class="ksec-lead">안내를 멈추면 쿠폰은 쓰이지 않은 채 사라지고, 성수기 재구매도 줄어듭니다.<br class="pc"> 남은 길은 광고 발송인데, 카카오 채널로는 <b>비용과 도달 중 하나를 포기</b>해야 합니다.</p>
     <div class="dil-grid">
       <div class="dil-card">
         <span class="dil-k">카카오 친구톡</span>
@@ -994,7 +994,7 @@
       <div class="dil-card">
         <span class="dil-k">카카오 브랜드 메시지</span>
         <div class="dil-big">비용 <span class="rd">약 5배</span></div>
-        <p>비친구까지 닿지만 건당 평균 35원입니다. 올해 스팸 신고는 155% 늘었고, 과태료는 광고주가 냅니다.</p>
+        <p>비친구까지 닿지만 건당 평균 35원입니다. 올해 <span style="white-space:nowrap">스팸 신고는</span> 155% 늘었고, 과태료는 광고주가 냅니다.</p>
       </div>
     </div>
   </div>
