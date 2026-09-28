@@ -762,6 +762,23 @@
   .roas-mid{text-align:center;margin:34px auto 0;font-size:16px;font-weight:700;color:var(--ink);line-height:1.6;text-wrap:balance}
   @media(max-width:560px){.reach{padding:22px 18px 18px}.reach-row{grid-template-columns:1fr auto;gap:6px 10px}.reach-bar{grid-column:1/-1;grid-row:2}}
   @media(prefers-reduced-motion:reduce){.reach-bar i{transition:none}.reach:not(.in) .reach-bar i{transform:none}}
+
+  /* 3차: 성수기 섹션·표 보강 */
+  .seasec{background:var(--paper2);border-top:1px solid var(--line)}
+  .seasec .tl{margin-top:44px}
+  .seasec .tl-row::before{background:linear-gradient(90deg,var(--red) 0%,#ff8a3d 25%,#ffc46b 50%,#ff8a3d 75%,var(--red) 100%);background-size:200% 100%;transform-origin:left;transform:scaleX(0);transition:transform 1.4s var(--ease)}
+  .tl.in .tl-row::before{transform:scaleX(1);animation:tlFlow 3.2s linear 1.4s infinite}
+  @keyframes tlFlow{0%{background-position:0 0}100%{background-position:-200% 0}}
+  .tl-item.hot .tl-dot{background:#ff8a3d;transform:scale(0);transition:transform .45s var(--ease)}
+  .tl.in .tl-item.hot .tl-dot{transform:scale(1)}
+  .tl.in .tl-item.hot:nth-child(2) .tl-dot{transition-delay:.5s}
+  .tl.in .tl-item.hot:nth-child(3) .tl-dot{transition-delay:.85s}
+  .tl.in .tl-item.hot:nth-child(4) .tl-dot{transition-delay:1.2s}
+  .tl-item.hot b{color:#e8641c}
+  .chtable th small,.chtable td small{display:block;font-size:.78em;font-weight:500;opacity:.8;margin-top:3px}
+  .cmp-src{text-align:center;margin:14px auto 0}
+  .roassec .one{margin:0 auto;text-align:center;max-width:none;text-wrap:balance}
+  @media(prefers-reduced-motion:reduce){.seasec .tl-row::before{transform:none;transition:none;animation:none}.tl-item.hot .tl-dot{transform:none;transition:none}}
 </style>
 </head>
 <body>
@@ -916,7 +933,7 @@
   <div class="wrap">
     <span class="kchip reveal in">2026년 10월 시행 · 정보통신망법 제7차 개정</span>
     <h1 class="reveal in">"고객님, 쿠폰 곧 만료됩니다"<br><span class="rd">이 알림, 이제 불법이라면?</span></h1>
-    <p class="hero-sub reveal in d1">동의 없이 보내오던 쿠폰·적립금 만료 안내가 10월부터 <span style="white-space:nowrap"><b>광고성(스팸)</b>으로</span> 분류됩니다. 계도기간 없이 <b>과태료와 매출 과징금</b> 대상입니다.</p>
+    <p class="hero-sub reveal in d1">동의 없이 보내오던 쿠폰·적립금 만료 안내가 10월부터 <span style="white-space:nowrap"><b>광고성(스팸)</b>으로</span> 분류됩니다. 적발되면 <b>과태료에 매출 과징금</b>까지 더해집니다.</p>
     <div class="kcta reveal in d2">
       <button class="btn" onclick="openLead('consult')">10월 대응 방법 상담받기</button>
       <span class="ksource">출처 · KISA 불법스팸 방지 정보통신망법 제7차 개정안</span>
@@ -951,7 +968,7 @@
 <section class="ksec pensec">
   <div class="wrap">
     <h2 class="ks-h">이제는 <span class="rd">실제로 처벌</span>받습니다.</h2>
-    <p class="ksec-lead">계도기간은 끝났습니다. 동의 없는 광고성 발송은 적발 즉시 과태료가 부과되고,<br class="pc"> 이번 개정으로 매출 기반 과징금까지 더해집니다.</p>
+    <p class="ksec-lead">동의 없는 광고성 발송은 적발 즉시 과태료 대상이고,<br class="pc"> 10월 1일부터는 관련 매출 기반 과징금까지 더해집니다.</p>
     <div class="pen-grid">
       <div class="pen-card">
         <span class="pen-k">위반 시 과태료</span>
@@ -984,34 +1001,38 @@
       </div>
       <p class="market-src">출처: KISA·방송미디어통신사무소 자료(이주희 의원실 제공), 조선일보·이데일리 보도</p>
     </div>
-    <div class="tl">
-      <p class="tl-h">하필, 한 해 매출이 몰리는 시즌 직전입니다.</p>
-      <div class="tl-row">
-        <div class="tl-item warn"><span class="tl-dot"></span><b>10월</b><span>개정 시행 · 단속 시작</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><b>11월</b><span>블랙프라이데이</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><b>12월</b><span>크리스마스·연말</span></div>
-        <div class="tl-item"><span class="tl-dot"></span><b>1~2월</b><span>설날</span></div>
-      </div>
-      <p class="tl-note">쿠폰 리마인드로 재구매를 끌어올리던 성수기 직전에, 바로 그 안내가 막힙니다.</p>
-    </div>
     <p class="disc">본 안내는 KISA 정보통신망법 제7차 개정안 해석에 기반한 것으로, 개별 사안에 대한 법률 자문이 아닙니다.</p>
   </div>
 </section>
 
+<section class="ksec seasec">
+  <div class="wrap">
+    <h2 class="ks-h">하필, 한 해 매출이 몰리는<br><span class="rd">성수기 직전입니다.</span></h2>
+    <p class="ksec-lead">블랙프라이데이부터 설날까지, 쿠폰 안내 한 통으로 가장 많은 회원을 다시 불러오던 시기입니다.<br class="pc"> 1년 중 가장 중요한 이 시즌에, 그 많은 고객님들을 그대로 놓치시겠어요?</p>
+    <div class="tl">
+      <div class="tl-row">
+        <div class="tl-item warn"><span class="tl-dot"></span><b>10월</b><span>과징금 시행 · 단속 강화</span></div>
+        <div class="tl-item hot"><span class="tl-dot"></span><b>11월</b><span>블랙프라이데이</span></div>
+        <div class="tl-item hot"><span class="tl-dot"></span><b>12월</b><span>크리스마스·연말</span></div>
+        <div class="tl-item hot"><span class="tl-dot"></span><b>1~2월</b><span>설날</span></div>
+      </div>
+    </div>
+  </div>
+</section>
 <section class="ksec dilsec">
   <div class="wrap">
     <h2 class="ks-h">쿠폰 안내, 이제는 광고로 보내야 합니다.<br><span class="rd">그런데 카카오로는 비싸거나 좁습니다.</span></h2>
     <p class="ksec-lead">10월부터 광고로 보낼 수 있는 대상은 수신동의 회원으로 줄어듭니다.<br class="pc"> 그런데 카카오 채널로는 이 모수마저 <b>더 좁아지거나, 비용이 몇 배로 뜁니다.</b></p>
     <div class="dil-grid">
       <div class="dil-card">
-        <span class="dil-k">카카오 친구톡</span>
-        <div class="dil-big">도달 모수 <span class="rd">60~80% 감소</span></div>
-        <p>채널 친구에게만 닿습니다. 수신동의를 받았어도 친구가 아니면 보낼 수 없습니다. (건당 15원)</p>
+        <span class="dil-k">카카오 브랜드메시지 · 친구 대상</span>
+        <div class="dil-big">닿는 고객 <span class="rd">최대 30%</span></div>
+        <p>채널 친구에게만 닿습니다. 최근 6개월 구매 고객 중 채널 친구는 5~30%뿐입니다. (건당 약 25원)</p>
       </div>
       <div class="dil-card">
-        <span class="dil-k">카카오 브랜드 메시지</span>
-        <div class="dil-big">비용 <span class="rd">약 5배</span></div>
-        <p>비친구까지 닿지만 건당 평균 35원입니다. 올해 <span style="white-space:nowrap">스팸 신고는</span> 155% 늘었고, 과태료는 광고주가 냅니다.</p>
+        <span class="dil-k">카카오 브랜드메시지 · 비친구 대상</span>
+        <div class="dil-big">비용 <span class="rd">약 7배</span></div>
+        <p>비친구까지 닿지만 건당 약 35원이고, 채널 친구 5만 명 이상 브랜드만 보낼 수 있습니다. 과태료도 광고주가 냅니다.</p>
       </div>
     </div>
   </div>
@@ -1020,7 +1041,7 @@
 <section class="ksec calcsec" id="losscalc">
   <div class="wrap">
     <h2 class="ks-h">놓치는 고객님들, <span class="rd">성수기 매출로 환산하면</span></h2>
-    <p class="ksec-lead">광고로 돌리는 순간 카카오로는 닿지 않는 회원이 생깁니다. 보수적으로 잡아도 전체의 30~40%.<br class="pc"> 이 고객님들을 성수기에 놓치면 얼마인지 확인해보세요.</p>
+    <p class="ksec-lead">광고로 돌리는 순간 카카오로는 닿지 않는 회원이 생깁니다. 비친구 발송까지 감안해 보수적으로 잡아도 전체의 30~40%.<br class="pc"> 이 고객님들을 성수기에 놓치면 얼마인지 확인해보세요.</p>
     <div class="calc-card">
       <p class="calc-title">놓치는 성수기 매출 계산해보기</p>
       <div class="calc-field">
@@ -1108,14 +1129,14 @@
 <section class="roassec">
   <div class="wrap">
     <div class="roas-wrap">
-      <p class="roas-h">수신동의 회원 전체에게 보내니,<br><b>ROAS가 이만큼 나옵니다</b></p>
-      <p class="roas-sub">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
+      <h2 class="one">수신동의 회원 전체에게 보내니,<br><span class="em">ROAS가 이만큼 나옵니다.</span></h2>
+      <p class="ksec-lead">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
       <div class="reach">
         <p class="reach-t">같은 100만 원으로 닿는 고객 수</p>
         <div class="reach-row win"><span class="reach-k">네이버 스마트 톡톡</span><span class="reach-bar"><i style="--w:100%"></i></span><span class="reach-v">20만 명</span></div>
-        <div class="reach-row"><span class="reach-k">카카오 친구톡</span><span class="reach-bar"><i style="--w:33.3%"></i></span><span class="reach-v">약 6.7만 명</span></div>
-        <div class="reach-row"><span class="reach-k">카카오 브랜드메시지</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
-        <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 친구톡 15원 · 브랜드메시지 약 35원)</p>
+        <div class="reach-row"><span class="reach-k">브랜드메시지 · 친구</span><span class="reach-bar"><i style="--w:20%"></i></span><span class="reach-v">4만 명</span></div>
+        <div class="reach-row"><span class="reach-k">브랜드메시지 · 비친구</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
+        <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 카카오 브랜드메시지 친구 약 25원 · 비친구 약 35원)</p>
       </div>
       <p class="roas-mid">모수가 커진 만큼 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
       <div class="roas-grid">
@@ -1154,22 +1175,23 @@
     <div class="chwrap">
       <table class="chtable" aria-label="광고성 발송 매체별 비교">
         <thead>
-          <tr><th class="ch-k" scope="col">비교 항목</th><th class="ch-win" scope="col"><span class="ch-badge">추천</span>네이버 스마트 톡톡</th><th scope="col">카카오 친구톡</th><th scope="col">카카오 브랜드메시지</th><th scope="col">문자 (LMS)</th></tr>
+          <tr><th class="ch-k" scope="col">비교 항목</th><th class="ch-win" scope="col"><span class="ch-badge">추천</span>네이버 스마트 톡톡</th><th scope="col">카카오 브랜드메시지<small>친구 대상</small></th><th scope="col">카카오 브랜드메시지<small>비친구 대상</small></th><th scope="col">문자 (LMS)</th></tr>
         </thead>
         <tbody>
-          <tr><th scope="row">도달 대상</th><td class="ch-win"><b>수신동의 회원 전체</b></td><td class="lim">채널 친구만</td><td>비친구까지</td><td>번호 보유 고객</td></tr>
-          <tr><th scope="row">건당 비용</th><td class="ch-win"><b class="ch-big">5원</b></td><td>15원</td><td class="lim">약 35원</td><td class="lim">약 25~30원</td></tr>
+          <tr><th scope="row">도달 대상</th><td class="ch-win"><b>수신동의 회원 전체</b></td><td class="lim">채널 친구만</td><td>비친구까지<small>친구 5만 명 이상 브랜드</small></td><td>번호 보유 고객</td></tr>
+          <tr><th scope="row">건당 비용</th><td class="ch-win"><b class="ch-big">5원</b></td><td class="lim">약 25원</td><td class="lim">약 35원</td><td class="lim">약 25~30원</td></tr>
           <tr><th scope="row">받는 곳</th><td class="ch-win"><b>네이버 앱 알림</b></td><td>카카오톡 채팅</td><td>카카오톡 채팅</td><td>문자함</td></tr>
-          <tr><th scope="row">한계</th><td class="ch-win"><b>비용·도달 모두 확보</b></td><td class="lim">도달 모수 60~80% 감소</td><td class="lim">비용 약 5배 · 인박스 피로</td><td class="lim">비용 부담 · 스팸 인식</td></tr>
+          <tr><th scope="row">한계</th><td class="ch-win"><b>비용·도달 모두 확보</b></td><td class="lim">닿는 고객 최대 30%</td><td class="lim">비용 약 7배 · 인박스 피로</td><td class="lim">비용 부담 · 스팸 인식</td></tr>
         </tbody>
       </table>
     </div>
+    <p class="send-src cmp-src">카카오 브랜드메시지는 공식 단가가 공개되지 않아 대행사 표준 단가 기준(VAT 별도) · 채널 친구 비율: 최근 6개월 구매 고객 기준(버클, 2026.02)</p>
     <p class="chwin"><b>수신동의 회원 전체에게 건당 5원으로 닿는 채널은 네이버 스마트 톡톡뿐입니다.</b><br>기존 카카오톡·알림톡도 메시온에서 함께 운영합니다.</p>
-    <div class="cmpnote"><span class="cmpplus" aria-hidden="true">+</span><div class="cmptxt"><p class="cmp-h">계도기간이 종료되는 10월부터,<br class="pc"> <b>네이버 스마트 톡톡의 장점은 더 커집니다.</b></p>
+    <div class="cmpnote"><span class="cmpplus" aria-hidden="true">+</span><div class="cmptxt"><p class="cmp-h">과징금이 시행되는 10월부터,<br class="pc"> <b>네이버 스마트 톡톡의 장점은 더 커집니다.</b></p>
       <ul class="cmp-pts">
         <li>쿠폰 안내까지 광고로 몰리면서, 카카오톡 인박스는 더 붐빕니다.</li>
         <li>늘어나는 스팸 신고와 과태료는 모두 광고주의 몫입니다.</li>
-        <li>네이버 스마트 톡톡은 같은 수신동의 회원에게 친구톡의 1/3, 브랜드메시지의 1/7 비용으로 닿습니다.</li>
+        <li>네이버 스마트 톡톡은 같은 수신동의 회원에게 카카오 브랜드메시지의 1/5~1/7 비용으로 닿습니다.</li>
       </ul></div></div>
   </div>
 </section>
@@ -1202,8 +1224,8 @@
     <div class="faqs" id="faqAcc">
       <div class="qa"><button class="q" type="button">우리 브랜드도 개정 대상인가요?<span class="qi"></span></button>
         <div class="a"><p>회원가입·이벤트·룰렛으로 동의 없이 먼저 준 쿠폰·포인트의 발급·만료를 안내해 왔다면 대상입니다. 10월부터 이 안내는 마케팅 수신동의가 없는 회원에게 보낼 수 없습니다.</p></div></div>
-      <div class="qa"><button class="q" type="button">언제부터 적용되고, 계도기간이 있나요?<span class="qi"></span></button>
-        <div class="a"><p>2026년 10월 시행이며 계도기간은 없습니다. 동의 없는 광고성 발송이 적발되면 과태료에 매출 기반 과징금까지 더해질 수 있습니다.</p></div></div>
+      <div class="qa"><button class="q" type="button">언제부터 적용되나요?<span class="qi"></span></button>
+        <div class="a"><p>개정 정보통신망법의 과징금이 2026년 10월 1일부터 시행됩니다. 동의 없는 광고성 발송이 적발되면 과태료에 관련 매출의 최대 6% 과징금까지 더해질 수 있습니다.</p></div></div>
       <div class="qa"><button class="q" type="button">그래도 정보성으로 보낼 수 있는 건 무엇인가요?<span class="qi"></span></button>
         <div class="a"><p>고객이 직접 발급받은 쿠폰, 구매로 쌓여 회계상 충당부채로 처리되는 적립금의 소멸 안내는 정보성입니다. 사용 시점에 매출할인으로 처리되는 혜택은 광고성으로 봅니다. 정확한 적용은 KISA 개정안과 자문으로 확인하시길 권합니다.</p></div></div>
       <div class="qa"><button class="q" type="button">마케팅 수신동의는 어떻게 확보하나요?<span class="qi"></span></button>
@@ -1532,5 +1554,6 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
 })();
 </script>
 <script>(function(){var r=document.querySelector('.reach');if(!r)return;if(!('IntersectionObserver' in window)){r.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('in');o.disconnect()}},{threshold:.4});o.observe(r)})();</script>
+<script>(function(){var t=document.querySelector('.seasec .tl');if(!t)return;if(!('IntersectionObserver' in window)){t.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){t.classList.add('in');o.disconnect()}},{threshold:.5});o.observe(t)})();</script>
 </body>
 </html>
