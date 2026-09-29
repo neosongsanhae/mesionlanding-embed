@@ -157,10 +157,10 @@
   .rb-fill{position:absolute;inset:0;clip-path:inset(0 100% 0 0)}
   .rb-seg b{position:relative;z-index:1;display:inline-block;font-size:28px;font-weight:800;line-height:1;letter-spacing:-.5px;font-variant-numeric:tabular-nums;opacity:.16}
   .rb-seg small{position:relative;z-index:1;font-size:13px;font-weight:600;margin-top:6px;line-height:1.35;white-space:nowrap;opacity:.16}
-  .rb-kk{width:40%;background:#eef1f6;color:var(--ink2)}
+  .rb-kk{width:30%;background:#eef1f6;color:var(--ink2)}
   .rb-kk .rb-fill{background:#cfd6e3}
   .rb-kk small{color:var(--muted)}
-  .rb-mez{width:60%;background:#e0e8fb;color:#fff}
+  .rb-mez{width:70%;background:#e0e8fb;color:#fff}
   .rb-mez .rb-fill{background:linear-gradient(135deg,var(--blue),var(--blue-d))}
   .rb-mez small{opacity:.16}
   /* 순서 대조: 회색 40이 먼저 채워지고, 파란 60이 이어서 더 길고 느리게 채워짐 */
@@ -576,6 +576,10 @@
   section.cofoot .cf-card{background:var(--paper2);border-color:transparent}
   section.engine .ecol{background:var(--paper2);border-color:transparent}
   .cred .stats3{grid-template-columns:repeat(2,1fr)}
+  .src-tiny{margin-top:12px;font-size:11px;line-height:1.5;color:var(--muted);opacity:.85;font-weight:500}
+  .leak .src-tiny{margin-top:6px;color:inherit;opacity:.6}
+  .cal .ch{display:flex;justify-content:space-between;align-items:center}
+  .ex-tag{font-size:11px;font-weight:600;color:var(--muted);background:var(--paper2);border-radius:99px;padding:3px 9px}
 
 </style>
 </head>
@@ -598,6 +602,7 @@
     <div class="leak reveal in d1">
       <div class="cap"><span class="pulse"></span>지금 메시지가 닿지 않는 자사몰 회원, 우리 브랜드의 매출</div>
       <div class="num"><span id="leakNum">0</span><small>원 / 연</small></div>
+      <div class="src-tiny">업종별 벤치마크 기반 보수적 추정치</div>
     </div>
     <div class="chips reveal in d2" id="chips">
       <button class="chip on" data-c="fashion">패션</button>
@@ -639,22 +644,23 @@
 <!-- 기존 고객 도달: 가로 바 -->
 <section class="receipt-sec">
   <div class="wrap">
-    <h2 class="one reveal">대부분의 브랜드는,<br><span class="em">회원 10명 중 4명에게만 닿습니다.</span></h2>
-    <p class="rb-lead reveal d1">지금의 CRM이 대부분 <b>카카오톡 하나에</b> 기대고 있기 때문입니다.<br>카카오톡 채널을 추가하지 않은 회원에게는 메시지가 가지 않습니다.</p>
+    <h2 class="one reveal">카카오톡으로는,<br><span class="em">많아야 10명 중 3명에게 닿습니다.</span></h2>
+    <p class="rb-lead reveal d1">지금의 CRM은 대부분 <b>카카오톡 하나에</b> 기대고 있습니다.<br>그런데 최근 6개월 구매 고객 중 카카오톡 채널 친구는 <b>5~30%</b>뿐입니다.</p>
     <div class="reachbar reveal d1">
-      <div class="rb-scale"><span>우리 자사몰 회원 전체</span><span>100%</span></div>
+      <div class="rb-scale"><span>최근 6개월 구매 고객 전체</span><span>100%</span></div>
       <div class="rb-track">
-        <div class="rb-kk rb-seg"><span class="rb-fill"></span><b>40%</b><small>카카오톡으로 메시지가 닿는 회원</small></div>
-        <div class="rb-mez rb-seg"><span class="rb-fill"></span><b>60%</b><small>지금은 메시지가 닿지 않는 회원</small></div>
+        <div class="rb-kk rb-seg"><span class="rb-fill"></span><b>30%</b><small>카카오톡 채널 친구 (많아야)</small></div>
+        <div class="rb-mez rb-seg"><span class="rb-fill"></span><b>70%</b><small>카카오톡으로는 닿지 않는 고객</small></div>
       </div>
     </div>
+    <p class="src-tiny">출처: 버클, 최근 6개월 구매 고객 중 카카오톡 채널 친구 비율 5~30% (2026.02) · 막대는 최댓값 30% 기준</p>
   </div>
 </section>
 
 <!-- 계산기 -->
 <section class="calc" id="calc">
   <div class="wrap">
-    <h2 class="one reveal"><span style="white-space:nowrap">닿지 않는 나머지 60%,</span><br><span style="white-space:nowrap">매출로 바꾸면 얼마일까요?</span></h2>
+    <h2 class="one reveal"><span style="white-space:nowrap">닿지 않는 그 고객들,</span><br><span style="white-space:nowrap">매출로 바꾸면 얼마일까요?</span></h2>
     <div class="calc-card reveal d1">
       <div class="field">
         <div class="flabel"><span class="n">한 달 주문 건수</span><span class="v" id="ordVal">월 2만~10만건</span></div>
@@ -747,6 +753,7 @@
         <div class="noti"><div class="nb kk"><svg width="26" height="26" viewBox="0 0 48 48" fill="none"><path d="M24 7C13.5 7 5 13.7 5 21.9c0 5.3 3.5 9.9 8.9 12.6-.4 1.5-1.4 5.3-1.6 6.1-.25 1 .37.99.78.72.32-.21 5.06-3.44 7.12-4.84 1.24.18 2.5.28 3.8.28 10.5 0 19-6.7 19-14.9S34.5 7 24 7z" fill="#3C1E1E"/><text x="24" y="26.6" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="800" font-size="13.5" letter-spacing="-.5" fill="#FAE100">TALK</text></svg></div><div class="t"><b>겨울 시즌 오픈 소식</b>같은 캠페인을 카카오톡으로도 보냅니다.</div><span class="tag kkt">카카오톡</span></div>
       </div>
     </div>
+    <p class="src-tiny">네이버 앱 월 이용자: 모바일인덱스(아이지에이웍스) 2025년 월평균 4,494만 명, 이투데이 2026.01.08 보도</p>
   </div>
 </section>
 
@@ -850,12 +857,12 @@
           <tr>
             <td class="feat">구매 연결</td>
             <td class="kk">링크 이동 후 로그인·결제</td>
-            <td class="mez"><b>로그인 없이</b> 클릭 즉시 결제</td>
+            <td class="mez"><b>다시 로그인 없이</b> 네이버페이로 결제</td>
           </tr>
           <tr>
-            <td class="feat">정보성 발송 단가</td>
-            <td class="kk">5.5원~</td>
-            <td class="mez"><b>4원</b> (프로모션)</td>
+            <td class="feat">광고성 발송 단가</td>
+            <td class="kk">약 20원(친구) · 약 35원(비친구)</td>
+            <td class="mez"><b>5원</b> (프로모션)</td>
           </tr>
           <tr>
             <td class="feat">함께 운영</td>
@@ -866,6 +873,7 @@
       </table>
     </div>
     <p class="cmpnote reveal d1">쓰시던 카카오톡은 그대로 두고, 카카오톡이 놓친 자사몰 회원을 네이버로 더합니다.<br><b>카카오톡·알림톡도 메시온에서 함께 보낼 수 있습니다.</b></p>
+    <p class="src-tiny">카카오 브랜드메시지 단가: 공식 단가 비공개로 대행사 표준 단가 기준(VAT 별도). 비친구 발송은 채널 친구 5만 명 이상 브랜드만 가능</p>
   </div>
 </section>
 
@@ -920,6 +928,7 @@
       <div class="st"><div class="n" data-to="4494" data-suf="만">0</div><div class="l">네이버 앱 월 이용자 (2025년 평균)</div></div>
     </div>
     <p class="crednote reveal d1">회원 200만 규모 브랜드의 캠페인도 같은 인프라에서 발송합니다.</p>
+    <p class="src-tiny">월 발송 건수: 메시온 발송 데이터 · 네이버 앱 월 이용자: 모바일인덱스 2025년 월평균</p>
   </div>
 </section>
 
@@ -932,7 +941,7 @@
         <p class="sub1 reveal d1">닿는 회원이 넓어진 위에, 누구에게 언제 무엇을 보낼지가 남습니다. 판매 시즌과 고객별 재구매 주기를 읽어 메시온 AX가 소재를 제안하고, 발송 캘린더를 채워 둡니다.</p>
       </div>
       <div class="cal reveal rr d1">
-        <div class="ch"><span>11월 발송 캘린더</span></div>
+        <div class="ch"><span>11월 발송 캘린더</span><span class="ex-tag">예시 화면</span></div>
         <div class="rowi"><span class="dte">11.03</span><span class="tx">가을 시즌 오프닝<span>시즌 프로모션 · 소재 3종 제안</span></span><span class="stt ready">준비됨</span></div>
         <div class="rowi"><span class="dte">11.14</span><span class="tx">재구매 주기 도래 1,240명<span>고객별 소재 매칭</span></span><span class="stt auto">AX 추천</span></div>
         <div class="rowi"><span class="dte">11.28</span><span class="tx">블랙프라이데이 D-day<span>혜택·타깃·소재 준비 완료</span></span><span class="stt ready">준비됨</span></div>
@@ -978,7 +987,7 @@
       <div class="qa"><button class="q" type="button">정보성·광고성 메시지는 어디까지 보낼 수 있나요?<span class="qi"></span></button>
         <div class="a"><p>정보성 안내는 규정에 맞게 전체 고객에게 보내고, 광고성 메시지는 수신동의한 고객에게만 보냅니다. 광고성에는 수신 거부 경로가 늘 함께 담깁니다. 모두 네이버 스마트 톡톡의 공식 발송 정책 안에서 이뤄집니다.</p></div></div>
       <div class="qa"><button class="q" type="button">자사앱 푸시를 쓰고 있어도 필요할까요?<span class="qi"></span></button>
-        <div class="a"><p>앱 알림을 꺼두는 회원이 늘면서 푸시로 닿는 회원은 줄고 있습니다. 네이버 스마트 톡톡은 앱 알림 허용과 상관없이 마케팅 수신동의 회원에게 보낼 수 있어, 쓰던 푸시에 도달을 한 겹 더합니다.</p></div></div>
+        <div class="a"><p>알림 허용률은 아이폰 44.5%, 안드로이드 71.3%(업종별 중간값, Airship 2025)이고, 안드로이드 허용률이 1년 새 85%에서 67%로 떨어졌다는 조사(Batch 2025)도 있습니다. 네이버 스마트 톡톡은 앱 알림 허용과 상관없이 마케팅 수신동의 회원에게 보낼 수 있어, 쓰던 푸시에 도달을 한 겹 더합니다.</p></div></div>
       <div class="qa"><button class="q" type="button">쿠폰·적립금 만료 안내도 보낼 수 있나요?<span class="qi"></span></button>
         <div class="a"><p>네. 다만 브랜드가 먼저 준 쿠폰·포인트 안내는 광고성으로 보기 때문에, 마케팅 수신동의 회원에게 (광고) 표기를 붙여 보내야 합니다. 구매 적립금처럼 거래에 따른 안내는 정보성으로 보낼 수 있고, 표기와 수신거부 처리는 메시온이 규정에 맞춰 지원합니다.</p></div></div>
       <div class="qa"><button class="q" type="button">카카오톡·알림톡도 보낼 수 있나요?<span class="qi"></span></button>
@@ -1171,8 +1180,8 @@ document.querySelectorAll('.reveal:not(.in)').forEach(el=>io.observe(el));
   function up(el,target,dur,delay){if(!el)return;el.textContent='0%';
     setTimeout(function(){const t0=performance.now();(function step(now){let p=Math.min((now-t0)/dur,1);p=1-Math.pow(1-p,3);el.textContent=Math.round(target*p)+'%';if(p<1)requestAnimationFrame(step);})(performance.now());},delay);}
   const rbIO=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){
-    up(rb.querySelector('.rb-kk b'),40,1000,300);
-    up(rb.querySelector('.rb-mez b'),60,1900,1500);
+    up(rb.querySelector('.rb-kk b'),30,1000,300);
+    up(rb.querySelector('.rb-mez b'),70,1900,1500);
     rbIO.disconnect();
   }});},{threshold:.4});
   rbIO.observe(rb);
