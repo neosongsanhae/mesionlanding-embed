@@ -1310,7 +1310,7 @@
     <button class="sheet-x" onclick="closeLead()" aria-label="닫기">✕</button>
     <div class="sheet-body" id="sheetForm">
       <h3 id="shTitle">규제 이후 CRM 실무 가이드(상세) 신청</h3>
-      <p class="shsub" id="shSub">정보통신망법 개정에 맞춰 발송 채널 전환을 도와드립니다. 연락처를 남겨주시면 영업일 기준 하루 안에 연락드립니다.</p>
+      <p class="shsub" id="shSub">규제 이후 쿠폰·혜택 안내를 어떻게 보내야 하는지 정리한 실무 가이드입니다. 연락처를 남겨주시면 영업일 기준 하루 안에 이메일로 보내드립니다.</p>
       <div class="shsum" id="shSum"></div>
       <label class="shl">기업명</label>
       <input class="shi" id="shBrand" placeholder="예) 메시온" autocomplete="organization">
@@ -1326,7 +1326,7 @@
     <div class="sheet-body sheet-done" id="sheetDone" style="display:none">
       <div class="okc">✓</div>
       <h3>신청이 접수됐습니다</h3>
-      <p class="shsub" id="doneSub">영업일 기준 하루 안에 연락드리겠습니다.</p>
+      <p class="shsub" id="doneSub">남겨주신 이메일로 영업일 기준 하루 안에 가이드를 보내드리겠습니다.</p>
       <button class="btn full" onclick="closeLead()">확인</button>
     </div>
   </div>
@@ -1529,8 +1529,8 @@ function openLead(kind){
   document.getElementById('sheetDone').style.display='none';
   document.getElementById('shSum').classList.remove('on');
   document.getElementById('shTitle').textContent='규제 이후 CRM 실무 가이드(상세) 신청';
-  document.getElementById('shSub').innerHTML='정보통신망법 개정에 맞춰 발송 채널 전환을 도와드립니다. 연락처를 남겨주시면 영업일 기준 하루 안에 연락드립니다.';
-  document.getElementById('doneSub').textContent='남겨주신 연락처로 영업일 기준 하루 안에 연락드리겠습니다.';
+  document.getElementById('shSub').innerHTML='규제 이후 쿠폰·혜택 안내를 어떻게 보내야 하는지 정리한 실무 가이드입니다. 연락처를 남겨주시면 영업일 기준 하루 안에 이메일로 보내드립니다.';
+  document.getElementById('doneSub').textContent='남겨주신 이메일로 영업일 기준 하루 안에 가이드를 보내드리겠습니다.';
   w.classList.add('on'); requestAnimationFrame(function(){w.classList.add('in');});
   document.documentElement.style.overflow='hidden';
 }
