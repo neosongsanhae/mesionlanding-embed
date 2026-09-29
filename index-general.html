@@ -603,23 +603,17 @@
 <!-- 히어로 -->
 <header class="hero">
   <div class="wrap">
-    <h1 class="reveal in">지금, 자사몰 회원의<br><span class="q">절반 이상을 놓치고 계십니다.</span></h1>
+    <h1 class="reveal in">지금, 자사몰 고객<br><span class="q">10명 중 7명을 놓치고 계십니다.</span></h1>
     <div class="leak reveal in d1">
       <div class="cap"><span class="pulse"></span>지금 메시지가 닿지 않는 자사몰 회원, 우리 브랜드의 매출</div>
       <div class="num"><span id="leakNum">0</span><small>원 / 연</small></div>
-      <div class="src-tiny">업종별 벤치마크 기반 보수적 추정치</div>
+      <div class="src-tiny">월 매출 구간 중앙값 × 12개월 × CRM 메시지 매출 비중 30%(Klaviyo 2025) × 카카오톡으로 닿지 않는 고객 70%(버클 2026.02)</div>
     </div>
     <div class="chips reveal in d2" id="chips">
-      <button class="chip on" data-c="fashion">패션</button>
-      <button class="chip" data-c="beauty">뷰티</button>
-      <button class="chip" data-c="food">식품</button>
-      <button class="chip" data-c="health">건기식</button>
-      <button class="chip" data-c="pet">반려동물</button>
-      <button class="chip" data-c="baby">유아·키즈</button>
-      <button class="chip" data-c="living">리빙</button>
-      <button class="chip" data-c="digital">가전·디지털</button>
-      <button class="chip" data-c="sports">스포츠</button>
-      <button class="chip" data-c="hobby">취미·문구</button>
+      <button class="chip" data-v="0">월 매출 1천만 이하</button>
+      <button class="chip" data-v="1">1천만~1억</button>
+      <button class="chip on" data-v="2">1억~10억</button>
+      <button class="chip" data-v="3">10억 이상</button>
     </div>
     <div class="go reveal in d2"><button class="btn" onclick="document.getElementById('calc').scrollIntoView()">우리 브랜드는 얼마를 놓치고 있을까?</button></div>
   </div>
@@ -665,28 +659,8 @@
 <!-- 계산기 -->
 <section class="calc" id="calc">
   <div class="wrap">
-    <h2 class="one reveal"><span style="white-space:nowrap">닿지 않는 그 고객들,</span><br><span style="white-space:nowrap">매출로 바꾸면 얼마일까요?</span></h2>
+    <h2 class="one reveal"><span style="white-space:nowrap">닿지 않는 70%의 고객,</span><br><span style="white-space:nowrap">매출로 바꾸면 얼마일까요?</span></h2>
     <div class="calc-card reveal d1">
-      <div class="field">
-        <div class="flabel"><span class="n">한 달 주문 건수</span><span class="v" id="ordVal">월 2만~10만건</span></div>
-        <input type="range" id="orders" min="0" max="6" step="1" value="3">
-        <div class="gscale"><span>스몰 브랜드</span><span>엔터프라이즈</span></div>
-      </div>
-      <div class="field">
-        <div class="flabel"><span class="n">업종</span></div>
-        <div class="chips" id="chips2">
-          <button class="chip" data-c="fashion">패션</button>
-          <button class="chip" data-c="beauty">뷰티</button>
-          <button class="chip" data-c="food">식품</button>
-          <button class="chip" data-c="health">건기식</button>
-          <button class="chip" data-c="pet">반려동물</button>
-          <button class="chip" data-c="baby">유아·키즈</button>
-          <button class="chip" data-c="living">리빙</button>
-          <button class="chip" data-c="digital">가전·디지털</button>
-          <button class="chip" data-c="sports">스포츠</button>
-          <button class="chip" data-c="hobby">취미·문구</button>
-        </div>
-      </div>
       <div class="field" style="margin-bottom:8px">
         <div class="flabel"><span class="n">월 매출 규모</span></div>
         <div class="seg" id="revSeg">
@@ -696,13 +670,13 @@
           <button class="chip" data-v="3">10억 이상</button>
         </div>
       </div>
-      <p class="calc-foot">카카오톡 채널 추가율은 브랜드마다 달라, 업계 벤치마크의 보수적 추정값을 씁니다.</p>
+      <p class="calc-foot">CRM 메시지 매출 비중 30%: Klaviyo 2025 벤치마크(이메일·문자 매출이 전체의 20%대 후반~30%대 중반) · 카카오톡으로 닿지 않는 고객 70%: 버클 2026.02(최근 6개월 구매 고객 중 채널 친구 5~30%, 최댓값 기준)</p>
     </div>
     <div class="calc-out reveal d1" id="chart">
       <div class="calc-result" id="resultCard" data-locked="1">
         <span class="cr-lab">지금 놓치고 있는 매출</span>
         <strong id="lossVal">?</strong>
-        <span class="cr-hint">업종과 월 매출 규모를 선택하시면 금액이 나타납니다</span>
+        <span class="cr-hint">월 매출 규모를 선택하시면 금액이 나타납니다</span>
         <div class="gchart" id="gChart" hidden></div>
         <span class="gassume" id="gAssume" hidden></span>
       </div>
@@ -1074,21 +1048,17 @@
 <script>
 /* 업종 계수 (벤치마크 추정, 실측 교체 대상) */
 /* share = 수신동의 회원 중 알림톡 채널 미추가 비중(어떤 채널로도 못 만나는 층, 보수 추정) */
-const COEF={
-  fashion:{share:.60,ret:.06},beauty:{share:.62,ret:.07},food:{share:.58,ret:.09},
-  health:{share:.57,ret:.08},pet:{share:.60,ret:.09},baby:{share:.61,ret:.08},
-  living:{share:.58,ret:.06},digital:{share:.55,ret:.05},sports:{share:.59,ret:.07},hobby:{share:.60,ret:.07}
-};
+const COEF=(function(){const v={share:.70,ret:.30},o={};["fashion","beauty","food","health","pet","baby","living","digital","sports","hobby"].forEach(k=>o[k]=v);return o;})();
 const REV_MID=[7000000,55000000,550000000,1500000000];
 const TIERS=["월 500건 이하","월 1천~5천건","월 5천~2만건","월 2만~10만건","월 10만~30만건","월 30만~100만건","월 100만건 이상"];
-const st={cat:"fashion",rev:2,tier:3,pickedCat:false,pickedRev:false};
+const st={cat:"fashion",rev:2,tier:3,pickedCat:true,pickedRev:false};
 
 function won(n){if(n>=100000000){const u=n/100000000;return "연 "+(u>=10?Math.round(u):u.toFixed(1))+"억 원";}return "연 "+Math.round(n/10000).toLocaleString()+"만 원";}
 
 /* 히어로 카운터 — 업종별로 금액을 카운트업하고, 끝나면 다음 업종으로 넘어가며 무한 순환 */
 function heroTarget(){const c=COEF[st.cat];return REV_MID[st.rev]*12*c.ret*c.share;}
 let heroRAF=null, cycleTimer=null, autoOn=true;
-const CATS=Object.keys(COEF);
+const CATS=[0,1,2,3];
 /* 한 번의 카운트업(끝나면 done 콜백). 시작값을 최종값과 같은 자릿수로 잡아 폭 변동 없이 */
 function animLeak(dur,done){
   const to=Math.round(heroTarget());
@@ -1108,10 +1078,9 @@ function animLeak(dur,done){
 /* 사용자가 직접 고르면 한 번만 카운트업 */
 function startLeak(){animLeak(2600);}
 /* 업종 하이라이트 갱신(계산기 잠금 상태엔 영향 없음) */
-function markCat(cat){
-  st.cat=cat;
-  document.querySelectorAll('#chips .chip').forEach(x=>x.classList.toggle('on',x.dataset.c===cat));
-  const ls=document.getElementById('leakShare'); if(ls) ls.textContent=Math.round(COEF[st.cat].share*100)+'%';
+function markCat(v){
+  st.rev=v;
+  document.querySelectorAll('#chips .chip').forEach(x=>x.classList.toggle('on',+x.dataset.v===v));
 }
 /* 업종을 돌며 카운트업 → 정점에서 잠깐 멈춤 → 다음 업종 (무한) */
 function cycleStep(i){
@@ -1122,28 +1091,23 @@ function cycleStep(i){
     cycleTimer=setTimeout(()=>cycleStep((i+1)%CATS.length),1100);
   });
 }
-function startCycle(){autoOn=true;clearTimeout(cycleTimer);const i=CATS.indexOf(st.cat);cycleStep(i<0?0:i);}
+function startCycle(){autoOn=true;clearTimeout(cycleTimer);const i=CATS.indexOf(st.rev);cycleStep(i<0?0:i);}
 function stopCycle(){autoOn=false;clearTimeout(cycleTimer);cancelAnimationFrame(heroRAF);}
 
 /* 업종 칩(히어로+계산기) → 카운터·계산 동시 반영, 양쪽 동기화 */
-function setCat(cat){
+function setRevAll(v){
   stopCycle();
-  st.cat=cat; st.pickedCat=true;
-  document.querySelectorAll('#chips .chip,#chips2 .chip').forEach(x=>x.classList.toggle('on',x.dataset.c===cat));
-  const ls=document.getElementById('leakShare'); if(ls) ls.textContent=Math.round(COEF[st.cat].share*100)+'%';
+  st.rev=v; st.pickedRev=true;
+  document.querySelectorAll('#chips .chip,#revSeg .chip').forEach(x=>x.classList.toggle('on',+x.dataset.v===v));
   calc(); startLeak();
 }
-document.querySelectorAll('#chips .chip,#chips2 .chip').forEach(c=>c.addEventListener('click',()=>setCat(c.dataset.c)));
+document.querySelectorAll('#chips .chip').forEach(c=>c.addEventListener('click',()=>setRevAll(+c.dataset.v)));
 
 /* 계산기 */
-document.getElementById('orders').addEventListener('input',e=>{
-  st.tier=+e.target.value;
-  document.getElementById('ordVal').textContent=TIERS[st.tier];
-  calc();
-});
+
 document.querySelectorAll('#revSeg .chip').forEach(c=>c.addEventListener('click',()=>{
   document.querySelectorAll('#revSeg .chip').forEach(x=>x.classList.remove('on'));
-  c.classList.add('on'); st.rev=+c.dataset.v; st.pickedRev=true; stopCycle(); calc(); startLeak();
+  setRevAll(+c.dataset.v);
 }));
 
 /* 결과: 미선택이면 물음표, 선택하면 첫 화면처럼 카운트업 후 그대로 유지 */
@@ -1182,7 +1146,7 @@ function drawYear(total){
     ms+='<text x="'+p.x.toFixed(1)+'" y="'+(base+19)+'" text-anchor="middle" font-size="11" font-weight="600" style="fill:var(--muted)">'+MON[i]+'</text>';});
   el.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="월별 놓치는 매출 예상 추이"><defs><linearGradient id="gFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue);stop-opacity:.16"/><stop offset="1" style="stop-color:var(--blue);stop-opacity:0"/></linearGradient></defs><path d="'+area+'" fill="url(#gFill)"/><path d="'+d+'" fill="none" style="stroke:var(--blue)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>'+dots+labs+ms+'</svg>';
   const c=COEF[st.cat];
-  as.textContent='계산 근거 · 월 매출 구간 중앙값 '+revLab(st.rev)+' × 12개월 × CRM 발송 매출 기여율 '+Math.round(c.ret*100)+'% × 카카오톡으로 닿지 않는 비중 '+Math.round(c.share*100)+'% (업종별 벤치마크 보수 추정) · 월별 흐름: 통계청 2024년 온라인쇼핑 월별 거래액 비중';
+  as.textContent='계산 근거 · 월 매출 구간 중앙값 '+revLab(st.rev)+' × 12개월 × CRM 메시지 매출 비중 '+Math.round(c.ret*100)+'%(Klaviyo 2025) × 카카오톡으로 닿지 않는 고객 '+Math.round(c.share*100)+'%(버클 2026.02) · 월별 흐름: 통계청 2024년 온라인쇼핑 월별 거래액 비중';
   el.hidden=false; as.hidden=false;
 }
 let chartShown=false;
