@@ -567,14 +567,14 @@
 
   /* 섹션 배경 교차 (범용 순서) */
   section.sendsec{background:var(--paper2)}
-  section.pathsec{background:var(--paper)}
-  section.engine{background:var(--paper2)}
+  section.engine{background:var(--paper)}
+  section.pathsec{background:var(--paper2)}
   section.cmpsec{background:var(--paper)}
   section.roassec{background:var(--paper2)}
   section.cred{background:var(--paper)}
   section.cofoot{background:var(--paper)}
   section.cofoot .cf-card{background:var(--paper2);border-color:transparent}
-  section.engine .ecol{background:#fff}
+  section.engine .ecol{background:var(--paper2);border-color:transparent}
   .cred .stats3{grid-template-columns:repeat(2,1fr)}
 
 </style>
@@ -594,7 +594,7 @@
 <!-- 히어로 -->
 <header class="hero">
   <div class="wrap">
-    <h1 class="reveal in">지금, 자사몰 회원의<br><span class="q">절반을 놓치고 계십니다.</span></h1>
+    <h1 class="reveal in">지금, 자사몰 회원의<br><span class="q">절반 이상을 놓치고 계십니다.</span></h1>
     <div class="leak reveal in d1">
       <div class="cap"><span class="pulse"></span>지금 메시지가 닿지 않는 자사몰 회원, 우리 브랜드의 매출</div>
       <div class="num"><span id="leakNum">0</span><small>원 / 연</small></div>
@@ -618,7 +618,7 @@
 <!-- 전제: CRM은 기존 고객을 단골로 -->
 <section class="premise">
   <div class="wrap">
-    <h2 class="one reveal">기존 고객을 모셔오기 위해<br><span class="em">쓰는 CRM 솔루션</span></h2>
+    <h2 class="one reveal">CRM은 한 번 온 고객을<br><span class="em">다시 사게 만드는 일입니다.</span></h2>
 
     <div class="flow reveal d1">
       <div class="flow-track">
@@ -632,15 +632,15 @@
       </div>
     </div>
 
-    <p class="premise-pull reveal d1">그런데 이 고객 전부에게<br><b>우리 메시지가 가지는 못하죠.</b></p>
+    <p class="premise-pull reveal d1">그런데 이 고객 전부에게,<br><b>우리 메시지가 닿고 있을까요?</b></p>
   </div>
 </section>
 
 <!-- 기존 고객 도달: 가로 바 -->
 <section class="receipt-sec">
   <div class="wrap">
-    <h2 class="one reveal">자사몰 회원 중,<br><span class="em">메시지가 닿는 회원은 얼마나 될까요?</span></h2>
-    <p class="rb-lead reveal d1">보통은 <b>그중 40% 정도에게만</b> 메시지가 닿습니다.<br>지금의 CRM이 대부분 카카오톡 하나에 기대고 있기 때문입니다.</p>
+    <h2 class="one reveal">대부분의 브랜드는,<br><span class="em">회원 10명 중 4명에게만 닿습니다.</span></h2>
+    <p class="rb-lead reveal d1">지금의 CRM이 대부분 <b>카카오톡 하나에</b> 기대고 있기 때문입니다.<br>카카오톡 채널을 추가하지 않은 회원에게는 메시지가 가지 않습니다.</p>
     <div class="reachbar reveal d1">
       <div class="rb-scale"><span>우리 자사몰 회원 전체</span><span>100%</span></div>
       <div class="rb-track">
@@ -654,7 +654,7 @@
 <!-- 계산기 -->
 <section class="calc" id="calc">
   <div class="wrap">
-    <h2 class="one reveal"><span style="white-space:nowrap">우리가 만나지 못하는 자사몰 회원</span><br><span style="white-space:nowrap">얼마인지 매출로 계산해 보세요.</span></h2>
+    <h2 class="one reveal"><span style="white-space:nowrap">닿지 않는 나머지 60%,</span><br><span style="white-space:nowrap">매출로 바꾸면 얼마일까요?</span></h2>
     <div class="calc-card reveal d1">
       <div class="field">
         <div class="flabel"><span class="n">한 달 주문 건수</span><span class="v" id="ordVal">월 2만~10만건</span></div>
@@ -700,7 +700,7 @@
 <!-- 아하: 네이버 앱은 이미 깔려 있다 (검은 배경 전환) -->
 <section class="aha">
   <div class="wrap">
-    <h2 class="aha-h reveal">우리 모두에게 깔려 있는,<br><span class="nlogo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>네이버 앱을 쓴다면 어떨까요?</h2>
+    <h2 class="aha-h reveal">카카오톡이 닿지 않는 그 회원들,<br><span class="nlogo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>네이버 앱으로 만난다면 어떨까요?</h2>
     <div class="aphone reveal d1" aria-hidden="true">
       <div class="aphone-frame">
         <div class="aphone-screen">
@@ -737,8 +737,8 @@
   <div class="wrap">
     <div class="send-grid">
       <div>
-        <h2 class="one reveal rl">매달 4,494만 명이 여는<br><span class="em">네이버 앱</span>으로 고객과 만나보세요.</h2>
-        <p class="sub1 reveal d1">카카오톡 채널을 추가하지 않은 회원도, 앱 알림을 꺼둔 회원도 네이버 스마트 톡톡으로는 만날 수 있습니다.<br>만날 수 있는 고객이 늘어난 만큼 매출도 함께 늘어납니다.<br><small class="chn">카카오톡은 기존 CRM 툴도 보냅니다. 메시온은 여기에 네이버라는 새 축을 더합니다.</small></p>
+        <h2 class="one reveal rl">그 방법이<br><span class="em">스마트 톡톡</span>입니다.</h2>
+        <p class="sub1 reveal d1">네이버 스마트 톡톡은 매달 4,494만 명이 여는 네이버 앱으로 메시지를 보냅니다.<br>카카오톡 채널을 추가하지 않은 회원도, 앱 알림을 꺼둔 회원도 만날 수 있습니다.<br><small class="chn">카카오톡은 기존 CRM 툴도 보냅니다. 메시온은 여기에 네이버라는 새 축을 더합니다.</small></p>
       </div>
       <div class="phone reveal rr d1" id="phone">
         <div class="noti"><div class="nb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></div><div class="t"><b>가을 신상이 먼저 도착했어요</b>단골님께 하루 먼저 보여드려요.</div><span class="tag">시즌 프로모션</span></div>
@@ -750,39 +750,11 @@
   </div>
 </section>
 
-<!-- 구매 동선 -->
-<section class="pathsec" id="path">
-  <div class="wrap">
-    <h2 class="one reveal">카카오톡으로 보낼 때와<br><span class="em">어떤 차이가 있냐면요,</span></h2>
-    <p class="path-lead reveal d1">카카오톡 메시지를 열고 → 불편한 인앱 브라우저에서 → 로그인부터 구매까지,<br><b>고객이 이탈할 지점이 너무 많죠.</b></p>
-    <div class="path-grid reveal d1">
-      <div class="pcard win">
-        <div class="pc-h"><span class="pc-ic"><svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#03C75A"/><path transform="translate(5 5) scale(.585)" d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>네이버 스마트 톡톡으로 보내면</div>
-        <div class="psteps">
-          <div class="pstep win" style="--d:0s"><span class="pn">1</span><span class="prail" style="--d:.34s"></span><span class="ptx">알림을 클릭합니다</span></div>
-          <div class="pstep win" style="--d:.68s"><span class="pn">2</span><span class="prail" style="--d:1.02s"></span><span class="ptx">이미 <span style="color:#03C75A;font-weight:700">로그인</span>된 네이버에서 바로 열립니다</span></div>
-        </div>
-        <div class="pconc" style="--d:1.36s"><span class="pcdot">✓</span><span class="pctxt"><span class="pcl">두 단계 만에</span><span class="pcv">구매 가능성 높음</span></span></div>
-      </div>
-      <div class="pcard">
-        <div class="pc-h"><span class="pc-ic"><svg width="15" height="15" viewBox="0 0 36 36"><path d="M18 6.5c-7.5 0-13.5 4.8-13.5 10.7 0 3.8 2.5 7.1 6.3 9l-1.6 5.7c-.1.5.4.9.9.6l6.7-4.4c.4.1.8.1 1.2.1 7.5 0 13.5-4.8 13.5-10.8S25.5 6.5 18 6.5z" fill="#3C1E1E"/></svg></span>카카오톡으로 보내면</div>
-        <div class="psteps">
-          <div class="pstep" style="--d:0s"><span class="pn">1</span><span class="prail" style="--d:.34s"></span><span class="ptx">알림을 클릭합니다</span></div>
-          <div class="pstep" style="--d:.68s"><span class="pn">2</span><span class="prail" style="--d:1.02s"></span><span class="ptx">카카오톡 인앱 브라우저가 열립니다<span class="px">네이버에 <span style="color:#03C75A;font-weight:700">로그인</span>되지 않은 상태</span></span></div>
-          <div class="pstep" style="--d:1.36s"><span class="pn">3</span><span class="prail drop" style="--d:1.7s"></span><span class="ptx">네이버 <span style="color:#03C75A;font-weight:700">로그인</span>을 다시 합니다</span></div>
-          <div class="pstep drop" style="--d:2.04s"><span class="pn">4</span><span class="prail drop" style="--d:2.38s"></span><span class="ptx">상품 페이지로 다시 들어가 결제합니다</span></div>
-        </div>
-        <div class="pconc" style="--d:2.72s"><span class="pcdot">!</span><span class="pctxt"><span class="pcl">네 단계를 거치며</span><span class="pcv">이탈 가능성 높음</span></span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 원리 -->
+<!-- 원리: 누가 받나 -->
 <section class="engine">
   <div class="wrap">
-    <h2 class="one reveal">네이버 스마트 톡톡 마케팅,<br><span class="em">자사몰 회원까지 넓힙니다.</span></h2>
-    <p class="eng-lead reveal d1">우리 자사몰에 쌓인 회원 중 <b>마케팅 수신동의한 분들이 그대로 네이버 스마트 톡톡 발송 대상</b>이 됩니다.<br>네이버 스마트 톡톡을 이미 쓰고 계셨더라도, 닿을 수 있는 회원이 크게 늘어납니다.</p>
+    <h2 class="one reveal">보낼 수 있는 대상은,<br><span class="em">자사몰 수신동의 회원 전체입니다.</span></h2>
+    <p class="eng-lead reveal d1">우리 자사몰에 쌓인 회원 중 <b>마케팅 수신동의한 분들이 그대로 네이버 스마트 톡톡 발송 대상</b>이 됩니다.<br>채널 친구를 모으거나 앱 알림 허용을 기다릴 필요가 없습니다.</p>
     <div class="eng-flow reveal d1">
       <div class="ecol">
         <div class="estep">
@@ -823,10 +795,38 @@
   </div>
 </section>
 
+<!-- 구매 동선: 받은 다음 -->
+<section class="pathsec" id="path">
+  <div class="wrap">
+    <h2 class="one reveal">받은 다음도 다릅니다.<br><span class="em">로그인된 네이버에서 바로 결제합니다.</span></h2>
+    <p class="path-lead reveal d1">카카오톡 메시지는 인앱 브라우저에서 열려, 네이버에 다시 로그인해야 구매할 수 있습니다.<br><b>네이버 스마트 톡톡은 로그인된 네이버에서 바로 열려, 중간에 빠지는 고객이 적습니다.</b></p>
+    <div class="path-grid reveal d1">
+      <div class="pcard win">
+        <div class="pc-h"><span class="pc-ic"><svg width="16" height="16" viewBox="0 0 24 24"><rect width="24" height="24" rx="6" fill="#03C75A"/><path transform="translate(5 5) scale(.585)" d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></span>네이버 스마트 톡톡으로 보내면</div>
+        <div class="psteps">
+          <div class="pstep win" style="--d:0s"><span class="pn">1</span><span class="prail" style="--d:.34s"></span><span class="ptx">알림을 클릭합니다</span></div>
+          <div class="pstep win" style="--d:.68s"><span class="pn">2</span><span class="prail" style="--d:1.02s"></span><span class="ptx">이미 <span style="color:#03C75A;font-weight:700">로그인</span>된 네이버에서 바로 열립니다</span></div>
+        </div>
+        <div class="pconc" style="--d:1.36s"><span class="pcdot">✓</span><span class="pctxt"><span class="pcl">두 단계 만에</span><span class="pcv">구매 가능성 높음</span></span></div>
+      </div>
+      <div class="pcard">
+        <div class="pc-h"><span class="pc-ic"><svg width="15" height="15" viewBox="0 0 36 36"><path d="M18 6.5c-7.5 0-13.5 4.8-13.5 10.7 0 3.8 2.5 7.1 6.3 9l-1.6 5.7c-.1.5.4.9.9.6l6.7-4.4c.4.1.8.1 1.2.1 7.5 0 13.5-4.8 13.5-10.8S25.5 6.5 18 6.5z" fill="#3C1E1E"/></svg></span>카카오톡으로 보내면</div>
+        <div class="psteps">
+          <div class="pstep" style="--d:0s"><span class="pn">1</span><span class="prail" style="--d:.34s"></span><span class="ptx">알림을 클릭합니다</span></div>
+          <div class="pstep" style="--d:.68s"><span class="pn">2</span><span class="prail" style="--d:1.02s"></span><span class="ptx">카카오톡 인앱 브라우저가 열립니다<span class="px">네이버에 <span style="color:#03C75A;font-weight:700">로그인</span>되지 않은 상태</span></span></div>
+          <div class="pstep" style="--d:1.36s"><span class="pn">3</span><span class="prail drop" style="--d:1.7s"></span><span class="ptx">네이버 <span style="color:#03C75A;font-weight:700">로그인</span>을 다시 합니다</span></div>
+          <div class="pstep drop" style="--d:2.04s"><span class="pn">4</span><span class="prail drop" style="--d:2.38s"></span><span class="ptx">상품 페이지로 다시 들어가 결제합니다</span></div>
+        </div>
+        <div class="pconc" style="--d:2.72s"><span class="pcdot">!</span><span class="pctxt"><span class="pcl">네 단계를 거치며</span><span class="pcv">이탈 가능성 높음</span></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 카카오 vs 네이버 비교 표 -->
 <section class="cmpsec">
   <div class="wrap">
-    <h2 class="one reveal">카카오톡이 놓친 자사몰 회원,<br><span class="em">네이버로 만나요.</span></h2>
+    <h2 class="one reveal">카카오톡과 나란히 놓으면,<br><span class="em">닿는 대상부터 결제까지 다릅니다.</span></h2>
     <div class="cmpwrap reveal d1">
       <table class="cmptable">
         <thead>
@@ -873,7 +873,7 @@
 <section class="roassec">
   <div class="wrap">
     <div class="roas-wrap">
-      <h2 class="one">수신동의 회원 전체에게 보내니,<br><span class="em">ROAS가 이만큼 나옵니다.</span></h2>
+      <h2 class="one">넓게 닿은 만큼,<br><span class="em">ROAS로 돌아옵니다.</span></h2>
       <p class="roas-sub">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
       <div class="reach">
         <p class="reach-t">같은 100만 원으로 닿는 고객 수</p>
@@ -913,13 +913,13 @@
 <!-- 증명 -->
 <section class="cred">
   <div class="wrap">
-    <h2 class="one reveal">앞서가는 기업들은<br><span class="em">이런 효과를 누리고 있습니다.</span></h2>
+    <h2 class="one reveal">이미 70여 개 브랜드가<br><span class="em">메시온으로 보내고 있습니다.</span></h2>
     <div class="mq"><div class="tk" id="tk"></div></div>
     <div class="stats3 reveal d1">
       <div class="st"><div class="n" data-to="400" data-suf="만+">0</div><div class="l">월 발송 메시지 건수</div></div>
       <div class="st"><div class="n" data-to="4494" data-suf="만">0</div><div class="l">네이버 앱 월 이용자 (2025년 평균)</div></div>
     </div>
-    <p class="crednote reveal d1">회원 200만 규모 브랜드를 포함해, 70여 개 브랜드가 메시온으로 발송하고 있습니다.</p>
+    <p class="crednote reveal d1">회원 200만 규모 브랜드의 캠페인도 같은 인프라에서 발송합니다.</p>
   </div>
 </section>
 
@@ -941,22 +941,12 @@
   </div>
 </section>
 
-<!-- 선언 -->
-<section class="final" id="final">
-  <div class="wrap">
-    <h2 class="one reveal">메시온은<br><span class="em">CRM 툴이 아닙니다.</span></h2>
-    <div class="fbody reveal d1">
-      <p>보통 CRM은 카카오톡으로 닿는 회원에게만 메시지를 보냅니다.</p>
-      <p>메시온은 <b>그동안 메시지가 닿지 않던 자사몰 회원까지</b><br>다시 닿습니다.</p>
-      <p>지금 쓰는 CRM은 그대로 두세요. 달라지는 건 없고, 매출만 늘어납니다.</p>
-    </div>
-  </div>
-</section>
+
 
 <!-- CTA (흰 배경, 최하단) -->
 <section class="ctasec" id="cta">
   <div class="wrap">
-    <h2 class="one reveal">실제 브랜드 데이터를<br>무료로 분석해드려요.</h2>
+    <h2 class="one reveal">얼마나 더 닿을 수 있는지,<br><span class="em">실제 데이터로 무료 분석해드려요.</span></h2>
     <div class="cta-solo reveal d1">
       <div class="cta-card feat">
         <div class="k">엔터프라이즈</div>
