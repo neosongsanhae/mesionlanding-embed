@@ -570,8 +570,9 @@
   section.sendsec{background:var(--paper2)}
   section.engine{background:var(--paper)}
   section.pathsec{background:var(--paper2)}
-  section.cmpsec{background:var(--paper)}
-  section.roassec{background:var(--paper2)}
+  section.cmpsec{background:var(--paper2)}
+  section.roassec{background:var(--paper)}
+  section.roassec .reach{background:var(--paper2);border-color:transparent}
   section.cred{background:var(--paper)}
   section.cofoot{background:var(--paper)}
   section.cofoot .cf-card{background:var(--paper2);border-color:transparent}
@@ -586,6 +587,7 @@
   .gassume{font-size:11px;line-height:1.55;color:var(--muted);max-width:520px;font-weight:500}
   .pathsec .one{max-width:none}
   .calc-result .gassume{font-size:11px;font-weight:500;color:var(--muted)}
+  section.cmpsec .cmptable th.th-feat,section.cmpsec .cmptable th.th-kk,section.cmpsec .cmptable td.feat{background:#e8eaef}
 
 </style>
 </head>
@@ -812,6 +814,47 @@
   </div>
 </section>
 
+<!-- 성과 -->
+<section class="roassec">
+  <div class="wrap">
+    <div class="roas-wrap">
+      <h2 class="one">넓게 닿은 만큼,<br><span class="em">ROAS로 돌아옵니다.</span></h2>
+      <p class="roas-sub">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
+      <div class="reach">
+        <p class="reach-t">같은 100만 원으로 닿는 고객 수</p>
+        <div class="reach-row win"><span class="reach-k">네이버 스마트 톡톡</span><span class="reach-bar"><i style="--w:100%"></i></span><span class="reach-v">20만 명</span></div>
+        <div class="reach-row"><span class="reach-k">브랜드메시지 · 친구</span><span class="reach-bar"><i style="--w:25%"></i></span><span class="reach-v">5만 명</span></div>
+        <div class="reach-row"><span class="reach-k">브랜드메시지 · 비친구</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
+        <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 카카오 브랜드메시지 친구 20원 · 비친구 약 35원)</p>
+      </div>
+      <p class="roas-mid">모수가 커진 만큼 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
+      <div class="roas-grid">
+        <div class="roas-card">
+          <span class="roas-cat">언더웨어 브랜드 A사</span>
+          <div class="roas-big"><b class="rn" data-to="500">500</b><span>%</span></div>
+          <div class="roas-lab">최고 ROAS</div>
+          <div class="roas-fields">
+            <div class="roas-field"><span class="roas-fk">업종</span><span class="roas-fv">언더웨어</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 모수</span><span class="roas-fv">회차당 약 180만 건</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 범위</span><span class="roas-fv">전 회원 전체발송</span></div>
+          </div>
+        </div>
+        <div class="roas-card feat">
+          <span class="roas-cat">더마 코스메틱 브랜드 B사</span>
+          <div class="roas-big"><b class="rn" data-to="1000">1,000</b><span>%</span></div>
+          <div class="roas-lab">최고 ROAS</div>
+          <div class="roas-fields">
+            <div class="roas-field"><span class="roas-fk">업종</span><span class="roas-fv">더마 코스메틱</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 모수</span><span class="roas-fv">회차당 약 90만 건</span></div>
+            <div class="roas-field"><span class="roas-fk">발송 범위</span><span class="roas-fv">전 회원 전체발송</span></div>
+          </div>
+        </div>
+      </div>
+      <p class="roas-note">메시온으로 실제 발송하는 브랜드의 최고 성과 기준이며, 발송 시점·상품·시즌에 따라 달라질 수 있습니다.</p>
+    </div>
+  </div>
+</section>
+
 <!-- 카카오 vs 네이버 비교 표 -->
 <section class="cmpsec">
   <div class="wrap">
@@ -856,47 +899,6 @@
     </div>
     <p class="cmpnote reveal d1">쓰시던 카카오톡은 그대로 두고, 카카오톡이 놓친 자사몰 회원을 네이버로 더합니다.<br><b>카카오톡·알림톡도 메시온에서 함께 보낼 수 있습니다.</b></p>
     <p class="src-tiny">카카오 브랜드메시지 단가: 공식 단가 비공개로 대행사 표준 단가 기준(VAT 별도). 비친구 발송은 채널 친구 5만 명 이상 브랜드만 가능</p>
-  </div>
-</section>
-
-<!-- 성과 -->
-<section class="roassec">
-  <div class="wrap">
-    <div class="roas-wrap">
-      <h2 class="one">넓게 닿은 만큼,<br><span class="em">ROAS로 돌아옵니다.</span></h2>
-      <p class="roas-sub">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
-      <div class="reach">
-        <p class="reach-t">같은 100만 원으로 닿는 고객 수</p>
-        <div class="reach-row win"><span class="reach-k">네이버 스마트 톡톡</span><span class="reach-bar"><i style="--w:100%"></i></span><span class="reach-v">20만 명</span></div>
-        <div class="reach-row"><span class="reach-k">브랜드메시지 · 친구</span><span class="reach-bar"><i style="--w:25%"></i></span><span class="reach-v">5만 명</span></div>
-        <div class="reach-row"><span class="reach-k">브랜드메시지 · 비친구</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
-        <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 카카오 브랜드메시지 친구 20원 · 비친구 약 35원)</p>
-      </div>
-      <p class="roas-mid">모수가 커진 만큼 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
-      <div class="roas-grid">
-        <div class="roas-card">
-          <span class="roas-cat">언더웨어 브랜드 A사</span>
-          <div class="roas-big"><b class="rn" data-to="500">500</b><span>%</span></div>
-          <div class="roas-lab">최고 ROAS</div>
-          <div class="roas-fields">
-            <div class="roas-field"><span class="roas-fk">업종</span><span class="roas-fv">언더웨어</span></div>
-            <div class="roas-field"><span class="roas-fk">발송 모수</span><span class="roas-fv">회차당 약 180만 건</span></div>
-            <div class="roas-field"><span class="roas-fk">발송 범위</span><span class="roas-fv">전 회원 전체발송</span></div>
-          </div>
-        </div>
-        <div class="roas-card feat">
-          <span class="roas-cat">더마 코스메틱 브랜드 B사</span>
-          <div class="roas-big"><b class="rn" data-to="1000">1,000</b><span>%</span></div>
-          <div class="roas-lab">최고 ROAS</div>
-          <div class="roas-fields">
-            <div class="roas-field"><span class="roas-fk">업종</span><span class="roas-fv">더마 코스메틱</span></div>
-            <div class="roas-field"><span class="roas-fk">발송 모수</span><span class="roas-fv">회차당 약 90만 건</span></div>
-            <div class="roas-field"><span class="roas-fk">발송 범위</span><span class="roas-fv">전 회원 전체발송</span></div>
-          </div>
-        </div>
-      </div>
-      <p class="roas-note">메시온으로 실제 발송하는 브랜드의 최고 성과 기준이며, 발송 시점·상품·시즌에 따라 달라질 수 있습니다.</p>
-    </div>
   </div>
 </section>
 
