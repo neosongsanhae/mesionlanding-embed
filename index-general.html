@@ -580,6 +580,11 @@
   .leak .src-tiny{margin-top:6px;color:inherit;opacity:.6}
   .cal .ch{display:flex;justify-content:space-between;align-items:center}
   .ex-tag{font-size:11px;font-weight:600;color:var(--muted);background:var(--paper2);border-radius:99px;padding:3px 9px}
+  .gchart{width:100%;max-width:560px;margin:10px auto 0}
+  .gchart svg{width:100%;height:auto;display:block;overflow:visible}
+  .gassume{font-size:11px;line-height:1.55;color:var(--muted);max-width:520px;font-weight:500}
+  .pathsec .one{max-width:none}
+  .calc-result .gassume{font-size:11px;font-weight:500;color:var(--muted)}
 
 </style>
 </head>
@@ -698,6 +703,8 @@
         <span class="cr-lab">지금 놓치고 있는 매출</span>
         <strong id="lossVal">?</strong>
         <span class="cr-hint">업종과 월 매출 규모를 선택하시면 금액이 나타납니다</span>
+        <div class="gchart" id="gChart" hidden></div>
+        <span class="gassume" id="gAssume" hidden></span>
       </div>
     </div>
   </div>
@@ -805,7 +812,7 @@
 <!-- 구매 동선: 받은 다음 -->
 <section class="pathsec" id="path">
   <div class="wrap">
-    <h2 class="one reveal">받은 다음도 다릅니다.<br><span class="em">로그인된 네이버에서 바로 결제합니다.</span></h2>
+    <h2 class="one reveal">네이버에서 매출이 발생하나요?<br><span class="em">로그인된 네이버에서 바로 결제합니다.</span></h2>
     <p class="path-lead reveal d1">카카오톡 메시지는 인앱 브라우저에서 열려, 네이버에 다시 로그인해야 구매할 수 있습니다.<br><b>네이버 스마트 톡톡은 로그인된 네이버에서 바로 열려, 중간에 빠지는 고객이 적습니다.</b></p>
     <div class="path-grid reveal d1">
       <div class="pcard win">
@@ -1152,6 +1159,32 @@ function countUpRes(target){
     if(p<1) resRAF=requestAnimationFrame(step);
   })(t0);
 }
+
+/* 연간 손실 월별 추이: 통계청 2024 온라인쇼핑 월별 거래액(조원) 비중으로 분배 */
+const MON=['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+const ONL=[20.2801,18.9766,20.4523,19.8027,20.8652,20.0683,19.9626,19.5580,19.5602,20.2845,21.2233,21.2147];
+const ONL_SUM=ONL.reduce((a,b)=>a+b,0);
+function wonS(n){if(n>=100000000){const u=n/100000000;return (u>=10?Math.round(u):(Math.round(u*10)/10))+'억';}return Math.round(n/10000).toLocaleString()+'만';}
+function revLab(v){return ['700만 원','5,500만 원','5.5억 원','15억 원'][v];}
+function drawYear(total){
+  const el=document.getElementById('gChart'), as=document.getElementById('gAssume'); if(!el) return;
+  const vals=ONL.map(x=>total*x/ONL_SUM);
+  const W=560,H=220,px=18,pt=36,pb=28,pw=W-px*2,ph=H-pt-pb,base=pt+ph;
+  const mx=Math.max(...vals), mn=Math.min(...vals), lo=mn*0.75, rg=(mx-lo)||1;
+  const pts=vals.map((v,i)=>({x:px+pw*(i/11),y:pt+ph*(1-(v-lo)/rg)}));
+  const d='M'+pts.map(p=>p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' L');
+  const area='M'+px+' '+base+' L'+pts.map(p=>p.x.toFixed(1)+' '+p.y.toFixed(1)).join(' L')+' L'+(px+pw)+' '+base+' Z';
+  const pk=vals.indexOf(mx);
+  let dots='',labs='',ms='';
+  pts.forEach((p,i)=>{const big=i===pk;
+    dots+='<circle cx="'+p.x.toFixed(1)+'" cy="'+p.y.toFixed(1)+'" r="'+(big?4.5:3)+'" style="fill:#fff;stroke:var(--blue);stroke-width:'+(big?2.6:1.8)+'"/>';
+    if(big||i===0) labs+='<text x="'+p.x.toFixed(1)+'" y="'+(p.y-11).toFixed(1)+'" text-anchor="'+(i===0?'start':i===11?'end':'middle')+'" font-size="12" font-weight="'+(big?800:700)+'" style="fill:var(--blue-d)">'+wonS(vals[i])+'</text>';
+    ms+='<text x="'+p.x.toFixed(1)+'" y="'+(base+19)+'" text-anchor="middle" font-size="11" font-weight="600" style="fill:var(--muted)">'+MON[i]+'</text>';});
+  el.innerHTML='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="월별 놓치는 매출 예상 추이"><defs><linearGradient id="gFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(--blue);stop-opacity:.16"/><stop offset="1" style="stop-color:var(--blue);stop-opacity:0"/></linearGradient></defs><path d="'+area+'" fill="url(#gFill)"/><path d="'+d+'" fill="none" style="stroke:var(--blue)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>'+dots+labs+ms+'</svg>';
+  const c=COEF[st.cat];
+  as.textContent='계산 근거 · 월 매출 구간 중앙값 '+revLab(st.rev)+' × 12개월 × CRM 발송 매출 기여율 '+Math.round(c.ret*100)+'% × 카카오톡으로 닿지 않는 비중 '+Math.round(c.share*100)+'% (업종별 벤치마크 보수 추정) · 월별 흐름: 통계청 2024년 온라인쇼핑 월별 거래액 비중';
+  el.hidden=false; as.hidden=false;
+}
 let chartShown=false;
 function calc(){
   const card=document.getElementById('resultCard'), lv=document.getElementById('lossVal');
@@ -1159,11 +1192,12 @@ function calc(){
   if(st.pickedCat && st.pickedRev){
     card.dataset.locked="0";
     const c=COEF[st.cat], target=REV_MID[st.rev]*12*c.ret*c.share, key=st.cat+'|'+st.rev;
-    if(key!==resKey){resKey=key;countUpRes(target);}   // 값이 바뀔 때만 다시 카운트업
+    if(key!==resKey){resKey=key;countUpRes(target);drawYear(target);}   // 값이 바뀔 때만 다시 카운트업
   } else {
     stopRes(); resKey='';
     card.dataset.locked="1";
     lv.textContent='?';
+    const g=document.getElementById('gChart'),ga=document.getElementById('gAssume'); if(g){g.hidden=true;g.innerHTML='';} if(ga) ga.hidden=true;
   }
 }
 const chIO=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting&&!chartShown){chartShown=true;document.getElementById('chart').classList.add('in');calc();chIO.disconnect();}})},{threshold:.3});
