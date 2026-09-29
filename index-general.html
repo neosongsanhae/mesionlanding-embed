@@ -1311,6 +1311,22 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
 (function(){var one=LOGOS.map(function(o){return o.d?'<span class=\'lg\'><img class=\'lgimg\' src=\''+o.d+'\' alt=\''+o.n+'\'></span>':'<span class=\'lg lgtxt\'>'+o.n+'</span>';}).join('');var half=one+one+one+one;document.getElementById('tk').innerHTML=half+half;})();</script>
 <script>
 /* 경로 비교: 섹션 진입 시 순차 재생, 반복 */
+/* 계산기 자동 순환: 섹션이 보이는 동안 3초마다 다음 구간 */
+(function(){
+  var sec=document.getElementById('calc'); if(!sec) return;
+  var chips=[].slice.call(document.querySelectorAll('#revSeg .chip')); if(!chips.length) return;
+  var timer=null, user=false, idx=0;
+  function pick(v){
+    st.rev=v; st.pickedRev=true;
+    chips.forEach(function(x){x.classList.toggle('on',+x.dataset.v===v);});
+    calc();
+  }
+  function start(){ if(user||timer) return; stopCycle(); pick(idx); timer=setInterval(function(){ idx=(idx+1)%chips.length; pick(idx); },3000); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} }
+  chips.forEach(function(c){ c.addEventListener('click',function(){ user=true; stop(); }); });
+  new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting) start(); else stop(); }); },{threshold:.35}).observe(sec);
+})();
+
 document.querySelectorAll('.path-grid').forEach(function(pg){var timer=null;function play(){pg.classList.remove('run');void pg.offsetWidth;pg.classList.add('run');}var pio=new IntersectionObserver(function(ens){ens.forEach(function(en){if(en.isIntersecting){play();if(!timer)timer=setInterval(play,4200);}else{if(timer){clearInterval(timer);timer=null;}pg.classList.remove('run');}});},{threshold:.35});pio.observe(pg);});
 /* ROAS 카운트업 1회 */
 (function(){var els=document.querySelectorAll('.roas-big .rn');if(!els.length||!('IntersectionObserver' in window))return;if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;var io2=new IntersectionObserver(function(es){es.forEach(function(en){if(!en.isIntersecting)return;io2.disconnect();els.forEach(function(el){var to=+el.dataset.to,t0=performance.now();(function a(t){var p=Math.min((t-t0)/1100,1),e=1-Math.pow(1-p,3);el.textContent=Math.round(to*e).toLocaleString();if(p<1)requestAnimationFrame(a);})(t0);});});},{threshold:.35});io2.observe(document.querySelector('.roas-grid'));})();
