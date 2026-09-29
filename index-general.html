@@ -604,6 +604,25 @@
   .ef-arrow em{font-style:normal;font-size:12px;font-weight:700;color:var(--blue-d);white-space:nowrap}
   @media(max-width:760px){.eflow{grid-template-columns:1fr;gap:8px}.ef-node{min-height:0;padding:18px}.ef-arrow{flex-direction:row;justify-content:center;min-width:0;padding:2px 0}.ef-arrow i{width:2px;height:22px}.ef-arrow i::after{right:-4px;top:auto;bottom:-1px;border-left:5px solid transparent;border-right:5px solid transparent;border-top:8px solid var(--blue);border-bottom:0}}
   .eflow{align-items:stretch}.ef-arrow{align-self:center}
+  /* 쿠폰 알림톡 광고화 섹션 */
+  section.cpsec{background:var(--paper2);border-top:1px solid var(--line)}
+  section.calc{background:var(--paper)}
+  section.calc .calc-card{background:var(--paper2);border-color:transparent}
+  .cpsec .one .rd2{color:#e5484d}
+  .cp-lead{margin-top:18px;max-width:760px;font-size:16px;font-weight:600;color:var(--ink2);line-height:1.65}
+  .cp-grid{margin-top:32px;display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:stretch;max-width:860px}
+  .cp-card{background:#fff;border-radius:16px;padding:22px 24px;display:flex;flex-direction:column;gap:6px}
+  .cp-card.now{background:#fdeeee}
+  .cp-tag{font-size:12px;font-weight:700;color:var(--muted)}
+  .cp-card.now .cp-tag{color:#c0323a}
+  .cp-card b{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .cp-card.now b{color:#c0323a}
+  .cp-card span:last-child{font-size:13.5px;color:var(--muted);line-height:1.5}
+  .cp-arrow{align-self:center;color:var(--muted);font-size:22px}
+  .cp-pull{margin-top:34px;font-size:clamp(1.4rem,3.6vw,2rem);font-weight:700;letter-spacing:-.03em;line-height:1.35;color:var(--ink)}
+  .cp-pull b{color:#e5484d}
+  @media(max-width:700px){.cp-grid{grid-template-columns:1fr}.cp-arrow{transform:rotate(90deg);justify-self:center}}
+  .cpsec .one{max-width:none}
 
 </style>
 </head>
@@ -672,6 +691,21 @@
       </div>
     </div>
     <p class="src-tiny">출처: 버클, 최근 6개월 구매 고객 중 카카오톡 채널 친구 비율 5~30% (2026.02) · 막대는 최댓값 30% 기준 · 비친구 발송 건당 약 35원(친구 대상 약 20원), 대행사 표준 단가</p>
+  </div>
+</section>
+
+<!-- 쿠폰 알림톡 광고화 -->
+<section class="cpsec">
+  <div class="wrap">
+    <h2 class="one reveal">그나마 전체 회원에게 닿던 쿠폰 알림톡도,<br><span class="em rd2">이제는 광고입니다.</span></h2>
+    <p class="cp-lead reveal d1">채널 친구가 아니어도 보낼 수 있던 쿠폰·적립금 만료 알림톡이 광고로 분류됐습니다.<br class="pc"> 이제 마케팅 수신동의 회원에게, (광고)를 붙여서만 보낼 수 있습니다.</p>
+    <div class="cp-grid reveal d1">
+      <div class="cp-card"><span class="cp-tag">예전</span><b>쿠폰 만료 알림톡</b><span>수신동의와 상관없이 전체 회원에게</span></div>
+      <span class="cp-arrow" aria-hidden="true">&rarr;</span>
+      <div class="cp-card now"><span class="cp-tag">지금</span><b>(광고) 쿠폰 만료 안내</b><span>수신동의 회원에게만 · 위반 시 과태료에 매출 최대 6% 과징금</span></div>
+    </div>
+    <p class="cp-pull reveal d1">쿠폰 한 통으로 다시 불러오던 그 고객들,<br><b>이제 다 포기하시겠어요?</b></p>
+    <p class="src-tiny">출처: KISA 「불법 스팸 방지를 위한 정보통신망법 안내서」 제7차 개정본 · 카카오 알림톡 정책(2026.1.1) · 개정 정보통신망법 과징금(2026.10.1 시행)</p>
   </div>
 </section>
 
