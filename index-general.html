@@ -714,6 +714,32 @@
   .ft-logos .iv{display:inline-flex;align-items:center;height:26px}
   .ft-logos .iv img{height:18px;width:auto;max-width:110px;object-fit:contain;filter:grayscale(1);opacity:.7}
   .ft-logos .iv img{mix-blend-mode:multiply}
+  /* AX 기능 도식 카드 */
+  .axv{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .axv-c{background:var(--paper2);border-radius:18px;padding:24px 22px 22px;display:flex;flex-direction:column;gap:14px}
+  .axv-t{font-size:17px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .axv-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .axv-chips span{font-size:12px;font-weight:700;border-radius:8px;padding:5px 9px}
+  .axv-chips .c1{color:#3470f0;background:#e3ebfd}.axv-chips .c2{color:#1e8f5a;background:#e6f7ee}.axv-chips .c3{color:#b07e1b;background:#fff4d6}.axv-chips .c4{color:#e0602a;background:#ffece3}
+  .axv-eq{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px}
+  .axv-eq span{background:#fff;border-radius:8px;padding:6px 9px;font-size:12.5px;font-weight:700;color:var(--ink2)}
+  .axv-eq i{font-style:normal;color:var(--muted);font-weight:700}
+  .axv-res{margin-top:auto;font-size:13px;font-weight:700;color:var(--blue-d)}
+  .axv-res em{font-style:normal;font-weight:500;color:var(--muted);margin-left:6px;font-size:12px}
+  .axv-flow{display:grid;grid-template-columns:1fr 22px 1fr;align-items:stretch;gap:6px}
+  .axv-n{background:#fff;border-radius:12px;padding:12px 12px 13px;display:flex;flex-direction:column;gap:3px}
+  .axv-n.hot{background:var(--blue);color:#fff}
+  .axv-k{font-size:11px;font-weight:700;color:var(--muted)}
+  .axv-n.hot .axv-k{color:rgba(255,255,255,.8)}
+  .axv-n strong{font-size:15px;font-weight:800;letter-spacing:-.02em}
+  .axv-n small{font-size:12px;color:var(--muted);line-height:1.4}
+  .axv-n.hot small{color:rgba(255,255,255,.85)}
+  .axv-ar{align-self:center;justify-self:center;width:0;height:0;border-left:8px solid var(--blue);border-top:6px solid transparent;border-bottom:6px solid transparent}
+  @media(max-width:860px){.axv{grid-template-columns:1fr}}
+  .axv-chips{gap:5px}.axv-chips span{font-size:11.5px;padding:4px 7px}
+  .axv-eq{gap:4px}.axv-eq span{padding:5px 8px;font-size:12px}
+  .axv-eq1{align-self:flex-start;background:#fff;border-radius:10px;padding:9px 12px;font-size:13px;font-weight:700;color:var(--ink2);white-space:nowrap}
+  .axv-eq1 i{font-style:normal;color:var(--muted);margin:0 2px}
 
 </style>
 </head>
@@ -1033,11 +1059,32 @@
       <div class="ax-demo"><iframe src="ax-demo.html" title="메시온 AX 사용 화면 데모" loading="lazy"></iframe></div>
       <figcaption>실제 화면으로 보는 메시온 AX · 10월 목표 설정부터 캠페인 승인, 발송, 결산까지 자동으로 재생됩니다</figcaption>
     </figure>
-    <ul class="ax-pts reveal d1">
-        <li><b>제안마다 근거와 예상 매출</b><span>자사 실측·업계 인기·쿠폰 활용·도전 배지로 제안 이유를 보여주고, 예상 매출은 발송 대상 × 클릭률 × 전환율 × 객단가로 계산해 수치마다 출처를 답니다.</span></li>
-        <li><b>쿠폰 발급·리마인드를 한 번에</b><span>쿠폰 안내는 네이버 스마트 톡톡 광고성 메시지로 보내고, 리마인드는 아직 쓰지 않은 고객에게만 자동으로 나갑니다.</span></li>
-        <li><b>성과가 다음 달 제안으로</b><span>캠페인별 예측과 실측을 비교하고, 성과가 좋았던 캠페인은 AX가 기억해 다음 달에 먼저 제안합니다.</span></li>
-      </ul>
+    <div class="axv reveal d1">
+      <div class="axv-c">
+        <b class="axv-t">제안마다 근거와 예상 매출</b>
+        <div class="axv-chips"><span class="c1">자사 실측</span><span class="c2">업계 인기</span><span class="c3">쿠폰 활용</span><span class="c4">도전</span></div>
+        <div class="axv-eq1">대상 <i>×</i> 클릭률 <i>×</i> 전환율 <i>×</i> 객단가</div>
+        <div class="axv-res">= 예상 매출 <em>수치마다 출처 표시</em></div>
+      </div>
+      <div class="axv-c">
+        <b class="axv-t">쿠폰 발급·리마인드를 한 번에</b>
+        <div class="axv-flow">
+          <div class="axv-n"><span class="axv-k">1 · 발급</span><strong>쿠폰 안내</strong><small>수신동의 회원 전체</small></div>
+          <span class="axv-ar" aria-hidden="true"></span>
+          <div class="axv-n hot"><span class="axv-k">2 · 만료 전</span><strong>리마인드</strong><small>아직 안 쓴 고객만</small></div>
+        </div>
+        <div class="axv-res">네이버 스마트 톡톡 광고성 메시지로 발송</div>
+      </div>
+      <div class="axv-c">
+        <b class="axv-t">성과가 다음 달 제안으로</b>
+        <div class="axv-flow">
+          <div class="axv-n"><span class="axv-k">이번 달</span><strong>실측 비교</strong><small>예측과 캠페인별로</small></div>
+          <span class="axv-ar" aria-hidden="true"></span>
+          <div class="axv-n hot"><span class="axv-k">다음 달</span><strong>먼저 제안</strong><small>잘된 캠페인부터</small></div>
+        </div>
+        <div class="axv-res">AX가 성과를 기억하고 학습</div>
+      </div>
+    </div>
     </div>
   </div>
 </section>
