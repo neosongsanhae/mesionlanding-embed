@@ -647,6 +647,10 @@
   .ax-pts span{font-size:14.5px;line-height:1.65;color:var(--ink2)}
   @media(max-width:860px){.ax-steps{grid-template-columns:1fr 1fr}.ax-feat{grid-template-columns:1fr;gap:28px}}
   @media(max-width:480px){.ax-steps li{padding:16px}.ax-steps li b{font-size:16px}}
+  .ax-demo{position:relative;width:100%;aspect-ratio:832/600;border-radius:18px;overflow:hidden;background:#eef0f5;border:1px solid #e3e8f2;box-shadow:0 26px 60px -30px rgba(27,27,63,.35)}
+  .ax-demo iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
+  .axsec .ax-pts{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  @media(max-width:860px){.axsec .ax-pts{grid-template-columns:1fr;gap:20px}.ax-demo{aspect-ratio:4/3}}
 
 </style>
 </head>
@@ -946,9 +950,9 @@
             <td class="mez"><b>5원</b> (프로모션)</td>
           </tr>
           <tr>
-            <td class="feat">월 이용료</td>
+            <td class="feat">솔루션 비용</td>
             <td class="kk">CRM 솔루션 이용료 별도</td>
-            <td class="mez"><b>월 이용료 없음</b> · 발송한 만큼만 차감</td>
+            <td class="mez"><b>별도 솔루션 비용 없음</b> · 발송한 만큼만 차감</td>
           </tr>
           <tr>
             <td class="feat">함께 운영</td>
@@ -990,19 +994,14 @@
       <li><span class="ax-who ai">AX</span><b>발송과 측정</b><span>예약·발송 뒤 예측 대비 실적까지 리포트</span></li>
     </ol>
     <figure class="ax-shot reveal d1">
-      <img src="creatives/ax-board.gif" width="1600" height="960" loading="lazy" alt="메시온 AX 캠페인 보드: 제안, 준비, 예약·발송, 완료 네 단계로 한 달 캠페인을 관리하는 화면">
-      <figcaption>캠페인 보드 · 이달 목표 대비 실적과 캠페인별 예상 매출을 한 화면에서 봅니다</figcaption>
+      <div class="ax-demo"><iframe src="ax-demo.html" title="메시온 AX 사용 화면 데모" loading="lazy"></iframe></div>
+      <figcaption>실제 화면으로 보는 메시온 AX · 10월 목표 설정부터 캠페인 승인, 발송, 결산까지 자동으로 재생됩니다</figcaption>
     </figure>
-    <div class="ax-feat">
-      <ul class="ax-pts reveal d1">
+    <ul class="ax-pts reveal d1">
         <li><b>제안마다 근거와 예상 매출</b><span>자사 실측·업계 인기·쿠폰 활용·도전 배지로 제안 이유를 보여주고, 예상 매출은 발송 대상 × 클릭률 × 전환율 × 객단가로 계산해 수치마다 출처를 답니다.</span></li>
         <li><b>쿠폰 발급과 만료 리마인드를 한 번에</b><span>쿠폰 안내는 네이버 스마트 톡톡 광고성 메시지로 보내고, 리마인드는 아직 쓰지 않은 고객에게만 자동으로 나갑니다.</span></li>
         <li><b>이번 달 성과가 다음 달 제안으로</b><span>캠페인별 예측과 실측을 비교하고, 성과가 좋았던 캠페인은 AX가 기억해 다음 달에 먼저 제안합니다.</span></li>
       </ul>
-      <figure class="ax-card reveal d1">
-        <img src="creatives/ax-card.gif" width="1204" height="586" loading="lazy" alt="도전 캠페인 카드에 마우스를 올리면 제안 근거 미리보기가 나타나는 화면">
-        <figcaption>카드에 마우스를 올리면 제안 근거가 요약됩니다</figcaption>
-      </figure>
     </div>
   </div>
 </section>
@@ -1012,12 +1011,12 @@
 <!-- CTA (흰 배경, 최하단) -->
 <section class="ctasec" id="cta">
   <div class="wrap">
-    <h2 class="one reveal">네이버 스마트 톡톡까지 함께<br>지금 쓰는 CRM보다,<br><span class="em">저렴하게 이용해보세요.</span></h2>
+    <h2 class="one reveal">네이버 스마트 톡톡까지 한번에<br>지금 쓰는 CRM보다,<br><span class="em">저렴하게 이용해보세요.</span></h2>
     <div class="cta-solo reveal d1">
       <div class="cta-card feat">
         <div class="k">최저가 제안</div>
         <h3>지금 쓰는 CRM보다 저렴하게 이용하기</h3>
-        <p>지금 쓰시는 CRM과 발송 단가를 알려주시면, 담당자가 확인하고 그보다 저렴한 조건으로 제안해 드립니다. 월 이용료 없이 보낸 만큼만 내면 됩니다.</p>
+        <p>지금 쓰시는 CRM과 발송 단가를 알려주시면, 담당자가 확인하고 그보다 저렴한 조건으로 제안해 드립니다. 별도 솔루션 비용 없이, 보낸 만큼만 내면 됩니다.</p>
         <button class="btn full" onclick="openLead('ent')">저렴한 조건 제안받기</button>
       </div>
     </div>
@@ -1037,8 +1036,8 @@
         <div class="a"><p>별도 개발 과정이 없습니다. 앱 설치, 연동 코드 입력 두 단계면 연동이 끝나고, 그날 바로 첫 메시지 발송까지 진행할 수 있습니다.</p></div></div>
       <div class="qa"><button class="q" type="button">비용은 어떻게 되나요?<span class="qi"></span></button>
         <div class="a"><p>크레딧을 충전해 발송한 만큼만 차감됩니다. 건당 정보성 5원, 광고성 10원이고, 지금은 프로모션으로 각각 4원과 5원에 보낼 수 있습니다. 예산이 소진되면 종료됩니다.</p></div></div>
-      <div class="qa"><button class="q" type="button">월 이용료가 따로 있나요?<span class="qi"></span></button>
-        <div class="a"><p>없습니다. 매달 고정으로 나가는 이용료 없이, 크레딧을 충전해 발송한 만큼만 차감하는 종량제입니다. 적게 보낸 달에는 그만큼만 나가고, 안 보낸 달에는 비용이 발생하지 않습니다.</p></div></div>
+      <div class="qa"><button class="q" type="button">솔루션 이용료가 따로 있나요?<span class="qi"></span></button>
+        <div class="a"><p>없습니다. 별도 솔루션 비용이나 매달 고정으로 나가는 이용료 없이, 크레딧을 충전해 발송한 만큼만 차감하는 종량제입니다. 적게 보낸 달에는 그만큼만 나가고, 안 보낸 달에는 비용이 발생하지 않습니다.</p></div></div>
       <div class="qa"><button class="q" type="button">대량 발송도 안정적인가요?<span class="qi"></span></button>
         <div class="a"><p>메시온으로 매월 400만 건 이상의 메시지가 발송되고 있습니다. 회원 수백만 규모 브랜드의 캠페인도 같은 인프라에서 운영됩니다.</p></div></div>
       <div class="qa"><button class="q" type="button">정산과 세금계산서는 어떻게 되나요?<span class="qi"></span></button>
