@@ -2991,6 +2991,28 @@ body,.tip,.ovc,.dcap,.bar{word-break:keep-all;overflow-wrap:break-word}
   </div>
 </div>
 
+<script id="embed-noscroll">
+/* 홈페이지에 넣었을 때 부모 페이지가 따라 스크롤되지 않도록, 데모 안의 스크롤 컨테이너만 움직임 */
+(function(){
+  Element.prototype.scrollIntoView=function(o){
+    var el=this,p=el.parentElement,block=(o&&typeof o==='object'&&o.block)||'start',beh=(o&&o.behavior)||'auto';
+    while(p&&p!==document.body&&p!==document.documentElement){
+      var cs=getComputedStyle(p);
+      if(/(auto|scroll)/.test(cs.overflowY+' '+cs.overflowX)&&(p.scrollHeight>p.clientHeight+1||p.scrollWidth>p.clientWidth+1)){
+        var pr=p.getBoundingClientRect(),er=el.getBoundingClientRect(),sc=(p.offsetHeight?pr.height/p.offsetHeight:1)||1;
+        var dy=er.top-pr.top;
+        if(block==='center') dy-=(pr.height-er.height)/2;
+        else if(block==='nearest'){ if(er.top>=pr.top&&er.bottom<=pr.bottom) dy=0; else if(er.bottom>pr.bottom) dy=er.bottom-pr.bottom; }
+        if(dy) p.scrollBy({top:dy/sc,behavior:beh});
+        return;
+      }
+      p=p.parentElement;
+    }
+  };
+  var f=HTMLElement.prototype.focus;
+  HTMLElement.prototype.focus=function(o){ return f.call(this,Object.assign({},o||{},{preventScroll:true})); };
+})();
+</script>
 <script>
 (function(){
 const $ = (s, r=document) => r.querySelector(s);
