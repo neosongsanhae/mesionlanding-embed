@@ -3034,7 +3034,7 @@ window.addEventListener('resize', fit); fit();
 
 /* ---------- playback state ---------- */
 const FACTOR = { slow: 1.7, normal: 1, fast: 0.55 };
-let factor = 1, paused = false, skipping = false, runId = 0, chapter = 0, cur = null;
+let factor = 0.45, paused = false, skipping = false, runId = 0, chapter = 0, cur = null;
 let cx = 760, cy = 520;
 const abort = id => { if (id !== runId) throw 'abort'; };
 /* one timer per sleep (chunked polling crawls when the tab is hidden and timers are throttled) */
@@ -3377,8 +3377,8 @@ async function play(from = 0){
       await CH[i].run(); abort(id);
       skipping = false;
     }
-    /* 홈페이지용: 끝나면 6초 뒤 처음부터 반복 */
-    setTimeout(function(){ if (id === runId) restart(); }, 6000);
+    /* 홈페이지용: 끝나면 3초 뒤 처음부터 반복 */
+    setTimeout(function(){ if (id === runId) restart(); }, 3000);
   } catch (e){ if (e !== 'abort') console.error(e); }
 }
 function resetDom(){
