@@ -3328,11 +3328,11 @@ const CH = [
   ovc.classList.add('wide');
   await sleep(2600); overlayOff(); tipOff(); cap('');
 }},
-{ title: '완료 복기', async run(){
+{ title: '성과 측정', async run(){
   scene('CardDetailDone'); await sleep(500);
   cap('3일 뒤 결과가 왔어');
   ringOn(q('done-result')); await moveTo(q('done-result'), { ax: 0.3 });
-  tip(11, '완료 캠페인 복기', '완료된 캠페인은 실측과 예측을 나란히 보여줘요. 어디서 달라졌는지 도달, 클릭, 구매, 객단가로 나눠 원인을 적고, 배운 것은 다음 달 캠페인에 반영돼요.');
+  tip(11, '완료 캠페인 성과 측정', '완료된 캠페인은 실측과 예측을 나란히 보여줘요. 어디서 달라졌는지 도달, 클릭, 구매, 객단가로 나눠 원인을 적고, 배운 것은 다음 달 캠페인에 반영돼요.');
   await sleep(2600); ringOff();
   await scrollTo(q('done-table'), 600); ringOn(q('done-table')); await moveTo(q('done-table'), { ax: 0.4 }); await sleep(2400); ringOff();
   ringOn(q('done-learn')); await moveTo(q('done-learn')); await sleep(1600); ringOff();
