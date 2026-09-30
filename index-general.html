@@ -624,6 +624,7 @@
   @media(max-width:700px){.cp-grid{grid-template-columns:1fr}.cp-arrow{transform:rotate(90deg);justify-self:center}}
   .cpsec .one{max-width:none}
   .cp-lead b{color:var(--ink)}
+  .roassec .one{text-align:center;margin-left:auto;margin-right:auto;max-width:none}
 
 </style>
 </head>
@@ -778,8 +779,8 @@
   <div class="wrap">
     <div class="send-grid">
       <div>
-        <h2 class="one reveal rl">그 방법이<br><span class="em">스마트 톡톡</span>입니다.</h2>
-        <p class="sub1 reveal d1">네이버 스마트 톡톡은 매달 4,494만 명이 여는 네이버 앱으로 메시지를 보냅니다.<br>카카오톡 채널을 추가하지 않은 회원도, 앱 알림을 꺼둔 회원도 만날 수 있습니다.<br><small class="chn">카카오톡은 기존 CRM 툴도 보냅니다. 메시온은 여기에 네이버라는 새 축을 더합니다.</small></p>
+        <h2 class="one reveal rl">4,494만 명이 여는<br><span class="em">네이버 앱 알림창</span>으로.</h2>
+        <p class="sub1 reveal d1">네이버 스마트 톡톡은 우리 브랜드의 메시지를, 매달 4,494만 명이 쓰는 네이버 앱 알림으로 보냅니다.<br>카카오톡 채널을 추가하지 않은 회원도, 앱 알림을 꺼둔 회원도 만날 수 있습니다.<br><small class="chn">카카오톡은 기존 CRM 툴도 보냅니다. 메시온은 여기에 네이버라는 새 축을 더합니다.</small></p>
       </div>
       <div class="phone reveal rr d1" id="phone">
         <div class="noti"><div class="nb"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M16.273 12.845 7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" fill="#fff"/></svg></div><div class="t"><b>가을 신상이 먼저 도착했어요</b>단골님께 하루 먼저 보여드려요.</div><span class="tag">시즌 프로모션</span></div>
@@ -851,8 +852,8 @@
 <section class="roassec">
   <div class="wrap">
     <div class="roas-wrap">
-      <h2 class="one">넓게 닿은 만큼,<br><span class="em">ROAS로 돌아옵니다.</span></h2>
-      <p class="roas-sub">건당 5원이라 회원을 추려 보낼 필요가 없습니다.<br class="pc"> 같은 예산으로 닿는 고객 수부터 다릅니다.</p>
+      <h2 class="one">더 많이 닿고, 더 쉽게 사니까<br><span class="em">ROAS가 높습니다.</span></h2>
+      <p class="roas-sub">수신동의 회원 전체에게 건당 5원으로 보내고,<br class="pc"> 로그인된 네이버에서 바로 결제까지 이어집니다.</p>
       <div class="reach">
         <p class="reach-t">같은 100만 원으로 닿는 고객 수</p>
         <div class="reach-row win"><span class="reach-k">네이버 스마트 톡톡</span><span class="reach-bar"><i style="--w:100%"></i></span><span class="reach-v">20만 명</span></div>
@@ -860,7 +861,7 @@
         <div class="reach-row"><span class="reach-k">브랜드메시지 · 비친구</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
         <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 카카오 브랜드메시지 친구 20원 · 비친구 약 35원)</p>
       </div>
-      <p class="roas-mid">모수가 커진 만큼 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
+      <p class="roas-mid">넓게 보내고 바로 사게 하니, 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
       <div class="roas-grid">
         <div class="roas-card">
           <span class="roas-cat">언더웨어 브랜드 A사</span>
@@ -1312,7 +1313,7 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
 (function(){var one=LOGOS.map(function(o){return o.d?'<span class=\'lg\'><img class=\'lgimg\' src=\''+o.d+'\' alt=\''+o.n+'\'></span>':'<span class=\'lg lgtxt\'>'+o.n+'</span>';}).join('');var half=one+one+one+one;document.getElementById('tk').innerHTML=half+half;})();</script>
 <script>
 /* 경로 비교: 섹션 진입 시 순차 재생, 반복 */
-/* 계산기 자동 순환: 섹션이 보이는 동안 3초마다 다음 구간 */
+/* 계산기 자동 순환: 섹션이 보이는 동안 2초마다 다음 구간 */
 (function(){
   var sec=document.getElementById('calc'); if(!sec) return;
   var chips=[].slice.call(document.querySelectorAll('#revSeg .chip')); if(!chips.length) return;
@@ -1322,7 +1323,7 @@ const LOGOS=[{"n": "젝시믹스", "d": "data:image/png;base64,iVBORw0KGgoAAAANS
     chips.forEach(function(x){x.classList.toggle('on',+x.dataset.v===v);});
     calc();
   }
-  function start(){ if(user||timer) return; stopCycle(); pick(idx); timer=setInterval(function(){ idx=(idx+1)%chips.length; pick(idx); },3000); }
+  function start(){ if(user||timer) return; stopCycle(); pick(idx); timer=setInterval(function(){ idx=(idx+1)%chips.length; pick(idx); },2000); }
   function stop(){ if(timer){clearInterval(timer);timer=null;} }
   chips.forEach(function(c){ c.addEventListener('click',function(){ user=true; stop(); }); });
   new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting) start(); else stop(); }); },{threshold:.35}).observe(sec);
