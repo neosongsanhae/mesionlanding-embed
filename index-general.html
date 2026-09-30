@@ -1059,33 +1059,7 @@
       <div class="ax-demo"><iframe src="ax-demo.html" title="메시온 AX 사용 화면 데모" loading="lazy"></iframe></div>
       <figcaption>실제 화면으로 보는 메시온 AX · 10월 목표 설정부터 캠페인 승인, 발송, 결산까지 자동으로 재생됩니다</figcaption>
     </figure>
-    <div class="axv reveal d1">
-      <div class="axv-c">
-        <b class="axv-t">제안마다 근거와 예상 매출</b>
-        <div class="axv-chips"><span class="c1">자사 실측</span><span class="c2">업계 인기</span><span class="c3">쿠폰 활용</span><span class="c4">도전</span></div>
-        <div class="axv-eq1">대상 <i>×</i> 클릭률 <i>×</i> 전환율 <i>×</i> 객단가</div>
-        <div class="axv-res">= 예상 매출 <em>수치마다 출처 표시</em></div>
-      </div>
-      <div class="axv-c">
-        <b class="axv-t">쿠폰 발급·리마인드를 한 번에</b>
-        <div class="axv-flow">
-          <div class="axv-n"><span class="axv-k">1 · 발급</span><strong>쿠폰 안내</strong><small>수신동의 회원 전체</small></div>
-          <span class="axv-ar" aria-hidden="true"></span>
-          <div class="axv-n hot"><span class="axv-k">2 · 만료 전</span><strong>리마인드</strong><small>아직 안 쓴 고객만</small></div>
-        </div>
-        <div class="axv-res">네이버 스마트 톡톡 광고성 메시지로 발송</div>
-      </div>
-      <div class="axv-c">
-        <b class="axv-t">성과가 다음 달 제안으로</b>
-        <div class="axv-flow">
-          <div class="axv-n"><span class="axv-k">이번 달</span><strong>실측 비교</strong><small>예측과 캠페인별로</small></div>
-          <span class="axv-ar" aria-hidden="true"></span>
-          <div class="axv-n hot"><span class="axv-k">다음 달</span><strong>먼저 제안</strong><small>잘된 캠페인부터</small></div>
-        </div>
-        <div class="axv-res">AX가 성과를 기억하고 학습</div>
-      </div>
-    </div>
-    </div>
+
   </div>
 </section>
 
@@ -1182,9 +1156,11 @@
       <div class="shsum" id="shSum"></div>
       <label class="shl">브랜드 이름</label>
       <input class="shi" id="shBrand" placeholder="예) 메시온" autocomplete="organization">
+      <label class="shl">담당자명</label>
+      <input class="shi" id="shName" placeholder="예) 홍길동" autocomplete="name">
       <label class="shl">이메일 또는 전화번호</label>
       <input class="shi" id="shContact" placeholder="hello@brand.com / 010-0000-0000" autocomplete="email">
-      <p class="sherr" id="shErr">연락처를 입력해주세요.</p>
+      <p class="sherr" id="shErr">담당자명과 연락처를 입력해주세요.</p>
       <button class="btn full" id="shGo" onclick="submitLead()">신청하기</button>
     </div>
     <div class="sheet-body sheet-done" id="sheetDone" style="display:none">
@@ -1402,15 +1378,16 @@ var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwg67vy0WnjA29Ln9jdXB
 var LEAD_KIND='consult';
 function submitLead(){
   var v=document.getElementById('shContact').value.trim();
+  var nm=(document.getElementById('shName').value||'').trim();
   var err=document.getElementById('shErr');
-  if(!v){err.classList.add('on');return;}
+  if(!v||!nm){err.classList.add('on');return;}
   err.classList.remove('on');
   var brand=(document.getElementById('shBrand').value||'').trim();
   var btn=document.getElementById('shGo');
   var done=function(){document.getElementById('sheetForm').style.display='none';document.getElementById('sheetDone').style.display='';if(btn){btn.disabled=false;btn.textContent=LEAD_KIND==='ent'?'저렴한 조건 제안받기':'신청하기';}};
   if(btn){btn.disabled=true;btn.textContent='보내는 중…';}
   var isMail=v.indexOf('@')>-1;
-  var payload={brand:brand,name:'',phone:isMail?'':v,email:isMail?v:'',b:'',ref:location.href,ua:navigator.userAgent,kind:LEAD_KIND};
+  var payload={brand:brand,name:nm,phone:isMail?'':v,email:isMail?v:'',b:'',ref:location.href,ua:navigator.userAgent,kind:LEAD_KIND};
   try{fetch(LEAD_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)}).then(done).catch(done);}catch(e){done();}
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLead();});
