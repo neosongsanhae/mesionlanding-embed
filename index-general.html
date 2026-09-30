@@ -405,6 +405,7 @@
   .sheet-done .btn{margin-top:18px}
 
   .pnote{position:fixed;bottom:12px;left:12px;z-index:99;background:var(--ink);color:#fff;font-size:11px;padding:5px 10px;border-radius:7px;opacity:.5;font-weight:600}
+  /* 상단 바 고정: overflow-x:hidden이 sticky를 깨서 clip으로 */ html,body{overflow-x:clip}
   /* ===== 범용 버전: 이식한 섹션 스타일 ===== */
   /* 회사 소개 푸터 밴드 */
   .cofoot{background:var(--paper2);border-top:1px solid var(--line);padding:66px 0 60px}
@@ -681,6 +682,13 @@
   section.ctasec{background:var(--paper2)}
   section.cred{background:var(--paper)}
   /* 상단 바 고정: overflow-x:hidden이 sticky를 깨서 clip으로 */ html,body{overflow-x:clip}
+  /* 전제 섹션 제거 후 배경: 히어로(흰) → 도달(회) → 쿠폰(흰) → 계산기(회) → 아하(다크) */
+  section.receipt-sec{background:var(--paper2)}
+  section.cpsec{background:var(--paper)}
+  section.cpsec .cp-card{background:var(--paper2)}
+  section.cpsec .cp-card.now{background:#fdeeee}
+  section.calc{background:var(--paper2)}
+  section.calc .calc-card{background:#fff;border-color:var(--line)}
 
 </style>
 </head>
@@ -715,26 +723,7 @@
   </div>
 </header>
 
-<!-- 전제: CRM은 기존 고객을 단골로 -->
-<section class="premise">
-  <div class="wrap">
-    <h2 class="one reveal">CRM은 한 번 온 고객을<br><span class="em">다시 사게 만드는 일입니다.</span></h2>
 
-    <div class="flow reveal d1">
-      <div class="flow-track">
-        <div class="flow-rail"></div>
-        <div class="flow-fill"></div>
-        <div class="fn" style="--i:0"><span class="dot"></span><span class="fl-lab">유입</span></div>
-        <div class="fn" style="--i:1"><span class="dot"></span><span class="fl-lab">가입</span></div>
-        <div class="fn" style="--i:2"><span class="dot"></span><span class="fl-lab">구매</span></div>
-        <div class="fn tgt" style="--i:3"><span class="dot"></span><span class="fl-lab">재구매</span></div>
-        <div class="fn tgt" style="--i:4"><span class="dot"></span><span class="fl-lab">추천</span></div>
-      </div>
-    </div>
-
-    <p class="premise-pull reveal d1">그런데 이 고객 전부에게,<br><b>우리 메시지가 닿고 있을까요?</b></p>
-  </div>
-</section>
 
 <!-- 기존 고객 도달: 가로 바 -->
 <section class="receipt-sec">
