@@ -689,6 +689,11 @@
   section.cpsec .cp-card.now{background:#fdeeee}
   section.calc{background:var(--paper2)}
   section.calc .calc-card{background:#fff;border-color:var(--line)}
+  /* 제목 위계: 섹션 대제목(.one) > 소제목(.subh·.cp-pull) > 본문 */
+  .subh,.cpsec .cp-pull{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.03em;line-height:1.35;color:var(--ink)}
+  .roassec .roas-mid{text-align:center}
+  .roassec .subh{margin:0}
+  .roassec .subl{margin-top:12px;font-size:16px;color:var(--muted);line-height:1.6;font-weight:500}
 
 </style>
 </head>
@@ -910,7 +915,7 @@
         <div class="reach-row"><span class="reach-k">브랜드메시지 · 비친구</span><span class="reach-bar"><i style="--w:14.3%"></i></span><span class="reach-v">약 2.9만 명</span></div>
         <p class="reach-n">건당 비용 기준 단순 환산(톡톡 5원 · 카카오 브랜드메시지 친구 20원 · 비친구 약 35원)</p>
       </div>
-      <p class="roas-mid">넓게 보내고 바로 사게 하니, 매출로 돌아옵니다.<br class="pc"> 전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p>
+      <div class="roas-mid"><h3 class="subh">넓게 보내고 바로 사게 하니,<br class="pc"> 매출로 돌아옵니다.</h3><p class="subl">전 회원에게 발송한 브랜드들이 성수기에 실제로 만든 성과입니다.</p></div>
       <div class="roas-grid">
         <div class="roas-card">
           <span class="roas-cat">언더웨어 브랜드 A사</span>
