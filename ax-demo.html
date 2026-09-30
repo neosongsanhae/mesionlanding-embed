@@ -3127,7 +3127,7 @@ async function type(el, text, cps = 26){
 const tipEl = byId('tip');
 let tipResolvers = [];
 function tip(n, title, body){
-  byId('tipk').textContent = 'STEP ' + n + ' / ' + CH.length;
+  byId('tipk').textContent = 'STEP ' + (chapter + 1) + ' / ' + CH.length;
   byId('tiph').textContent = title; byId('tipp').textContent = body;
   tipEl.classList.add('on');
   tipResolvers.splice(0).forEach(f => f(n));
@@ -3364,6 +3364,9 @@ const CH = [
   byId('bagain').addEventListener('click', () => restart());
 }},
 ];
+/* 홈페이지용 간소화: 핵심 6단계만 재생 */
+(function(){ var pick=[0,1,4,5,7,10].map(function(i){return CH[i];}); CH.length=0; Array.prototype.push.apply(CH,pick); })();
+
 
 /* ---------- runner ---------- */
 async function play(from = 0){
@@ -3374,6 +3377,8 @@ async function play(from = 0){
       await CH[i].run(); abort(id);
       skipping = false;
     }
+    /* 홈페이지용: 끝나면 6초 뒤 처음부터 반복 */
+    setTimeout(function(){ if (id === runId) restart(); }, 6000);
   } catch (e){ if (e !== 'abort') console.error(e); }
 }
 function resetDom(){
@@ -3411,5 +3416,5 @@ setTimeout(() => play(0), 300);
 })();
 </script>
 
-<style id="embed-ov">header.bar{display:none!important}.hint{display:none!important}.ctl{display:none!important}html,body{background:transparent}</style>
+<style id="embed-ov">header.bar{display:none!important}.hint{display:none!important}.ctl{display:none!important}.tip{border-left:0!important;border:1px solid #e3e8f2!important}.tip .k{align-self:flex-start;background:#e8effe;color:#3470F0!important;padding:3px 9px;border-radius:99px;letter-spacing:.02em!important}html,body{background:transparent}</style>
 </body></html>
