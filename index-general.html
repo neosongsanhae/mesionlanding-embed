@@ -625,6 +625,28 @@
   .cpsec .one{max-width:none}
   .cp-lead b{color:var(--ink)}
   .roassec .one{text-align:center;margin-left:auto;margin-right:auto;max-width:none}
+  /* 메시온 AX 섹션 */
+  section.axsec{background:var(--paper2);border-top:1px solid var(--line);padding:120px 0}
+  @media(max-width:560px){section.axsec{padding:76px 0}}
+  .axsec .one{max-width:none}
+  .ax-eyebrow{display:inline-block;font-size:13px;font-weight:800;color:var(--blue);background:#e3ebfd;border-radius:99px;padding:6px 12px;margin-bottom:16px}
+  .ax-lead{margin-top:18px;max-width:780px;font-size:clamp(1rem,2.2vw,1.15rem);line-height:1.72;color:var(--ink2);font-weight:500}
+  .ax-steps{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .ax-steps li{background:#fff;border-radius:16px;padding:20px 20px 22px;display:flex;flex-direction:column;gap:6px;position:relative}
+  .ax-steps li b{font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .ax-steps li>span:last-child{font-size:13.5px;color:var(--muted);line-height:1.5}
+  .ax-who{align-self:flex-start;font-size:11.5px;font-weight:800;border-radius:99px;padding:3px 9px;background:#1c1d24;color:#fff}
+  .ax-who.ai{background:var(--blue)}
+  .ax-shot{margin:28px 0 0}
+  .ax-shot img,.ax-card img{display:block;width:100%;height:auto;border-radius:18px;border:1px solid #e3e8f2;box-shadow:0 26px 60px -30px rgba(27,27,63,.35);background:#fff}
+  .ax-shot figcaption,.ax-card figcaption{margin-top:10px;font-size:12.5px;color:var(--muted);text-align:center}
+  .ax-feat{margin-top:44px;display:grid;grid-template-columns:1fr 1.05fr;gap:40px;align-items:center}
+  .ax-pts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:22px}
+  .ax-pts li{display:flex;flex-direction:column;gap:6px}
+  .ax-pts b{font-size:19px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+  .ax-pts span{font-size:14.5px;line-height:1.65;color:var(--ink2)}
+  @media(max-width:860px){.ax-steps{grid-template-columns:1fr 1fr}.ax-feat{grid-template-columns:1fr;gap:28px}}
+  @media(max-width:480px){.ax-steps li{padding:16px}.ax-steps li b{font-size:16px}}
 
 </style>
 </head>
@@ -955,20 +977,32 @@
   </div>
 </section>
 
-<!-- 플래너: 소재/AX (부가) -->
-<section class="plan">
+<!-- 메시온 AX -->
+<section class="axsec">
   <div class="wrap">
-    <div class="plan-grid">
-      <div>
-        <h2 class="one reveal rl">보낼 소재까지,<br><span class="em">메시온 AX가 함께 준비합니다.</span></h2>
-        <p class="sub1 reveal d1">닿는 회원이 넓어진 위에, 누구에게 언제 무엇을 보낼지가 남습니다. 판매 시즌과 고객별 재구매 주기를 읽어 메시온 AX가 소재를 제안하고, 발송 캘린더를 채워 둡니다.</p>
-      </div>
-      <div class="cal reveal rr d1">
-        <div class="ch"><span>11월 발송 캘린더</span><span class="ex-tag">예시 화면</span></div>
-        <div class="rowi"><span class="dte">11.03</span><span class="tx">가을 시즌 오프닝<span>시즌 프로모션 · 소재 3종 제안</span></span><span class="stt ready">준비됨</span></div>
-        <div class="rowi"><span class="dte">11.14</span><span class="tx">재구매 주기 도래 1,240명<span>고객별 소재 매칭</span></span><span class="stt auto">AX 추천</span></div>
-        <div class="rowi"><span class="dte">11.28</span><span class="tx">블랙프라이데이 D-day<span>혜택·타깃·소재 준비 완료</span></span><span class="stt ready">준비됨</span></div>
-      </div>
+    <span class="ax-eyebrow reveal">메시온 AX</span>
+    <h2 class="one reveal">목표 매출만 정하세요.<br><span class="em">한 달치 캠페인은 메시온 AX가 짭니다.</span></h2>
+    <p class="ax-lead reveal d1">쇼핑몰을 연동하면 우리 브랜드의 지난 성과와 시장의 CRM 흐름을 함께 읽고,<br class="pc"> 이번 달에 통할 캠페인을 예상 매출·발송 대상·제안 근거와 함께 올려 둡니다.</p>
+    <ol class="ax-steps reveal d1">
+      <li class="me"><span class="ax-who">담당자</span><b>목표 정하기</b><span>목표 매출이나 발송 예산 중 하나만 입력</span></li>
+      <li><span class="ax-who ai">AX</span><b>한 달치 제안</b><span>20~40분 뒤 캠페인 도착, 문구와 이미지까지</span></li>
+      <li class="me"><span class="ax-who">담당자</span><b>승인</b><span>승인하면 작성 화면이 채워진 채로 열림</span></li>
+      <li><span class="ax-who ai">AX</span><b>발송과 측정</b><span>예약·발송 뒤 예측 대비 실적까지 리포트</span></li>
+    </ol>
+    <figure class="ax-shot reveal d1">
+      <img src="creatives/ax-board.gif" width="1600" height="960" loading="lazy" alt="메시온 AX 캠페인 보드: 제안, 준비, 예약·발송, 완료 네 단계로 한 달 캠페인을 관리하는 화면">
+      <figcaption>캠페인 보드 · 이달 목표 대비 실적과 캠페인별 예상 매출을 한 화면에서 봅니다</figcaption>
+    </figure>
+    <div class="ax-feat">
+      <ul class="ax-pts reveal d1">
+        <li><b>제안마다 근거와 예상 매출</b><span>자사 실측·업계 인기·쿠폰 활용·도전 배지로 제안 이유를 보여주고, 예상 매출은 발송 대상 × 클릭률 × 전환율 × 객단가로 계산해 수치마다 출처를 답니다.</span></li>
+        <li><b>쿠폰 발급과 만료 리마인드를 한 번에</b><span>쿠폰 안내는 네이버 스마트 톡톡 광고성 메시지로 보내고, 리마인드는 아직 쓰지 않은 고객에게만 자동으로 나갑니다.</span></li>
+        <li><b>이번 달 성과가 다음 달 제안으로</b><span>캠페인별 예측과 실측을 비교하고, 성과가 좋았던 캠페인은 AX가 기억해 다음 달에 먼저 제안합니다.</span></li>
+      </ul>
+      <figure class="ax-card reveal d1">
+        <img src="creatives/ax-card.gif" width="1204" height="586" loading="lazy" alt="도전 캠페인 카드에 마우스를 올리면 제안 근거 미리보기가 나타나는 화면">
+        <figcaption>카드에 마우스를 올리면 제안 근거가 요약됩니다</figcaption>
+      </figure>
     </div>
   </div>
 </section>
