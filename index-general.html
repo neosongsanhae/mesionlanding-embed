@@ -1482,5 +1482,30 @@ document.querySelectorAll('.path-grid').forEach(function(pg){var timer=null;func
 /* 도달 막대 */
 (function(){var r=document.querySelector('.reach');if(!r)return;if(!('IntersectionObserver' in window)){r.classList.add('in');return}var o=new IntersectionObserver(function(e){if(e[0].isIntersecting){r.classList.add('in');o.disconnect()}},{threshold:.4});o.observe(r)})();
 </script>
+<script>
+/* #guide 링크로 들어오면 맨 위에서 가이드 섹션이 보이는 위치까지 빠르게 자동 스크롤 */
+(function(){
+  if(location.hash!=='#guide')return;
+  if('scrollRestoration' in history)history.scrollRestoration='manual';
+  var de=document.documentElement;
+  function run(){
+    de.style.scrollBehavior='auto';de.style.scrollSnapType='none';
+    window.scrollTo(0,0);
+    var dur=1100,t0=null,y0=0;
+    function ease(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2}
+    function step(ts){
+      if(t0===null)t0=ts;
+      var g=document.getElementById('guide'),max=de.scrollHeight-window.innerHeight;
+      var end=g?Math.min(g.getBoundingClientRect().top+window.scrollY-120,max):max;
+      var p=Math.min((ts-t0)/dur,1);
+      window.scrollTo(0,y0+(end-y0)*ease(p));
+      if(p<1)requestAnimationFrame(step);
+      else setTimeout(function(){de.style.scrollBehavior='';},300);
+    }
+    setTimeout(function(){requestAnimationFrame(step)},350);
+  }
+  if(document.readyState==='complete')run();else window.addEventListener('load',run);
+})();
+</script>
 </body>
 </html>
