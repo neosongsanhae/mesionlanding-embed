@@ -1,5 +1,6 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style><script>try{if(new URLSearchParams(location.search).get("tip")==="title")document.documentElement.classList.add("tip-title")}catch(e){}</script>
 </head><body>
+<script>try{if(new URLSearchParams(location.search).get("bare")==="1")document.documentElement.classList.add("bare")}catch(e){}</script>
 <title>메시온 AX 데모</title>
 <meta name="description" content="밸롭 예시로 목표 설정부터 발송, 결산까지 자동 재생하는 메시온 AX 인터랙티브 데모">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
@@ -3028,7 +3029,8 @@ const DECK_URL = 'https://claude.ai/artifact/Nnf9HJ7NdptcRsEcTVmHSK';
 
 /* ---------- fit stage ---------- */
 function fit(){
-  const aw = wrap.clientWidth - 32, ah = wrap.clientHeight - 32;
+  const pad = document.documentElement.classList.contains('bare') ? 0 : 32;
+  const aw = wrap.clientWidth - pad, ah = wrap.clientHeight - pad;
   const s = Math.max(0.15, Math.min(aw / W, ah / H));
   frame.style.width = (W*s) + 'px'; frame.style.height = (H*s) + 'px';
   stage.style.transform = 'scale(' + s + ')';
@@ -3419,5 +3421,7 @@ setTimeout(() => play(0), 300);
 })();
 </script>
 
+<script>addEventListener("load",function(){dispatchEvent(new Event("resize"));setTimeout(function(){dispatchEvent(new Event("resize"))},300)});</script>
+<style id="embed-bare">.bare #wrap{padding:0!important}.bare #stage{border-radius:0!important;box-shadow:none!important}</style>
 <style id="embed-ov">header.bar{display:none!important}.hint{display:none!important}.ctl{display:none!important}.tip{border-left:0!important;border:1px solid #e3e8f2!important}.tip .k{align-self:flex-start;background:#e8effe;color:#3470F0!important;padding:3px 9px;border-radius:99px;letter-spacing:.02em!important}html,body{background:transparent}</style>
 </body></html>
