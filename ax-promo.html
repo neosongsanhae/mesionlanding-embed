@@ -279,7 +279,7 @@ h2.t{font-size:clamp(23px,2.7vw,35px);line-height:1.3;margin-bottom:10px}
           <label class="fl" for="fName">담당자명</label>
           <input class="fi" id="fName" placeholder="예) 홍길동" autocomplete="name">
           <label class="fl" for="fPhone">연락처</label>
-          <input class="fi" id="fPhone" placeholder="010-0000-0000" inputmode="tel" autocomplete="tel">
+          <input class="fi" id="fPhone" placeholder="01012345678 (숫자만)" inputmode="numeric" pattern="[0-9]*" autocomplete="tel" oninput="this.value=this.value.replace(/[^0-9]/g,'').slice(0,11)">
           <p class="ferr" id="fErr">기업명·담당자명·연락처를 모두 입력해 주세요.</p>
           <button class="btn" id="fGo" type="button">프로모션 신청하기</button>
         </div>
@@ -312,7 +312,7 @@ var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwg67vy0WnjA29Ln9jdXB
   var form=document.getElementById('leadForm'), btn=document.getElementById('fGo'), err=document.getElementById('fErr');
   function v(id){return document.getElementById(id).value.trim();}
   btn.addEventListener('click',function(){
-    var brand=v('fBrand'), name=v('fName'), phone=v('fPhone');
+    var brand=v('fBrand'), name=v('fName'), phone=v('fPhone').replace(/[^0-9]/g,'');
     if(!brand||!name||!phone){err.classList.add('on');return;}
     err.classList.remove('on');
     btn.disabled=true; btn.textContent='보내는 중…';
