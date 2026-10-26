@@ -203,54 +203,83 @@ h2.t{font-size:clamp(23px,2.7vw,35px);line-height:1.3;margin-bottom:10px}
 .form.sent .done{display:block}
 .fine{margin-top:12px;font-size:12px;color:var(--faint);line-height:1.5}
 @media(max-width:520px){.fvis{padding:16px;min-height:0}.duo{gap:10px}.duo img{width:54px;height:54px;border-radius:15px}.duo .plus{font-size:20px}.duo .to{margin-left:0;gap:6px}.duo .to i{width:16px}.duo .mlogo{padding:8px 10px;border-radius:11px}.duo .mlogo img{height:16px}}
-/* receipt hero (소개서 10p 영수증 뷰) */
-.rcv{background:var(--paper2)}
-.rcv .kick{color:var(--blue-d);background:var(--blue-t)}
+/* receipt hero (소개서 10p 영수증 뷰, 기업 전용) */
+.rcv{background:radial-gradient(80% 60% at 85% 0%,#e6eeff 0%,rgba(230,238,255,0) 60%),var(--paper2)}
+.rcv .kick{color:var(--blue-d);background:#fff;box-shadow:0 0 0 1px var(--line) inset}
 .rcv .kick b{color:var(--ink);font-weight:800;margin-right:6px}
-.rcv .lede{max-width:none;margin-bottom:34px}
+.rcv h1{font-size:clamp(32px,4.6vw,58px)}
+.rcv h1 #rBrand{color:var(--ink)}
+.rcv h1 .hl{white-space:nowrap}
+#rSave{font-variant-numeric:tabular-nums}
+.rcv .lede{max-width:none;margin-bottom:40px}
 .rcpts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.6vw,32px);align-items:start}
 @media(max-width:860px){.rcpts{grid-template-columns:1fr;gap:40px}}
-.rcpt{position:relative;padding:clamp(20px,2.4vw,28px) clamp(18px,2.4vw,28px) 30px;filter:drop-shadow(0 8px 18px rgba(20,24,40,.07))}
+.rcpt{position:relative;padding:clamp(18px,2.2vw,24px) clamp(18px,2.4vw,28px) 30px;filter:drop-shadow(0 10px 22px rgba(20,24,40,.08))}
 .rcpt::before{content:"";position:absolute;inset:0;background:#fff;border-radius:18px 18px 0 0;
   -webkit-mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 50% 100%/18px 100% repeat-x;mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 50% 100%/18px 100% repeat-x}
 .rcpt>*{position:relative}
-.rcpt .rh{font-size:clamp(19px,1.8vw,23px);font-weight:800;letter-spacing:-.03em;padding-bottom:18px;border-bottom:2px dashed var(--line2);margin-bottom:6px}
+.rmeta{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;font-weight:600;color:var(--faint);margin-bottom:10px;letter-spacing:0}
+.rmeta span:first-child{color:var(--muted)}
+.mesion .rmeta span:last-child{visibility:hidden}
+.rcpt .rh{font-size:clamp(19px,1.8vw,23px);font-weight:800;letter-spacing:-.03em;padding-bottom:16px;border-bottom:2px dashed var(--line2);margin-bottom:6px}
 .rcpt.other .rh{color:var(--muted)}
 .rcpt.mesion .rh{color:var(--blue)}
 .rcpt table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .rcpt th{font-size:11.5px;font-weight:600;color:var(--faint);text-align:right;padding:10px 0 8px;border-bottom:1px solid var(--line)}
 .rcpt th:first-child,.rcpt td:first-child{text-align:left}
-.rcpt td{font-size:clamp(12.5px,1.15vw,14.5px);font-weight:600;color:var(--ink);text-align:right;padding:12px 0;border-bottom:1px solid var(--line);white-space:nowrap}
-.rcpt td:first-child{white-space:normal;padding-right:8px}
-.rcpt td:last-child{font-weight:700;padding-left:8px}
+.rcpt td{font-size:clamp(12.5px,1.15vw,14.5px);font-weight:600;color:var(--ink);text-align:right;padding:12px 0;border-bottom:1px solid var(--line);white-space:nowrap;transition:background .2s,color .2s}
+.rcpt td:first-child{white-space:normal;padding-right:8px;padding-left:8px;border-radius:8px 0 0 8px}
+.rcpt td:last-child{font-weight:700;padding-left:8px;padding-right:8px;position:relative;border-radius:0 8px 8px 0}
 .rcpt td:nth-child(2),.rcpt td:nth-child(3){padding-left:8px}
+.rcpt th:first-child{padding-left:8px}.rcpt th:last-child{padding-right:8px}
+.rcpt tbody tr{cursor:default}
 .rcpt tr.na td{color:var(--faint)}
 .rcpt tr.na td.no{color:var(--red-d);font-weight:700}
 .rcpt tr.gr td:first-child,.rcpt tr.gr td:last-child{color:#0a9c4a}
-.rcpt.other tr:last-child td:last-child{color:var(--ink)}
 .rcpt tr.free td:last-child{color:var(--blue);font-weight:800}
-.rcnt{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 12px;border-bottom:2px solid var(--ink);font-size:14px;font-weight:600}
+.rcpt.other tr.hot td{background:var(--red-t)}
+.rcpt.mesion tr.hot td{background:var(--blue-t)}
+.rcpt tr.hot td{border-bottom-color:transparent}
+.dlt{position:absolute;right:4px;top:50%;margin-top:-12px;line-height:18px;font-style:normal;font-size:11.5px;font-weight:800;color:#fff;background:var(--blue);border-radius:999px;padding:3px 9px;white-space:nowrap;
+  opacity:0;transform:translateY(6px) scale(.9);transition:opacity .2s,transform .25s var(--ease);pointer-events:none;box-shadow:0 6px 14px -6px rgba(36,85,199,.6)}
+.dlt.plus{background:#0a9c4a;box-shadow:0 6px 14px -6px rgba(10,156,74,.6)}
+tr.hot .dlt{opacity:1;transform:none}
+.rcpt td:last-child>span{display:inline-block;transition:opacity .2s,transform .25s var(--ease)}
+.mesion tr.hot td:last-child>span{opacity:0;transform:translateY(-6px)}
+.rcnt{display:flex;justify-content:space-between;align-items:baseline;padding:14px 8px 12px;border-bottom:2px solid var(--ink);font-size:14px;font-weight:600}
 .rcnt b{font-size:16px;font-weight:700}
 .mesion .rcnt b{color:var(--blue)}
-.rtot{display:flex;justify-content:space-between;align-items:center;padding-top:16px;font-size:15px;font-weight:700}
+.rtot{display:flex;justify-content:space-between;align-items:center;padding:16px 8px 0;font-size:15px;font-weight:700}
 .rtot b{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .other .rtot b{color:var(--red)}
 .mesion .rtot b{color:var(--blue)}
 .rcpt>.stamp{position:absolute;z-index:2;top:-30px;right:-18px;width:104px;height:104px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-shadow:inset 0 0 0 5px #fff,inset 0 0 0 6.5px var(--blue);
-  display:grid;place-content:center;text-align:center;color:var(--blue);transform:rotate(-12deg);line-height:1.05}
-.stamp b{font-size:30px;font-weight:800;letter-spacing:-.04em}
+  display:grid;place-content:center;text-align:center;color:var(--blue);transform:rotate(-12deg);line-height:1.05;transition:transform .3s var(--ease)}
+.rcpt>.stamp:hover{transform:rotate(-4deg) scale(1.06)}
+.stamp b{font-size:30px;font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .stamp span{font-size:13px;font-weight:700}
 @media(max-width:860px){.rcpt>.stamp{top:-24px;right:6px;width:84px;height:84px}.stamp b{font-size:24px}.stamp span{font-size:11.5px}}
-@media(max-width:560px){.rcpt td{font-size:12px;padding:11px 0}.rcpt td:nth-child(2),.rcpt td:nth-child(3),.rcpt td:last-child{padding-left:6px}.rcpt th{font-size:10.5px}.rcv .lede br{display:none}}
-.rsum{margin-top:30px;text-align:center;font-size:clamp(16px,1.6vw,20px);font-weight:700;line-height:1.55}
-.rsum b{color:var(--blue);font-weight:800}
-.rask{text-align:center;font-size:clamp(16px,1.6vw,20px);font-weight:700}
+@media(max-width:560px){.rcpt td{font-size:12px;padding:11px 0}.rcpt td:first-child{padding-left:4px}.rcpt td:last-child{padding-right:4px}.rcpt td:nth-child(2),.rcpt td:nth-child(3),.rcpt td:last-child{padding-left:6px}.rcpt th{font-size:10.5px}.rcv .lede br{display:none}}
+/* 인쇄되듯 나오는 첫 화면 */
+.rcv.play .rcpt{animation:rPrint .9s var(--ease) both}
+.rcv.play .rcpt.mesion{animation-delay:.25s}
+.rcv.play .rcpt tbody tr,.rcv.play .rcnt,.rcv.play .rtot{animation:rRow .45s var(--ease) both}
+.rcv.play .rcpt>.stamp{animation:rStamp .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:1.9s}
+@keyframes rPrint{from{clip-path:inset(0 0 100% 0);transform:translateY(-14px)}to{clip-path:inset(-80px -80px -80px -80px);transform:none}}
+@keyframes rRow{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@keyframes rStamp{from{opacity:0;transform:rotate(-30deg) scale(1.9)}to{opacity:1;transform:rotate(-12deg) scale(1)}}
+.rsum{margin-top:30px;text-align:center;font-size:clamp(16px,1.6vw,20px);font-weight:700;line-height:1.7}
+.rsum b{color:var(--blue);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.seg{position:relative;display:inline-flex;vertical-align:middle;background:#fff;border:1px solid var(--line2);border-radius:999px;padding:3px;margin:0 2px}
+.seg button{position:relative;z-index:1;font:inherit;font-size:.82em;font-weight:700;color:var(--muted);background:none;border:0;border-radius:999px;padding:3px 11px;cursor:pointer;transition:color .2s}
+.seg button.on{color:#fff}
+.seg i{position:absolute;top:3px;bottom:3px;left:0;border-radius:999px;background:var(--blue);transition:transform .3s var(--ease),width .3s var(--ease)}
 .rnote{margin-top:14px;text-align:center;font-size:12.5px;color:var(--muted)}
 .sales{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:60;display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center;
   background:rgba(255,255,255,.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);border-radius:14px;padding:10px 14px;box-shadow:0 8px 26px rgba(20,28,50,.14);font-size:13px;font-weight:600;color:var(--ink2)}
 .sales[hidden]{display:none}
 .sales input{width:92px;margin-left:6px;font:inherit;font-weight:700;padding:6px 8px;border:1px solid var(--line2);border-radius:8px;text-align:right}
-.sales label:last-child input{width:44px;margin-right:4px}
+@media(prefers-reduced-motion:reduce){.rcv.play .rcpt,.rcv.play .rcpt tbody tr,.rcv.play .rcnt,.rcv.play .rtot,.rcv.play .rcpt>.stamp{animation:none}}
 </style>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" media="print" onload="this.media='all'">
@@ -264,47 +293,50 @@ h2.t{font-size:clamp(23px,2.7vw,35px);line-height:1.3;margin-bottom:10px}
 
 <section class="slide cover rcv" aria-label="발송비 비교">
   <div class="stage">
-    <span class="kick" id="rKick">카톡 채널 친구 9만 명 기준</span>
-    <h1>더 많은 고객에게 보내도<br><span class="hl">발송비는 줄어듭니다</span></h1>
-    <p class="lede" id="rLede">수신동의 회원 30만 명(채널 친구 9만 명)에 <br>네이버페이 비회원 구매자 3만 명인 업체가 한 달에 한 번 보낼 때로 계산했습니다.</p>
-    <div class="rcpts">
+    <span class="kick" id="rKick">발송비 리포트 예시</span>
+    <h1 id="rH1"><span id="rBrand"></span>한 달 발송비,<br><span class="hl"><span id="rSave">0원</span> 줄어듭니다</span></h1>
+    <p class="lede" id="rLede"></p>
+    <div class="rcpts" id="rcpts">
       <div class="rcpt other">
+        <div class="rmeta"><span data-to></span><span data-date></span></div>
         <div class="rh">타사 CRM</div>
         <table>
           <thead><tr><th>매체 · 대상</th><th>인원</th><th>단가</th><th>금액</th></tr></thead>
           <tbody>
-            <tr><td>브랜드메시지 · 친구</td><td data-p="f"></td><td>21.9원</td><td data-a="of"></td></tr>
-            <tr><td>브랜드메시지 · 비친구</td><td data-p="nf"></td><td>26.9원</td><td data-a="onf"></td></tr>
-            <tr class="na"><td>네이버페이 비회원 구매자</td><td data-p="np"></td><td class="no">발송 불가</td><td>-</td></tr>
-            <tr><td>솔루션 이용료 (월)</td><td></td><td></td><td data-a="osol"></td></tr>
+            <tr data-row="fr"><td>브랜드메시지 · 친구</td><td data-p="f"></td><td>21.9원</td><td><span data-a="of"></span></td></tr>
+            <tr data-row="nf"><td>브랜드메시지 · 비친구</td><td data-p="nf"></td><td>26.9원</td><td><span data-a="onf"></span></td></tr>
+            <tr data-row="np" class="na"><td>네이버페이 비회원 구매자</td><td data-p="np"></td><td class="no">발송 불가</td><td>-</td></tr>
+            <tr data-row="sol"><td>솔루션 이용료 (월)</td><td></td><td></td><td><span data-a="osol"></span></td></tr>
           </tbody>
         </table>
         <div class="rcnt"><span>전체 발송 수</span><b data-c="o"></b></div>
         <div class="rtot"><span>합계</span><b data-a="ot"></b></div>
       </div>
       <div class="rcpt mesion">
-        <div class="stamp"><b id="rPct">55%</b><span>절감</span></div>
+        <div class="stamp" id="rStamp"><b id="rPct">0%</b><span>절감</span></div>
+        <div class="rmeta"><span data-to></span><span data-date></span></div>
         <div class="rh">메시온</div>
         <table>
           <thead><tr><th>매체 · 대상</th><th>인원</th><th>단가</th><th>금액</th></tr></thead>
           <tbody>
-            <tr><td>브랜드메시지 · 친구</td><td data-p="f"></td><td>16원</td><td data-a="mf"></td></tr>
-            <tr><td>스마트 톡톡 · 수신동의</td><td data-p="m"></td><td>4원</td><td data-a="mm"></td></tr>
-            <tr class="gr"><td>스마트 톡톡 · 비회원 구매자</td><td data-p="np"></td><td>4원</td><td data-a="mnp"></td></tr>
-            <tr class="free"><td>솔루션 이용료 (월)</td><td></td><td></td><td>0원</td></tr>
+            <tr data-row="fr"><td>브랜드메시지 · 친구</td><td data-p="f"></td><td>16원</td><td><i class="dlt" data-d="fr"></i><span data-a="mf"></span></td></tr>
+            <tr data-row="nf"><td>스마트 톡톡 · 수신동의</td><td data-p="m"></td><td>4원</td><td><i class="dlt" data-d="nf"></i><span data-a="mm"></span></td></tr>
+            <tr data-row="np" class="gr"><td>스마트 톡톡 · 비회원 구매자</td><td data-p="np"></td><td>4원</td><td><i class="dlt plus" data-d="np"></i><span data-a="mnp"></span></td></tr>
+            <tr data-row="sol" class="free"><td>솔루션 이용료 (월)</td><td></td><td></td><td><i class="dlt" data-d="sol"></i><span>0원</span></td></tr>
           </tbody>
         </table>
         <div class="rcnt"><span>전체 발송 수</span><b data-c="m"></b></div>
         <div class="rtot"><span>합계</span><b data-a="mt"></b></div>
       </div>
     </div>
-    <p class="rsum" id="rSum"></p>
-    <p class="rask">지금 보내시는 단가로 계산해 드릴까요?</p>
+    <div class="rsum" id="rSum">
+      <p>한 달에 한 번이면 <b id="rOnce"></b> 차이.</p>
+      <p>월 <span class="seg" id="rSeg" role="group" aria-label="월 발송 횟수"><button type="button" data-t="1">1회</button><button type="button" data-t="2">2회</button><button type="button" data-t="4" class="on">4회</button><i></i></span> 보내면 1년에 <b>약 <span id="rYear"></span></b>을 아낄 수 있습니다.</p>
+    </div>
     <p class="rnote">카톡 채널 친구 수로 추정한 금액입니다. 수신동의 회원은 친구 수의 약 3.3배로 잡았고 네이버페이 비회원 구매자는 회원의 10%로 넣었습니다.</p>
     <div class="sales" id="rSales" hidden>
       <label>카톡 친구 <input id="sF" inputmode="numeric"></label>
       <label>수신동의 회원 <input id="sM" inputmode="numeric" placeholder="자동"></label>
-      <label>월 발송 <input id="sN" inputmode="numeric" value="4">회</label>
     </div>
   </div>
 </section>
@@ -384,7 +416,8 @@ h2.t{font-size:clamp(23px,2.7vw,35px);line-height:1.3;margin-bottom:10px}
   var RDATA = JSON.parse(document.getElementById('rdata').textContent || '{}');
   var P = {of:21.9, onf:26.9, mf:16, mm:4, mnp:4};       // 타사 / 메시온(AX 프로모션 단가)
   var QS = new URLSearchParams(location.search);
-  var $ = function(s){return document.querySelector(s);}, $$ = function(s){return document.querySelectorAll(s);};
+  var $ = function(s, r){return (r || document).querySelector(s);}, $$ = function(s, r){return (r || document).querySelectorAll(s);};
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   // 월 솔루션 이용료 추정: 친구 10만 = 월 50만 원 기준 구간
   function sol(f){ return f >= 500000 ? 1200000 : f >= 300000 ? 900000 : f >= 200000 ? 700000 : f >= 100000 ? 500000 : 400000; }
   var r1000 = function(n){ return Math.round(n / 1000) * 1000; };
@@ -397,36 +430,93 @@ h2.t{font-size:clamp(23px,2.7vw,35px);line-height:1.3;margin-bottom:10px}
     if (m === 10000) { e++; m = 0; }
     return e ? e + '억' + (m ? ' ' + m.toLocaleString('ko-KR') + '만' : '') + ' 원' : man(n) + ' 원';
   }
+  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  var eui = function(w){ return w + '의 '; };
+  // 숫자 올라가기: el에 fmt(값)을 dur 동안 0 → v
+  function count(el, v, fmt, dur, delay){
+    if (still || !dur) { el.textContent = fmt(v); return; }
+    var t0 = 0; el.textContent = fmt(0);
+    setTimeout(function(){ requestAnimationFrame(function tick(t){ if (!t0) t0 = t; var k = Math.min(1, (t - t0) / dur); el.textContent = fmt(v * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(tick); }); }, delay || 0);
+  }
 
-  var name = '', f = 90000, mOver = 0, times = 4;
+  var name = '', f = 90000, mOver = 0, times = 4, first = true, V = null;
   var d = RDATA[QS.get('k') || ''];
   if (d) { name = d.n; f = +d.f; }
   else if (QS.get('f')) { name = (QS.get('n') || '').trim(); f = +QS.get('f').replace(/[^\d]/g, '') || f; }
 
-  function render(){
+  function calc(){
     var F = r1000(f), M = mOver ? r1000(mOver) : r1000(F * 10 / 3), NF = Math.max(0, M - F), NP = r1000(M * 0.1), S = sol(F);
     var a = {of:F*P.of, onf:NF*P.onf, osol:S, mf:F*P.mf, mm:M*P.mm, mnp:NP*P.mnp};
     a.ot = a.of + a.onf + a.osol; a.mt = a.mf + a.mm + a.mnp;
-    var p = {f:F, nf:NF, np:NP, m:M};
-    $$('[data-p]').forEach(function(e){ e.textContent = ppl(p[e.dataset.p]); });
-    $$('[data-a]').forEach(function(e){ e.textContent = won(a[e.dataset.a]); });
-    $('[data-c="o"]').textContent = cnt(M); $('[data-c="m"]').textContent = cnt(M + F + NP);
-    $('#rPct').textContent = Math.round((a.ot - a.mt) / a.ot * 100) + '%';
-    var yr = ((a.of + a.onf - a.mt) * times + S) * 12;
-    $('#rSum').innerHTML = '한 달에 한 번이면 <b>' + big(a.ot - a.mt) + '</b> 차이.<br>월 ' + times + '회 보내면 1년에 <b>약 ' + big(yr) + '</b>을 아낄 수 있습니다.';
-    var who = name ? '<b>' + esc(name) + '</b>' : '';
-    $('#rKick').innerHTML = who + '카톡 채널 친구 ' + ppl(F) + ' 기준';
-    $('#rLede').innerHTML = (name ? esc(name) + '처럼 ' : '') + '수신동의 회원 ' + ppl(M) + '(채널 친구 ' + ppl(F) + ')에 <br>네이버페이 비회원 구매자 ' + ppl(NP) + '인 업체가 한 달에 한 번 보낼 때로 계산했습니다.';
+    return {F:F, M:M, NF:NF, NP:NP, S:S, a:a, p:{f:F, nf:NF, np:NP, m:M}};
   }
-  function esc(s){ return s.replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  function yearly(){ var a = V.a; return ((a.of + a.onf - a.mt) * times + V.S) * 12; }
+  function render(){
+    V = calc(); var a = V.a, anim = first && !still, rowDelay = function(i){ return 350 + i * 110; };
+    $$('[data-p]').forEach(function(e){ e.textContent = ppl(V.p[e.dataset.p]); });
+    $$('[data-a]').forEach(function(e){
+      var tr = e.closest('tr'), i = tr ? [].indexOf.call(tr.parentNode.children, tr) : 5;
+      count(e, a[e.dataset.a], won, anim ? 700 : 0, anim ? rowDelay(i) + (e.closest('.mesion') ? 250 : 0) : 0);
+    });
+    $('[data-c="o"]').textContent = cnt(V.M); $('[data-c="m"]').textContent = cnt(V.M + V.F + V.NP);
+    count($('#rPct'), Math.round((a.ot - a.mt) / a.ot * 100), function(x){ return Math.round(x) + '%'; }, anim ? 500 : 0, anim ? 1900 : 0);
+    count($('#rSave'), a.ot - a.mt, big, anim ? 1400 : 0, anim ? 300 : 0);
+    $('#rOnce').textContent = big(a.ot - a.mt);
+    count($('#rYear'), yearly(), big, anim ? 1400 : 0, anim ? 300 : 0);
+    var dl = {fr: '−' + won(a.of - a.mf), nf: '−' + won(a.onf - a.mm), np: '+' + ppl(V.NP) + ' 발송', sol: '−' + won(V.S)};
+    $$('.dlt').forEach(function(e){ e.textContent = dl[e.dataset.d]; });
+    $('#rBrand').textContent = name ? eui(name) : '';
+    $('#rKick').innerHTML = name ? '<b>' + esc(name) + '</b>전용 발송비 리포트' : '발송비 리포트 예시';
+    $('#rLede').innerHTML = '카톡 채널 친구 ' + ppl(V.F) + ' 기준으로 타사 CRM과 메시온 영수증을 비교했습니다. 수신동의 회원 약 ' + ppl(V.M) + '과 네이버페이 비회원 구매자 약 ' + ppl(V.NP) + '에게 한 달에 한 번 보내는 경우입니다.';
+    first = false;
+  }
 
-  if (name) { document.title = name + ' 발송비 비교 | 메시온'; var g = $('.topbar .gname'); if (g) g.textContent = name + ' 발송비 비교'; }
+  // 영수증 머리: 받는 곳·발행일
+  var dt = new Date(), ds = dt.getFullYear() + '.' + String(dt.getMonth() + 1).padStart(2, '0') + '.' + String(dt.getDate()).padStart(2, '0') + ' 발행';
+  $$('[data-to]').forEach(function(e){ e.textContent = (name || '고객사') + ' 귀하'; });
+  $$('[data-date]').forEach(function(e){ e.textContent = ds; });
+  if (name) { document.title = name + ' 발송비 리포트 | 메시온'; var g = $('.topbar .gname'); if (g) g.textContent = name + ' 전용 발송비 리포트'; }
+
+  // 행 등장 순서
+  $$('.rcpt').forEach(function(r, k){
+    $$('tbody tr', r).forEach(function(tr, i){ tr.style.animationDelay = (350 + i * 110 + k * 250) + 'ms'; });
+    r.querySelector('.rcnt').style.animationDelay = (850 + k * 250) + 'ms';
+    r.querySelector('.rtot').style.animationDelay = (950 + k * 250) + 'ms';
+  });
+  $('.rcv').classList.add('play');
   render();
+
+  // 같은 항목끼리 짝지어 강조 (마우스 올리기·탭)
+  var auto = null, user = false;
+  function hot(row){ $$('.rcpt tr[data-row]').forEach(function(tr){ tr.classList.toggle('hot', tr.dataset.row === row); }); }
+  $$('.rcpt tbody tr[data-row]').forEach(function(tr){
+    tr.addEventListener('mouseenter', function(){ user = true; clearTimeout(auto); hot(tr.dataset.row); });
+    tr.addEventListener('mouseleave', function(){ hot(null); });
+    tr.addEventListener('click', function(){ user = true; clearTimeout(auto); hot(tr.classList.contains('hot') ? null : tr.dataset.row); });
+  });
+  // 첫 화면에서 한 번 차례로 보여주기
+  if (!still) {
+    var seq = ['fr', 'nf', 'np', 'sol'], i = 0;
+    var step = function(){ if (user) return; if (i < seq.length) { hot(seq[i++]); auto = setTimeout(step, 1100); } else hot(null); };
+    var io = new IntersectionObserver(function(es){ if (es[0].isIntersecting) { io.disconnect(); auto = setTimeout(step, 2700); } }, {threshold: .5});
+    io.observe($('.rcpt.mesion'));
+  }
+
+  // 월 발송 횟수
+  var seg = $('#rSeg'), pill = $('i', seg);
+  function place(){ var b = $('button.on', seg); pill.style.width = b.offsetWidth + 'px'; pill.style.transform = 'translateX(' + (b.offsetLeft) + 'px)'; }
+  seg.addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b) return;
+    $$('button', seg).forEach(function(x){ x.classList.toggle('on', x === b); }); place();
+    times = +b.dataset.t; count($('#rYear'), yearly(), big, 500, 0);
+  });
+  place(); addEventListener('resize', place); document.fonts && document.fonts.ready.then(place);
+
   if (QS.get('sales')) {
     var box = $('#rSales'); box.hidden = false;
-    var sF = $('#sF'), sM = $('#sM'), sN = $('#sN'); sF.value = f;
+    var sF = $('#sF'), sM = $('#sM'); sF.value = f;
     box.addEventListener('input', function(){
-      f = +sF.value.replace(/[^\d]/g, '') || 0; mOver = +sM.value.replace(/[^\d]/g, '') || 0; times = Math.max(1, +sN.value || 1);
+      f = +sF.value.replace(/[^\d]/g, '') || 0; mOver = +sM.value.replace(/[^\d]/g, '') || 0;
       if (f) render();
     });
   }
