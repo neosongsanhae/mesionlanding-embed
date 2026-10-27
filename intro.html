@@ -2040,6 +2040,9 @@ tr.hot .dlt{opacity:1;transform:none}
 .rnote{margin-top:14px;text-align:center;font-size:12.5px;color:var(--muted)}
 
 .slide.rcv .rsum{margin-top:30px}
+.qah .t{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .5s var(--ease);pointer-events:none}
+.qah .t.on{opacity:1;transform:none;pointer-events:auto}
+.qas .qmd{margin-bottom:2px}
 .js .rcv:not(.play) .rcpt{opacity:0}
 
 /* ===== 고객사·투자사 로고: index.html 로고 마퀴 ===== */
@@ -2240,6 +2243,7 @@ tr.hot .dlt{opacity:1;transform:none}
 <section class="slide alt" aria-label="메시온 AX 4단계">
   <div class="stage">
     <span class="kick so">메시온 AX</span>
+    <div class="qah"><h2 class="t one on">목표 매출에 맞춘 <span class="em">캠페인 제안</span></h2><h2 class="t one">타겟부터 <span class="em">문구·이미지 초안까지</span></h2><h2 class="t one">승인한 캠페인은 <span class="em">일정대로 발송</span></h2><h2 class="t one">개선할 지점을 찾아 <span class="em">다음 캠페인에 반영</span></h2></div>
     <div class="body anim"><div class="qax" id="ax">
         <ol class="qal">
           <li class="on"><button type="button" aria-label="캠페인 기획"><span class="n">1</span><span class="tt"><b>캠페인 기획</b><em>Express</em></span><i class="bar"></i></button><div class="dsc"><p>목표 매출만 정하면 한 달 캠페인 일정을 대상·예상 매출과 함께 먼저 제안합니다. 정규·즉시·업계 인기·커스텀 중 상황에 맞게 고르면 됩니다.</p><small>캠페인 설계 기능은 순차 오픈 예정이며 1사 데이터 연동이 필수입니다</small></div></li>
@@ -2248,7 +2252,7 @@ tr.hot .dlt{opacity:1;transform:none}
           <li><button type="button" aria-label="분석 및 피드백"><span class="n">4</span><span class="tt"><b>분석 및 피드백</b><em>Evolve</em></span><i class="bar"></i></button><div class="dsc"><p>AI 에이전트가 문제점을 먼저 짚고, 대화로 개선점을 찾아 다음 캠페인에 반영합니다.</p></div></li>
         </ol>
         <div class="qas">
-          <div class="qah"><h4 class="on">목표 매출에 맞춘 <span>캠페인 제안</span></h4><h4>타겟부터 <span>문구·이미지 초안까지</span></h4><h4>승인한 캠페인은 <span>일정대로 발송</span></h4><h4>개선할 지점을 찾아 <span>다음 캠페인에 반영</span></h4></div>
+          
           <div class="qaf"><div class="qat"><img src="creatives/axp/ax-step1.webp" alt="캠페인 기획 예시 화면" width="1600" height="1073"><img src="creatives/axp/ax-step2.webp" alt="타겟 및 소재 설계 예시 화면" width="1600" height="1073"><img src="creatives/axp/ax-step3.webp" alt="매체 확장 및 발송 예시 화면" width="1600" height="1073"><img src="creatives/axp/ax-step4.webp" alt="분석 및 피드백 예시 화면" width="1600" height="1073"></div></div>
           <span class="qac">(예시 화면)</span>
         </div>
@@ -2399,8 +2403,8 @@ tr.hot .dlt{opacity:1;transform:none}
 /* AX 4단계: 5초마다 다음 단계로 자동 슬라이드, 누르면 그 단계로, 마우스를 올리면 멈춤 */
 (function(){
   var root=document.getElementById('ax'); if(!root||!root.classList.contains('qax')) return;
-  var lis=[].slice.call(root.querySelectorAll('.qal li')), hs=root.querySelectorAll('.qah h4'), trk=root.querySelector('.qat');
-  var md=document.createElement('p'); md.className='qmd'; root.querySelector('.qah').after(md);
+  var lis=[].slice.call(root.querySelectorAll('.qal li')), hs=document.querySelectorAll('.qah .t'), trk=root.querySelector('.qat');
+  var md=document.createElement('p'); md.className='qmd'; root.querySelector('.qaf').before(md);
   var cur=0, T=5000, t=null, vis=true, hold=false, left=T, t0=0, still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(i){
     cur=i;
