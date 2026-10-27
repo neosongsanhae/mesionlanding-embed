@@ -50,6 +50,14 @@
 - 공유(오픈그래프) 제목·설명·이미지: `build_intro.py` 의 `title`·`desc`·`og_title`·`og_img`. 공유 이미지는 `tools/intro/og-intro.html` 을 1200×630으로 캡처해 `creatives/og-intro.png` 로 저장하고, 바꾸면 `og_img` 끝의 `?v=` 숫자를 올립니다(카카오톡·링크드인 캐시 갱신용).
 - 스크립트가 만드는 웹 전용 요소: 매체 3곳 휴대폰 목업 섹션(`PHONE_H2`), AX 4단계 자동 넘김(ax-receipt에서 가져옴), 비용 비교 영수증, 고객사·투자사 로고 띠, 상단 "상담 신청하기" 팝업과 문의 장 신청 폼.
 
+## 공유(오픈그래프) 정보
+
+카카오톡·링크드인에 링크를 붙였을 때 뜨는 제목·설명·이미지입니다. 버전마다 자기 첫 화면 문구에 맞춰 둡니다.
+- intro.html: `tools/intro/build_intro.py` 의 `title`·`desc`·`og_title`·`og_img` (위 참고)
+- 나머지 버전: `tools/og/set_meta.py` 의 표를 고친 뒤 `python3 tools/og/set_meta.py`. head의 제목·설명·OG·트위터 태그만 다시 쓰고 본문은 건드리지 않습니다.
+- 공유 이미지(1200×630): 원본은 `tools/og/make_og.py` 의 문구 표 → `python3 tools/og/make_og.py` → 로컬 서버를 띄운 상태에서 `node tools/og/shot.mjs og-이름` 으로 `creatives/og-이름.png` 저장. `og.png`(네이버)·`og-kisa.png`·`og-ax-promo.png` 는 따로 만든 이미지라 이 스크립트로 다시 만들지 않습니다.
+- 이미지를 바꾸면 `set_meta.py` 의 `V` 숫자(또는 intro의 `?v=`)를 올려야 카카오톡·링크드인이 예전 이미지를 계속 보여 주지 않습니다.
+
 ## 신청 폼(리드)
 
 - 모든 랜딩의 신청 폼은 같은 구글 시트로 보냅니다(`LEAD_ENDPOINT`, 앱스스크립트). intro는 `src: '소개서 웹페이지'`, 카톡 채널 친구 수 구간은 `kf` 로 보냅니다.
