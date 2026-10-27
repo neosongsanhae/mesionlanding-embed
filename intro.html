@@ -1904,27 +1904,12 @@ body{line-height:1.5}
 .js #deck>.slide .anim{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .9s var(--ease)}
 .js #deck>.slide.on .anim{opacity:1;transform:none}
 .js #deck>.slide.on .anim+.anim{transition-delay:.12s}
-.js #deck>.slide .stage>.kick,.js #deck>.slide .stage>.t,.js #deck>.slide .stage>.lead,.js #deck>.slide .stage>.qsub,.js #deck>.slide .ixh{transition:opacity .6s var(--ease),transform .7s var(--ease)}
-.js #deck>.slide:not(.on) .stage>.kick,.js #deck>.slide:not(.on) .stage>.t,.js #deck>.slide:not(.on) .stage>.lead,.js #deck>.slide:not(.on) .stage>.qsub,.js #deck>.slide:not(.on) .ixh{opacity:0;transform:translateY(14px)}
+.js #deck>.slide .stage>.kick,.js #deck>.slide .stage>.t,.js #deck>.slide .stage>.lead,.js #deck>.slide .stage>.qsub{transition:opacity .6s var(--ease),transform .7s var(--ease)}
+.js #deck>.slide:not(.on) .stage>.kick,.js #deck>.slide:not(.on) .stage>.t,.js #deck>.slide:not(.on) .stage>.lead,.js #deck>.slide:not(.on) .stage>.qsub{opacity:0;transform:translateY(14px)}
 @media(prefers-reduced-motion:reduce){.js #deck>.slide .anim,.js #deck>.slide .stage>*{opacity:1!important;transform:none!important}}
 /* 화면 높이에 묶여 있던 크기 풀기 */
 .slide[aria-label="역할 분담"] .r7s{height:380px}
 @media(max-width:900px){.slide[aria-label="역할 분담"] .r7s{height:auto}}
-/* 고객사·투자사 로고: 자동으로 흐르는 띠(index.html 방식), 올리면 멈춤 */
-.lmq{overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)}
-.lmq+.lmq{margin-top:28px}
-.ltk{display:flex;align-items:center;width:max-content;animation:mqSlide var(--mqd,32s) linear infinite}
-.ltk.rev{animation-direction:reverse}
-.ltk>*{flex:none;margin-right:46px}
-.ltk img{width:auto;object-fit:contain;display:block}
-.lmq:hover .ltk{animation-play-state:paused}
-@keyframes mqSlide{to{transform:translateX(-50%)}}
-.lgx6 .lmq .ltk{height:52px}
-.ivr .lmq .ltk>*{margin-right:34px}
-.slide[aria-label="파트너"] .ivmq{min-width:0}
-@media(max-width:900px){.slide[aria-label="파트너"] .ivr{grid-template-columns:1fr!important;gap:16px}.slide[aria-label="파트너"] .pt5{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:10px!important}.slide[aria-label="파트너"] .ptc{min-width:0;padding-left:12px;padding-right:12px}.slide[aria-label="파트너"] .ptl img{max-width:100%;height:auto}.slide[aria-label="파트너"] .ptc:last-child{grid-column:1/-1}}
-@media(prefers-reduced-motion:reduce){.ltk{animation:none;flex-wrap:wrap;width:auto;justify-content:center;row-gap:16px}.ltk>[aria-hidden]{display:none}.lmq{-webkit-mask-image:none;mask-image:none}}
-@media(max-width:900px){.fin2{grid-template-columns:1fr!important;row-gap:44px}.slide.fin .lead{white-space:normal}}
 /* 모바일: 해결 요약 두 칸은 위아래로, 로고는 작게 */
 @media(max-width:700px){
   .y6{grid-template-columns:1fr!important;row-gap:4px}
@@ -1938,97 +1923,143 @@ body{line-height:1.5}
   .slide[aria-label="나눠 보내기"] .cov{margin-top:20px}
 }
 
-/* ===== 메시온 AX 4단계: 한 화면 슬라이드 ===== */
-.ixh{display:grid}
-.ixh .t{grid-area:1/1;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .5s var(--ease);pointer-events:none}
-.ixh .t.on{opacity:1;transform:none;pointer-events:auto}
-.ixv{display:grid;grid-template-columns:minmax(240px,320px) minmax(0,1fr);gap:clamp(18px,2.6vw,36px);align-items:start}
-.ixl{list-style:none;display:grid;gap:10px}
-.ixl li{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;transition:background .35s var(--ease),border-color .35s,box-shadow .35s}
-.ixl button{position:relative;width:100%;display:flex;align-items:center;gap:14px;padding:16px 18px;text-align:left;background:none;border:0;cursor:pointer}
-.ixl .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:800;background:var(--paper2);color:var(--muted);transition:background .35s,color .35s}
-.ixl .tt{display:flex;flex-direction:column;gap:1px}
-.ixl .tt b{font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--ink2);transition:color .35s}
-.ixl .tt em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--faint);transition:color .35s}
-.ixl .bar{position:absolute;left:18px;right:18px;bottom:0;height:2px;background:rgba(255,255,255,.25);border-radius:2px;overflow:hidden;opacity:0}
-.ixl .bar::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
-.ixl .dsc{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
-.ixl .dsc>div{overflow:hidden}
-.ixl .dsc p{font-size:14.5px;line-height:1.65;font-weight:600;color:#fff;padding:0 18px}
-.ixl .dsc small{display:block;font-size:12px;line-height:1.55;color:rgba(255,255,255,.78);padding:8px 18px 0}
-.ixl li.on{background:var(--blue);border-color:var(--blue);box-shadow:0 18px 34px -18px rgba(36,85,199,.7)}
-.ixl li.on .n{background:#fff;color:var(--blue)}
-.ixl li.on .tt b{color:#fff}
-.ixl li.on .tt em{color:rgba(255,255,255,.8)}
-.ixl li.on .dsc{grid-template-rows:1fr;padding-bottom:18px}
-.ixl li.on .bar{opacity:1}
-.ixv.run .ixl li.on .bar::after{animation:ixBar var(--ixd,6s) linear forwards}
-.ixv.hold .ixl li.on .bar::after{animation-play-state:paused}
-@keyframes ixBar{to{transform:scaleX(1)}}
-.ixl li:not(.on):hover{border-color:var(--line2);background:var(--paper2)}
-.ixs{min-width:0;display:grid;gap:10px}
-.ixf{position:relative;aspect-ratio:3/2;border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 26px 60px -30px rgba(27,27,63,.35)}
-.ixt{display:flex;height:100%;transition:transform .8s cubic-bezier(.65,0,.25,1)}
-.ixt img{flex:0 0 100%;width:100%;height:100%;object-fit:contain;display:block;background:#fff}
-.ixc{justify-self:end;font-size:12px;color:var(--faint);font-weight:600}
-.ixm{display:none;font-size:14.5px;line-height:1.65;color:var(--ink2)}
-.ixm small{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
+/* ===== ax-receipt.html에서 가져온 부분 ===== */
+:root{--red:#e5484d;--red-d:#c2343a;--red-t:#fdeeee;--shadow:0 1px 2px rgba(20,24,40,.04),0 8px 22px -12px rgba(20,24,40,.14)}
+/* AX 4단계 (소개서 13~16p) */
+.qax{display:grid;grid-template-columns:minmax(240px,330px) 1fr;gap:clamp(18px,2.6vw,36px);align-items:start;scroll-margin-top:80px}
+.qal{list-style:none;display:grid;gap:10px}
+.qal li{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;transition:background .35s var(--ease),border-color .35s,box-shadow .35s}
+.qal button{position:relative;width:100%;display:flex;align-items:center;gap:14px;padding:16px 18px;font:inherit;text-align:left;background:none;border:0;cursor:pointer;color:inherit}
+.qal .n{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:800;background:var(--paper2);color:var(--muted);transition:background .35s,color .35s}
+.qal .tt{display:flex;flex-direction:column;gap:1px}
+.qal .tt b{font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--muted);transition:color .35s,font-size .35s var(--ease)}
+.qal .tt em{font-style:normal;font-size:12.5px;font-weight:700;color:var(--faint);transition:color .35s}
+.qal .bar{position:absolute;left:18px;right:18px;bottom:0;height:2px;background:rgba(255,255,255,.25);border-radius:2px;overflow:hidden;opacity:0}
+.qal .bar::after{content:"";position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.qal .dsc{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s var(--ease)}
+.qal .dsc>*{overflow:hidden}
+.qal .dsc p{font-size:14.5px;line-height:1.65;font-weight:600;color:#fff;padding:0 18px}
+.qal .dsc small{display:block;font-size:12px;line-height:1.55;color:rgba(255,255,255,.75);padding:8px 18px 0}
+.qal li.on{background:var(--blue);border-color:var(--blue);box-shadow:0 18px 34px -18px rgba(36,85,199,.7)}
+.qal li.on .n{background:#fff;color:var(--blue)}
+.qal li.on .tt b{color:#fff;font-size:20px}
+.qal li.on .tt em{color:rgba(255,255,255,.8)}
+.qal li.on .dsc{grid-template-rows:1fr}
+.qal li.on .dsc>div,.qal li.on .dsc{padding-bottom:18px}
+.qal li.on .bar{opacity:1}
+.qax.run .qal li.on .bar::after{animation:axBar var(--axd,5s) linear forwards}
+.qax.hold .qal li.on .bar::after{animation-play-state:paused}
+@keyframes axBar{to{transform:scaleX(1)}}
+.qal li:not(.on):hover{border-color:var(--line2);background:var(--paper2)}
+.qas{min-width:0;display:grid;gap:12px}
+.qah{display:grid}
+.qah h4{grid-area:1/1;font-size:clamp(20px,2.2vw,28px);font-weight:800;letter-spacing:-.034em;line-height:1.3;opacity:0;transform:translateY(10px);transition:opacity .4s,transform .5s var(--ease)}
+.qah h4 span{color:var(--blue)}
+.qah h4.on{opacity:1;transform:none}
+.qaf{position:relative;aspect-ratio:1600/1073;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 26px 60px -30px rgba(27,27,63,.35)}
+.qat{display:flex;height:100%;transition:transform .8s cubic-bezier(.65,0,.25,1)}
+.qat img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;display:block}
+.qac{justify-self:end;font-size:12.5px;color:var(--muted)}
 @media(max-width:900px){
-  .ixv{grid-template-columns:1fr}
-  .ixl{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
-  .ixl button{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 10px}
-  .ixl .tt b{font-size:12.5px;line-height:1.35}
-  .ixl .tt em{display:none}
-  .ixl .n{width:26px;height:26px;font-size:12.5px}
-  .ixl .bar{left:10px;right:10px}
-  .ixl .dsc{display:none}
-  .ixm{display:block}
+  .qax{grid-template-columns:1fr}
+  .qal{grid-template-columns:repeat(4,1fr);gap:6px}
+  .qal button{flex-direction:column;align-items:flex-start;gap:8px;padding:12px 10px}
+  .qal .tt b,.qal li.on .tt b{font-size:12.5px;line-height:1.35}
+  .qal .tt em{display:none}
+  .qal .n{width:26px;height:26px;font-size:12.5px}
+  .qal .bar{left:10px;right:10px}
+  .qal .dsc{display:none}
+  .qas .qmd{display:block}
 }
+.qas .qmd{display:none;font-size:14.5px;line-height:1.65;color:var(--ink2)}
+.qas .qmd small{display:block;margin-top:6px;font-size:12px;color:var(--muted)}
 
-/* ===== 비용 비교: 영수증 ===== */
+/* receipt hero (소개서 10p 영수증 뷰, 기업 전용) */
 .rcpts{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.6vw,32px);align-items:start}
 @media(max-width:860px){.rcpts{grid-template-columns:1fr;gap:40px}}
-.rcpt{position:relative;padding:clamp(18px,2.2vw,26px) clamp(18px,2.4vw,28px) 34px;filter:drop-shadow(0 10px 22px rgba(20,24,40,.08))}
+.rcpt{position:relative;padding:clamp(18px,2.2vw,24px) clamp(18px,2.4vw,28px) 30px;filter:drop-shadow(0 10px 22px rgba(20,24,40,.08))}
 .rcpt::before{content:"";position:absolute;inset:0;background:#fff;border-radius:18px 18px 0 0;
   -webkit-mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 50% 100%/18px 100% repeat-x;mask:radial-gradient(circle 7px at 50% 100%,#0000 98%,#000) 50% 100%/18px 100% repeat-x}
 .rcpt>*{position:relative}
+.rmeta{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;font-weight:600;color:var(--faint);margin-bottom:10px;letter-spacing:0}
+.rmeta span:first-child{color:var(--muted)}
 .rcpt .rh{font-size:clamp(19px,1.8vw,23px);font-weight:800;letter-spacing:-.03em;padding-bottom:16px;border-bottom:2px dashed var(--line2);margin-bottom:6px}
 .rcpt.other .rh{color:var(--muted)}
 .rcpt.mesion .rh{color:var(--blue)}
 .rcpt table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .rcpt th{font-size:11.5px;font-weight:600;color:var(--faint);text-align:right;padding:10px 0 8px;border-bottom:1px solid var(--line)}
 .rcpt th:first-child,.rcpt td:first-child{text-align:left}
-.rcpt td{font-size:clamp(12.5px,1.15vw,14.5px);font-weight:600;color:var(--ink);text-align:right;padding:13px 0;border-bottom:1px solid var(--line);white-space:nowrap}
-.rcpt td:first-child{white-space:normal;padding-right:8px}
-.rcpt td:last-child{font-weight:700}
-.rcpt td:nth-child(2),.rcpt td:nth-child(3),.rcpt td:last-child{padding-left:10px}
+.rcpt td{font-size:clamp(12.5px,1.15vw,14.5px);font-weight:600;color:var(--ink);text-align:right;padding:12px 0;border-bottom:1px solid var(--line);white-space:nowrap;transition:background .2s,color .2s}
+.rcpt td:first-child{white-space:normal;padding-right:8px;padding-left:8px;border-radius:8px 0 0 8px}
+.rcpt td:last-child{font-weight:700;padding-left:8px;padding-right:8px;position:relative;border-radius:0 8px 8px 0}
+.rcpt td:nth-child(2),.rcpt td:nth-child(3){padding-left:8px}
+.rcpt th:first-child{padding-left:8px}.rcpt th:last-child{padding-right:8px}
+.rcpt tbody tr{cursor:default}
 .rcpt tr.na td{color:var(--faint)}
-.rcpt tr.na td.no{color:var(--coral);font-weight:700}
+.rcpt tr.na td.no{color:var(--red-d);font-weight:700}
 .rcpt tr.gr td:first-child,.rcpt tr.gr td:last-child{color:#0a9c4a}
-.rcnt{display:flex;justify-content:space-between;align-items:baseline;padding:14px 0 12px;border-bottom:2px solid var(--ink);font-size:14px;font-weight:600}
+.rcpt tr.free td:last-child{color:var(--blue);font-weight:800}
+.rcpt.other tr.hot td{background:var(--red-t)}
+.rcpt.mesion tr.hot td{background:var(--blue-t)}
+.rcpt tr.hot td{border-bottom-color:transparent}
+.dlt{position:absolute;right:4px;top:50%;margin-top:-12px;line-height:18px;font-style:normal;font-size:11.5px;font-weight:800;color:#fff;background:var(--blue);border-radius:999px;padding:3px 9px;white-space:nowrap;
+  opacity:0;transform:translateY(6px) scale(.9);transition:opacity .2s,transform .25s var(--ease);pointer-events:none;box-shadow:0 6px 14px -6px rgba(36,85,199,.6)}
+.dlt.plus{background:#0a9c4a;box-shadow:0 6px 14px -6px rgba(10,156,74,.6)}
+tr.hot .dlt{opacity:1;transform:none}
+.rcpt td:last-child>span{display:inline-block;transition:opacity .2s,transform .25s var(--ease)}
+.mesion tr.hot td:last-child>span{opacity:0;transform:translateY(-6px)}
+.rcnt{display:flex;justify-content:space-between;align-items:baseline;padding:14px 8px 12px;border-bottom:2px solid var(--ink);font-size:14px;font-weight:600}
 .rcnt b{font-size:16px;font-weight:700}
 .mesion .rcnt b{color:var(--blue)}
-.rtot{display:flex;justify-content:space-between;align-items:center;padding:16px 0 0;font-size:15px;font-weight:700}
+.rtot{display:flex;justify-content:space-between;align-items:center;padding:16px 8px 0;font-size:15px;font-weight:700}
 .rtot b{font-size:clamp(28px,3.4vw,40px);font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-.other .rtot b{color:var(--coral)}
+.other .rtot b{color:var(--red)}
 .mesion .rtot b{color:var(--blue)}
 .rcpt>.stamp{position:absolute;z-index:2;top:-30px;right:-18px;width:104px;height:104px;border-radius:50%;background:#fff;border:3px solid var(--blue);box-shadow:inset 0 0 0 5px #fff,inset 0 0 0 6.5px var(--blue);
-  display:grid;place-content:center;text-align:center;color:var(--blue);transform:rotate(-12deg);line-height:1.05}
-.stamp b{font-size:30px;font-weight:800;letter-spacing:-.04em}
+  display:grid;place-content:center;text-align:center;color:var(--blue);transform:rotate(-12deg);line-height:1.05;transition:transform .3s var(--ease)}
+.rcpt>.stamp:hover{transform:rotate(-4deg) scale(1.06)}
+.stamp b{font-size:30px;font-weight:800;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
 .stamp span{font-size:13px;font-weight:700}
 @media(max-width:860px){.rcpt>.stamp{top:-24px;right:6px;width:84px;height:84px}.stamp b{font-size:24px}.stamp span{font-size:11.5px}}
-@media(max-width:560px){.rcpt td{font-size:12px;padding:11px 0}.rcpt td:nth-child(2),.rcpt td:nth-child(3),.rcpt td:last-child{padding-left:6px}.rcpt th{font-size:10.5px}}
-.slide[aria-label="비용 비교"] .rxs{margin-top:30px;text-align:center}
-/* 영수증이 인쇄되듯 나옴 */
-.js #deck>.slide:not(.on) .rcpt{opacity:0}
-#deck>.slide.on .rcpt{animation:rPrint .9s var(--ease) both}
-#deck>.slide.on .rcpt.mesion{animation-delay:.25s}
-#deck>.slide.on .rcpt tbody tr,#deck>.slide.on .rcnt,#deck>.slide.on .rtot{animation:rRow .45s var(--ease) both}
-#deck>.slide.on .rcpt>.stamp{animation:rStamp .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:1.5s}
+@media(max-width:560px){.rcpt td{font-size:12px;padding:11px 0}.rcpt td:first-child{padding-left:4px}.rcpt td:last-child{padding-right:4px}.rcpt td:nth-child(2),.rcpt td:nth-child(3),.rcpt td:last-child{padding-left:6px}.rcpt th{font-size:10.5px}.rcv .lede br{display:none}}
+/* 인쇄되듯 나오는 첫 화면 */
+.rcv.play .rcpt{animation:rPrint .9s var(--ease) both}
+.rcv.play .rcpt.mesion{animation-delay:.25s}
+.rcv.play .rcpt tbody tr,.rcv.play .rcnt,.rcv.play .rtot{animation:rRow .45s var(--ease) both}
+.rcv.play .rcpt>.stamp{animation:rStamp .5s cubic-bezier(.3,1.6,.5,1) both;animation-delay:1.9s}
 @keyframes rPrint{from{clip-path:inset(0 0 100% 0);transform:translateY(-14px)}to{clip-path:inset(-80px -80px -80px -80px);transform:none}}
 @keyframes rRow{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes rStamp{from{opacity:0;transform:rotate(-30deg) scale(1.9)}to{opacity:1;transform:rotate(-12deg) scale(1)}}
-@media(prefers-reduced-motion:reduce){#deck>.slide.on .rcpt,#deck>.slide.on .rcpt *{animation:none!important}.js #deck>.slide:not(.on) .rcpt{opacity:1}}
+.rsum{margin-top:30px;text-align:center;font-size:clamp(16px,1.6vw,20px);font-weight:700;line-height:1.7}
+.rsum b{color:var(--blue);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.seg{position:relative;display:inline-flex;vertical-align:middle;background:#fff;border:1px solid var(--line2);border-radius:999px;padding:3px;margin:0 2px}
+.seg button{position:relative;z-index:1;font:inherit;font-size:.82em;font-weight:700;color:var(--muted);background:none;border:0;border-radius:999px;padding:3px 11px;cursor:pointer;transition:color .2s}
+.seg button.on{color:#fff}
+.seg i{position:absolute;top:3px;bottom:3px;left:0;border-radius:999px;background:var(--blue);transition:transform .3s var(--ease),width .3s var(--ease)}
+.rnote{margin-top:14px;text-align:center;font-size:12.5px;color:var(--muted)}
+
+.slide.rcv .rsum{margin-top:30px}
+.js .rcv:not(.play) .rcpt{opacity:0}
+
+/* ===== 고객사·투자사 로고: index.html 로고 마퀴 ===== */
+.cmq{overflow:hidden;margin-top:40px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.ctk{display:flex;gap:52px;width:max-content;animation:cslide var(--cd,24s) linear infinite}
+.cdup{display:contents}
+@keyframes cslide{to{transform:translateX(-50%)}}
+.clg{display:inline-flex;align-items:center;flex:none}
+.clgimg{height:30px;width:auto;max-width:150px;object-fit:contain;filter:grayscale(1);opacity:.55;transition:filter .25s,opacity .25s}
+.cmq:hover .clgimg{filter:none;opacity:1}
+@media(prefers-reduced-motion:reduce){.ctk{animation:none;flex-wrap:wrap;width:auto;justify-content:center;row-gap:20px}.cdup{display:none}.cmq{-webkit-mask-image:none;mask-image:none}}
+.slide.fin .fin2{display:block!important}
+@media(max-width:900px){.slide.fin .lead{white-space:normal}.qas .qmd{display:block}}
+.slide.fin .cred{margin-top:clamp(48px,6vw,72px);padding-top:clamp(32px,4vw,44px);border-top:1px solid var(--line2);text-align:center}
+.slide.fin .cred .fk2{font-size:13px;font-weight:800;color:var(--muted);letter-spacing:.04em}
+.slide.fin .cred .cmq{margin-top:26px}
+.slide[aria-label="파트너"] .ivmq{min-width:0}
+.slide[aria-label="파트너"] .ivmq .cmq{margin-top:0}
+.slide[aria-label="파트너"] .ivmq .clgimg.iv{height:auto;max-width:none;transform:none!important;filter:grayscale(1)!important;opacity:.55!important}
+.slide[aria-label="파트너"] .ivmq .cmq:hover .clgimg.iv{filter:none!important;opacity:1!important}
+@media(max-width:900px){.slide[aria-label="파트너"] .ivr{grid-template-columns:1fr!important;gap:16px}.slide[aria-label="파트너"] .pt5{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;gap:10px!important}.slide[aria-label="파트너"] .ptc{min-width:0;padding-left:12px;padding-right:12px}.slide[aria-label="파트너"] .ptc:last-child{grid-column:1/-1}.slide[aria-label="파트너"] .ptl img{max-width:100%;height:auto}}
 
 /* 푸터 */
 .gfoot{background:var(--paper);border-top:1px solid var(--line);padding:36px clamp(18px,5vw,72px) 44px}
@@ -2108,13 +2139,12 @@ body{line-height:1.5}
     </div>
   </div>
 </section>
-<section class="slide" aria-label="비용 비교">
+<section class="slide rcv" aria-label="비용 비교">
   <div class="stage">
     <span class="kick so">매체 통합</span>
     <h2 class="t">더 많은 고객에게 닿아도<br><span class="em">발송비는 줄어듭니다</span></h2>
     <p class="lead">수신동의 회원 30만 명(채널 친구 9만 명)에<br>네이버페이 비회원 구매자 3만 명인 업체가 한 번 보낼 때 기준입니다.</p>
-    <div class="body rcpts anim"><div class="rcpt other"><div class="rh">타사 CRM</div><table><thead><tr><th>매체 · 대상</th><th>인원</th><th>단가</th><th>금액</th></tr></thead><tbody><tr><td>브랜드메시지 · 친구</td><td>9만 명</td><td>21.9원</td><td>1,971,000원</td></tr><tr><td>브랜드메시지 · 비친구</td><td>21만 명</td><td>26.9원</td><td>5,649,000원</td></tr><tr class="na"><td>네이버페이 비회원 구매자</td><td>3만 명</td><td class="no">발송 불가</td><td>-</td></tr></tbody></table><div class="rcnt"><span>전체 발송 수</span><b>30만 건</b></div><div class="rtot"><span>합계</span><b>7,620,000원</b></div></div><div class="rcpt mesion"><div class="stamp" aria-label="55% 절감"><b>55%</b><span>절감</span></div><div class="rh">메시온</div><table><thead><tr><th>매체 · 대상</th><th>인원</th><th>단가</th><th>금액</th></tr></thead><tbody><tr><td>브랜드메시지 · 친구</td><td>9만 명</td><td>19.5원</td><td>1,755,000원</td></tr><tr><td>스마트 톡톡 · 수신동의</td><td>30만 명</td><td>5원</td><td>1,500,000원</td></tr><tr class="gr"><td>스마트 톡톡 · 비회원 구매자</td><td>3만 명</td><td>5원</td><td>150,000원</td></tr></tbody></table><div class="rcnt"><span>전체 발송 수</span><b>42만 건</b></div><div class="rtot"><span>합계</span><b>3,405,000원</b></div></div></div>
-    <p class="rxs">1회 <b>421.5만 원</b>, 월 4회면 1년에 <b>약 2억 232만 원</b> 차이입니다.<br>지금 보내시는 단가로 계산해 드릴까요?</p>
+    <div class="body"><div class="rcpts"><div class="rcpt other"><div class="rh">타사 CRM</div><table><thead><tr><th>매체 · 대상</th><th>인원</th><th>단가</th><th>금액</th></tr></thead><tbody><tr data-row="fr"><td>브랜드메시지 · 친구</td><td>9만 명</td><td>21.9원</td><td><span data-v="1971000">1,971,000원</span></td></tr><tr data-row="nf"><td>브랜드메시지 · 비친구</td><td>21만 명</td><td>26.9원</td><td><span data-v="5649000">5,649,000원</span></td></tr><tr data-row="np" class="na"><td>네이버페이 비회원 구매자</td><td>3만 명</td><td class="no">발송 불가</td><td>-</td></tr></tbody></table><div class="rcnt"><span>전체 발송 수</span><b>30만 건</b></div><div class="rtot"><span>합계</span><b data-v="7620000">7,620,000원</b></div></div><div class="rcpt mesion"><div class="stamp"><b data-pct="55">55%</b><span>절감</span></div><div class="rh">메시온</div><table><thead><tr><th>매체 · 대상</th><th>인원</th><th>단가</th><th>금액</th></tr></thead><tbody><tr data-row="fr"><td>브랜드메시지 · 친구</td><td>9만 명</td><td>19.5원</td><td><i class="dlt">−216,000원</i><span data-v="1755000">1,755,000원</span></td></tr><tr data-row="nf"><td>스마트 톡톡 · 수신동의</td><td>30만 명</td><td>5원</td><td><i class="dlt">−4,149,000원</i><span data-v="1500000">1,500,000원</span></td></tr><tr data-row="np" class="gr"><td>스마트 톡톡 · 비회원 구매자</td><td>3만 명</td><td>5원</td><td><i class="dlt plus">+3만 명 발송</i><span data-v="150000">150,000원</span></td></tr></tbody></table><div class="rcnt"><span>전체 발송 수</span><b>42만 건</b></div><div class="rtot"><span>합계</span><b data-v="3405000">3,405,000원</b></div></div></div><div class="rsum" data-once="4215000"><p>1회 <b>421.5만 원</b>, 월 <span class="seg" id="rSeg" role="group" aria-label="월 발송 횟수"><button type="button" data-t="1">1회</button><button type="button" data-t="2">2회</button><button type="button" data-t="4" class="on">4회</button><i></i></span>면 1년에 <b>약 <span id="rYear">2억 232만 원</span></b> 차이입니다.</p><p>지금 보내시는 단가로 계산해 드릴까요?</p></div></div>
   </div>
 </section>
 <section class="slide alt" aria-label="AX 답">
@@ -2133,14 +2163,22 @@ body{line-height:1.5}
     </div>
   </div>
 </section>
-<section class="slide" aria-label="메시온 AX 4단계" id="ax">
+<section class="slide" aria-label="메시온 AX 4단계">
   <div class="stage">
     <span class="kick so">메시온 AX</span>
-    <div class="ixh"><h2 class="t one on">목표 매출에 맞춘 <span class="em">캠페인 제안</span></h2><h2 class="t one">타겟부터 <span class="em">문구·이미지 초안까지</span></h2><h2 class="t one">승인한 캠페인은 <span class="em">일정대로 발송</span></h2><h2 class="t one">개선할 지점을 찾아 <span class="em">다음 캠페인에 반영</span></h2></div>
-    <div class="body ixv anim" id="ixv">
-      <ol class="ixl"><li class="on"><button type="button" aria-label="캠페인 기획"><span class="n">1</span><span class="tt"><b>캠페인 기획</b><em>Express</em></span><i class="bar"></i></button><div class="dsc"><div><p>목표 매출만 정하면 한 달 캠페인 일정을 대상·예상 매출과 함께 먼저 제안합니다.<br>정규·즉시·업계 인기·커스텀 중 상황에 맞게 고르면 됩니다.</p><small>캠페인 설계 기능은 순차 오픈 예정이며 1사 데이터 연동이 필수입니다</small></div></div></li><li><button type="button" aria-label="타겟 및 소재 설계"><span class="n">2</span><span class="tt"><b>타겟 및 소재 설계</b><em>Tailor</em></span><i class="bar"></i></button><div class="dsc"><div><p>캠페인마다 타겟을 제안하고 브랜드 톤에 맞춘 문구·이미지 초안을 만듭니다.<br>고칠 부분은 대화로 말하면 반영됩니다.</p></div></div></li><li><button type="button" aria-label="매체 확장 및 발송"><span class="n">3</span><span class="tt"><b>매체 확장 및 발송</b><em>Expand</em></span><i class="bar"></i></button><div class="dsc"><div><p>정해진 날짜에 스마트 톡톡·브랜드메시지·알림톡으로 자동 발송됩니다.<br>매체별로 다시 세팅할 일이 없습니다.</p></div></div></li><li><button type="button" aria-label="분석 및 피드백"><span class="n">4</span><span class="tt"><b>분석 및 피드백</b><em>Evolve</em></span><i class="bar"></i></button><div class="dsc"><div><p>AI 에이전트가 문제점을 먼저 짚고, 대화로 개선점을 찾아 다음 캠페인에 반영합니다.</p></div></div></li></ol>
-      <div class="ixs"><div class="ixf"><div class="ixt"><img src="creatives/intro/2456bea85c5e.webp" alt="캠페인 기획 예시 화면" width="1500" height="1000"><img src="creatives/intro/ced907411bf0.webp" alt="타겟 및 소재 설계 예시 화면" width="1500" height="1000" loading="lazy"><img src="creatives/intro/58cbee9fbc1a.webp" alt="매체 확장 및 발송 예시 화면" width="1500" height="1000" loading="lazy"><img src="creatives/intro/924f5a3704e7.webp" alt="분석 및 피드백 예시 화면" width="1500" height="1000" loading="lazy"></div></div><p class="ixm"></p><span class="ixc">(예시 화면)</span></div>
-    </div>
+    <div class="body anim"><div class="qax" id="ax">
+        <ol class="qal">
+          <li class="on"><button type="button" aria-label="캠페인 기획"><span class="n">1</span><span class="tt"><b>캠페인 기획</b><em>Express</em></span><i class="bar"></i></button><div class="dsc"><p>목표 매출만 정하면 한 달 캠페인 일정을 대상·예상 매출과 함께 먼저 제안합니다. 정규·즉시·업계 인기·커스텀 중 상황에 맞게 고르면 됩니다.</p><small>캠페인 설계 기능은 순차 오픈 예정이며 1사 데이터 연동이 필수입니다</small></div></li>
+          <li><button type="button" aria-label="타겟 및 소재 설계"><span class="n">2</span><span class="tt"><b>타겟 및 소재 설계</b><em>Tailor</em></span><i class="bar"></i></button><div class="dsc"><p>캠페인마다 타겟을 제안하고 브랜드 톤에 맞춘 문구·이미지 초안을 만듭니다. 고칠 부분은 대화로 말하면 반영됩니다.</p></div></li>
+          <li><button type="button" aria-label="매체 확장 및 발송"><span class="n">3</span><span class="tt"><b>매체 확장 및 발송</b><em>Expand</em></span><i class="bar"></i></button><div class="dsc"><p>정해진 날짜에 스마트 톡톡·브랜드메시지·알림톡으로 자동 발송됩니다. 매체별로 다시 세팅할 일이 없습니다.</p></div></li>
+          <li><button type="button" aria-label="분석 및 피드백"><span class="n">4</span><span class="tt"><b>분석 및 피드백</b><em>Evolve</em></span><i class="bar"></i></button><div class="dsc"><p>AI 에이전트가 문제점을 먼저 짚고, 대화로 개선점을 찾아 다음 캠페인에 반영합니다.</p></div></li>
+        </ol>
+        <div class="qas">
+          <div class="qah"><h4 class="on">목표 매출에 맞춘 <span>캠페인 제안</span></h4><h4>타겟부터 <span>문구·이미지 초안까지</span></h4><h4>승인한 캠페인은 <span>일정대로 발송</span></h4><h4>개선할 지점을 찾아 <span>다음 캠페인에 반영</span></h4></div>
+          <div class="qaf"><div class="qat"><img src="creatives/axp/ax-step1.webp" alt="캠페인 기획 예시 화면" width="1600" height="1073"><img src="creatives/axp/ax-step2.webp" alt="타겟 및 소재 설계 예시 화면" width="1600" height="1073"><img src="creatives/axp/ax-step3.webp" alt="매체 확장 및 발송 예시 화면" width="1600" height="1073"><img src="creatives/axp/ax-step4.webp" alt="분석 및 피드백 예시 화면" width="1600" height="1073"></div></div>
+          <span class="qac">(예시 화면)</span>
+        </div>
+      </div></div>
   </div>
 </section>
 <section class="slide alt" aria-label="성과 사례">
@@ -2197,7 +2235,7 @@ body{line-height:1.5}
     <h2 class="t">네이버가 투자하고<br><span class="em">글로벌 플랫폼과 같이 만듭니다</span></h2>
     <p class="lead">메시온을 만든 유니드컴즈는 네이버·카카오·메타·구글·AWS의 공식 비즈니스 파트너이고,<br>네이버가 투자한 유일한 이커머스 AI 전문 기업입니다.</p>
     <div class="body pt5 anim"><div class="card ptc"><div class="ptl"><img src="creatives/intro/196700647843.png" alt="네이버 비즈니스 파트너"></div><b>네이버 비즈니스 파트너</b><span>AI 자동화 솔루션의 개발과 배포에 함께합니다</span></div><div class="card ptc"><div class="ptl"><img src="creatives/intro/064667a90e70.png" alt="카카오 비즈니스 파트너"></div><b>카카오 비즈니스 파트너</b><span>AI 개인화 메시지 개발과 마케팅 사업 제휴에 함께합니다</span></div><div class="card ptc"><div class="ptl"><img src="creatives/intro/cf1579cd9541.png" alt="메타 비즈니스 파트너"></div><b>메타 비즈니스 파트너</b><span>2017년부터 AI 자동화 솔루션 개발과 확장에 함께합니다</span></div><div class="card ptc"><div class="ptl"><img src="creatives/intro/5301b8d0a037.png" alt="구글 파트너"></div><b>구글 파트너</b><span>AI 자동화 솔루션 개발과 확장에 함께합니다</span></div><div class="card ptc"><div class="ptl"><img src="creatives/intro/d2f6f93bd7ac.png" alt="AWS 파트너 네트워크"></div><b>AWS 파트너 네트워크</b><span>AI 자동화 솔루션 개발과 확장에 함께합니다</span></div></div>
-    <div class="ivr anim"><div class="ivk"><b>네이버가 투자한 유일한 이커머스 AI 전문 기업</b><span>네이버 D2SF 포함 9개 기관 투자</span></div><div class="ivmq"><div class="lmq"><div class="ltk" style="--mqd:28s"><span class="ivs"><img src="creatives/intro/833584772da0.png" alt="네이버 D2SF" style="height:24.8px"></span><span class="ivs"><img src="creatives/intro/7e85c7bb1d8f.svg" alt="CJ ENM" style="height:38.0px"></span><span class="ivs"><img src="creatives/intro/417de12ff531.png" alt="KOLON" style="height:23.1px"></span><span class="ivs"><img src="creatives/intro/22a76554919d.png" alt="본엔젤스" style="height:25.7px"></span><span class="ivs"><img src="creatives/intro/3e1269aa3ded.png" alt="SJ인베스트먼트파트너스" style="height:15.3px"></span><span class="ivs"><img src="creatives/intro/61d1a5c7bb4c.png" alt="TS인베스트먼트" style="height:22.7px"></span><span class="ivs"><img src="creatives/intro/ec02d7e41f9f.png" alt="마그나인베스트먼트" style="height:25.5px"></span><span class="ivs"><img src="creatives/intro/8890b16751a6.png" alt="대경인베스트먼트" style="height:22.8px"></span><span class="ivs"><img src="creatives/intro/f308de401b1d.png" alt="퓨처플레이" style="height:20.9px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/833584772da0.png" alt="" data-alt="네이버 D2SF" style="height:24.8px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/7e85c7bb1d8f.svg" alt="" data-alt="CJ ENM" style="height:38.0px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/417de12ff531.png" alt="" data-alt="KOLON" style="height:23.1px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/22a76554919d.png" alt="" data-alt="본엔젤스" style="height:25.7px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/3e1269aa3ded.png" alt="" data-alt="SJ인베스트먼트파트너스" style="height:15.3px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/61d1a5c7bb4c.png" alt="" data-alt="TS인베스트먼트" style="height:22.7px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/ec02d7e41f9f.png" alt="" data-alt="마그나인베스트먼트" style="height:25.5px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/8890b16751a6.png" alt="" data-alt="대경인베스트먼트" style="height:22.8px"></span><span aria-hidden="true" class="ivs"><img src="creatives/intro/f308de401b1d.png" alt="" data-alt="퓨처플레이" style="height:20.9px"></span></div></div></div></div>
+    <div class="ivr anim"><div class="ivk"><b>네이버가 투자한 유일한 이커머스 AI 전문 기업</b><span>네이버 D2SF 포함 9개 기관 투자</span></div><div class="ivmq"><div class="cmq"><div class="ctk" style="--cd:10s"><span class="clg"><img class="clgimg iv" src="creatives/intro/833584772da0.png" alt="네이버 D2SF" style="height:24.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/7e85c7bb1d8f.svg" alt="CJ ENM" style="height:38.0px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/417de12ff531.png" alt="KOLON" style="height:23.1px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/22a76554919d.png" alt="본엔젤스" style="height:25.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/3e1269aa3ded.png" alt="SJ인베스트먼트파트너스" style="height:15.3px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/61d1a5c7bb4c.png" alt="TS인베스트먼트" style="height:22.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/ec02d7e41f9f.png" alt="마그나인베스트먼트" style="height:25.5px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/8890b16751a6.png" alt="대경인베스트먼트" style="height:22.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/f308de401b1d.png" alt="퓨처플레이" style="height:20.9px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/833584772da0.png" alt="네이버 D2SF" style="height:24.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/7e85c7bb1d8f.svg" alt="CJ ENM" style="height:38.0px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/417de12ff531.png" alt="KOLON" style="height:23.1px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/22a76554919d.png" alt="본엔젤스" style="height:25.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/3e1269aa3ded.png" alt="SJ인베스트먼트파트너스" style="height:15.3px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/61d1a5c7bb4c.png" alt="TS인베스트먼트" style="height:22.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/ec02d7e41f9f.png" alt="마그나인베스트먼트" style="height:25.5px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/8890b16751a6.png" alt="대경인베스트먼트" style="height:22.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/f308de401b1d.png" alt="퓨처플레이" style="height:20.9px"></span><span class="cdup" aria-hidden="true"><span class="clg"><img class="clgimg iv" src="creatives/intro/833584772da0.png" alt="네이버 D2SF" style="height:24.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/7e85c7bb1d8f.svg" alt="CJ ENM" style="height:38.0px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/417de12ff531.png" alt="KOLON" style="height:23.1px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/22a76554919d.png" alt="본엔젤스" style="height:25.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/3e1269aa3ded.png" alt="SJ인베스트먼트파트너스" style="height:15.3px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/61d1a5c7bb4c.png" alt="TS인베스트먼트" style="height:22.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/ec02d7e41f9f.png" alt="마그나인베스트먼트" style="height:25.5px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/8890b16751a6.png" alt="대경인베스트먼트" style="height:22.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/f308de401b1d.png" alt="퓨처플레이" style="height:20.9px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/833584772da0.png" alt="네이버 D2SF" style="height:24.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/7e85c7bb1d8f.svg" alt="CJ ENM" style="height:38.0px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/417de12ff531.png" alt="KOLON" style="height:23.1px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/22a76554919d.png" alt="본엔젤스" style="height:25.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/3e1269aa3ded.png" alt="SJ인베스트먼트파트너스" style="height:15.3px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/61d1a5c7bb4c.png" alt="TS인베스트먼트" style="height:22.7px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/ec02d7e41f9f.png" alt="마그나인베스트먼트" style="height:25.5px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/8890b16751a6.png" alt="대경인베스트먼트" style="height:22.8px"></span><span class="clg"><img class="clgimg iv" src="creatives/intro/f308de401b1d.png" alt="퓨처플레이" style="height:20.9px"></span></span></div></div></div></div>
   </div>
 </section>
 <section class="slide fin" aria-label="문의">
@@ -2209,7 +2247,8 @@ body{line-height:1.5}
       <p class="fcb"><b>선착순 20곳</b>메시온 AX 출시 혜택 · 12월 31일까지</p>
       <p class="ct2">문의 <a href="mailto:public@uneedcomms.com">public@uneedcomms.com</a> · (주)유니드컴즈</p>
     </div>
-    <div class="lgx6"><span class="fk2">주요 고객사</span><div class="lmq"><div class="ltk" style="--mqd:30s"><img src="creatives/intro/14cf634e6dce.png" alt="핫핑" style="height:23.9px"><img src="creatives/intro/5257914d04a1.svg" alt="대웅제약" style="height:24.3px"><img src="creatives/intro/2abbf4f56745.png" alt="젝시믹스" style="height:19.5px"><img src="creatives/intro/be3d9f599dce.png" alt="락티브" style="height:27.9px"><img src="creatives/intro/198900b3390c.png" alt="시크폭스" style="height:24.7px"><img src="creatives/intro/ba0077c26399.png" alt="해피콜" style="height:29.4px"><img src="creatives/intro/04c959ebf190.svg" alt="감탄브라" style="height:28.6px"><img aria-hidden="true" src="creatives/intro/14cf634e6dce.png" alt="" data-alt="핫핑" style="height:23.9px"><img aria-hidden="true" src="creatives/intro/5257914d04a1.svg" alt="" data-alt="대웅제약" style="height:24.3px"><img aria-hidden="true" src="creatives/intro/2abbf4f56745.png" alt="" data-alt="젝시믹스" style="height:19.5px"><img aria-hidden="true" src="creatives/intro/be3d9f599dce.png" alt="" data-alt="락티브" style="height:27.9px"><img aria-hidden="true" src="creatives/intro/198900b3390c.png" alt="" data-alt="시크폭스" style="height:24.7px"><img aria-hidden="true" src="creatives/intro/ba0077c26399.png" alt="" data-alt="해피콜" style="height:29.4px"><img aria-hidden="true" src="creatives/intro/04c959ebf190.svg" alt="" data-alt="감탄브라" style="height:28.6px"></div></div><div class="lmq"><div class="ltk rev" style="--mqd:34s"><img src="creatives/intro/b8b5002d449d.png" alt="이지듀" style="height:29.9px"><img src="creatives/intro/9573efd22fbf.svg" alt="바이브랩" style="height:24.7px"><img src="creatives/intro/633bb4ec40d4.png" alt="듀이셀" style="height:20.9px"><img src="creatives/intro/1aac0d22d703.png" alt="원더브라" style="height:22.0px"><img src="creatives/intro/41391a44860f.png" alt="안다르" style="height:44.1px"><img src="creatives/intro/dd79fac3a26c.svg" alt="밸롭" style="height:22.9px"><img src="creatives/intro/667b0a256fdf.png" alt="푸드올로지" style="height:19.2px"><img aria-hidden="true" src="creatives/intro/b8b5002d449d.png" alt="" data-alt="이지듀" style="height:29.9px"><img aria-hidden="true" src="creatives/intro/9573efd22fbf.svg" alt="" data-alt="바이브랩" style="height:24.7px"><img aria-hidden="true" src="creatives/intro/633bb4ec40d4.png" alt="" data-alt="듀이셀" style="height:20.9px"><img aria-hidden="true" src="creatives/intro/1aac0d22d703.png" alt="" data-alt="원더브라" style="height:22.0px"><img aria-hidden="true" src="creatives/intro/41391a44860f.png" alt="" data-alt="안다르" style="height:44.1px"><img aria-hidden="true" src="creatives/intro/dd79fac3a26c.svg" alt="" data-alt="밸롭" style="height:22.9px"><img aria-hidden="true" src="creatives/intro/667b0a256fdf.png" alt="" data-alt="푸드올로지" style="height:19.2px"></div></div>
+    
+  <div class="cred"><span class="fk2">주요 고객사</span><div class="cmq"><div class="ctk" style="--cd:15s"><span class="clg"><img class="clgimg" src="creatives/intro/14cf634e6dce.png" alt="핫핑"></span><span class="clg"><img class="clgimg" src="creatives/intro/5257914d04a1.svg" alt="대웅제약"></span><span class="clg"><img class="clgimg" src="creatives/intro/2abbf4f56745.png" alt="젝시믹스"></span><span class="clg"><img class="clgimg" src="creatives/intro/be3d9f599dce.png" alt="락티브"></span><span class="clg"><img class="clgimg" src="creatives/intro/198900b3390c.png" alt="시크폭스"></span><span class="clg"><img class="clgimg" src="creatives/intro/ba0077c26399.png" alt="해피콜"></span><span class="clg"><img class="clgimg" src="creatives/intro/04c959ebf190.svg" alt="감탄브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/b8b5002d449d.png" alt="이지듀"></span><span class="clg"><img class="clgimg" src="creatives/intro/9573efd22fbf.svg" alt="바이브랩"></span><span class="clg"><img class="clgimg" src="creatives/intro/633bb4ec40d4.png" alt="듀이셀"></span><span class="clg"><img class="clgimg" src="creatives/intro/1aac0d22d703.png" alt="원더브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/41391a44860f.png" alt="안다르"></span><span class="clg"><img class="clgimg" src="creatives/intro/dd79fac3a26c.svg" alt="밸롭"></span><span class="clg"><img class="clgimg" src="creatives/intro/667b0a256fdf.png" alt="푸드올로지"></span><span class="clg"><img class="clgimg" src="creatives/intro/14cf634e6dce.png" alt="핫핑"></span><span class="clg"><img class="clgimg" src="creatives/intro/5257914d04a1.svg" alt="대웅제약"></span><span class="clg"><img class="clgimg" src="creatives/intro/2abbf4f56745.png" alt="젝시믹스"></span><span class="clg"><img class="clgimg" src="creatives/intro/be3d9f599dce.png" alt="락티브"></span><span class="clg"><img class="clgimg" src="creatives/intro/198900b3390c.png" alt="시크폭스"></span><span class="clg"><img class="clgimg" src="creatives/intro/ba0077c26399.png" alt="해피콜"></span><span class="clg"><img class="clgimg" src="creatives/intro/04c959ebf190.svg" alt="감탄브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/b8b5002d449d.png" alt="이지듀"></span><span class="clg"><img class="clgimg" src="creatives/intro/9573efd22fbf.svg" alt="바이브랩"></span><span class="clg"><img class="clgimg" src="creatives/intro/633bb4ec40d4.png" alt="듀이셀"></span><span class="clg"><img class="clgimg" src="creatives/intro/1aac0d22d703.png" alt="원더브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/41391a44860f.png" alt="안다르"></span><span class="clg"><img class="clgimg" src="creatives/intro/dd79fac3a26c.svg" alt="밸롭"></span><span class="clg"><img class="clgimg" src="creatives/intro/667b0a256fdf.png" alt="푸드올로지"></span><span class="cdup" aria-hidden="true"><span class="clg"><img class="clgimg" src="creatives/intro/14cf634e6dce.png" alt="핫핑"></span><span class="clg"><img class="clgimg" src="creatives/intro/5257914d04a1.svg" alt="대웅제약"></span><span class="clg"><img class="clgimg" src="creatives/intro/2abbf4f56745.png" alt="젝시믹스"></span><span class="clg"><img class="clgimg" src="creatives/intro/be3d9f599dce.png" alt="락티브"></span><span class="clg"><img class="clgimg" src="creatives/intro/198900b3390c.png" alt="시크폭스"></span><span class="clg"><img class="clgimg" src="creatives/intro/ba0077c26399.png" alt="해피콜"></span><span class="clg"><img class="clgimg" src="creatives/intro/04c959ebf190.svg" alt="감탄브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/b8b5002d449d.png" alt="이지듀"></span><span class="clg"><img class="clgimg" src="creatives/intro/9573efd22fbf.svg" alt="바이브랩"></span><span class="clg"><img class="clgimg" src="creatives/intro/633bb4ec40d4.png" alt="듀이셀"></span><span class="clg"><img class="clgimg" src="creatives/intro/1aac0d22d703.png" alt="원더브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/41391a44860f.png" alt="안다르"></span><span class="clg"><img class="clgimg" src="creatives/intro/dd79fac3a26c.svg" alt="밸롭"></span><span class="clg"><img class="clgimg" src="creatives/intro/667b0a256fdf.png" alt="푸드올로지"></span><span class="clg"><img class="clgimg" src="creatives/intro/14cf634e6dce.png" alt="핫핑"></span><span class="clg"><img class="clgimg" src="creatives/intro/5257914d04a1.svg" alt="대웅제약"></span><span class="clg"><img class="clgimg" src="creatives/intro/2abbf4f56745.png" alt="젝시믹스"></span><span class="clg"><img class="clgimg" src="creatives/intro/be3d9f599dce.png" alt="락티브"></span><span class="clg"><img class="clgimg" src="creatives/intro/198900b3390c.png" alt="시크폭스"></span><span class="clg"><img class="clgimg" src="creatives/intro/ba0077c26399.png" alt="해피콜"></span><span class="clg"><img class="clgimg" src="creatives/intro/04c959ebf190.svg" alt="감탄브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/b8b5002d449d.png" alt="이지듀"></span><span class="clg"><img class="clgimg" src="creatives/intro/9573efd22fbf.svg" alt="바이브랩"></span><span class="clg"><img class="clgimg" src="creatives/intro/633bb4ec40d4.png" alt="듀이셀"></span><span class="clg"><img class="clgimg" src="creatives/intro/1aac0d22d703.png" alt="원더브라"></span><span class="clg"><img class="clgimg" src="creatives/intro/41391a44860f.png" alt="안다르"></span><span class="clg"><img class="clgimg" src="creatives/intro/dd79fac3a26c.svg" alt="밸롭"></span><span class="clg"><img class="clgimg" src="creatives/intro/667b0a256fdf.png" alt="푸드올로지"></span></span></div></div></div>
   </div>
 </section>
 </main>
@@ -2240,27 +2279,82 @@ body{line-height:1.5}
 })();
 </script>
 <script>
-/* AX 4단계: 6초마다 다음 단계로, 누르면 그 단계로, 마우스를 올리면 멈춤 */
+/* AX 4단계: 5초마다 다음 단계로 자동 슬라이드, 누르면 그 단계로, 마우스를 올리면 멈춤 */
 (function(){
-  var root=document.getElementById('ixv'); if(!root) return;
-  var sec=document.getElementById('ax');
-  var lis=[].slice.call(root.querySelectorAll('.ixl li')), hs=sec.querySelectorAll('.ixh .t'), trk=root.querySelector('.ixt'), md=root.querySelector('.ixm');
-  var cur=0, T=6000, t=null, vis=false, hold=false, left=T, t0=0, still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root=document.getElementById('ax'); if(!root||!root.classList.contains('qax')) return;
+  var lis=[].slice.call(root.querySelectorAll('.qal li')), hs=root.querySelectorAll('.qah h4'), trk=root.querySelector('.qat');
+  var md=document.createElement('p'); md.className='qmd'; root.querySelector('.qah').after(md);
+  var cur=0, T=5000, t=null, vis=true, hold=false, left=T, t0=0, still=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function show(i){
     cur=i;
     lis.forEach(function(l,k){ l.classList.toggle('on',k===i); });
     [].forEach.call(hs,function(e,k){ e.classList.toggle('on',k===i); });
     trk.style.transform='translateX('+(-100*i)+'%)';
-    md.innerHTML=lis[i].querySelector('.dsc>div').innerHTML;
-    root.classList.remove('run'); void root.offsetWidth; if(!still&&vis) root.classList.add('run');
+    md.innerHTML=lis[i].querySelector('.dsc').innerHTML;
+    root.classList.remove('run'); void root.offsetWidth; if(!still) root.classList.add('run');
     left=T; run();
   }
-  function run(){ clearTimeout(t); if(!vis||hold||still) return; t0=Date.now(); t=setTimeout(function(){ show((cur+1)%lis.length); },left); }
+  function run(){ clearTimeout(t); if(!vis||hold) return; t0=Date.now(); t=setTimeout(function(){ show((cur+1)%lis.length); },left); }
   root.addEventListener('mouseenter',function(){ if(!matchMedia('(hover:hover)').matches) return; hold=true; root.classList.add('hold'); clearTimeout(t); left=Math.max(0,left-(Date.now()-t0)); });
   root.addEventListener('mouseleave',function(){ if(!hold) return; hold=false; root.classList.remove('hold'); run(); });
   lis.forEach(function(l,k){ l.querySelector('button').addEventListener('click',function(){ show(k); }); });
-  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v===vis) return; vis=v; if(v) show(cur); else { clearTimeout(t); root.classList.remove('run'); } },{threshold:.35}).observe(root);
+  // 화면 밖에선 멈췄다가 다시 보이면 그 단계부터 이어서
+  if('IntersectionObserver' in window) new IntersectionObserver(function(es){ var v=es[0].isIntersecting; if(v===vis) return; vis=v; if(v) show(cur); else clearTimeout(t); },{threshold:.2}).observe(root);
   show(0);
+})();
+</script>
+<script>
+/* 비용 비교 영수증(ax-receipt 방식): 보이면 인쇄되듯 나오고 금액이 올라감, 같은 항목끼리 짝지어 강조, 월 발송 횟수에 따라 1년 차이 */
+(function(){
+  var sec=document.querySelector('.rcv'); if(!sec) return;
+  var $=function(q,r){return (r||document).querySelector(q);}, $$=function(q,r){return (r||document).querySelectorAll(q);};
+  var still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var won=function(n){ return Math.round(n).toLocaleString('ko-KR')+'원'; };
+  var man=function(n){ var v=Math.round(n/1000)/10; return v.toLocaleString('ko-KR',{maximumFractionDigits:1})+'만'; };
+  function big(n){ var e=Math.floor(n/1e8), m=Math.round((n-e*1e8)/1e4); if(m===10000){e++;m=0;} return e?e+'억'+(m?' '+m.toLocaleString('ko-KR')+'만':'')+' 원':man(n)+' 원'; }
+  function count(el,v,fmt,dur,delay){
+    if(still||!dur){ el.textContent=fmt(v); return; }
+    var t0=0; el.textContent=fmt(0);
+    setTimeout(function(){ requestAnimationFrame(function tick(t){ if(!t0)t0=t; var k=Math.min(1,(t-t0)/dur); el.textContent=fmt(v*(1-Math.pow(1-k,3))); if(k<1) requestAnimationFrame(tick); }); },delay||0);
+  }
+  var rsum=$('.rsum',sec), once=+rsum.dataset.once, times=4;
+  // 행 등장 순서
+  $$('.rcpt',sec).forEach(function(r,k){
+    $$('tbody tr',r).forEach(function(tr,i){ tr.style.animationDelay=(350+i*110+k*250)+'ms'; });
+    $('.rcnt',r).style.animationDelay=(850+k*250)+'ms';
+    $('.rtot',r).style.animationDelay=(950+k*250)+'ms';
+  });
+  function play(){
+    sec.classList.add('play');
+    $$('[data-v]',sec).forEach(function(e){
+      var tr=e.closest('tr'), i=tr?[].indexOf.call(tr.parentNode.children,tr):4;
+      count(e,+e.dataset.v,won,700,350+i*110+(e.closest('.mesion')?250:0));
+    });
+    var p=$('[data-pct]',sec); count(p,+p.dataset.pct,function(x){return Math.round(x)+'%';},500,1900);
+    count($('#rYear'),once*times*12,big,1400,300);
+    if(!still) auto=setTimeout(step,2700);
+  }
+  // 같은 항목끼리 짝지어 강조(마우스 올리기·탭), 처음 한 번은 차례로 보여 줌
+  var auto=null, user=false, seq=['fr','nf','np'], si=0;
+  function hot(row){ $$('.rcpt tr[data-row]',sec).forEach(function(tr){ tr.classList.toggle('hot',tr.dataset.row===row); }); }
+  function step(){ if(user) return; if(si<seq.length){ hot(seq[si++]); auto=setTimeout(step,1100); } else hot(null); }
+  $$('.rcpt tbody tr[data-row]',sec).forEach(function(tr){
+    tr.addEventListener('mouseenter',function(){ user=true; clearTimeout(auto); hot(tr.dataset.row); });
+    tr.addEventListener('mouseleave',function(){ hot(null); });
+    tr.addEventListener('click',function(){ user=true; clearTimeout(auto); hot(tr.classList.contains('hot')?null:tr.dataset.row); });
+  });
+  // 월 발송 횟수
+  var seg=$('#rSeg'), pill=$('i',seg);
+  function place(){ var b=$('button.on',seg); pill.style.width=b.offsetWidth+'px'; pill.style.transform='translateX('+b.offsetLeft+'px)'; }
+  seg.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    $$('button',seg).forEach(function(x){ x.classList.toggle('on',x===b); }); place();
+    times=+b.dataset.t; count($('#rYear'),once*times*12,big,500,0);
+  });
+  place(); addEventListener('resize',place); document.fonts&&document.fonts.ready.then(place);
+  if(!('IntersectionObserver' in window)) return play();
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); play(); } },{threshold:.25});
+  io.observe($('.rcpts',sec));
 })();
 </script>
 </body>
