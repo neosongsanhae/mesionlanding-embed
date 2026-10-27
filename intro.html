@@ -1921,6 +1921,16 @@ body{line-height:1.5}
 /* 화면 높이에 묶여 있던 크기 풀기 */
 .slide[aria-label="역할 분담"] .r7s{height:380px}
 @media(max-width:900px){.slide[aria-label="역할 분담"] .r7s{height:auto}}
+/* 모바일: 네이버페이 비회원 구매자 도식은 PC 모양 그대로 두고 옆으로 밀어서 봄(세로로 쌓으면 화살표·원이 겹쳐 깨짐) */
+@media(max-width:900px){
+  .slide[aria-label="비회원 구매자"] .h9{grid-template-columns:auto 132px auto 132px auto!important;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    margin:22px -18px 0;padding:96px 18px 12px;scrollbar-width:thin}
+  .slide[aria-label="비회원 구매자"] .h9r{height:180px;transform:none!important}
+  .slide[aria-label="비회원 구매자"] .h9n{min-width:max-content}
+  .slide[aria-label="비회원 구매자"] .h9>*{zoom:.82}
+}
+/* 모바일: 영수증 차액 칩이 단가 칸을 덮지 않게 작게 */
+@media(max-width:560px){.rcpt .dlt{font-size:10.5px;padding:2px 7px;right:0}}
 /* 모바일: 해결 요약 두 칸은 위아래로, 로고는 작게 */
 @media(max-width:700px){
   .y6{grid-template-columns:1fr!important;row-gap:4px}
