@@ -613,6 +613,7 @@ var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwg67vy0WnjA29Ln9jdXB
       // 친구 수는 kf로 보내고, 수집기를 새로 배포하기 전에도 남도록 유입경로 끝(#)에도 붙임
       var payload={{brand:brand,name:name,phone:phone,email:'',b:b,src:'소개서 웹페이지',kf:kf,ref:page+'#카톡친구='+kf,ua:navigator.userAgent}};
       phCapture('lead_submitted',{{form:pre==='m'?'팝업':'하단',kf:kf,b:b,src:'소개서 웹페이지'}});
+      try{{ window.oaiq&&window.oaiq('measure','lead_created',{{type:'customer_action'}}); }}catch(e){{}}
       var finish=function(){{ document.querySelectorAll('.ldform').forEach(function(f){{ f.classList.add('sent'); }}); }};
       try{{ fetch(LEAD_ENDPOINT,{{method:'POST',mode:'no-cors',headers:{{'Content-Type':'text/plain;charset=utf-8'}},body:JSON.stringify(payload)}}).then(finish).catch(finish); }}catch(e){{ finish(); }}
     }});
