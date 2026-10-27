@@ -501,8 +501,12 @@ script = r'''<script>
 gen = open(f'{REPO}/index-general.html', encoding='utf-8').read()
 favicon = re.search(r'<link rel="icon"[^>]+>', gen).group(0)
 
-title = '메시온 | 비회원까지 닿는 세일즈 캠페인 솔루션'
+# 공유(오픈그래프) 정보: 소개서 표지·요약 문장 그대로. 공유 이미지 원본은 tools/intro/og-intro.html → creatives/og-intro.png
+title = '메시온 소개 | 비회원까지 닿는 세일즈 캠페인 솔루션'
 desc = '네이버 스마트 톡톡과 카카오 브랜드메시지로 닿을 수 있는 고객을 넓히고, 캠페인 기획부터 성과 분석까지는 AI 에이전트와 함께합니다.'
+og_title = '비회원까지 닿는 세일즈 캠페인 솔루션, 메시온'
+og_img = 'https://neosongsanhae.github.io/mesionlanding-embed/creatives/og-intro.png?v=1'
+og_alt = '메시온 소개: 비회원까지 닿는 세일즈 캠페인 솔루션. 비회원 구매자까지, 메시온 AX 기획부터 성과 분석까지, 솔루션 이용료 0원'
 
 # 프로모션 단가는 정가에서 내려오도록 시작값 표시
 promo_from = {'16': '22', '4': '10'}
@@ -518,11 +522,19 @@ html = f'''<!doctype html>
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="메시온">
 <meta property="og:url" content="{URL}">
-<meta property="og:title" content="{title}">
+<meta property="og:title" content="{og_title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://neosongsanhae.github.io/mesionlanding-embed/creatives/og.png">
+<meta property="og:image" content="{og_img}">
+<meta property="og:image:secure_url" content="{og_img}">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{og_alt}">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{og_title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{og_img}">
 {favicon}
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
