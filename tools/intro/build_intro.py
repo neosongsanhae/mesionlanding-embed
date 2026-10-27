@@ -272,6 +272,7 @@ body{line-height:1.5}
 #deck>.slide{flex:none;width:auto;height:auto;min-height:0;display:flex;align-items:flex-start!important;justify-content:center;overflow:visible;
   padding:clamp(64px,6.5vw,92px) clamp(18px,5vw,72px)!important}
 #deck>.slide.cover{min-height:min(calc(100svh - 70px),520px);align-items:center!important;padding-top:clamp(88px,8vw,112px)!important;padding-bottom:clamp(40px,4vw,56px)!important}
+#deck>.slide.cover .cv{margin-inline:auto;text-align:center}#deck>.slide.cover .cv .lead{margin-inline:auto}
 #deck>.slide.cover+.slide{padding-top:clamp(48px,4.5vw,64px)!important}
 #deck>.slide.qs{padding:clamp(72px,7vw,100px) clamp(18px,5vw,72px)!important;align-items:center!important}
 #deck>.slide.fin{padding-bottom:clamp(80px,7.5vw,108px)!important}
