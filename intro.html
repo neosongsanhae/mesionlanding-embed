@@ -2183,7 +2183,18 @@ tr.hot .dlt{opacity:1;transform:none}
 })();
 function phCapture(n,p){ try{ window.posthog&&window.posthog.capture&&window.posthog.capture(n,p); }catch(e){} }
 </script>
-<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6",debug:true});</script>
+<script>
+(function(){
+  if(/^(localhost|127[.]0[.]0[.]1)$/.test(location.hostname)) return;
+  try{
+    var q=new URLSearchParams(location.search).get('internal');
+    if(q==='1') localStorage.setItem('mesion_internal','1');
+    if(q==='0') localStorage.removeItem('mesion_internal');
+    if(q!=='0'&&(localStorage.getItem('mesion_internal')==='1'||localStorage.getItem('__ph_opt_in_out_phc_DmKZTzeFEhLd7TQNjkk2cib9GZaUCuQFSXvSDGBZ4ma8')==='0'||document.cookie.indexOf('__ph_opt_in_out_phc_DmKZTzeFEhLd7TQNjkk2cib9GZaUCuQFSXvSDGBZ4ma8=0')>-1)) return;
+  }catch(e){}
+  !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6",debug:true});
+})();
+</script>
 </head>
 <body>
 <div class="topbar"><a href="intro.html" aria-label="메시온"><img src="creatives/intro/50db884207e5.webp" alt="Mesion"></a><div class="tbr"><a class="navlink" href="about.html">메시온 소개</a><button class="tcta" type="button" data-lead>상담 신청하기</button></div></div>

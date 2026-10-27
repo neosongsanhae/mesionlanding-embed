@@ -527,8 +527,20 @@ og_alt = '메시온 소개: 비회원까지 닿는 세일즈 캠페인 솔루션
 # 프로모션 단가는 정가에서 내려오도록 시작값 표시
 promo_from = {'16': '22', '4': '10'}
 
-# 광고 픽셀(OpenAI): head 끝에 넣음
-PIXEL = '''<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6",debug:true});</script>'''
+# 광고 픽셀(OpenAI): head 끝에 넣음. PostHog와 같은 기준으로 localhost·사내 접속은 불러오지 않음
+# 사내 접속: ?internal=1 한 번 방문하면 이 브라우저는 제외(?internal=0 으로 해제). PostHog에서 이미 제외된 브라우저도 제외
+PIXEL = '''<script>
+(function(){
+  if(/^(localhost|127[.]0[.]0[.]1)$/.test(location.hostname)) return;
+  try{
+    var q=new URLSearchParams(location.search).get('internal');
+    if(q==='1') localStorage.setItem('mesion_internal','1');
+    if(q==='0') localStorage.removeItem('mesion_internal');
+    if(q!=='0'&&(localStorage.getItem('mesion_internal')==='1'||localStorage.getItem('__ph_opt_in_out___PHKEY__')==='0'||document.cookie.indexOf('__ph_opt_in_out___PHKEY__=0')>-1)) return;
+  }catch(e){}
+  !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6",debug:true});
+})();
+</script>'''.replace('__PHKEY__', POSTHOG_KEY)
 
 html = f'''<!doctype html>
 <html lang="ko">
