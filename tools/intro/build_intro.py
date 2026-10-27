@@ -527,6 +527,9 @@ og_alt = '메시온 소개: 비회원까지 닿는 세일즈 캠페인 솔루션
 # 프로모션 단가는 정가에서 내려오도록 시작값 표시
 promo_from = {'16': '22', '4': '10'}
 
+# 광고 픽셀(OpenAI): head 끝에 넣음
+PIXEL = '''<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6",debug:true});</script>'''
+
 html = f'''<!doctype html>
 <html lang="ko">
 <head>
@@ -567,6 +570,7 @@ html = f'''<!doctype html>
 }})();
 function phCapture(n,p){{ try{{ window.posthog&&window.posthog.capture&&window.posthog.capture(n,p); }}catch(e){{}} }}
 </script>
+{PIXEL}
 </head>
 <body>
 <div class="topbar"><a href="intro.html" aria-label="메시온"><img src="{logo}" alt="Mesion"></a><div class="tbr"><a class="navlink" href="about.html">메시온 소개</a><button class="tcta" type="button" data-lead>상담 신청하기</button></div></div>
