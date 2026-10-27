@@ -2066,6 +2066,8 @@ tr.hot .dlt{opacity:1;transform:none}
 #deck>.slide.aha2{background:#15171c;text-align:center;padding-top:clamp(96px,10vw,128px)!important;padding-bottom:clamp(104px,11vw,136px)!important}
 .aha2 .stage{display:flex;flex-direction:column;align-items:center}
 .aha-h{font-size:clamp(26px,3.4vw,44px);font-weight:800;letter-spacing:-.035em;line-height:1.34;color:#fff;text-wrap:balance}
+.hlogo{display:inline-block;width:.92em;height:.92em;border-radius:24%;vertical-align:-.12em;margin-left:.22em;box-shadow:0 6px 16px -6px rgba(0,0,0,.6)}
+.hlogo+.hlogo{margin-left:.16em}
 .nlogo{display:inline-flex;align-items:center;justify-content:center;width:.82em;height:.82em;background:#03C75A;border-radius:23%;vertical-align:-.04em;margin:0 .16em}
 .nlogo svg{width:56%;height:56%;display:block}
 .pcps{margin-top:34px;display:inline-flex;gap:6px;padding:5px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.1)}
@@ -2086,6 +2088,10 @@ tr.hot .dlt{opacity:1;transform:none}
 /* ===== 상담 신청: ax-promo 신청 영역·상단 버튼 방식 ===== */
 .topbar .tcta{font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:0;border-radius:999px;padding:8px 15px;cursor:pointer}
 .topbar .tcta:hover{background:var(--blue-d)}
+/* 다른 홈페이지와 같은 '메시온 소개' 링크 */
+.topbar .navlink{font-size:14px;font-weight:600;color:var(--ink2);text-decoration:none;white-space:nowrap;margin-right:6px;transition:color .15s}
+.topbar .navlink:hover{color:var(--blue)}
+@media(max-width:600px){.topbar .navlink{display:none}}
 .slide.fin .apply{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
 .slide.fin .lead{white-space:normal!important}
 @media(max-width:900px){.slide.fin .apply{grid-template-columns:1fr;gap:28px}}
@@ -2129,7 +2135,7 @@ tr.hot .dlt{opacity:1;transform:none}
 </style>
 </head>
 <body>
-<div class="topbar"><a href="intro.html" aria-label="메시온"><img src="creatives/intro/50db884207e5.webp" alt="Mesion"></a><div class="tbr"><span>메시온 소개</span><button class="tcta" type="button" data-lead>상담 신청하기</button></div></div>
+<div class="topbar"><a href="intro.html" aria-label="메시온"><img src="creatives/intro/50db884207e5.webp" alt="Mesion"></a><div class="tbr"><a class="navlink" href="about.html">메시온 소개</a><button class="tcta" type="button" data-lead>상담 신청하기</button></div></div>
 <div class="pbar"><i id="pfill"></i></div>
 <main class="deck" id="deck">
 <section class="slide cover" aria-label="표지">
@@ -2177,7 +2183,7 @@ tr.hot .dlt{opacity:1;transform:none}
 </section>
 <section class="slide aha2" aria-label="매체 3곳 화면">
   <div class="stage">
-    <h2 class="aha-h">여러 매체로 고객과 더 자주 만나보세요</h2>
+    <h2 class="aha-h">여러 매체를 통합해 <img class="hlogo" src="creatives/axp/a1207eb6a9.webp" alt="카카오톡"><img class="hlogo" src="creatives/axp/40a22b9f91.webp" alt="네이버"><br>고객과 더 자주 만나보세요</h2>
     <div class="pcps" role="group" aria-label="매체 고르기"><button type="button" class="pcp on" data-i="0">카카오톡 브랜드메시지</button><button type="button" class="pcp" data-i="1">네이버 스마트 톡톡</button><button type="button" class="pcp" data-i="2">네이버 앱 알림</button></div>
     <div class="aphone" id="aphone">
       <div class="aphone-frame"><div class="aphone-screen">
