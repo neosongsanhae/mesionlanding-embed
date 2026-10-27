@@ -10,6 +10,9 @@ REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
 OUT = f'{REPO}/intro.html'
 IMG_DIR = 'creatives/intro'
 URL = 'https://neosongsanhae.github.io/mesionlanding-embed/intro.html'
+# PostHog(방문·리드 분석). 키가 비어 있으면 스크립트를 넣지 않음. phc_ 키는 웹에 공개되는 용도라 커밋해도 됨
+POSTHOG_KEY = 'phc_DmKZTzeFEhLd7TQNjkk2cib9GZaUCuQFSXvSDGBZ4ma8'
+POSTHOG_HOST = 'https://us.i.posthog.com'  # EU 프로젝트면 https://eu.i.posthog.com
 
 src = open(DECK, encoding='utf-8').read()
 os.makedirs(f'{REPO}/{IMG_DIR}', exist_ok=True)
@@ -542,6 +545,18 @@ html = f'''<!doctype html>
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>{deck_css}{web_css}</style>
+<script>
+/* PostHog: localhost·사내 브라우저(?internal=1 한 번 방문)는 수집 안 함 */
+(function(){{
+  var KEY='{POSTHOG_KEY}', HOST='{POSTHOG_HOST}';
+  if(!KEY||/^(localhost|127[.]0[.]0[.]1)$/.test(location.hostname)) return;
+  !function(t,e){{var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){{function g(t,e){{var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){{t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){{var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e}},u.people.toString=function(){{return u.toString(1)+".people (stub)"}},o="init capture register register_once identify reset get_distinct_id opt_in_capturing opt_out_capturing has_opted_out_capturing".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])}},e.__SV=1)}}(document,window.posthog||[]);
+  posthog.init(KEY,{{api_host:HOST,person_profiles:'identified_only'}});
+  try{{ var q=new URLSearchParams(location.search).get('internal'); if(q==='1') posthog.opt_out_capturing(); if(q==='0') posthog.opt_in_capturing(); }}catch(e){{}}
+  posthog.register({{page_name:'intro'}});
+}})();
+function phCapture(n,p){{ try{{ window.posthog&&window.posthog.capture&&window.posthog.capture(n,p); }}catch(e){{}} }}
+</script>
 </head>
 <body>
 <div class="topbar"><a href="intro.html" aria-label="메시온"><img src="{logo}" alt="Mesion"></a><div class="tbr"><a class="navlink" href="about.html">메시온 소개</a><button class="tcta" type="button" data-lead>상담 신청하기</button></div></div>
@@ -583,6 +598,7 @@ var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwg67vy0WnjA29Ln9jdXB
       var page=location.href.split('#')[0];
       // 친구 수는 kf로 보내고, 수집기를 새로 배포하기 전에도 남도록 유입경로 끝(#)에도 붙임
       var payload={{brand:brand,name:name,phone:phone,email:'',b:b,src:'소개서 웹페이지',kf:kf,ref:page+'#카톡친구='+kf,ua:navigator.userAgent}};
+      phCapture('lead_submitted',{{form:pre==='m'?'팝업':'하단',kf:kf,b:b,src:'소개서 웹페이지'}});
       var finish=function(){{ document.querySelectorAll('.ldform').forEach(function(f){{ f.classList.add('sent'); }}); }};
       try{{ fetch(LEAD_ENDPOINT,{{method:'POST',mode:'no-cors',headers:{{'Content-Type':'text/plain;charset=utf-8'}},body:JSON.stringify(payload)}}).then(finish).catch(finish); }}catch(e){{ finish(); }}
     }});
@@ -590,7 +606,7 @@ var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwg67vy0WnjA29Ln9jdXB
   var m=document.getElementById('ldm'), last=null;
   function open(){{ last=document.activeElement; m.hidden=false; document.documentElement.style.overflow='hidden'; setTimeout(function(){{ var f=document.getElementById('mBrand'); if(f&&!m.querySelector('.sent')) f.focus(); }},60); }}
   function close(){{ m.hidden=true; document.documentElement.style.overflow=''; if(last) last.focus(); }}
-  document.querySelectorAll('[data-lead]').forEach(function(b){{ b.addEventListener('click',open); }});
+  document.querySelectorAll('[data-lead]').forEach(function(b){{ b.addEventListener('click',function(){{ phCapture('lead_form_opened',{{from:'상단 버튼'}}); open(); }}); }});
   m.querySelectorAll('[data-close]').forEach(function(b){{ b.addEventListener('click',close); }});
   addEventListener('keydown',function(e){{ if(e.key==='Escape'&&!m.hidden) close(); }});
 }})();
