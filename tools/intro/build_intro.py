@@ -538,7 +538,8 @@ PIXEL = '''<script>
     if(q==='0') localStorage.removeItem('mesion_internal');
     if(q!=='0'&&(localStorage.getItem('mesion_internal')==='1'||localStorage.getItem('__ph_opt_in_out___PHKEY__')==='0'||document.cookie.indexOf('__ph_opt_in_out___PHKEY__=0')>-1)) return;
   }catch(e){}
-  !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6",debug:true});
+  !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"13ZySpCvgGa5BWp8XpHuY6"});
+  oaiq("measure","page_viewed",{type:"contents",contents:[{id:"intro",name:"소개서 웹페이지",content_type:"page"}]});
 })();
 </script>'''.replace('__PHKEY__', POSTHOG_KEY)
 
