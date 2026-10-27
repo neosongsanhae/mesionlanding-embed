@@ -160,11 +160,12 @@ one = ''.join(f'<span class="clg"><img class="clgimg" src="{src}" alt="{alt}"></
 sections['문의'] = fin[:a] + fin[b:].replace('</div>\n</section>', f'<div class="cred"><span class="fk2">주요 고객사</span>{marquee(one, 22)}</div>\n  </div>\n</section>', 1)
 
 pt = sections['파트너']
+# 투자사 로고 띠: 천천히 흐르도록 기본 속도의 1.8배 시간
 a = pt.index('<div class="ivg">')
 b = pt.index('</div></div>', a) + len('</div>')
 ivs = re.findall(r'<span class="ivs">(.*?)</span>', pt[a:b], re.S)
 one = ''.join(f'<span class="clg">{x.replace("<img ", "<img class=\"clgimg iv\" ")}</span>' for x in ivs)
-sections['파트너'] = pt[:a] + '<div class="ivmq">' + marquee(one, round(len(ivs) * 2 * 24 / 44)) + '</div>' + pt[b:]
+sections['파트너'] = pt[:a] + '<div class="ivmq">' + marquee(one, round(len(ivs) * 2 * 24 / 44 * 1.8)) + '</div>' + pt[b:]
 
 # 폰 목업 섹션 제목([N]은 네이버 로고 자리)
 PHONE_H2 = '여러 매체를 통합해 [K][N]<br>고객과 더 자주 만나보세요'  # [K]·[N]: 카카오톡·네이버 공식 앱 로고(brand-assets와 같은 파일)
