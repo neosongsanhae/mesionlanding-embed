@@ -2099,6 +2099,9 @@ tr.hot .dlt{opacity:1;transform:none}
 .pcp.on{color:#2a2c32}
 .aphone::after{background:radial-gradient(ellipse at center,rgba(0,0,0,.28),transparent 70%)}
 .aphone-frame{box-shadow:inset 0 2px 0 1px rgba(255,255,255,.07),inset 0 0 0 1px rgba(0,0,0,.5),0 30px 60px -30px rgba(0,0,0,.45)}
+/* 하단 페이드 없이 폰 전체를 보여 줌(10/28 요청) */
+.aphone-frame{-webkit-mask-image:none;mask-image:none}
+.aphone::after{bottom:-22px}
 
 /* ===== 상담 신청: ax-promo 신청 영역·상단 버튼 방식 ===== */
 .topbar .tcta{font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:var(--blue);border:0;border-radius:999px;padding:8px 15px;cursor:pointer}
