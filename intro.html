@@ -2068,8 +2068,8 @@ tr.hot .dlt{opacity:1;transform:none}
 
 /* ===== 매체 3곳 화면: index-naver 전환 섹션 방식, 폰 안에서 화면이 바뀜 ===== */
 #deck>.slide.aha2{background:#15171c;text-align:center;padding-top:clamp(96px,10vw,128px)!important;padding-bottom:clamp(104px,11vw,136px)!important}
-.aha2 .stage{display:grid;grid-template-columns:auto auto;justify-content:center;align-items:start;column-gap:clamp(36px,5vw,72px);text-align:left}
-.aha2 .ahl .aha-h{margin-top:-.17em}
+.aha2 .stage{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:clamp(40px,7vw,110px);text-align:left}
+@media(min-width:901px){.aha2 .aphone{margin-right:clamp(24px,4vw,64px)}}
 .aha2 .ahl{display:flex;flex-direction:column;align-items:flex-start}
 .aha2 .aphone{margin-top:0}
 @media(max-width:900px){.aha2 .stage{grid-template-columns:1fr;justify-items:center;text-align:center}.aha2 .ahl{align-items:center}.aha2 .aphone{margin-top:36px}}
