@@ -504,7 +504,7 @@ favicon = re.search(r'<link rel="icon"[^>]+>', gen).group(0)
 
 # 공유(오픈그래프) 정보: 소개서 표지·요약 문장 그대로. 공유 이미지 원본은 tools/intro/og-intro.html → creatives/og-intro.png
 title = '메시온 소개 | 비회원까지 닿는 세일즈 캠페인 솔루션'
-desc = '네이버 스마트 톡톡과 카카오 브랜드메시지로 닿을 수 있는 고객을 넓히고, 캠페인 기획부터 성과 분석까지는 AI 에이전트와 함께합니다.'
+desc = '네이버 스마트 톡톡과 카카오 브랜드메시지로 닿을 수 있는 고객을 넓히고, 캠페인 기획부터 성과 분석까지 AI 에이전트와 함께합니다.'
 og_title = '비회원까지 닿는 세일즈 캠페인 솔루션, 메시온'
 og_img = 'https://neosongsanhae.github.io/mesionlanding-embed/creatives/og-intro.png?v=1'
 og_alt = '메시온 소개: 비회원까지 닿는 세일즈 캠페인 솔루션. 비회원 구매자까지, 메시온 AX 기획부터 성과 분석까지, 솔루션 이용료 0원'
