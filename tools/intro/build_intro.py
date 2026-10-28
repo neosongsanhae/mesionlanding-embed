@@ -196,6 +196,21 @@ HERO_VARIANTS['10_bm_gauge'] = HERO_VARIANTS['06_bm_16won']
 # 05번 소재는 03번과 같은 문구로(10/28 요청)
 HERO_VARIANTS['05_profile_70'] = HERO_VARIANTS['03_top_mall']
 
+# 광고그룹별 첫 화면 문구(10/28 광고그룹 재구성). 소재 값이 위 표에 없으면 소재 번호(앞 두 자리)로 그룹을 찾고,
+# 그것도 없으면 utm_campaign(광고그룹 이름)으로 찾음. 순서: 소재 → 소재 번호의 그룹 → 광고그룹 → 기본 문구
+GROUP_HERO = {
+    'cost': HERO_VARIANTS['02_cost_half'],       # A 비용·단가
+    'brand': HERO_VARIANTS['03_top_mall'],       # B 브랜드 사례
+    'bf': HERO_VARIANTS['08_bf_checklist'],      # C 블프·시즌
+    'nonmember': {                               # D 비회원·모수 확대: 덱 '비회원 구매자' 장 문구 그대로
+        'h1': '네이버페이로 결제하고 사라진 고객<br><span class="em">다시 부를 수 있습니다</span>',
+        'lead': '구매 후 3개월 안에는 같은 종류 상품의 혜택을 스마트 톡톡으로 보낼 수 있습니다.<br>자사몰에는 회원가입 안 한 고객이지만, 네이버에는 있습니다.',
+    },
+}
+CREATIVE_GROUP = {'01': 'nonmember', '02': 'cost', '03': 'brand', '04': 'nonmember', '05': 'brand',
+                  '06': 'cost', '07': 'nonmember', '08': 'bf', '09': 'cost', '10': 'cost'}
+CAMPAIGN_GROUP = {'Lead_cost': 'cost', 'Lead_brand': 'brand', 'Lead_bf': 'bf', 'Lead_nonmember': 'nonmember'}
+
 pt = sections['파트너']
 # 투자사 로고 띠: 천천히 흐르도록 기본 속도의 1.8배 시간
 a = pt.index('<div class="ivg">')
@@ -271,16 +286,19 @@ sections['문의'] = sections['문의'].replace('<section class="slide fin"', '<
 import json
 hero_script = '''<script>
 (function(){
-  var V=''' + json.dumps(HERO_VARIANTS, ensure_ascii=False) + ''', c='';
-  try{ c=new URLSearchParams(location.search).get('utm_content')||''; }catch(e){}
-  var v=Object.prototype.hasOwnProperty.call(V,c)?V[c]:null;
-  try{ window.posthog&&window.posthog.register&&window.posthog.register({hero_variant:v?c:'default'}); }catch(e){}
+  var V=''' + json.dumps(HERO_VARIANTS, ensure_ascii=False) + ''', G=''' + json.dumps(GROUP_HERO, ensure_ascii=False) + ''';
+  var CG=''' + json.dumps(CREATIVE_GROUP) + ''', PG=''' + json.dumps(CAMPAIGN_GROUP) + ''';
+  var has=function(o,k){ return Object.prototype.hasOwnProperty.call(o,k); }, c='', cp='';
+  try{ var q=new URLSearchParams(location.search); c=q.get('utm_content')||''; cp=q.get('utm_campaign')||''; }catch(e){}
+  var n=c.slice(0,2), g=has(CG,n)?CG[n]:(has(PG,cp)?PG[cp]:''), v=null, name='default';
+  if(has(V,c)){ v=V[c]; name=c; } else if(g&&has(G,g)){ v=G[g]; name='group:'+g; }
+  try{ window.posthog&&window.posthog.register&&window.posthog.register({hero_variant:name,ad_group:g||'none'}); }catch(e){}
   if(!v) return;
   document.getElementById('hH1').innerHTML=v.h1;
   document.getElementById('hLead').innerHTML=v.lead;
 })();
 </script>'''
-assert '</script' not in json.dumps(HERO_VARIANTS, ensure_ascii=False)
+assert '</script' not in json.dumps(HERO_VARIANTS, ensure_ascii=False) + json.dumps(GROUP_HERO, ensure_ascii=False)
 
 # ---- 순서·배경 교차 ----
 # 현재 CRM의 문제를 다룬 장은 빼고 제품 설명 위주로(10/27 요청)
