@@ -179,7 +179,7 @@ HERO_VARIANTS = {
         'lead': '수신동의 회원 30만 명인 브랜드가 한 번 보낼 때<br>타사 CRM 762만 원, 메시온 340.5만 원입니다.',
     },
     '03_top_mall': {
-        'h1': '안다르·젝시믹스·<wbr>감탄브라가 쓰는<br><span class="em">세일즈 캠페인 솔루션</span>',
+        'h1': '안다르·젝시믹스·<br class="mbr">감탄브라가 쓰는<br><span class="em">세일즈 캠페인 솔루션</span>',
         'lead': '회원 400만 규모 브랜드를 포함해 70여 개 브랜드가 메시온으로 보내고 있습니다.<br>카카오 브랜드메시지와 네이버 스마트 톡톡을 한 곳에서 보냅니다.',
     },
     '06_bm_16won': {
@@ -478,6 +478,9 @@ body{line-height:1.5}
 @keyframes ldUp{from{opacity:0;transform:translateY(24px) scale(.98)}}
 @media(max-width:560px){.ldm{place-items:end center;padding:0}.ldm-box{width:100%;border-radius:20px 20px 0 0}.ldm-box .ldform{border-radius:20px 20px 0 0}}
 
+/* 모바일에서만 줄 바꿈 */
+.mbr{display:none}
+@media(max-width:600px){.mbr{display:inline}}
 /* 첫 화면 신청 버튼 */
 .hact{margin-top:28px}
 .hcta{font-family:inherit;font-size:16px;font-weight:700;color:#fff;background:var(--blue);border:0;border-radius:999px;padding:15px 30px;cursor:pointer;transition:background .15s,transform .15s;box-shadow:0 10px 24px -10px rgba(36,85,199,.6)}
