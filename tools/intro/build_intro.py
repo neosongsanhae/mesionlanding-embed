@@ -159,8 +159,38 @@ a = fin.index('<div class="lgx6">')
 b = fin.index('</div></div></div>', a) + len('</div></div></div>')
 imgs = re.findall(r'<img src="([^"]+)" alt="([^"]+)"', fin[a:b])
 one = ''.join(f'<span class="clg"><img class="clgimg" src="{src}" alt="{alt}"></span>' for src, alt in imgs)
-# 문의 장 배치: 글은 위, 고객사 띠는 아래 전체 폭(index.html의 고객사 띠처럼)
-sections['문의'] = fin[:a] + fin[b:].replace('</div>\n</section>', f'<div class="cred"><span class="fk2">주요 고객사</span>{marquee(one, 22)}</div>\n  </div>\n</section>', 1)
+# 고객사 띠는 문의 장에서 빼고 첫 화면 바로 아래로 올림(10/28 요청: 광고로 들어온 방문자가 바로 보도록)
+sections['문의'] = fin[:a] + fin[b:]
+logo_strip = f'<div class="cstrip" aria-label="주요 고객사"><span class="fk2">주요 고객사</span>{marquee(one, 22)}</div>'
+
+# ---- 첫 화면: 본문 신청 버튼 + 광고 소재별 문구 교체용 id (10/28 요청) ----
+cov = sections['표지']
+cov2 = (cov.replace('<h1>', '<h1 id="hH1">', 1)
+           .replace('<p class="lead">', '<p class="lead" id="hLead">', 1)
+           .replace('</p>\n    </div>', '</p>\n      <div class="hact"><button class="hcta" type="button" data-lead data-from="첫 화면">상담 신청하기</button></div>\n    </div>', 1))
+assert cov2.count('id="hH1"') == 1 and cov2.count('id="hLead"') == 1 and 'class="hcta"' in cov2, '표지 구조가 바뀜'
+sections['표지'] = cov2
+
+# 광고 소재(utm_content)별 첫 화면 문구. 표에 없는 소재·일반 방문은 덱 표지 문구 그대로
+# 문구 규칙: 페이지 안에 이미 있는 사실(단가·조건·사례 숫자)만 씀
+HERO_VARIANTS = {
+    '02_cost_half': {
+        'h1': '같은 고객에게 보내고<br>발송비는 <span class="em">절반 아래로</span>',
+        'lead': '수신동의 회원 30만 명인 브랜드가 한 번 보낼 때<br>타사 CRM 762만 원, 메시온 340.5만 원입니다.',
+    },
+    '03_top_mall': {
+        'h1': '70여 개 브랜드가 쓰는<br><span class="em">세일즈 캠페인 솔루션</span>',
+        'lead': '회원 400만 규모 브랜드를 포함해 70여 개 브랜드가 메시온으로 보내고 있습니다.<br>카카오 브랜드메시지와 네이버 스마트 톡톡을 한 곳에서 보냅니다.',
+    },
+    '06_bm_16won': {
+        'h1': '브랜드메시지 친구 발송<br><span class="em">건당 16원</span>',
+        'lead': '메시온 AX 출시 기념, 12월 31일까지 선착순 20곳만 적용합니다.<br>카카오톡 채널 친구 20만 명 이상 브랜드가 대상입니다.',
+    },
+    '08_bf_checklist': {
+        'h1': '블랙프라이데이 발송 전<br><span class="em">발송 대상과 단가</span>부터 점검하세요',
+        'lead': '채널 친구에게만 보내고 있다면<br>수신동의 회원 전체와 네이버페이 비회원 구매자까지 넓힐 수 있습니다.',
+    },
+}
 
 pt = sections['파트너']
 # 투자사 로고 띠: 천천히 흐르도록 기본 속도의 1.8배 시간
@@ -233,6 +263,21 @@ fb = fin.index('\n    </div>', fa) + len('\n    </div>')
 sections['문의'] = fin[:fa] + '<div class="apply">' + fin[fa:fb] + '\n      ' + lead_form('b') + '\n    </div>' + fin[fb:]
 sections['문의'] = sections['문의'].replace('<section class="slide fin"', '<section class="slide fin" id="apply"', 1)
 
+# 첫 화면 바로 뒤에서 실행해 원래 문구가 깜빡이지 않게 함. 어떤 문구를 봤는지는 PostHog hero_variant로 남김
+import json
+hero_script = '''<script>
+(function(){
+  var V=''' + json.dumps(HERO_VARIANTS, ensure_ascii=False) + ''', c='';
+  try{ c=new URLSearchParams(location.search).get('utm_content')||''; }catch(e){}
+  var v=Object.prototype.hasOwnProperty.call(V,c)?V[c]:null;
+  try{ window.posthog&&window.posthog.register&&window.posthog.register({hero_variant:v?c:'default'}); }catch(e){}
+  if(!v) return;
+  document.getElementById('hH1').innerHTML=v.h1;
+  document.getElementById('hLead').innerHTML=v.lead;
+})();
+</script>'''
+assert '</script' not in json.dumps(HERO_VARIANTS, ensure_ascii=False)
+
 # ---- 순서·배경 교차 ----
 # 현재 CRM의 문제를 다룬 장은 빼고 제품 설명 위주로(10/27 요청)
 SKIP = {'한계 한눈에', '환경 변화', '담당자 리소스', '질문 1', '질문 3'}
@@ -261,6 +306,9 @@ for l in order:
         k += 1
     sec = f'<section class="{" ".join(cls)}"' + sec[m.end():]
     out_secs.append(sec)
+    if l == '표지':
+        out_secs.append(hero_script)
+        out_secs.append(logo_strip)
     if l == '역할 분담':
         out_secs.append(phone_section)
 
@@ -425,6 +473,25 @@ body{line-height:1.5}
 @keyframes ldFade{from{opacity:0}}
 @keyframes ldUp{from{opacity:0;transform:translateY(24px) scale(.98)}}
 @media(max-width:560px){.ldm{place-items:end center;padding:0}.ldm-box{width:100%;border-radius:20px 20px 0 0}.ldm-box .ldform{border-radius:20px 20px 0 0}}
+
+/* 첫 화면 신청 버튼 */
+.hact{margin-top:28px}
+.hcta{font-family:inherit;font-size:16px;font-weight:700;color:#fff;background:var(--blue);border:0;border-radius:999px;padding:15px 30px;cursor:pointer;transition:background .15s,transform .15s;box-shadow:0 10px 24px -10px rgba(36,85,199,.6)}
+.hcta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.hcta:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+/* 첫 화면 아래 고객사 띠 */
+.cstrip{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0 24px;text-align:center}
+.cstrip .fk2{font-size:12.5px;font-weight:800;color:var(--muted);letter-spacing:.04em}
+.cstrip .cmq{margin-top:16px}
+/* 모바일 하단 고정 신청 버튼 */
+.mcta{display:none}
+@media(max-width:600px){
+  .mcta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:30;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transition:transform .3s var(--ease)}
+  .mcta .hcta{display:block;width:100%;padding:14px 20px}
+  .mcta.off{transform:translateY(110%)}
+  body{padding-bottom:76px}
+  .hact .hcta{width:100%}
+}
 
 /* 푸터 */
 .gfoot{background:var(--paper);border-top:1px solid var(--line);padding:36px clamp(18px,5vw,72px) 44px}
@@ -591,6 +658,7 @@ function phCapture(n,p){{ try{{ window.posthog&&window.posthog.capture&&window.p
 <main class="deck" id="deck">
 {chr(10).join(out_secs)}
 </main>
+<div class="mcta off" id="mcta"><button class="hcta" type="button" data-lead data-from="하단 고정">상담 신청하기</button></div>
 <div class="ldm" id="ldm" hidden><div class="ldm-bg" data-close></div><div class="ldm-box" role="dialog" aria-modal="true" aria-label="상담 신청"><button class="ldm-x" type="button" data-close aria-label="닫기">×</button>{lead_form('m')}</div></div>
 <footer class="gfoot"><div class="in">(주)유니드컴즈 · 대표자 양재필, 전형신<br>주소 서울특별시 마포구 양화로 81, L1층 L105호(서교동, 패스트파이브 합정점)<br>문의 <a href="mailto:public@uneedcomms.com">public@uneedcomms.com</a><br>Copyrights © 2022 UNEEDCOMMS All Rights Reserved.</div></footer>
 {script}
@@ -634,9 +702,26 @@ var LEAD_ENDPOINT='https://script.google.com/macros/s/AKfycbwg67vy0WnjA29Ln9jdXB
   var m=document.getElementById('ldm'), last=null;
   function open(){{ last=document.activeElement; m.hidden=false; document.documentElement.style.overflow='hidden'; setTimeout(function(){{ var f=document.getElementById('mBrand'); if(f&&!m.querySelector('.sent')) f.focus(); }},60); }}
   function close(){{ m.hidden=true; document.documentElement.style.overflow=''; if(last) last.focus(); }}
-  document.querySelectorAll('[data-lead]').forEach(function(b){{ b.addEventListener('click',function(){{ phCapture('lead_form_opened',{{from:'상단 버튼'}}); open(); }}); }});
+  document.querySelectorAll('[data-lead]').forEach(function(b){{ b.addEventListener('click',function(){{ phCapture('lead_form_opened',{{from:b.dataset.from||'상단 버튼'}}); open(); }}); }});
   m.querySelectorAll('[data-close]').forEach(function(b){{ b.addEventListener('click',close); }});
   addEventListener('keydown',function(e){{ if(e.key==='Escape'&&!m.hidden) close(); }});
+}})();
+</script>
+<script>
+/* 섹션 도달(section_viewed): 섹션이 화면에 40% 이상 보이면 한 번 기록. index로 어디까지 내려갔는지 봄 */
+(function(){{
+  if(!('IntersectionObserver' in window)) return;
+  var secs=[].slice.call(document.querySelectorAll('#deck>.slide')), n=secs.length;
+  var io=new IntersectionObserver(function(es){{ es.forEach(function(e){{ if(!e.isIntersecting) return; io.unobserve(e.target);
+    var i=secs.indexOf(e.target); phCapture('section_viewed',{{section:e.target.getAttribute('aria-label')||'',index:i+1,total:n}});
+  }}); }},{{threshold:.4}});
+  secs.forEach(function(s){{ io.observe(s); }});
+  /* 모바일 하단 고정 버튼: 첫 화면 버튼이 보이는 동안과 맨 아래 신청 폼이 보이면 숨김(같은 버튼 두 개가 한 화면에 보이지 않게) */
+  var bar=document.getElementById('mcta'), hb=document.querySelector('.hact'), ap=document.getElementById('apply'), vis={{}};
+  if(bar&&hb&&ap){{
+    var bo=new IntersectionObserver(function(es){{ es.forEach(function(e){{ vis[e.target===hb?'h':'a']=e.isIntersecting; }}); bar.classList.toggle('off',!!(vis.h||vis.a)); }},{{threshold:0}});
+    bo.observe(hb); bo.observe(ap);
+  }}
 }})();
 </script>
 </body>
