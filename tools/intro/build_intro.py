@@ -193,6 +193,8 @@ HERO_VARIANTS = {
 }
 # 10번 소재는 06번과 같은 문구로(10/28 요청)
 HERO_VARIANTS['10_bm_gauge'] = HERO_VARIANTS['06_bm_16won']
+# 09번 소재(솔루션비 0원 + 27% 할인, 선착순 20곳)도 06번과 같은 프로모션 문구로(10/29)
+HERO_VARIANTS['09_coupon_0won'] = HERO_VARIANTS['06_bm_16won']
 # 05번 소재는 03번과 같은 문구로(10/28 요청)
 HERO_VARIANTS['05_profile_70'] = HERO_VARIANTS['03_top_mall']
 
