@@ -194,6 +194,8 @@ HERO_VARIANTS = {
 # 10번 소재는 06번과 같은 문구로(10/28 요청)
 HERO_VARIANTS['10_bm_gauge'] = HERO_VARIANTS['06_bm_16won']
 # 09번 소재(솔루션비 0원 + 27% 할인, 선착순 20곳)도 06번과 같은 프로모션 문구로(10/29)
+# 02번 소재도 A그룹 통일 문구(건당 16원)로(10/29)
+HERO_VARIANTS['02_cost_half'] = HERO_VARIANTS['06_bm_16won']
 HERO_VARIANTS['09_coupon_0won'] = HERO_VARIANTS['06_bm_16won']
 # 05번 소재는 03번과 같은 문구로(10/28 요청)
 HERO_VARIANTS['05_profile_70'] = HERO_VARIANTS['03_top_mall']
@@ -201,7 +203,7 @@ HERO_VARIANTS['05_profile_70'] = HERO_VARIANTS['03_top_mall']
 # 광고그룹별 첫 화면 문구(10/28 광고그룹 재구성). 소재 값이 위 표에 없으면 소재 번호(앞 두 자리)로 그룹을 찾고,
 # 그것도 없으면 utm_campaign(광고그룹 이름)으로 찾음. 순서: 소재 → 소재 번호의 그룹 → 광고그룹 → 기본 문구
 GROUP_HERO = {
-    'cost': HERO_VARIANTS['02_cost_half'],       # A 비용·단가
+    'cost': HERO_VARIANTS['06_bm_16won'],        # A 비용·단가: 02·06·09·10 모두 '건당 16원'으로 통일(10/29)
     'brand': HERO_VARIANTS['03_top_mall'],       # B 브랜드 사례
     'bf': HERO_VARIANTS['08_bf_checklist'],      # C 블프·시즌
     'nonmember': {                               # D 비회원·모수 확대: 덱 '비회원 구매자' 장 문구 그대로
