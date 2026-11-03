@@ -70,6 +70,11 @@ i = rc.index('<div class="axv2" id="ax">')
 j = rc.index('<span class="axc">', i)
 j = rc.index('</div>\n      </div>', j) + len('</div>\n      </div>')
 ax_block = axren(rc[i:j]).replace('<span class="qac">예시 화면</span>', '<span class="qac">(예시 화면)</span>')
+# AX 화면은 실제 출시 화면으로(11/3): 1~3단계 실제 앱(해피콜 계정) 캠페인 보드·상세·캘린더, 4단계 디자인 캔버스 결과 브리프+월 결산. 3:2 이미지
+for _n in range(1, 5):
+    ax_block = ax_block.replace(f'creatives/axp/ax-step{_n}.webp', f'creatives/intro/ax-live-{_n}.webp')
+ax_block = ax_block.replace('width="1600" height="1073"', 'width="1500" height="1000"')
+assert 'ax-live-4.webp' in ax_block
 ax_css = axren(rc[rc.index('/* AX 4단계 (소개서 13~16p) */'):rc.index('/* 가격표 (소개서 20p) */')])
 _r = rc[rc.index('/* receipt hero'):rc.index('.sales{')]
 rc_css = '\n'.join(l for l in _r.split('\n') if not l.startswith(('.rcv{', '.rcv .kick', '.rcv h1', '#rSave', '.rcv .lede', '.mesion .rmeta')))
@@ -367,6 +372,8 @@ body{line-height:1.5}
 /* 화면 높이에 묶여 있던 크기 풀기 */
 .slide[aria-label="역할 분담"] .r7s{height:380px}
 @media(max-width:900px){.slide[aria-label="역할 분담"] .r7s{height:auto}}
+/* AX 실제 화면은 3:2 이미지(테두리·그림자 포함) */
+.qaf{aspect-ratio:3/2!important;background:transparent!important;box-shadow:none!important;border-radius:0!important}
 /* 모바일: 네이버페이 비회원 구매자 도식은 PC 모양 그대로 두고 옆으로 밀어서 봄(세로로 쌓으면 화살표·원이 겹쳐 깨짐) */
 @media(max-width:900px){
   .slide[aria-label="비회원 구매자"] .h9{grid-template-columns:auto 132px auto 132px auto!important;overflow-x:auto;-webkit-overflow-scrolling:touch;
